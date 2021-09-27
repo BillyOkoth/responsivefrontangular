@@ -1,0 +1,109 @@
+.content {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content .header-row div {
+  height: 30vh !important;
+  margin-top: 5vh !important;
+}
+
+mat-icon {
+  font-size: 3em !important;
+  cursor: pointer;
+}
+
+.logo img {
+  width: 96% !important;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+.title p,
+.title h2 {
+  font-family: "Segoe UI Bold";
+  margin-left: 3%;
+}
+
+.title h2 {
+  font-size: 2em;
+  margin-top: 10vh !important;
+}
+
+.account-details h3 {
+  color: #000000 !important;
+  font-family: "Segoe UI Bold";
+  margin-left: 3%;
+}
+
+.text-color-grey-dark {
+  color: #707070;
+  font-family: "Segoe UI Bold";
+}
+
+.top-margin {
+  margin-top: 0vh !important;
+}
+
+.content-body {
+  height: 50vh !important;
+  /* // margin-top:-1vh; */
+}
+
+.blue-txt {
+  color: #0033a1;
+  text-align: right !important;
+}
+
+.bold {
+  color: #707070;
+  font-family: "Segoe UI Bold";
+  padding-left: 1vh;
+}
+
+.footer {
+  position: relative;
+}
+
+.stats-title {
+  background: #ececec;
+  position: absolute;
+  top: -10vh !important;
+  left: 4vw !important;
+  padding-right: 3vw;
+  z-index: 1;
+}
+
+.stats-title .text-color-grey-dark {
+  font-family: "Segoe UI Bold";
+  font-size: 2em;
+}
+
+.top-border {
+  border-top: 1px solid #707070 !important;
+}
+
+.middle-div {
+  border-right: 1px solid #707070;
+}
+
+.begin-flt h3 {
+  margin-left: 3%;
+}
+
+.top-border h3 {
+  color: #0033a1;
+  font-family: "Segoe UI Bold";
+}
+.top-border h3 span {
+  color: #000000;
+  font-size: 1.2em !important;
+}
+
+.payer-data {
+  padding-left: 3vh;
+  padding-right: 3vh;
+  padding-bottom: 3vh;
+}

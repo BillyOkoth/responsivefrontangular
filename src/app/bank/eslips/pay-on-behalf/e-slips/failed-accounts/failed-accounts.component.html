@@ -1,0 +1,99 @@
+<div nz-row nzJustify="start">
+  <div nz-col nzSpan="24">
+    <i
+      nz-icon
+      nzType="arrow-left"
+      nzTheme="outline"
+      style="font-size: 36px; color: #08c;"
+      nzTooltipTitle="Back"
+      nzTooltipPlacement="right"
+      nz-tooltip
+      (click)="closeView()"
+    ></i>
+  </div>
+</div>
+<div nz-row>
+  <div nz-col nzSpan="12">
+    <input
+      nz-input
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      style="width: 100%;"
+      maxlength="100"
+    />
+  </div>
+  <div nz-col nzSpan="12">
+    <div nz-row nzType="flex" nzJustify="end">
+      <div nz-col nzSpan="4">
+        <button
+          nz-button
+          nzTheme="outline"
+          style="font-size: 36px; color: #08c;margin-bottom: 3vh;"
+          nzType="link"
+          nzTooltipTitle="Download Excel"
+          nzTooltipPlacement="left"
+          [nzLoading]="loading"
+          [disabled]="loading || !this.role.eslipRole"
+          nz-tooltip
+          (click)="downloadCSV()"
+        >
+          <i nz-icon nzType="download"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div nz-row nzType="flex" nzJustify="center">
+  <div nz-col nzSpan="12">
+    <h2 class="text-color-grey-dark">
+      Eslip Number: <span> {{ this.EslipNO }} </span>
+    </h2>
+  </div>
+  <div nz-col nzSpan="12">
+    <h2 class="text-color-grey-dark">
+      Number of Accounts: <span> {{ AccountsCount }} </span>
+    </h2>
+  </div>
+</div>
+
+<div class="page-title" fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="100" fxLayoutAlign="start center"></div>
+  <div fxFlex="100" fxLayoutAlign="start center"></div>
+  <div fxFlexOffset="5" fxFlex="100" fxLayoutAlign="center center"></div>
+</div>
+
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Account Name</th>
+          <th>Account Number</th>
+          <th>Amount to Pay</th>
+          <th>Amount Due</th>
+          <th>Description</th>
+          <th>REF No.</th>
+          <th>Status</th>
+          <th>Due Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let data of rows | failedAccounts: searchValue; let i = index"
+        >
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.account_name }}</td>
+          <td>{{ data.account_no }}</td>
+          <td>{{ data.amount_to_pay | currency: "Ksh." }}</td>
+          <td>{{ data.amount_due | currency: "Ksh." }}</td>
+          <td>{{ data.description }}</td>
+          <td>{{ data.biller_ref }}</td>
+          <td>{{ data.status }}</td>
+          <td>{{ data.due_date }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</cdk-virtual-scroll-viewport>

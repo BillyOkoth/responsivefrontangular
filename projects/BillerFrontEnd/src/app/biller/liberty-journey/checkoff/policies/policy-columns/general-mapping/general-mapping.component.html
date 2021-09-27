@@ -1,0 +1,21 @@
+<nz-steps [nzCurrent]="current">
+    <nz-step nzTitle="Upload Policy File Sample"> </nz-step>
+    <nz-step nzTitle="General Policy Columns"> </nz-step>
+  </nz-steps>
+  
+  <div class="steps-content">
+    <div *ngIf="upload" style="margin-top: 5vh; margin-bottom: 5vh;" nz-row>
+      <app-general-instructions></app-general-instructions>
+    </div>
+    <div *ngIf="mapping" style="margin-top: 5vh;" nz-row>
+      <app-general-policy></app-general-policy>
+    </div>
+  </div>
+  
+  <div nz-row nzType="flex" nzJustify="end" class="button">
+    <div nz-col nzSpan="2">
+      <button nz-button nzType="primary" (click)="next()" *ngIf="current < 1">
+        <span>Next</span>
+      </button>
+    </div>
+  </div>

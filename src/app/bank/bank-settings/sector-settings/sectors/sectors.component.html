@@ -1,0 +1,57 @@
+<div nz-row [nzGutter]="10" style="margin-bottom:2vh;">
+  <div nz-col nzSpan="12">
+    <input nz-input placeholder="Search" [(ngModel)]="searchValue" style="width: 100%;" maxlength="100" />
+  </div>
+
+  <div nz-col nzSpan="12">
+    <!-- <div nz-row nzJustify="end">
+      <div nz-col nzSpan="3">
+        <button nz-button nzType="link" nzTooltipTitle="Add Sector" nzTooltipPlacement="topCenter" nz-tooltip
+          (click)="addSectors()">
+          <i nz-icon nzType="plus" nzTheme="outline"></i>
+        </button>
+      </div>
+    </div> -->
+    <div nz-row nzJustify="end">
+      <div nz-col nzSpan="3">
+        <button nz-button nzType="link" nzTooltipTitle="Add Sector" nzTooltipPlacement="topCenter" nz-tooltip
+          (click)="addSectors()">
+          <i nz-icon nzType="plus" nzTheme="outline"></i>
+        </button>
+        <button nz-button nzType="link" nzTooltipTitle="Upload Sector List" nzTooltipPlacement="topCenter" nz-tooltip (click)="uploadSector()">
+          <i nz-icon nzType="upload" nzTheme="outline"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #basicTable [nzData]="sectors" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Code</th>
+          <th>Actions</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *cdkVirtualFor="let data of sectors |sectorSearch: searchValue">
+          <td>{{data.name}}</td>
+          <td>{{data.code}}</td>
+          <td>
+            <button nz-button nzType="link" nzTooltipTitle="Edit Sector" nzTooltipPlacement="topCenter" nz-tooltip
+              (click)="editSectors()">
+              <i nz-icon nzType="eye"></i>
+            </button>
+            <button nz-button nzType="link" nzTooltipTitle="Delete Sector" nzTooltipPlacement="topCenter" nz-tooltip
+              (click)="deleteSector(data)">
+              <i nz-icon nzType="delete" [nzTheme]="'twotone'" [nzTwotoneColor]="'#f70707'"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</cdk-virtual-scroll-viewport>

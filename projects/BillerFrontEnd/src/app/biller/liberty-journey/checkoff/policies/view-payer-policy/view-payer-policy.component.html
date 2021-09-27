@@ -1,0 +1,66 @@
+<div nz-row nzType="flex" style="margin-bottom: 2vh;">
+    <div nz-col nzSpan="12">
+      <input
+        nz-input
+        placeholder="Search"
+        [(ngModel)]="searchValue"
+        style="width: 100%;"
+        maxlength="100"
+      />
+    </div>
+    <div nz-col nzSpan="12">
+      <div nz-row nzType="flex" nzJustify="end">
+        <div nz-col nzSpan="4">  
+            <button nz-button style="background-color: #5cb85c;" nzTooltipTitle="Download Excel."
+              nzTooltipPlacement="topCenter" (click)="downloadExcel()" nz-tooltip [nzLoading]="loading"
+              [disabled]="loading">
+              <i nz-icon nzType="download" nzTheme="outline"></i>
+            </button>
+    
+          </div>
+        </div>
+      </div>
+   
+    
+  </div>
+  
+  <cdk-virtual-scroll-viewport itemSize="18">
+    <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+      <nz-table #basicTable [nzData]="rows" [nzShowPagination]="false">
+        <thead>
+          <tr>
+            <th class="header">#</th>
+            <th class="header">Policy No.</th>
+            <th class="header">Policy Holder</th>
+            <th class="header">Date </th>
+            <th class="header">Amount </th>
+            <th class="header">Actions </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let data of rows | policy: searchValue; let i = index"
+          >
+            <td>{{ i + 1 }}</td>
+            <td>{{ data.policy_no }}</td>
+            <td>{{ data.name }}</td>
+            <td>{{ data.date | date: "short" }}</td>
+            <td>{{ data.amount }}</td>
+           <td>
+            <button
+            nz-button
+            nzType="link"
+            nzTooltipTitle="Update Policy Mapping"
+            nzTooltipPlacement="topCenter"
+            nz-tooltip
+           (click)="editPolicy(data)"
+          >
+            <i nz-icon nzType="eye" nzTheme="outline"></i>
+          </button>
+           </td>
+          
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-spin>
+  </cdk-virtual-scroll-viewport>

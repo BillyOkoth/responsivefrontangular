@@ -1,0 +1,37 @@
+<div >
+    <h3>Are you sure you want to Approve the following menus for  ?</h3>
+  
+    <p>{{BillerName}}</p>
+<div class = "payment-details">
+
+  <ul *ngFor=" let item of Accord;">
+    <li class="payer-bnk-dts text-color-grey-dark"  style="list-style: none;">
+      {{item.menuName}}
+    </li>
+  </ul>
+  <!-- <table >           
+    <tr>
+      <th class="payer-bnk-dts text-color-grey-dark" width="20%">Menu Name</th>            
+    </tr>
+   
+    
+    <tr *ngFor=" let item of Accord;" >
+          <th class="payer-bnk-dts text-color-grey-dark" width="20%">{{item.menuName}}</th> 
+         
+    </tr>    
+
+  </table> -->
+
+</div>
+    
+  
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <button nz-button nzType="default" (click)="closeDialog()">Cancel</button>
+      </div>
+      <div nz-col nzSpan="12">
+        <button nz-button nzType="primary" (click)="ApproveEditedGroup()" [nzLoading]="loading" >Approve</button>
+      </div>
+    </div>
+  </div>
+  

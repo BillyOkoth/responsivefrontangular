@@ -1,0 +1,82 @@
+
+
+<div nz-row nzGutter="10" style = "margin-bottom:2vh">
+    <div  style="margin-bottom:2vh;"nz-col nzSpan="12">
+      <input
+        nz-input
+        placeholder="Search"
+        [(ngModel)]="searchValue"
+        style="width: 100%;"
+        maxlength="100"
+      />
+    </div>
+    <div style="margin-bottom:2vh;" nz-col nzSpan="12">
+        <div nz-row nzType="flex" nzJustify="end">
+          <div nz-col nzSpan="7">
+            <button
+            nz-button
+            style="background-color: #f0ad4e;"
+            nzTooltipTitle="Add service line"
+            nzTooltipPlacement="topCenter"
+            nz-tooltip
+            [nzLoading]="loading"
+            [disabled]="loading"
+            (click)="AddAserviceLine()"
+          >
+                 Add Service Line
+            <i nz-icon nzType="upload"></i>
+          </button>  
+          </div>
+        </div>
+      </div>
+  </div>
+  <cdk-virtual-scroll-viewport itemSize="18">
+    <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+      <nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+        <thead>
+          <tr>  
+              <th class="header">#</th>    
+            <th  class="header">Service Line</th>
+            <th  class="header">Email</th>
+            <th  class="header">Account</th>       
+            <th  class="header">Currency</th>
+            <th  class="header">Prefix</th>
+            <th  class="header">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let row of rows  | serviceLinePipe: searchValue; let i = index"
+          >    
+             <td>{{ i + 1}}</td>     
+            <td>{{ row.service_line }}</td>
+            <td>{{ row.email }}</td>
+            <td>{{ row.account }}</td>
+            <td>{{ row.currency }}</td>       
+            <td>{{ row.prefix }}</td>   
+            <td>
+              <button
+              style="margin-left:1vh"
+              nz-button
+              nzType="link"
+              style="color: #f0ad4e;"
+              nzTooltipTitle="Edit Service Line"
+              nzTooltipPlacement="topCenter"
+              nz-tooltip
+              (click)="EditServiceLine(row)"
+            >
+              <i nz-icon nzType="eye"></i>
+            </button>
+  
+            </td>   
+  
+          
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-spin>
+  </cdk-virtual-scroll-viewport>
+  
+  
+  

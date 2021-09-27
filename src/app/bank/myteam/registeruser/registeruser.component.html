@@ -1,0 +1,100 @@
+<form
+  [formGroup]="newTeamForm"
+  autocomplete="off"
+  (ngSubmit)="createNewMemeber()"
+>
+  <input
+    nz-input
+    class="input-size"
+    placeholder="NTKEN No."
+    maxlength="50"
+    id="name"
+    formControlName="name"
+  />
+
+  <input
+    nz-input
+    class="input-size"
+    maxlength="50"
+    id="other_name"
+    formControlName="other_name"
+    placeholder="Other Name"
+  />
+
+  <input
+    nz-input
+    class="input-size"
+    maxlength="50"
+    id="surname"
+    formControlName="surname"
+    placeholder="Surname"
+  />
+
+  <input
+    nz-input
+    type="email"
+    class="input-size"
+    placeholder="Enter Email Address"
+    maxlength="50"
+    id="email_address"
+    formControlName="email_address"
+  />
+  <input
+    type="text"
+    maxlength="11"
+    class="input-size"
+    nz-input
+    placeholder="07xx xxx xxx"
+    formControlName="phone_number"
+    ng2TelInput
+    [ng2TelInputOptions]="{ initialCountry: 'ke' }"
+    (ng2TelOutput)="getNumber($event)"
+    
+  />
+
+  <nz-select
+  [ngModelOptions]="{ standalone: true }"
+   [(ngModel)]="Group_Id"   
+    
+    nzAllowClear
+    nzPlaceHolder="Assign User Group"
+    class="input-size"
+  >
+    <nz-option
+      *ngFor="let roles of roleLists"
+      [nzValue]="roles"
+      nzLabel="{{ roles.name }}"
+    >
+      {{ roles.name }}
+    </nz-option>
+  </nz-select>
+
+  <nz-select
+   [ngModelOptions]="{ standalone: true }"
+   [(ngModel)]="notifications"    
+    nzAllowClear
+    nzPlaceHolder="Notification"
+    class="input-size"
+  >
+    <nz-option
+      *ngFor="let notify of notif"
+      [nzValue]="notify"
+      nzLabel="{{ notify.notification_name}}"
+    >
+      {{ notify.notification_name }}
+    </nz-option>
+  </nz-select>
+</form>
+
+<button
+  class="input-size"
+  nz-button
+  nzType="primary"
+  (click)="createNewMemeber()"
+  nzBlock
+  [nzLoading]="loading"
+  [disabled]="!newTeamForm.valid || !this.role.myTeamRole"
+>
+  Create
+</button>
+

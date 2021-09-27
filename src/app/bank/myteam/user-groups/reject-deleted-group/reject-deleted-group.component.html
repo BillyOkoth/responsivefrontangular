@@ -1,0 +1,14 @@
+<div>
+    <h3>Are you sure you want to Reject ?</h3>
+  
+    <p>{{GroupName}}</p>
+  
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <button nz-button nzType="default" (click)="closeDialog()">Cancel</button>
+      </div>
+      <div nz-col nzSpan="12">
+        <button nz-button nzType="danger" (click)="RejectDeletedGroup()" [nzLoading]="loading" >Reject</button>
+      </div>
+    </div>
+  </div>

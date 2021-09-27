@@ -1,0 +1,74 @@
+<div nz-row nzGutter="10" style = "margin-bottom:2vh">
+  <div style="margin-bottom:2vh;" nz-col nzSpan="12">
+    <input
+      nz-input
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      style="width: 100%;"
+      maxlength="100"
+    />
+  </div>
+  <div style="margin-bottom:2vh;" nz-col nzSpan="10">
+    <div nz-row nzType="flex" nzJustify="end">
+      <div nz-col nzSpan="6">
+        <button
+        nz-button
+        style="background-color: #f0ad4e;"
+        nzTooltipTitle="Set Commisions."
+        nzTooltipPlacement="topCenter"
+        nz-tooltip
+        [nzLoading]="loading"
+        [disabled]="loading"
+        (click)="resetCommisions()"
+      >
+      Set Commissions
+        <i nz-icon nzType="upload"></i>
+      </button>  
+      </div>
+    </div>
+  </div>
+</div>
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-table #basicTable [nzData]="rows" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th class="header">#</th>
+        <th class="header">Payer Name</th>
+        <th class="header">Rate</th>
+        <th class="header">Start Date</th>
+        <th class="header">End Date</th>
+        <th class="header">Status</th>
+        <th class="header">Reset</th>
+      </tr>
+    </thead>
+    <tbody>
+      <nz-spin nzSimple *ngIf="this.loading == true"></nz-spin>
+      <tr *ngFor="let data of rows| commissions: searchValue; let i = index" [ngClass]="{'row': data.status == 'expired'}">
+        <td>{{ i + 1 }}</td>
+        <td>{{ data.payer_name }}</td>
+        <td>{{ data.rate }}</td>
+  
+        <td>{{ data.start_date}}</td>
+        <td>{{ data.end_date }}</td>
+        <td>{{ data.status }}</td>
+        
+        <td>
+          <button
+          *ngIf="data.status == 'expired' "
+            nz-button
+            nzType="link"
+            style="color: #f31515;"
+            nzTooltipTitle="Reset Commisions"
+            nzTooltipPlacement="topCenter"
+            nz-tooltip
+            (click)="resetCommisions()"
+          >
+          <i nz-icon nzType="reload" nzTheme="outline"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+</cdk-virtual-scroll-viewport>
+

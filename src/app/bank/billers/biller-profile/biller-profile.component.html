@@ -1,0 +1,152 @@
+<div class="header-row" nz-row>
+  <div class="icon" nz-col nzSpan="1.2" nzOffset="1.2">
+    <i
+      nz-icon
+      nzType="arrow-left"
+      nzTheme="outline"
+      style="font-size: 36px; color: #08c;"
+      nzTooltipTitle="Back"
+      nzTooltipPlacement="right"
+      nz-tooltip
+      (click)="closeButton()"
+    ></i>
+  </div>
+</div>
+<nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+<div nz-row>
+  <div class="logo" nz-col nzSpan="3">
+    <img
+      src="assets/images/logo.png"
+      alt=""
+      class="logo"
+      *ngIf="showDefaultLogo"
+    />
+    <img
+      src="{{ 'data:image/jpg;base64,' + billerLogo }}"
+      *ngIf="!showDefaultLogo"
+      class="logo"
+    />
+  </div>
+  <div class="account-details" nz-col nzSpan="20">
+    <div nz-row nzType="flex" nzJustify="end">
+      <div nz-col nzSpan="12">
+        <h4 class="top-margin">
+          Stanbic Bank Account Name:
+          <span class="text-color-grey-dark">{{ account_name }}</span>
+        </h4>
+        <h5>
+          Stanbic Bank Account Number:
+          <span class="text-color-grey-dark">{{ account_no }}</span>
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="title" nz-row>
+  <div nz-col nzSpan="10">
+    <h2>
+      {{ company }}
+    </h2>
+    <p class="text-color-grey-dark">Biller Code {{ biller_code }}</p>
+  </div>
+</div>
+
+<!-- body of the page -->
+
+  <div class="content-body" nz-row>
+    <div nz-col nzSpan="12">
+      <p class="blue-txt">
+        Admin First Name:
+      </p>
+      <p class="blue-txt">
+        Admin Last Name:
+      </p>
+      <p class="blue-txt">
+        Employee Number:
+      </p>
+      <p class="blue-txt">
+        Biller Phone Number:
+      </p>
+      <p class="blue-txt">
+        Biller Type:
+      </p>
+      <p class="blue-txt">
+        Branch:
+      </p>
+      <p class="blue-txt">
+        Country:
+      </p>
+      <p class="blue-txt">
+        Biller Month:
+      </p>
+      <p class="blue-txt">
+        Sector:
+      </p>
+      <p class="blue-txt">
+        Status:
+      </p>
+    </div>
+    <div nz-col nzSpan="12">
+      <p class="bold">
+        {{ fname }}
+      </p>
+      <p class="bold">
+        {{ lname }}
+      </p>
+      <p class="bold">
+        {{ emp_no }}
+      </p>
+      <p class="bold">0{{ phone_no }}</p>
+      <p class="bold">
+        {{ biller_type }}
+      </p>
+      <p class="bold">
+        {{ branch }}
+      </p>
+      <p class="bold">
+        {{ country }}
+      </p>
+      <p class="bold">
+        {{ biller_month }}
+      </p>
+      <p class="bold">
+        {{ sector }}
+      </p>
+      <p class="bold">{{ status }}</p>
+    </div>
+  </div>
+
+<!-- Footer of the page -->
+
+<div class="footer" nz-row>
+  <div class="stats-title" nz-col nzSpan="2">
+    <h2 class="text-color-grey-dark">Stats:</h2>
+  </div>
+
+  <div class="top-border" nz-col nzSpan="4">
+    <h3>
+      Invoices Raised: <span class="large-txt">{{ invoiceRaised }}</span>
+    </h3>
+  </div>
+  <div class="top-border" nz-col nzSpan="4">
+    <h3>
+      Bills Paid: <span class="large-txt"> {{ billsPaid }} </span>
+    </h3>
+  </div>
+  <div class="middle-div top-border" nz-col nzSpan="4">
+    <h3>Outstanding Bills: <span class="large-txt"> 0 </span></h3>
+  </div>
+
+  <div class="top-border begin-flt" nz-col nzSpan="5">
+    <h3>
+      Number of Payers: <span class="large-txt">{{ no_of_payers }}</span>
+    </h3>
+  </div>
+  <div class="top-border" nz-col nzSpan="5">
+    <h3>
+      Total Cash Moved: <span class="large-txt"> Kes. {{ cashMoved }} </span>
+    </h3>
+  </div>
+</div>
+</nz-spin>

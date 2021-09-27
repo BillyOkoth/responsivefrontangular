@@ -1,0 +1,26 @@
+<cdk-virtual-scroll-viewport itemSize="18">
+    <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+<nz-table #filterTable [nzData]="sales" [nzShowPagination]="false">
+    <thead>
+        <tr>
+            <th>Payer</th>
+            <th>Service Line</th>
+            <th>Team Name</th>
+            <th>Team Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="
+          let data of sales 
+          let i = index">
+            <td>{{ data.payer_name }}</td>
+            <td>{{ data.billing_line}}</td>
+            <td>{{ data.team_name}}</td>
+            <td>{{ data.team_email}}</td>
+
+
+        </tr>
+    </tbody>
+</nz-table>
+</nz-spin>
+</cdk-virtual-scroll-viewport>

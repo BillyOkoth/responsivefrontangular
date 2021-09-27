@@ -1,0 +1,17 @@
+:host
+  ::ng-deep
+  .ngx-datatable.material:not(.cell-selection)
+  .datatable-body-row:hover
+  .datatable-row-group {
+  color: #ffffff !important;
+  background: #66655c;
+  transition: all 0.4s ease 0s;
+}
+
+.panel-holder {
+  height: 49vh !important;
+}
+
+cdk-virtual-scroll-viewport {
+  height: 80vh;
+}

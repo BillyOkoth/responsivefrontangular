@@ -1,0 +1,104 @@
+<div nz-row  nzType="flex"  nzGutter="10" style="margin-bottom:2vh">
+  <div nz-col nzSpan="12">
+    <input nz-input placeholder="Search" [(ngModel)]="searchValue" style="width: 100%;" maxlength="100" />
+  </div>
+
+  <div nz-col nzSpan="12">
+    <div nz-row nzType="flex" nzJustify="end">    
+      <!-- <div nz-col nzSpan="6">
+        <button
+        nz-button
+        style="background-color: #f0ad4e;"
+        nzTooltipTitle="Generate Eslip"
+        [disabled]="toPayTotal < 1"
+        nzTooltipPlacement="topCenter"
+        nz-tooltip
+        (click)="generateEslip()"
+      >
+      Generate
+        <i nz-icon nzType="dollar"></i>
+      </button>
+      </div> -->
+      <div nz-col nzSpan="4">
+        <button
+        nz-button
+        style="background-color: #5cb85c;"
+        nzTooltipTitle="Download Excel."
+        nzTooltipPlacement="topCenter"
+        nz-tooltip
+        [nzLoading]="loading"
+        [disabled]="loading"
+        (click)="downloadExcel()"
+      >
+        <i nz-icon nzType="download"></i>
+      </button>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th class="header">#</th>
+          <th class="header">Date Created</th>
+          <th class="header">File Id</th>
+          <th class="header">Policies</th>
+          <th class="header">Status</th>
+          <th class="header">Date Due</th>
+          <th class="header"> Amount To Pay</th>
+          <th class="header">View File</th>
+          <!-- <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
+            (nzCheckedChange)="updateAllChecked()" class="header"><span>Select/Unselect</span></th> -->
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="
+              let row of rows  | outstandingPolicySearch: searchValue; let i = index">
+          <td>{{ i + 1}}</td>
+          <td>{{ row.created_at  | date: "MM/dd/yyyy" }}</td>
+          <td>{{ row.file_id }}</td>
+          <td>{{ row.policies }}</td>
+          <td>{{ row.status }}</td>
+          <td>{{ row.date | date: "MM/dd/yyyy" }}</td>
+          <td>{{ row.amount | currency: "Ksh." }}</td>
+          <td><button
+            style="margin-left:1vh"
+            nz-button
+            nzType="link"
+            style="color: #f0ad4e;"
+            nzTooltipTitle="View Policy Files."
+            nzTooltipPlacement="topCenter"
+            nz-tooltip
+            (click)="viewPolicyFiles(row)"
+          >
+            <i nz-icon nzType="eye"></i>
+          </button></td>
+          <!-- <td
+          nzShowCheckbox
+          [(nzChecked)]="row.checked"
+          (nzCheckedChange)="updateSingleChecked(row)"
+          (click)="onSelect()"
+        ></td> -->
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</cdk-virtual-scroll-viewport>
+
+<!-- <div class="footer" nz-row nzType="flex" nzJustify="center">
+  <div nz-col nzSpan="8">
+    <h3>No of Selected Policies: {{ length }}</h3>
+  </div>
+  <div nz-col nzSpan="8">
+    <h3 class="paytotal">Due Total: {{ slipTotal | currency: "KES" }}</h3>
+  </div>
+  <div nz-col nzSpan="8">
+    <h3 class="duetotal">Pay Total: {{ toPayTotal | currency: "KES" }}</h3>
+  </div>
+</div> -->

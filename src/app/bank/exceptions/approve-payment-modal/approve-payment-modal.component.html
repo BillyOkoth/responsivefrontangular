@@ -1,0 +1,19 @@
+<div>
+    <h3>Are you sure you want to Approve this Payment?</h3>
+  
+    <p>Eslip: {{eslipnumber}}</p>
+    <p>Amount: {{eslipAmount}}</p>
+    <p>Payer: {{eslipPayer}}</p>
+    <p>Reference: {{ref_number}}</p>
+    <p>FT: {{eslipFt}}</p>
+  
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <button nz-button nzType="default" (click)="closeDialog()">Cancel</button>
+      </div>
+      <div nz-col nzSpan="12">
+        <button nz-button nzType="primary" (click)="approvePayments()" [nzLoading]="loading" >Approve</button>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,21 @@
+<nz-divider nzOrientation="left" nzText="Bank Settings"></nz-divider>
+<nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
+    <nz-tab [nzTitle]="'Sectors'">
+        <ng-template nz-tab>
+            <app-sectors></app-sectors>
+        </ng-template>
+
+    </nz-tab>
+    <nz-tab [nzTitle]="'Branches'">
+        <ng-template nz-tab>
+            <app-branch-list></app-branch-list>
+        </ng-template>
+
+    </nz-tab>
+    <nz-tab [nzTitle]="'Countries'">
+        <ng-template nz-tab>
+            <app-country-list></app-country-list>
+        </ng-template>
+
+    </nz-tab>
+</nz-tabset>

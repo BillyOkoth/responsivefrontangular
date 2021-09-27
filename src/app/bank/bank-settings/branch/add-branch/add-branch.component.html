@@ -1,0 +1,39 @@
+<form nz-form novalidate #branchform="ngForm" autocomplete="off" [nzLayout]="'vertical'">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="email">Select Country</nz-form-label>
+    <nz-form-control>
+      <nz-select nzAllowClear nzPlaceHolder="Select Country" id="countryname" name="countryName"
+        [(ngModel)]="this.country" maxlength="50" required>
+        <nz-option *ngFor="let roles of allListOfCountries" [nzValue]="roles" nzLabel="{{ roles.countryName }}">
+          {{ roles.countryName }}
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="branchname">Branch Name</nz-form-label>
+    <nz-form-control>
+      <input nz-input [(ngModel)]="this.branchname" placeholder="Branch Name" name="branchname" required
+        autocomplete="off" id="branchname" name="branchname" maxlength="50" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="countryname">Branch Code</nz-form-label>
+    <nz-form-control>
+      <input nz-input [(ngModel)]="this.branchcode" placeholder="Branch Code" name="branchcode" required id="branchcode"
+        maxlength="15" autocomplete="off" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="countryname"></nz-form-label>
+    <div nz-row nzJustify="end">
+      <div nz-col>
+        <button nz-button nzType="primary" [disabled]="!branchform.valid" (click)="createBranch(branchform)"
+          [nzLoading]="loading">
+          Create Branch
+        </button>
+      </div>
+    </div>
+  </nz-form-item>
+</form>

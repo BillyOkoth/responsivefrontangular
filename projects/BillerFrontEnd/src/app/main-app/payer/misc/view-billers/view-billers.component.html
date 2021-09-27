@@ -1,0 +1,211 @@
+<div class="page-title" nz-row nzType="flex" nzJustify="center">
+  <div nz-col nzSpan="24" nzOffset="2">
+    <h2 class="text-color-grey-dark">
+      Select a Biller to Proceed
+    </h2>
+  </div>
+</div>
+
+<nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+
+  <nz-card>
+    <div nz-card-grid [ngStyle]="gridStyle" *ngFor="let biller of billers">
+      <div class="logo-item gutter-row" nz-col nzSpan="4">
+        <img src="{{ 'data:image/jpg;base64,' + biller.billerlogo }}" alt="" class="shadow" (click)="
+        billerPage(
+          biller.billerCode,
+          biller.alias,
+          biller.notif_value,
+          biller.closed_biller_type
+        )
+      " />
+        <p>
+          {{ biller.alias }}
+        </p>
+      </div>
+    </div>
+
+  </nz-card>
+</nz-spin>
+<!-- <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+  <div class="biller-logo-row" nz-row>
+    <div class="biller-logo-holder" nz-col nzSpan="12" nzOffset="3">
+      <div
+        class="logo-list"
+        nz-row
+        *ngFor="let biller of openbillers"
+        nzGutter="16"
+      >
+        <div
+          class="logo-item gutter-row"
+          nz-col
+          nzSpan="6"
+          *ngIf="biller.length > 0"
+        >
+          <img
+            src="{{ 'data:image/jpg;base64,' + biller[0].billerlogo }}"
+            alt=""
+            class="shadow"
+            (click)="
+              billerPage(
+                biller[0].billerCode,
+                biller[0].alias,
+                biller[0].notif_value
+              )
+            "
+          />
+          <p>
+            {{ biller[0].alias }}
+          </p>
+        </div>
+
+        <div
+          class="logo-item gutter-row"
+          nz-col
+          nzSpan="6"
+          *ngIf="biller.length > 1"
+        >
+          <img
+            src="{{ 'data:image/jpg;base64,' + biller[1].billerlogo }}"
+            alt=""
+            class="shadow"
+            (click)="
+              billerPage(
+                biller[1].billerCode,
+                biller[1].alias,
+                biller[1].notif_value
+              )
+            "
+          />
+          <p>
+            {{ biller[1].alias }}
+          </p>
+        </div>
+
+        <div
+          class="logo-item gutter-row"
+          nz-col
+          nzSpan="6"
+          *ngIf="biller.length > 2"
+        >
+          <img
+            src="{{ 'data:image/jpg;base64,' + biller[2].billerlogo }}"
+            alt=""
+            class="shadow"
+            (click)="
+              billerPage(
+                biller[2].billerCode,
+                biller[2].alias,
+                biller[2].notif_value
+              )
+            "
+          />
+          <p>
+            {{ biller[2].alias }}
+          </p>
+        </div>
+
+        <div
+          class="logo-item gutter-row"
+          nz-col
+          nzSpan="6"
+          *ngIf="biller.length === 4"
+        >
+          <img
+            src="{{ 'data:image/jpg;base64,' + biller[3].billerlogo }}"
+            alt=""
+            class="shadow"
+            (click)="
+              billerPage(
+                biller[3].billerCode,
+                biller[3].alias,
+                biller[3].notif_value
+              )
+            "
+          />
+          <p>
+            {{ biller[3].alias }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="biller-logo-row" nz-row *ngIf="this.closed_billers.length > 0">
+    <div class="biller-logo-holder" nz-col nzSpan="12" nzOffset="3">
+      <div
+        class="logo-list"
+        nz-row
+        *ngFor="let biller of closedbillers"
+        nzGutter="16"
+      >
+        <div
+          class="logo-item gutter-row"
+          nz-col
+          nzSpan="6"
+          *ngIf="biller.length > 0"
+        >
+          <img
+            src="{{ 'data:image/jpg;base64,' + biller[0].billerlogo }}"
+            alt=""
+            class="shadow"
+            (click)="billerPage(biller[0].billerCode, biller[0].alias,biller[0].notif_value,biller[0].closed_biller_type)"
+          />
+          <p>
+            {{ biller[0].alias }}
+          </p>
+        </div>
+
+        <div
+          class="logo-item gutter-row"
+          nz-col
+          nzSpan="6"
+          *ngIf="biller.length > 1"
+        >
+          <img
+            src="{{ 'data:image/jpg;base64,' + biller[1].billerlogo }}"
+            alt=""
+            class="shadow"
+            (click)="billerPage(biller[1].billerCode, biller[1].alias,biller[1].notif_value,biller[1].closed_biller_type)"
+          />
+          <p>
+            {{ biller[1].alias }}
+          </p>
+        </div>
+
+        <div
+          class="logo-item gutter-row"
+          nz-col
+          nzSpan="6"
+          *ngIf="biller.length > 2"
+        >
+          <img
+            src="{{ 'data:image/jpg;base64,' + biller[2].billerlogo }}"
+            alt=""
+            class="shadow"
+            (click)="billerPage(biller[2].billerCode, biller[2].alias,biller[2].notif_value,biller[2].closed_biller_type)"
+          />
+          <p>
+            {{ biller[2].alias }}
+          </p>
+        </div>
+
+        <div
+          class="logo-item gutter-row"
+          nz-col
+          nzSpan="6"
+          *ngIf="biller.length === 4"
+        >
+          <img
+            src="{{ 'data:image/jpg;base64,' + biller[3].billerlogo }}"
+            alt=""
+            class="shadow"
+            (click)="billerPage(biller[3].billerCode, biller[3].alias,biller[3].notif_value,biller[3].closed_biller_type)"
+          />
+          <p>
+            {{ biller[3].alias }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</nz-spin> -->

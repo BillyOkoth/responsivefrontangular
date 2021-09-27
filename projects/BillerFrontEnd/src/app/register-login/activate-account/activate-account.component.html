@@ -1,0 +1,93 @@
+<div nz-row>
+  <div nz-col nzSpan="11" nzOffset="1" class="logo-section">
+    <img src="assets/images/logo.png" alt="logo" />
+
+    <h2>
+      Hi {{ this.activatedBillerName }}, welcome to <br />
+      <span>E-Biller,</span>
+    </h2>
+    <h3>
+      Please Note that your username is ::
+      {{ this.activatedBillerEmail }}
+    </h3>
+  </div>
+
+  <div
+    nz-col
+    nzSpan="11"
+    nzOffset="1"
+    class="form-section blue-background shadow"
+  >
+    <h2 class="text-color-yellow">
+      Reset your password.
+    </h2>
+
+    <p>
+      Switch your password to a more personalized one, <br />
+      for your ease of remembrance
+    </p>
+
+    <form action="" nz-form autocomplete="off" [formGroup]="activateForm">
+      <div nz-row nzType="flex" nzJustify="center">
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your Password!">
+              <nz-input-group nzPrefixIcon="lock">
+                <input
+                  type="password"
+                  nz-input
+                  formControlName="newPass"
+                  placeholder="Password"
+                  name="password"
+                  maxlength="50"
+                  width="20vh"
+     
+                  id="password"
+                  required
+                  
+                  maxlength="50"
+                />              
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <div nz-row nzType="flex" nzJustify="center">
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please Confirm your Password!">
+              <nz-input-group nzPrefixIcon="lock">
+                <input
+                  type="password"
+                  nz-input
+                  placeholder=" Confirm Password"
+                  formControlName="confirmPass"
+                  name="Confirm Password"
+                  name="confirmPassword"
+                  maxlength="50"
+                />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <div nz-row nzType="flex" nzJustify="center">
+        <div nz-col nzSpan="12">
+          <button
+            nz-button
+            class="login-form-button"
+            [nzType]="'primary'"
+            [disabled]="activateForm.invalid || loading"
+            (click)="submitPasswordChange()"
+            [nzLoading]="loading"
+            nzBlock
+          >
+            <i nz-icon nzType="login" nzTheme="outline"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<div nz-row nzGutter="10" style="margin-bottom:2vh">
+  <div nz-col nzSpan="12">
+    <input
+      nz-input
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      style="width: 100%;"
+      maxlength="100"
+    />
+  </div>
+
+  <div nz-col nzSpan="12">
+    <div nz-row nzType="flex" nzJustify="end">
+      <div nz-col nzSpan="4">
+        <button
+          nz-button
+          style="background-color: #5cb85c;"
+          nzTooltipTitle="Download Excel."
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          [nzLoading]="loading"
+          [disabled]="loading"
+        
+        >
+          <i nz-icon nzType="download"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div> 
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="rows">
+      <thead>
+        <tr>     
+            <th class="header">#</th> 
+            <th class="header">Client Name</th>
+            <th class="header">Eslip Number</th>
+            <th class="header">Account Number</th>
+            <th class="header">Amount Due</th>
+            <th class="header">Amount to Pay</th>
+            <th class="header">Expiry Date</th>        
+            <th class="header">Created By</th>
+            <th class="header">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let data of filterTable.data |invoiceEslipSearch: searchValue; let i = index"
+        >     
+        <td>{{ i + 1}}</td>    
+          <td>{{ data.clients_name }}</td>
+          <td>{{ data.eslip_no }}</td>
+          <td>{{ data.account_no }}</td>
+          <td>Ksh.{{ data.amount_due | number: '2.'}}</td>
+          <td>Ksh.{{ data.amount_to_pay | number: '2.'}}</td>        
+          <td>{{ data.expiry_date | date: "mediumDate"  }}</td>       
+          <td>{{ data.created_by}}</td>          
+          <td>
+            <button
+            nz-button
+            nzType="link"
+            style="margin-left:1vh"
+            nzTooltipTitle="View Eslip."
+            nzTooltipPlacement="topCenter"
+            nz-tooltip
+            (click)="viewEslipInfo(data.eslip_no)"
+          >
+            <i nz-icon nzType="eye"></i>
+          </button>
+          <button
+            style="margin-left:1vh"
+            nz-button
+            nzType="link"
+            style="color: #f0ad4e;"
+            nzTooltipTitle="View Eslip Bills."
+            nzTooltipPlacement="topCenter"
+            nz-tooltip
+            (click)="viewEslipBills(data.eslip_no)"
+          >
+            <i nz-icon nzType="eye"></i>
+          </button>
+          <button
+            style="margin-left:1vh"
+            nz-button
+            nzType="link"
+            style="color: #5cb85c;"
+            nzTooltipTitle="View Eslip Accounts."
+            nzTooltipPlacement="topCenter"
+            nz-tooltip
+            (click)="viewEslipAc(data.eslip_no)"
+          >
+            <i nz-icon nzType="eye"></i>
+          </button>
+          </td>
+        </tr>
+      </tbody>
+  </nz-table>
+  </nz-spin>

@@ -1,0 +1,12 @@
+<nz-tabset [nzTabPosition]="'top'" [nzType]="'card'" [nzSelectedIndex]="this.eslipService.serviceTab" (nzSelectedIndexChange)="handleChange($event)">
+  <nz-tab [nzTitle]="'Pending Charges'">
+    <ng-template nz-tab>
+      <app-pending-charge></app-pending-charge>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Paid Charges'">
+    <ng-template nz-tab>
+      <app-paid-charge></app-paid-charge>
+    </ng-template>
+  </nz-tab>
+</nz-tabset>

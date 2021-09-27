@@ -1,0 +1,76 @@
+<div class="modal-approve" fxLayout = "column">
+    <div class="cancel">
+        <button
+        nz-button
+        nzType="primary"
+        nzTooltipTitle="Create Team Member"
+        nzTooltipPlacement="topCenter"
+        nz-tooltip
+        (click)="cancel()"
+           
+      >
+    Cancel</button>
+    </div>
+    <div class="title" fxLayoutAlign = "center center">
+      Reconciliation
+    </div>
+    <div class="data-approve" fxLayout ="column">
+      <div class="">
+        Eslip Number
+         
+          <input type="text" size="45" nz-input  maxlength="50" [ngModel] = "esno"  name= "esno" required readonly />
+  
+      </div>
+      <div class="data-input">
+         Amount
+          <input type="text" size="45" nz-input  maxlength="50" [ngModel] = "amt" name= "amt" required readonly />
+  
+      </div>
+      <div class="data-input">
+         Reference
+          <input type="text" size="45" nz-input  maxlength="50" [ngModel] = "ref"  name= "ref" required readonly />
+  
+      </div>
+      <div class="data-input">
+         FT
+          <input type="text" size="45" nz-input  maxlength="50" [ngModel] = "tf" name= "tf" required readonly />
+  
+      </div>
+      <div class="data-input">
+          Date Created   
+          <input type="text" size="45" nz-input  maxlength="50" [ngModel] = "date" name= "date" required readonly />
+  
+      </div>
+  
+    </div>
+  
+    <div class="button-confirm" fxLayout = "row" fxAlignmentGap = "5" fxLayoutAlign = "center center">
+      <div class="btn-approve" fxFlex="40" fxLayoutAlign = "center center">
+          <button
+          nz-button
+          nzType="link"
+          style="color: #f0ad4e;"
+          nzTooltipTitle="Approve Reconciliation."
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          (click)="approvePayment()"         
+        >
+      Approve</button>
+      </div>
+      <div class="btn-reject" fxFlex="40" fxLayoutAlign = "center center">
+          <button
+          nz-button
+          nzType="link"
+          style="color: #5cb85c;"
+          nzTooltipTitle="Approve Reconciliation."
+          nzTooltipPlacement="topCenter"
+          nz-tooltip      
+          (click)="rejectPayment()"         
+        >
+      Reject</button>
+      </div>    
+  
+    </div>
+  
+  
+  </div>

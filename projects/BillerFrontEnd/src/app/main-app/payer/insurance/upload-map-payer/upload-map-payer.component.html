@@ -1,0 +1,38 @@
+<nz-card>
+    <div>
+      <h3>Dear Customer</h3>
+    <h4>    
+        In order for us to serve you well we'd like to have an overview of how
+        your Policy  columns are arranged.Kindly upload a sample Policy  list excel file
+  
+    </h4>
+    </div>
+    
+    <div nz-row nzType="flex" nzJustify="center">
+      <div nz-col nzSpan="24">
+        <form nz-form>
+          <div nz-row nzType="flex" nzJustify="center">
+            <div nz-col nzSpan="4">
+              <nz-form-item>                
+                <nz-form-control [nzSpan]="24">
+                  <nz-upload
+                    [(nzFileList)]="fileList"
+                    [nzBeforeUpload]="beforeUpload"
+                    (change)="fileChange()"
+                    [nzAccept]="
+                      '.xlsx , application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel'
+                    "
+                  >
+                    <button nz-button nzType="primary">
+                      <i nz-icon nzType="upload"></i><span>Select File</span>
+                    </button>
+                  </nz-upload>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nz-card>
+  

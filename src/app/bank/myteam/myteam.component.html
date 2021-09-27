@@ -1,0 +1,48 @@
+<nz-tabset [nzTabPosition]="'top'" [nzType]="'card'" [nzSelectedIndex]="this.teamService.serviceTab" (nzSelectedIndexChange)="handleChange($event)">
+  <nz-tab [nzTitle]="'Authorized Users'">
+    <ng-template nz-tab>
+      <app-active-users></app-active-users>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Unauthorized Users'">
+    <ng-template nz-tab>
+      <app-unauthorised-users></app-unauthorised-users>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Approve Invited Users'">
+    <ng-template nz-tab>
+      <app-invited-users></app-invited-users>
+    </ng-template>
+  </nz-tab>  
+  <nz-tab [nzTitle]="'Approve Edited Users'">
+    <ng-template nz-tab>
+      <app-approve-edited></app-approve-edited>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Approve Deleted Users'">
+    <ng-template nz-tab>
+      <app-approve-deleted></app-approve-deleted>
+    </ng-template>
+  </nz-tab>
+  <!-- new menu starts from here  -->
+  <!-- <nz-tab [nzTitle]="'User Groups'">
+    <ng-template nz-tab>
+    <app-user-group-list></app-user-group-list>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Approve New User Group'">
+    <ng-template nz-tab>
+      <app-approve-new-group></app-approve-new-group>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Approve Group To Be Edited'">
+    <ng-template nz-tab>
+      <app-approve-edit-group></app-approve-edit-group>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Approve Group To Be Deleted'">
+    <ng-template nz-tab>
+      <app-approve-deleted-group></app-approve-deleted-group>
+    </ng-template>
+  </nz-tab> -->
+</nz-tabset>

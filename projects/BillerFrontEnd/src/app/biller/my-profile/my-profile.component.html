@@ -1,0 +1,160 @@
+
+<nz-card nzTitle="Profile">
+  <div nz-row nzJustify="center">
+    <div nz-col nzSpan="20">
+    
+      <nz-card>
+        <form nz-form [nzLayout]="'vertical'" [formGroup]="myProfileForm">
+          <div nz-row nzGutter="16">
+            <div nz-col nzSpan="12">
+              <nz-form-item>
+                <nz-form-label nzRequired>First Name</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="firstNameErrorTpl">
+                  <input nz-input formControlName="firstname" [ngModel]="FirstName" maxlength="50" />
+                  <ng-template #firstNameErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                      Please enter the first name!
+                    </ng-container>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label nzRequired>Last Name</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="lastNameErrorTpl">
+                  <input nz-input [(ngModel)]="LastName" formControlName="lastname" maxlength="50" />
+                  <ng-template #lastNameErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                      Please enter the last name!
+                    </ng-container>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label nzRequired>Email Address</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="emailErrorTpl">
+                  <input nz-input formControlName="email_address" [ngModel]="EmailAddress" maxlength="50" readonly />
+                  <ng-template #emailErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                      Please enter email address!
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('email')">
+                      Please use a valid email!
+                    </ng-container>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="12">
+              <nz-form-item>
+                <nz-form-label nzRequired>Company Name</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="companyNameErrorTpl">
+                  <input nz-input formControlName="companyname" [ngModel]="CompanyName" maxlength="50" />
+                  <ng-template #companyNameErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                      Please enter company name!
+                    </ng-container>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label nzRequired>Phone Number</nz-form-label>
+
+                <nz-form-control nzHasFeedback [nzErrorTip]="phoneErrorTpl">
+                  <nz-input-group [nzAddOnBefore]="phonePrefixTemplate">
+                    <ng-template #phonePrefixTemplate>
+                      <nz-select formControlName="phone_prefix" class="phone-select">
+                        <nz-option nzLabel="+254" nzValue="+254"></nz-option>
+                      </nz-select>
+                    </ng-template>
+                    <input nz-input autocomplete="off" maxlength="10" formControlName="phonenumber" />
+                  </nz-input-group>
+
+                  <ng-template #phoneErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                      Please enter the phone number!
+                    </ng-container>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8"></nz-form-label>
+            <div nz-row nzJustify="end">
+              <div nz-col>
+                <button nz-button nzType="primary" (click)="save()" nzTooltipTitle="Save" nzTooltipPlacement="bottom"
+                  nz-tooltip [nzLoading]="loading">
+                  <i nz-icon nzType="save"></i>Save
+                </button>
+              </div>
+            </div>
+          </nz-form-item>
+        </form>
+       
+      </nz-card>
+    </div>
+  </div>
+</nz-card>
+
+<!-- <nz-card nzTitle="My Profile">
+
+
+  <div nz-row>
+  
+    <div nz-col nzSpan="12" nzOffset="6">
+      <form nz-form [formGroup]="myProfileForm">
+      
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6" nzFor="email">First Name</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input nz-input formControlName="firstname" [ngModel]="FirstName" maxlength="50" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6" nzFor="email">Last Name</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input nz-input [(ngModel)]="LastName" formControlName="lastname" maxlength="50" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6" nzFor="email">Email Address</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input nz-input formControlName="email_address" [ngModel]="EmailAddress" maxlength="50" readonly />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6" nzFor="email">Company Name</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input nz-input formControlName="companyname" [ngModel]="CompanyName" maxlength="50" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label  nzFor="email">Pay Bill</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input nz-input formControlName="pay_bill" [ngModel]="paybill" maxlength="50" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6" nzFor="email">Phone Number</nz-form-label>
+
+            <nz-form-control [nzSpan]="14">
+              <input nzTooltipTitle="Phone number has no spacing." nzTooltipPlacement="topCenter" nz-tooltip type="text"
+                nz-input maxlength="12" placeholder="07xx xxx xxx" formControlName="phonenumber"
+                [(ngModel)]="phoneNumber" ng2TelInput [ng2TelInputOptions]="{ initialCountry: 'ke' }"
+                (ng2TelOutput)="getNumber()" (hasError)="hasError($event)" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div nz-row nzType="flex" nzJustify="end">
+    <button nz-button nzType="primary" (click)="save()" nzTooltipTitle="Save" nzTooltipPlacement="bottom" nz-tooltip
+      [nzLoading]="loading">
+      <i nz-icon nzType="save"></i>Save
+    </button>
+  </div>
+</nz-card> -->

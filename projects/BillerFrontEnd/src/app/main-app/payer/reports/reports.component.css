@@ -1,0 +1,16 @@
+.header {
+  font-weight: bolder;
+}
+
+.date-picker-reports {
+  left: 2vh !important;
+  white-space: nowrap;
+}
+
+.second-date-picker {
+  margin-left: 1vw !important;
+}
+
+cdk-virtual-scroll-viewport {
+  height: 80vh;
+}

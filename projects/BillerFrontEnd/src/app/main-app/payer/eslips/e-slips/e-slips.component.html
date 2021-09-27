@@ -1,0 +1,345 @@
+
+<div class="close-button" nz-row>
+  <div nz-col nzSpan="12"> 
+    <i
+      nz-icon
+      nzType="arrow-left"
+      nzTheme="outline"
+      style="font-size: 36px; color: #08c;"
+      nzTooltipTitle="Back"
+      nzTooltipPlacement="right"
+      nz-tooltip
+      (click)="closeView()"
+    ></i>
+  </div>
+</div>
+
+<br />
+<br />
+
+<div class="page-title" nz-row>
+  <div nz-col nzOffset="0" nzSpan="12">
+    <h2 class="text-color-grey-dark">
+      E-Slip No: <strong>{{ this.eslip_no }}</strong>
+    </h2>
+  </div>
+  <div nz-col nzSpan="10">
+    <h2 class="text-color-grey-dark pay-title">
+      Pay Via:
+    </h2>
+  </div>
+</div>
+
+
+<nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+<div class="e-slip" nz-row>
+  <div
+    nz-col
+    nzSpan="18"
+    nzOffset="1.2"
+    class="e-slip-content invoice-shadow"
+    id="print-section"
+  >
+    <div class="slip-header" nz-row>
+
+   
+
+      <div class="logo" nz-col nzSpan="10" nzOffset="0.72">
+        <img
+          src="{{ 'data:image/jpg;base64,' + biller_logo }}"
+          alt=""
+          class="shadow image-logo"
+        />
+        <p class="company-email">
+          {{ website }}
+        </p>
+        <p class="company-email">
+          Paid For : {{this.client_name}}
+        </p>
+        <p class="company-email">
+         Expiry  {{this.expiry_date}}
+        </p>
+      </div>
+      <div nz-col nzSpan="4">
+        <p id="bg-text" *ngIf="this.status == 'paid'">PAID</p>
+      </div>
+      <div class="address" nz-col nzSpan="10">
+        <div nz-row nzType="flex" nzJustify="end">
+          <p  style = "text-align: left;">
+            <span>For general {{this.billerPrefix }} questions<br></span> 
+            <span>Contact {{this.billerPrefix }}  call center<br></span>
+            <span>Tel: <strong> +{{this.biller_phone }}<br>  </strong></span> 
+            <span>Email: <strong> {{this.customer_care }}<br></strong></span>            
+           </p>
+           <p>   
+          <ngx-barcode [bc-value]="value" [bc-display-value]="true"></ngx-barcode>  
+            
+        </div>
+
+      </div> 
+    </div>
+
+ 
+  
+    <hr class = "border-ref">
+   
+    <div class="payment-details" nz-row>
+      <div  class="bank-details"  nzSpan="22.56" nzOffset="0.72">
+        <h3 class="title" >
+          PAYER BANK DETAILS
+        </h3>
+        <hr style = "margin-bottom:2vh;"class = "border-ref">
+        <table >       
+          <tr>
+            <th class="payer-bnk-dts text-color-grey-dark" width="20%">Bank Name</th>
+            <td width="20%"></td>              
+          </tr>
+          <tr>
+            <th class="payer-bnk-dts text-color-grey-dark" width="20%">Customer Name</th>
+            <td width="20%"></td>              
+          </tr>
+          <tr>
+            <th class="payer-bnk-dts text-color-grey-dark" width="20%"> Account Name</th>
+            <td width="20%" ></td>              
+          </tr>    
+        </table>
+      </div>
+    </div>
+    <hr class = "border-ref">
+
+
+    <div  class="bank-details" nz-row>
+      <div  class="payment-details" nz-col nzSpan="12">
+        <h3 class="title" >
+          BENEFICIARY BANK
+        </h3>
+      </div>
+      <div class="payment-details" nz-col nzSpan="12">
+        <h3 class="title" >
+          MPESA DETAILS
+        </h3>
+      </div>
+    </div>
+    <hr class = "border-ref">
+
+    <div  class="payment-details" nz-row [nzGutter]="8">
+      <div   nz-col nzSpan="12">
+        <table >       
+          <tr>
+            <th class="payer-bnk-dts text-color-grey-dark" width="20%">Biller Name</th>
+            <td width="20%">{{this.alias}}</td>              
+          </tr>
+          <tr>
+            <th class="payer-bnk-dts text-color-grey-dark" width="20%">Bank Name</th>
+            <td width="20%">STANBIC BANK</td>              
+          </tr>
+          <tr>
+            <th class="payer-bnk-dts text-color-grey-dark" width="20%"> Account Name</th>
+            <td width="20%" >{{this.alias }}</td>              
+          </tr>  
+          <tr>
+            <th class="payer-bnk-dts text-color-grey-dark" width="20%"> Account Number</th>
+            <td width="20%" > {{ this.account_number }}</td>              
+          </tr>  
+          <tr>
+            <th class="payer-bnk-dts text-color-grey-dark" width="20%"> Eslip Number</th>
+            <td width="20%" >{{ this.eslip_no }}</td>              
+          </tr>  
+          <tr>
+            <th class="payer-bnk-dts text-color-grey-dark" width="20%">Payment Amount</th>
+            <td width="20%" >{{ this.eslip_amount | currency: "Ksh." }}</td>              
+          </tr>    
+        </table>
+      </div>
+      <div  nz-col nzSpan="12">
+        <table >       
+          <tr>
+            <th class="payer-bnk-dts text-color-grey-dark" width="20%">MPESA Paybill</th>
+            <td width="20%">{{this.paybill}}</td>              
+          </tr>
+          <tr *ngIf="this.mpesaDisplay">
+            <th class="payer-bnk-dts text-color-grey-dark" width="20%">MPESA Amount</th>
+            <td width="20%">PAYABLE</td>              
+          </tr>   
+          <tr *ngIf="!this.mpesaDisplay" >
+            <th class="payer-bnk-dts text-color-grey-dark" width="20%">MPESA Amount</th>
+            <td width="20%">NOT PAYABLE</td>              
+          </tr>          
+        </table>
+      </div>
+    </div>
+    <div class="payment-details">
+      <h3>Authorized applicants Name,ID No</h3>
+    </div>
+
+    <div class="signature-details" nz-row [nzGutter]="8">
+      <div nz-col nzSpan="8">
+        <h3>Authorized Name</h3>
+       
+      </div>
+      <div nz-col nzSpan="8">
+        <h3>National ID No.</h3>
+      </div>
+      <div nz-col nzSpan="8">
+        <h3>Signature</h3>
+      </div>
+    </div>
+
+    <div class="signature-details" nz-row [nzGutter]="8">
+      <div nz-col nzSpan="8">
+     
+        <hr class="dash"> 
+       
+      </div>
+      <div nz-col nzSpan="8">
+        
+        <hr class="dash"> 
+      </div>
+      <div nz-col nzSpan="8">
+        <hr class="dash"> 
+      </div>
+    </div>
+
+    <div class="signature-details" nz-row [nzGutter]="8">
+      <div nz-col nzSpan="8">
+    
+        <hr class="dash"> 
+       
+      </div>
+      <div nz-col nzSpan="8">
+        <hr class="dash"> 
+      </div>
+      <div nz-col nzSpan="8">
+        <hr class="dash"> 
+      </div>
+    </div>
+
+
+   
+    <div class="payment-details-row" nz-col>
+    
+
+      <nz-table nzTemplateMode >
+        <thead>
+          <tr>
+            <th class="td">No.</th>
+            <th class="td">ACCOUNT NUMBER</th>
+            <th class="td">BILLER REF</th>
+            <th class="td">ACCOUNT NAME</th>
+            <th class="td">AMOUNT (KSH)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of accountDetails">
+            <td class="td-x">{{ data.count }}</td>
+            <td class="td-x">{{ data.accountNo }}</td>
+            <td class="td-x">{{ data.biller_payment_ref }}</td>
+            <td class="td-x">{{ data.account_name }}</td>
+            <td class="td-x">{{ data.accountAmount | currency: "Ksh." }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+
+ 
+      <div class="total-amount" nz-row nzType="flex" nzJustify="end">
+        <div class="total-h3" nz-col nzOffset="15.36" nzSpan="4.8">
+          <h3>
+            TOTAL AMOUNT
+          </h3>
+        </div>
+        <div class="2 left-brd" nz-col nzSpan="4.8">
+          <h3 class="total-fig">
+            {{ this.eslip_amount | currency: "Ksh." }}
+          </h3>
+        </div>
+      </div>
+
+
+      <div class="disclammer" nz-row>
+        <div class="" nzOffset="2.4" nzSpan="19.2">
+          <img src="assets/images/Group 1633.png" alt="logo" />
+          <br />
+          <br />
+
+          <h3>
+            NB. This service does not allow partial payment of one E-slip
+            Amount. Total E-Slip amount must be paid in full at once.
+          </h3>
+        </div>
+      </div>
+
+      <br />
+      <br />
+      <br />
+    </div> 
+  </div>
+
+  <div class="e-slip-side-bar" nzSpan="6" nz-col>
+    <div class="top" nz-row>
+      <div fxLayout="column" nzSpan="23" nz-col nzOffset="1">
+        <div class="item-row" nz-row>
+          <div class="item-content" nz-col nzSpan="19">
+            <p>Stanbic Card</p>
+          </div>
+          <div class="item-content" nz-col nzSpan="4">
+            <button nz-button nzType="link">
+              <i nz-icon nzType="arrow-right" nzTheme="outline"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="item-row" nz-row>
+          <div class="item-content" nz-col nzSpan="19">
+            <p>Stanbic Business Online</p>
+          </div>
+          <div class="item-content" nz-col nzSpan="4">
+            <button nz-button nzType="link">
+              <i nz-icon nzType="arrow-right" nzTheme="outline"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="item-row" fxLayout="row">
+          <div class="item-content" nz-col nzSpan="19">
+            <p>SME Internet Banking</p>
+          </div>
+          <div class="item-content" nz-col nzSpan="4">
+            <button nz-button nzType="link">
+              <i nz-icon nzType="arrow-right" nzTheme="outline"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="item-row" fxLayout="row" *ngIf="mpesaDisplay">
+          <div class="item-content" nz-col nzSpan="19">
+            <p>MPESA (Kes. 70,000.00 or less)</p>
+          </div>
+          <div class="item-content" nz-col nzSpan="4">
+            <button nz-button nzType="link">
+              <i nz-icon nzType="arrow-right" nzTheme="outline"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom" nz-row>
+      <div nz-col nzOffset="1" nzSpan="23">
+        <div class="item-row" nz-row>
+          <div class="item-content" nz-col nzSpan="24">
+            <button
+              nz-button
+              nzType="link"
+              [disabled]="this.loading"
+              (click)="downloadEslip()"
+            >
+              Download <i nz-icon nzType="download"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</nz-spin>
+

@@ -1,0 +1,308 @@
+<nz-steps [nzCurrent]="current">
+  <nz-step nzTitle="Company Details"></nz-step>
+  <nz-step nzTitle="Administrator Setup"></nz-step>
+  <nz-step nzTitle="Company Description"></nz-step>
+</nz-steps>
+
+<div *ngIf="firstForm" nz-row>
+  <form nz-form [formGroup]="accountNumberForm" [nzLayout]="'vertical'">
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="18">
+        <nz-form-item>
+          <nz-form-label nzRequired>Account Number</nz-form-label>
+          <nz-form-control>
+            <input type="text" formControlName="accountNumber" nz-input placeholder="Account Number" maxlength="13" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="6" style="margin-top: 5vh;">
+        <button nz-button [disabled]="!accountNumberForm.valid" type="button" (click)="validateAccount()"
+          nzType="primary" [nzLoading]="loading">
+          Validate Account
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <form nz-form [nzLayout]="'vertical'" [formGroup]="companyDetails" style="position: relative; top: 9vh;">
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzRequired>Company Name</nz-form-label>
+          <nz-form-control>
+            <input nz-input name="text" maxlength="50" [(ngModel)]="companyName" type="text" size="80"
+              [ngModelOptions]="{ standalone: true }" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzRequired>Company Email</nz-form-label>
+          <nz-form-control>
+            <input nz-input type="email" size="80" formControlName="companyEmail" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzRequired>Company Phone Number</nz-form-label>
+          <nz-form-control>
+
+            <input type="text" maxlength="100" style="width: 100%;" nz-input maxlength="50" placeholder="07xx xxx xxx"
+              formControlName="phoneNumber" ng2TelInput [ng2TelInputOptions]="{ initialCountry: 'ke' }"
+              (keyup)="getNumber1($event)" (hasError)="hasError($event)" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzRequired>Physical Address</nz-form-label>
+          <nz-form-control>
+            <input nz-input [(ngModel)]="physicalAddress" required maxlength="13"
+              [ngModelOptions]="{ standalone: true }" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzRequired>VAT RATE</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="vatCharge" required maxlength="13" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzRequired>Postal Address</nz-form-label>
+          <nz-form-control>
+            <input nz-input [(ngModel)]="postalAddress" required maxlength="13"
+              [ngModelOptions]="{ standalone: true }" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzRequired>KRA Pin</nz-form-label>
+          <nz-form-control>
+            <input nz-input [(ngModel)]="kraPin" required maxlength="13" [ngModelOptions]="{ standalone: true }" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label>PAY BILL NO.</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="pay_bill" required maxlength="23" />
+
+          </nz-form-control>
+        </nz-form-item>
+
+
+
+        <nz-form-item>
+          <nz-form-label nzRequired>Company Website</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="companyWebsite" required maxlength="100" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+    </div>
+  </form>
+</div>
+
+<div nz-row nzType="flex" nzJustify="center" *ngIf="secondForm" [formGroup]="companyAdminDetails">
+  <div nz-col nzSpan="18">
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSpan]="24">First Name</nz-form-label>
+      <nz-form-control [nzSpan]="24">
+        <input nz-input formControlName="firstName" required maxlength="13" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSpan]="24">Last Name</nz-form-label>
+      <nz-form-control [nzSpan]="24">
+        <input nz-input formControlName="lastName" required maxlength="13" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSpan]="24">Email</nz-form-label>
+      <nz-form-control [nzSpan]="24">
+        <input nz-input formControlName="email" type="email" required maxlength="30" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSpan]="24">Phone Number</nz-form-label>
+      <nz-form-control [nzSpan]="24">
+        <input type="text" maxlength="10" style="width: 100%;" nz-input placeholder="07xx xxx xxx"
+          formControlName="phoneNumber" ng2TelInput [ng2TelInputOptions]="{ initialCountry: 'ke' }"
+          (keyup)="getNumber1($event)" (hasError)="hasError($event)" />
+
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</div>
+
+<div nz-row style="height: 85vh;" *ngIf="thirdForm" [formGroup]="companyDescription" nzGutter="16">
+  <div nz-col nzSpan="12">
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSpan]="24">Alias</nz-form-label>
+      <nz-form-control [nzSpan]="24">
+        <input nz-input formControlName="alias" required maxlength="13" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSpan]="24">Biller Prefix</nz-form-label>
+      <nz-form-control [nzSpan]="24">
+        <input nz-input formControlName="billerPrefix" required maxlength="4" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSpan]="24">Currency</nz-form-label>
+      <nz-form-control [nzSpan]="24">
+        <nz-select nzAllowClear placeholder="Select Currency" formControlName="currency" class="input-size"
+          style="width:100%" required>
+          <nz-option *ngFor="let currency of currencies" [nzValue]="currency" nzLabel="{{ currency.name }}">
+            {{ currency.name }}
+          </nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSpan]="24">Pricing Module</nz-form-label>
+      <nz-form-control [nzSpan]="24">
+        <nz-select nzAllowClear placeholder="Select Charge Type" (ngModelChange)="onSelectCharge($event)"
+          formControlName="pricingModule" class="input-size" style="width:100%" name="this.chargetype" required>
+          <nz-option *ngFor="let roles of allChargeTypeList" [nzValue]="roles" nzLabel="{{ roles.chargeName }}">
+            {{ roles.chargeName }}
+          </nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item *ngIf="this.percentageSelected">
+      <nz-form-label nzRequired [nzSpan]="24">Percentage Charge</nz-form-label>
+      <nz-form-control [nzSpan]="24">
+        <input type="text" size=" 30" formControlName="percentage" nz-input placeholder="Percentage Charge"
+          maxlength="100" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item *ngIf="amountSelected">
+      <nz-form-label nzRequired [nzSpan]="24">Amount Charge</nz-form-label>
+      <nz-form-control [nzSpan]="24">
+        <input type="text" size=" 30" formControlName="amountCharge" nz-input placeholder="Amount to  Charge"
+          maxlength="100" />
+      </nz-form-control>
+    </nz-form-item>
+
+
+    <nz-form-item *ngIf="transactional">
+      <nz-form-label nzRequired [nzSpan]="24">Amount Charge</nz-form-label>
+      <nz-form-control [nzSpan]="24">
+        <input type="text" size=" 30" formControlName="amountCharge" nz-input placeholder="Amount to  Charge"
+          maxlength="100" />
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <div nz-col nzSpan="12">
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzRequired [nzSpan]="24">Country</nz-form-label>
+          <nz-form-control [nzSpan]="24">
+            <nz-select nzAllowClear nzPlaceHolder="Select Country" (ngModelChange)="onSelect($event)"
+              formControlName="country" class="input-size" style="width:100%" required>
+              <nz-option *ngFor="let roles of allListOfCountries" [nzValue]="roles" nzLabel="{{ roles.countryName }}">
+                {{ roles.countryName }}
+              </nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzRequired [nzSpan]="24">County</nz-form-label>
+          <nz-form-control [nzSpan]="24">
+            <nz-select nzAllowClear placeholder="Select County" formControlName="branch" class="input-size"
+              style="width:100%" required>
+              <nz-option *ngFor="let county of allListofCounties" [nzValue]="county" nzLabel="{{ county.branchName }}">
+                {{ county.branchName }}
+              </nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzRequired [nzSpan]="24">Number of Employees</nz-form-label>
+          <nz-form-control [nzSpan]="24">
+            <nz-radio-group formControlName="noOfEmployees" name="this.selectedEmployeeCount">
+              <label nz-radio nzValue="250">0-500</label>
+              <label nz-radio style="margin-top:2vh" nzValue="750">500-1000</label>
+              <label nz-radio style="margin-top:2vh" nzValue="3000">1000-5000</label>
+              <label nz-radio style="margin-top:2vh" nzValue="7500">5000-10000</label>
+              <label nz-radio style="margin-top:2vh" nzValue="12500">10000-15000</label>
+              <label nz-radio style="margin-top:2vh" nzValue="20000">15000 +</label>
+            </nz-radio-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzRequired [nzSpan]="24">Number of Closed Monthly Payers</nz-form-label>
+          <nz-form-control [nzSpan]="24">
+            <nz-radio-group style="display: block;" formControlName="closedMonthlyPayers">
+              <label nz-radio style="margin-top:2vh" nzValue="0">None</label>
+              <label nz-radio style="margin-top:2vh" nzValue="500">Below 500</label>
+              <label nz-radio style="margin-top:2vh" nzValue="1000">Above 500</label>
+            </nz-radio-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div nz-row nzType="flex">
+    <div nz-col nzSpan="12">
+      <div nz-row nzType="flex" nzJustify="start">
+        <button nz-button nzType="primary" (click)="pre()" *ngIf="current > 0">
+          <i nz-icon nzType="left" nzTheme="outline"></i> Previous
+        </button>
+      </div>
+    </div>
+
+    <div nz-col nzSpan="12" *ngIf="firstForm">
+      <div nz-row nzType="flex" nzJustify="end">
+        <button nz-button nzType="primary" (click)="next1()" *ngIf="current < 2"
+          [disabled]="!this.companyDetails.valid">
+          Next <i nz-icon nzType="right" nzTheme="outline"></i>
+        </button>
+      </div>
+    </div>
+
+    <div nz-col nzSpan="12" *ngIf="secondForm">
+      <div nz-row nzType="flex" nzJustify="end">
+        <button nz-button nzType="primary" (click)="next1()" *ngIf="current < 2"
+          [disabled]="!this.companyAdminDetails.valid">
+          Next <i nz-icon nzType="right" nzTheme="outline"></i>
+        </button>
+      </div>
+    </div>
+
+    <div nz-col nzSpan="12" *ngIf="thirdForm">
+      <div nz-row nzType="flex" nzJustify="end">
+        <button nz-button nzType="primary" [disabled]="
+            loading ||
+          
+            !this.companyDetails.valid ||
+            !this.companyDescription.valid
+          " (click)="createBiller()" *ngIf="current === 2">
+          Complete <i nz-icon nzType="right" nzTheme="outline"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

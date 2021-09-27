@@ -1,0 +1,546 @@
+<nz-layout *ngIf="this.biller == 'open'">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <div
+      class="background-div-hack bounce-in-top"
+      [style.background]="this.loginService.brand_color"
+      *ngIf="!isCollapsed"
+    ></div>
+    <div class="logo">
+      <h2 *ngIf="!isCollapsed" class="slide-in-elliptic-bottom-fwd">
+        E- Biller
+      </h2>
+    </div>
+
+    <img
+      src="assets/images/logo.png"
+      alt=""
+      class="biller-logo slide-in-elliptic-bottom-fwd"
+      *ngIf="showDefaultLogo && !isCollapsed"
+    />
+
+    <img
+      src="{{ 'data:image/jpg;base64,' + billerLogo }}"
+      *ngIf="!showDefaultLogo && !isCollapsed"
+      class="biller-logo slide-in-elliptic-bottom-fwd"
+    />
+
+    <ul
+      nz-menu
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+      style="background: none !important;"
+      class="stick"
+    >
+      <nz-spin nzSimple *ngIf="this.loading === true"></nz-spin>
+      <h2 class="blue-title" *ngIf="!isCollapsed">Welcome, {{ firstname }}</h2>
+
+      <li nz-menu-item  routerLink="/app/dashboard/customer-dashboard">
+        <i nz-icon nzType="appstore" nzTheme="outline"></i>
+        <span
+          ><a
+            class="link"
+           
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="View your dashboard"
+            >Dashboard</a
+          ></span
+        >
+      </li>
+
+      <li nz-menu-item *ngIf="myaccount" routerLink="/app/dashboard/view-my-accounts">
+        <i nz-icon nzType="user" nzTheme="outline"></i>
+        <span>
+          <a
+            
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="Upload your accounts or Find an account"
+            >Maintain Account(s)
+
+            <a
+              routerLink="/app/dashboard/uploaded-file-summary"
+              style="display: none"
+              >Uploaded file summary</a
+            >
+            <a
+              routerLink="/app/dashboard/open-biller-admin"
+              style="display: none"
+              >Uploaded file summary</a
+            >
+          </a></span
+        >
+      </li>
+      <li nz-menu-item *ngIf="eslips" routerLink="/app/dashboard/generated-e-slip">
+        <i nz-icon nzType="dollar" nzTheme="outline"></i>
+        <span>
+          <a
+            
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="Peek at your eslips"
+            >E-Slip(s)</a
+          ></span
+        >
+      </li>
+      <li nz-menu-item *ngIf="reports"  routerLink="/app/dashboard/payer-report">
+        <i nz-icon nzType="audit" nzTheme="outline"></i>
+        <span
+          ><a
+           
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="View your Reports"
+            >Reports
+            <a
+              routerLink="/app/dashboard/account-report-summary"
+              style="display: none"
+              >Uploaded file summary</a
+            >
+          </a></span
+        >
+      </li>
+
+      <li nz-menu-item *ngIf="myteam"  routerLink="/app/dashboard/my-team">
+        <i nz-icon nzType="team" nzTheme="outline"></i>
+        <span
+          ><a
+           
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="Organize your team"
+            >My Team</a
+          ></span
+        >
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <i
+        class="trigger"
+        nz-icon
+        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        (click)="isCollapsed = !isCollapsed"
+      ></i>
+
+      <div class="top-m">
+        <ul nz-menu nzMode="horizontal">
+          <li nz-menu-item nzSelected>{{ billerName }} Portal Active</li>
+          <li nz-menu-item (click)="popFAQs()">
+            <i nz-icon nzType="question" nzTheme="outline"></i>
+            FAQS
+          </li>
+          <li nz-menu-item>
+            <button
+              class="btn"
+              nz-button
+              nzType="primary"
+              (click)="changeBiller()"
+            >
+              <i nz-icon nzType="swap" nzTheme="outline"></i>
+              Switch Biller
+            </button>
+          </li>
+          <li nz-menu-item>
+            Email Notification
+            <nz-switch
+              [(ngModel)]="checked2"
+              (ngModelChange)="switchNotification()"
+            ></nz-switch>
+          </li>
+          <li nz-submenu nzTitle="Profile" nzIcon="profile">
+            <ul>
+              <li nz-menu-group nzTitle="My Profile">
+                <ul>
+                  <li nz-menu-item (click)="myProfile()">Edit Profile</li>
+                  <li nz-menu-item (click)="logout()">Log Out</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer>
+      <img
+        src="assets/images/Group_1954.png"
+        alt=""
+        class="powered-by-stanbic"
+      />
+    </nz-footer>
+  </nz-layout>
+</nz-layout>
+
+<nz-layout *ngIf="this.biller == 'closed' && this.closed_biller_type == 'A'">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <div
+      class="background-div-hack bounce-in-top"
+      [style.background]="this.loginService.brand_color"
+      *ngIf="!isCollapsed"
+    ></div>
+    <div class="logo">
+      <h2 *ngIf="!isCollapsed" class="slide-in-elliptic-bottom-fwd">
+        E- Biller
+      </h2>
+    </div>
+
+    <img
+      src="assets/images/logo.png"
+      alt=""
+      class="biller-logo slide-in-elliptic-bottom-fwd"
+      *ngIf="showDefaultLogo && !isCollapsed"
+    />
+
+    <img
+      src="{{ 'data:image/jpg;base64,' + billerLogo }}"
+      *ngIf="!showDefaultLogo && !isCollapsed"
+      class="biller-logo slide-in-elliptic-bottom-fwd"
+    />
+
+    <ul
+      nz-menu
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+      style="background: none !important;"
+      class="stick"
+    >
+      <nz-spin nzSimple *ngIf="this.loading === true"></nz-spin>
+      <h2 class="blue-title" *ngIf="!isCollapsed">Welcome, {{ firstname }}</h2>
+
+      <li nz-menu-item  routerLink="/app/dashboard/customer-dashboard">
+        <i nz-icon nzType="appstore" nzTheme="outline"></i>
+        <span
+          ><a
+            class="link"
+           
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="View your dashboard"
+            >Dashboard</a
+          ></span
+        >
+      </li>
+    
+      <li nz-menu-item *ngIf="myteam && this.policyGeneral" routerLink="/app/dashboard/pensions">
+        <i nz-icon nzType="team" nzTheme="outline"></i>
+        <span
+          ><a
+            
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="Pensions."
+            >Pensions.</a></span
+        >
+      </li>
+      <!-- set flags of menus -->
+      <li nz-menu-item *ngIf="myteam && this.policyChckOff" routerLink="/app/dashboard/insurance">
+        <i nz-icon nzType="team" nzTheme="outline"></i>
+        <span
+          ><a
+            
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="Insurance Policies"
+            >Check-Off</a
+          ></span
+        >
+      </li>
+      <li nz-menu-item *ngIf="eslips"  routerLink="/app/dashboard/generated-e-slip">
+        <i nz-icon nzType="dollar" nzTheme="outline"></i>
+        <span>
+          <a
+           
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="Peek at your eslips"
+            >E-Slip(s)</a
+          ></span
+        >
+      </li>
+      <li nz-menu-item *ngIf="policies"  routerLink="/app/dashboard/view-policies">
+        <i nz-icon nzType="wallet" nzTheme="outline"></i>
+        <span>
+          <a
+           
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="See your policies"
+            >Policies</a
+          ></span
+        >
+      </li>
+      <li nz-menu-item *ngIf="reports"  routerLink="/app/dashboard/payer-report">
+        <i nz-icon nzType="audit" nzTheme="outline"></i>
+        <span
+          ><a
+           
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="View your Reports"
+            >Reports
+            <a
+              routerLink="/app/dashboard/account-report-summary"
+              style="display: none"
+              >Uploaded file summary</a
+            >
+          </a></span
+        >
+      </li>
+    
+
+      <li nz-menu-item *ngIf="myteam" routerLink="/app/dashboard/my-team">
+        <i nz-icon nzType="team" nzTheme="outline"></i>
+        <span
+          ><a
+            
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="Organize your team"
+            >My Team</a
+          ></span
+        >
+      </li>
+
+     
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <i
+        class="trigger"
+        nz-icon
+        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        (click)="isCollapsed = !isCollapsed"
+      ></i>
+
+      <div class="top-m">
+        <ul nz-menu nzMode="horizontal">
+          <li nz-menu-item nzSelected>{{ billerName }} Portal Active</li>
+          <li nz-menu-item (click)="popFAQs()">
+            <i nz-icon nzType="question" nzTheme="outline"></i>
+            FAQS
+          </li>
+          <li nz-menu-item>
+            <button
+              class="btn"
+              nz-button
+              nzType="primary"
+              (click)="changeBiller()"
+            >
+              <i nz-icon nzType="swap" nzTheme="outline"></i>
+              Switch Biller
+            </button>
+          </li>
+          <li nz-menu-item>
+            Email Notification
+            <nz-switch
+              [(ngModel)]="checked2"
+              (ngModelChange)="switchNotification()"
+            ></nz-switch>
+          </li>
+          <li nz-submenu nzTitle="Profile" nzIcon="profile">
+            <ul>
+              <li nz-menu-group nzTitle="My Profile">
+                <ul>
+                  <!-- <li nz-menu-item (click)="passwordChange()">Change Password</li> -->
+                  <li nz-menu-item (click)="myProfile()">Edit Profile</li>
+                  <li nz-menu-item (click)="logout()">Log Out</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer>
+      <img
+        src="assets/images/Group_1954.png"
+        alt=""
+        class="powered-by-stanbic"
+      />
+    </nz-footer>
+  </nz-layout>
+</nz-layout>
+
+<nz-layout *ngIf="this.biller == 'closed' && this.closed_biller_type == 'B'">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <div
+      class="background-div-hack bounce-in-top"
+      [style.background]="this.loginService.brand_color"
+      *ngIf="!isCollapsed"
+    ></div>
+    <div class="logo">
+      <h2 *ngIf="!isCollapsed" class="slide-in-elliptic-bottom-fwd">
+        E- Biller
+      </h2>
+    </div>
+
+    <img
+      src="assets/images/logo.png"
+      alt=""
+      class="biller-logo slide-in-elliptic-bottom-fwd"
+      *ngIf="showDefaultLogo && !isCollapsed"
+    />
+
+    <img
+      src="{{ 'data:image/jpg;base64,' + billerLogo }}"
+      *ngIf="!showDefaultLogo && !isCollapsed"
+      class="biller-logo slide-in-elliptic-bottom-fwd"
+    />
+
+    <ul
+      nz-menu
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+      style="background: none !important;"
+      class="stick"
+    >
+      <nz-spin nzSimple *ngIf="this.loading === true"></nz-spin>
+      <h2 class="blue-title" *ngIf="!isCollapsed">Welcome, {{ firstname }}</h2>
+
+      <li nz-menu-item  routerLink="/app/dashboard/customer-dashboard">
+        <i nz-icon nzType="appstore" nzTheme="outline"></i>
+        <span
+          ><a
+            class="link"
+           
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="View your dashboard"
+            >Dashboard</a
+          ></span
+        >
+      </li>
+      <li nz-menu-item *ngIf="invoices"   routerLink="/app/dashboard/invoices">
+        <i nz-icon nzType="audit" nzTheme="outline"></i>
+        <span
+          ><a
+          
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="View Your Invoices"
+            >Invoices</a
+          ></span
+        >
+      </li>
+  
+      <li nz-menu-item *ngIf="eslips"  routerLink="/app/dashboard/generated-e-slip">
+        <i nz-icon nzType="dollar" nzTheme="outline"></i>
+        <span>
+          <a
+           
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="Peek at your eslips"
+            >E-Slip(s)</a
+          ></span
+        >
+      </li>
+      <li nz-menu-item *ngIf="reports"  routerLink="/app/dashboard/payer-report">
+        <i nz-icon nzType="audit" nzTheme="outline"></i>
+        <span
+          ><a
+           
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="View your Reports"
+            >Reports
+            <a
+              routerLink="/app/dashboard/account-report-summary"
+              style="display: none"
+              >Uploaded file summary</a
+            >
+          </a></span
+        >
+      </li>
+    
+
+      <li nz-menu-item *ngIf="myteam" routerLink="/app/dashboard/my-team">
+        <i nz-icon nzType="team" nzTheme="outline"></i>
+        <span
+          ><a
+            
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            pTooltip="Organize your team"
+            >My Team</a
+          ></span
+        >
+      </li>
+
+    
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <i
+        class="trigger"
+        nz-icon
+        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        (click)="isCollapsed = !isCollapsed"
+      ></i>
+
+      <div class="top-m">
+        <ul nz-menu nzMode="horizontal">
+          <li nz-menu-item nzSelected>{{ billerName }} Portal Active</li>
+          <li nz-menu-item (click)="popFAQs()">
+            <i nz-icon nzType="question" nzTheme="outline"></i>
+            FAQS
+          </li>
+          <li nz-menu-item>
+            <button
+              class="btn"
+              nz-button
+              nzType="primary"
+              (click)="changeBiller()"
+            >
+              <i nz-icon nzType="swap" nzTheme="outline"></i>
+              Switch Biller
+            </button>
+          </li>
+          <li nz-menu-item>
+            Email Notification
+            <nz-switch
+              [(ngModel)]="checked2"
+              (ngModelChange)="switchNotification()"
+            ></nz-switch>
+          </li>
+          <li nz-submenu nzTitle="Profile" nzIcon="profile">
+            <ul>
+              <li nz-menu-group nzTitle="My Profile">
+                <ul>
+                  <!-- <li nz-menu-item (click)="passwordChange()">Change Password</li> -->
+                  <li nz-menu-item (click)="myProfile()">Edit Profile</li>
+                  <li nz-menu-item (click)="logout()">Log Out</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer>
+      <img
+        src="assets/images/Group_1954.png"
+        alt=""
+        class="powered-by-stanbic"
+      />
+    </nz-footer>
+  </nz-layout>
+</nz-layout>

@@ -1,0 +1,188 @@
+.content {
+  height: 100vh;
+  overflow-y: auto;
+  background: #ffffff;
+}
+
+/*  first row - having close button */
+.close-button i{
+ cursor: pointer;
+}
+
+
+/* second row with page title */
+.page-title {
+  margin-top: -5vh;
+}
+.page-title h2 {
+  font-family: 'Segoe UI Light';
+  font-weight: 300;
+  font-size: 1.5em !important;
+  margin-left: 30vh;
+}
+.pay-title {
+  float: right;
+}
+
+/* E-slip area */
+.e-slip-content {
+  background: #ffffff;
+  height: 84vh !important;
+  overflow-y: auto !important;
+}
+
+.slip-header {
+  margin-top: 2vh !important;
+}
+.logo img {
+
+  display: block;
+}
+
+.slip-header .address p {
+  text-align: right;
+}
+
+ngx-barcode {
+  float: right !important;
+}
+
+.client-header span,
+.client,
+.payment-details h3,
+.beneficiary h3,
+.beneficiary .underline-p,
+.table-title h3,
+.column-head h3,
+.total-amount h3,
+.disclammer h3 {
+  font-family: 'Segoe UI Bold';
+}
+
+.payment-details table {
+  width: 100%;
+  border: 1px solid #cccccc;
+  border-collapse: collapse;
+}
+.payment-details td,
+.payment-details tr {
+  border-collapse: collapse;
+  border: 1px solid #cccccc;
+}
+
+.payment-details table {
+  margin-bottom: 5vh !important;
+}
+.page-details h3 {
+  margin-top: 3vh !important;
+  margin-bottom: 3vh !important;
+}
+.signature-details {
+  margin-top:2vh;;
+}
+.signature-details h3{
+  text-align: center;
+  color:black ;
+
+}
+.dash {
+  border: 1px dashed  #cccccc;
+}
+
+.payer-bnk-dts,
+.payment-details .title {
+  margin-left: 2.5vw !important;
+}
+
+.e-slip-side-bar .bottom {
+  margin-top: 10vh !important;
+}
+
+.beneficiary .underline-p {
+  text-decoration: underline !important;
+}
+
+.payment-details-row {
+  margin-top: 5vh;
+  margin-bottom: 5vh !important;
+  padding-bottom: 10vh !important;
+}
+
+.table-title {
+  border-bottom: 1px solid #e1e1e1;
+  border-top: 1px solid #e1e1e1;
+}
+.table-title h3 {
+  text-align: center;
+}
+.header {
+  font-weight: bolder;
+}
+.column-head .td,
+.tr .td-x,
+.total-amount div {
+  border-bottom: 1px solid #e1e1e1;
+}
+.column-head .td h3,
+.tr .td-x p,
+.total-fig {
+  margin-left: 1.3vw;
+}
+.payment-details-row .full-bdr {
+  border-left: 1px solid #e1e1e1;
+  border-right: 1px solid #e1e1e1;
+}
+.payment-details-row .left-brd {
+  border-left: 1px solid #e1e1e1;
+}
+
+.border-ref {
+  border: 1px solid #e1e1e1;
+
+}
+
+.disclammer img {
+  width: 40%;
+  height: auto;
+  display: block;
+  margin: auto;
+  margin-top: 5vh !important;
+}
+.disclammer h3 {
+  text-align: center;
+}
+
+.back-btn {
+  cursor: pointer;
+}
+
+#bg-text {
+  color: rgb(209, 21, 21);
+  font-size: 120px;
+  transform: rotate(300deg);
+  -webkit-transform: rotate(300deg);
+}
+
+.image-logo{
+  height: 30vh;
+  width: 13vw;
+}
+.company-email{
+  margin-top:3vh;
+  /* margin-left:4vh; */
+  font-weight: bold;
+}
+
+.desc-name {
+  margin-top:3vh;
+  margin-left:4vh;
+  font-weight: bold;
+  text-transform: uppercase;
+
+}
+.center-text {
+  display: block;
+}
+.span {
+  display: block;
+}

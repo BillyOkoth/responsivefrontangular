@@ -1,0 +1,108 @@
+<div nz-row nzGutter="10" style="margin-bottom: 2vh;">
+  <div nz-col nzSpan="12">
+    <input
+      nz-input
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      style="width: 100%;"
+      maxlength="100"
+    />
+  </div>
+
+  <div nz-col nzSpan="12">
+    <div nz-row nzType="flex" nzJustify="end">
+      <div nz-col nzSpan="3">
+        <button
+          nz-button
+          style="background-color: #e7d215;"
+          nzTooltipTitle="Generate Eslip."
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          [disabled]="loading || this.selectedRows.length < 1"
+          [nzLoading]="loading"
+          (click)="organizeInvoices()"
+        >
+          <i nz-icon nzType="credit-card" nzTheme="outline"></i>
+        </button>
+      </div>
+      <div nz-col nzSpan="3">
+        <button
+          nz-button
+          style="background-color: #5cb85c;"
+          nzTooltipTitle="Download Excel."
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          [nzLoading]="loading"
+          [disabled]="loading"
+          (click)="downloadExcel()"
+        >
+          <i nz-icon nzType="download"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th class="header">#</th>
+          <th class="header">Invoice</th>
+          <th class="header">Invoice Date</th>
+          <th class="header">Service</th>
+          <th class="header">Commission</th>
+          <th class="header">Tax</th>
+          <th class="header">Amount</th>
+
+          <th class="header">Actions</th>
+          <th
+            class="header"
+            nzShowCheckbox
+            [(nzChecked)]="isAllDisplayDataChecked"
+            [nzIndeterminate]="isIndeterminate"
+            (nzCheckedChange)="updateAllChecked()"
+          ></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *cdkVirtualFor="
+            let data of rows | invoiceSearch: searchValue;
+            let i = index
+          "
+        >
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.invoice }}</td>
+          <td>{{ data.created_at | date: "short" }}</td>
+          <td>{{ data.service }}</td>
+          <td>{{ data.commission | number: "2." }} %</td>
+          <td>{{ data.tax | number: "2." }} %</td>
+          <td>Ksh. {{ data.amount | number: "2." }}</td>
+          <td>
+            <button
+              style="margin-left: 1vh;"
+              nz-button
+              nzType="link"
+              style="color: red;"
+              nzTooltipTitle="Dispute Invoice"
+              nzTooltipPlacement="topCenter"
+              nz-tooltip
+              (click)="disputeInvoices(data.invoice)"
+            >
+              <i nz-icon nzType="dislike" nzTheme="outline"></i>
+            </button>
+          </td>
+          <td
+            nzShowCheckbox
+            [(nzChecked)]="data.checked"
+            (nzCheckedChange)="updateSingleChecked(data)"
+          ></td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</cdk-virtual-scroll-viewport>
+
+<!-- [disabled]="loading || this.selectedRows.length < 1" -->

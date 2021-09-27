@@ -1,0 +1,60 @@
+<div nz-row>
+    <div nz-col nzSpan="12">
+      <input nz-input placeholder="Search" [(ngModel)]="searchValue" style="width: 100%;" maxlength="100" />
+    </div>
+    <div nz-col nzSpan="12">
+      <div nz-row nzType="flex" nzJustify="end">
+        <div nz-col nzSpan="3">
+        
+        </div>
+        <div nz-col nzSpan="3">
+          <button nz-button nzType="default" nzTooltipTitle="Create User Group" nzTooltipPlacement="topCenter" nz-tooltip
+            (click)="createUserGroup()" [disabled]="!this.role.myTeamRole">
+            <i nz-icon nzType="usergroup-add"></i>
+          </button>
+        </div>
+  
+      
+      </div>
+    </div>
+  </div>
+  
+  <cdk-virtual-scroll-viewport itemSize="18">
+    <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+      <nz-table #basicTable [nzData]="rows" [nzShowPagination]="false">
+        <thead>
+          <tr>
+            <th class="header">#</th>
+            <th class="header">Group Name</th>
+            <th class="header">Number Of Users</th>
+            <th class="header"> Status</th>
+            <!-- <th class="header">User Group</th>
+            <th class="header">Email</th> -->
+            <th class="header">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+  
+          <tr *cdkVirtualFor="
+          let data of rows| groupSearch: searchValue;
+          let i = index
+        ">
+            <td>{{ i + 1 }}</td>
+            <td>{{ data.name }}</td>
+            <td>{{ data.noOfUsers }}</td>
+            <td>{{ data.status }}</td>            
+            <td>
+              <!-- <button nz-button nzType="link" nzTooltipTitle="Edit User Group." nzTooltipPlacement="topCenter" nz-tooltip
+                (click)="onRowSelect(data)" [disabled]="!this.role.myTeamRole">
+                <i nz-icon nzType="eye"></i>
+              </button> -->
+              <button nz-button nzType="link" nzTooltipTitle="Delete  User Group." nzTooltipPlacement="topCenter" nz-tooltip
+                (click)="deleteUserGroup(data)" [disabled]="!this.role.myTeamRole">
+                <i nz-icon nzType="delete"  [nzTheme]="'twotone'" [nzTwotoneColor]="'#f70707'"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-spin>
+  </cdk-virtual-scroll-viewport>

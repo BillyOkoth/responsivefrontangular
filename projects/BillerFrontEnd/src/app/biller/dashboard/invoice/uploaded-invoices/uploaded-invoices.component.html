@@ -1,0 +1,89 @@
+
+<div nz-row nzType="flex" style="margin-bottom:2vh;">
+  <div nz-col nzSpan="12">
+    <input
+      nz-input
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      style="width: 100%;"
+      maxlength="100"
+    />
+  </div>
+  <div nz-col nzSpan="12">
+    <div nz-row nzType="flex" nzJustify="end" nzGutter="16">
+      <div nz-col nzSpan="9">
+        <button
+          nz-button
+          nzType="primary"
+          nzTooltipTitle="Invoice Mapping "
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          (click)="mapInvoice()"
+        >
+          Invoice Mapping
+          <i nz-icon nzType="user-add"></i>
+        </button>
+      </div>
+      <div nz-col nzSpan="8">
+        <button
+        nz-button
+        style="background-color: #f0ad4e;"
+        nzTooltipTitle="Upload Invoice File."
+        nzTooltipPlacement="topCenter"
+        nz-tooltip
+        [nzLoading]="loading"
+        [disabled]="loading"
+        (click)="uploadInvoiceExcel()"
+      >
+      Upload Invoice
+        <i nz-icon nzType="upload"></i>
+      </button>  
+      </div>
+    </div>
+  </div>
+</div>
+
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #basicTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th class="header">#</th>   
+          <th class="header">Date Created</th>   
+          <th class="header">Created By</th>      
+          <th class="header">File Name</th>
+          <th class="header">Success Records</th>
+          <th class="header">Failed Records</th>            
+          <th class="header">View</th>
+        </tr>
+      </thead>
+      <tbody>
+     
+        <tr *ngFor="let data of rows| searchMypayers: searchValue; let i = index">
+            <td>{{ i + 1 }}</td>
+          <td>{{ data.created_at | date: 'short' }}</td>
+          <td>{{ data.created_by}}</td>         
+          <td>{{ data.file_name }}</td>
+          <td>{{ data.successrecords }}</td>
+          <td>{{data.failedrecords}}</td>
+          <td>
+            <button
+              nz-button
+              nzType="link"
+              nzTooltipTitle="View Acounts"
+              nzTooltipPlacement="topCenter"
+              nz-tooltip
+              (click)="viewUploadedFileDetails(data)"
+            >
+              <i nz-icon nzType="eye"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+
+</cdk-virtual-scroll-viewport>
+
+
+  

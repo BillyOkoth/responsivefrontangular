@@ -1,0 +1,103 @@
+<form nz-form [nzLayout]="'vertical'">
+  <div class="gutter-example">
+    <div nz-row>
+      <div nz-col class="gutter-row" nzSpan="12">
+        <div class="gutter-box">
+          <h2 class="text-color-yellow">
+            My Accounts
+          </h2>
+        </div>
+      </div>
+
+      <div nz-col class="gutter-row" nzSpan="12">
+        <div class="gutter-box">
+          <h2 class="text-color-yellow">
+            Amount Due:
+            <span class="money"> KES. {{ this.billbalance }}/=</span>
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div nz-row [formGroup]="accountForm">
+      <div nz-col class="gutter-row" nzSpan="8">
+        <div class="gutter-box">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">Account Number</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input
+                nz-input
+                formControlName="accountRefNo"
+                type="number"
+                autofocus
+                maxlength="25"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div nz-col class="gutter-row" nzSpan="8">
+        <div class="gutter-box">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6" nzFor="email"
+              >Account Name</nz-form-label
+            >
+            <nz-form-control [nzSpan]="14">
+              <input
+                nz-input
+                type="text"
+                [(ngModel)]="account_name"
+                disabled
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div nz-col class="gutter-row" nzSpan="8">
+        <div class="gutter-box">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6" nzFor="email">Alias</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input
+                nz-input
+                formControlName="alias"
+                autocomplete="off"
+                maxlength="25"
+                type="text"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+    </div>
+    <div nz-row nzType="flex" nzJustify="center" nzGutter="16">
+      <div nz-col nzSpan="5">
+        <button
+          class="btn"
+          nz-button
+          nzType="primary"
+          [disabled]="loading || !accountForm.valid"
+          (click)="validateAccount()"
+          [nzLoading]="validate"
+        >
+          <i nz-icon [nzType]="'sync'"></i>Validate
+        </button>
+      </div>
+      <div nz-col nzSpan="5">
+        <button
+          class="btn"
+          nz-button
+          nzType="primary"
+          nzTooltipTitle="Save Account"
+          nzTooltipPlacement="bottom"
+          nz-tooltip
+          [disabled]="loading || !accountForm.valid || this.account_name == ''"
+          (click)="saveAccount()"
+          [nzLoading]="save"
+        >
+          <i nz-icon nzType="save" nzTheme="outline"></i>Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

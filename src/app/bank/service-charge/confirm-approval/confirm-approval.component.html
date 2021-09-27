@@ -1,0 +1,33 @@
+<div nz-row>
+  <h2>
+    Confirm Approval
+  </h2>
+</div>
+<div nz-row nzType="flex" nzJustify="center">
+  <h3>
+    Do you want to approve the following service charges
+  </h3>
+
+  <div class="accounts">
+    <h3>
+      No of Accounts: <span class="spacing"> {{ this.accounts }}</span>
+    </h3>
+  </div>
+</div>
+
+<div nz-row nzType="flex" nzJustify="center">
+  <div nz-col nzSpan="5">
+    <button
+      nz-button
+      style="background-color: #5cb85c;color: white"
+      nzTooltipTitle="Proceed to Pay"
+      nzTooltipPlacement="topCenter"
+      nz-tooltip
+      (click)="approveCharges()"
+      [disabled]="this.accounts < 1"
+      [nzLoading]="loading"
+    >
+      Proceed
+    </button>
+  </div>
+</div>

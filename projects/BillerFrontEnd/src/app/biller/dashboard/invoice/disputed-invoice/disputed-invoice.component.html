@@ -1,0 +1,67 @@
+
+
+<div nz-row nzGutter="10" style = "margin-bottom:2vh">
+    <div nz-col nzSpan="12">
+      <input
+        nz-input
+        placeholder="Search"
+        [(ngModel)]="searchValue"
+        style="width: 100%;"
+        maxlength="100"
+      />
+    </div>
+  
+    <div nz-col nzSpan="12">
+      <div nz-row nzType="flex" nzJustify="end">
+        <div nz-col nzSpan="3">
+          <button nz-button style="background-color: #5cb85c;" nzTooltipTitle="Download Excel."
+            nzTooltipPlacement="topCenter" nz-tooltip [nzLoading]="loading" [disabled]="loading"            
+            (click)="downloadExcel()">
+            <i nz-icon nzType="download"></i>
+          </button>
+  
+        </div>
+  
+  
+      </div>
+  
+  
+    </div>
+  </div>
+  
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+        <tr>
+            <th class="header">#</th>
+            <th class="header">Payer Name</th>
+            <th class="header">Invoice</th>
+            <th class="header">Invoice Date</th>
+            <th class="header">Service</th>          
+            <th class="header">Commission</th>
+            <th class="header">Tax</th>
+            <th class="header">Amount</th>
+            <th class="header">Due Date</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let row of rows|invoiceSearch: searchValue; let i = index"
+        >
+        <td>{{ i + 1 }}</td>
+        <td>{{ row.payer_name }}</td>
+        <td>{{ row.invoice }}</td>
+        <td>{{ row.created_at | date: "MM/dd/yyyy" }}</td>
+        <td>{{ row.service }}</td>     
+        <td>{{ row.commission }}%</td>
+        <td>{{ row.tax }}%</td>
+        <td>{{ row.amount| currency: "Ksh." }}</td>
+        <td>{{ row.due_date | date: "MM/dd/yyyy"}}</td>
+      
+       </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+  

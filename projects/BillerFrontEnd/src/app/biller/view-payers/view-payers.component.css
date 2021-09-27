@@ -1,0 +1,216 @@
+.ebiller-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 100 !important;
+}
+
+/*
+======================================================================
+GET MAIN SECTIONS OF THE PAGE
+----------------------------------------------------------------------
+*/
+
+table {
+  width: 100%;
+}
+
+.big-column,
+.small-column {
+  height: 100%;
+}
+
+.big-column {
+  background: #ffffff;
+}
+
+.title,
+.company-details,
+.customize-look,
+.test-invoice {
+  height: 25% !important;
+}
+
+.title h2,
+h3 {
+  margin-left: 2vw !important;
+}
+
+.title h2 {
+  font-size: 3em;
+  font-family: 'Segoe UI Bold';
+  font-weight: 1900 !important;
+  color: #ffd387;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.title h3 {
+  color: #707070;
+  font-size: 2.5em;
+  font-weight: 300;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.icon-tab,
+.description,
+.progress {
+  position: relative;
+}
+
+.progress mat-progress-bar {
+  margin-top: 23% !important;
+  width: 70%;
+  float: right;
+}
+
+.progress span {
+  float: left !important;
+  color: #707070;
+  font-size: 2em !important;
+  margin-top: 15%;
+}
+
+.description {
+  color: #707070;
+}
+
+.description p {
+  font-family: 'Segoe UI Bold';
+}
+
+.description p,
+.description h2 {
+  margin-left: 1% !important;
+}
+
+.description h2 {
+  font-weight: 300 !important;
+}
+
+.icon-tab mat-icon {
+  font-size: 3.5em;
+  margin-left: 2vw !important;
+  margin-top: 20% !important;
+}
+
+.small-column {
+  position: relative;
+}
+
+.small-column span {
+  position: absolute;
+  text-align: center !important;
+  width: 100%;
+}
+
+.small-column h2,
+.small-column mat-icon {
+  text-align: center !important;
+}
+
+.small-column h2 {
+  font-weight: 300 !important;
+  color: #707070;
+}
+
+.small-column .invite {
+  top: 2vh;
+}
+
+.small-column .support {
+  bottom: 2vh;
+}
+
+.small-column mat-icon {
+  background: #ffffff;
+  padding: 5% !important;
+  cursor: pointer;
+}
+
+.progress button {
+  position: absolute;
+  right: -5% !important;
+  top: 40% !important;
+}
+
+/* notification button*/
+.heartbeat {
+  position: absolute;
+  right: 13%;
+  top: 10%;
+}
+
+/* style generate invoice btn */
+.ebiller-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 100 !important;
+}
+
+/* SAVED MY DAY  use v deep on cs files */
+::v-deep .mat-form-field-underline {
+  background-color: transparent !important;
+  display: none;
+}
+
+mat-form-field {
+  width: 80% !important;
+  /* background: #D6D6D6; */
+}
+th {
+  color: #0033a1;
+  font-size: 1em !important;
+  font-family: 'Segoe UI Regular';
+}
+
+mat-form-field input {
+  background: #d6d6d6;
+  padding: 2%;
+}
+/*
+payers styling */
+
+.payers-header {
+  /* height: 67px; */
+  text-align: left;
+  font: Bold 50px/67px;
+  letter-spacing: 0;
+  color: #ffd387;
+  opacity: 1;
+  margin-left: 4vw;
+
+  display: none;
+}
+
+.payers-number {
+  color: #707070;
+  height: 80px;
+  margin-left: 7vw;
+}
+
+.button-payers {
+  right: 0;
+  z-index: 1;
+  margin-right: 2vw;
+}
+
+.bouton {
+  /* position: absolute; */
+  right: 0;
+  z-index: 100 !important;
+}
+
+
+.payer-btn {
+  margin-right: .5vw !important;
+}
+
+.payer-butto button {
+  display: block;
+  margin: 0;
+  margin-top: 1.5vh;
+  float: right;
+}

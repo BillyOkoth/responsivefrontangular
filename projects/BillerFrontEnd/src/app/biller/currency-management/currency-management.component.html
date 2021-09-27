@@ -1,0 +1,135 @@
+<div>
+  <form nz-form [formGroup]="forexForm" style = "margin-top: 15vh;">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Invoice Currency</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzHasFeedback>
+        <nz-select nzAllowClear placeholder="Select Currency" formControlName="currenty" class="input-size"
+          style="width:100%" required>
+          <nz-option *ngFor="let currency of currencies" [nzValue]="currency.name" nzLabel="{{ currency.name }}">
+            {{ currency.name }}
+          </nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Exchange Rate</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzHasFeedback>
+        <nz-input-number formControlName="exchangeRate" [nzMin]="0" style="width: 100%;"></nz-input-number>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>End Date.</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzHasFeedback>
+        <nz-date-picker [nzDisabledDate]="disabledEndDate" style="width: 100%;" nzFormat="yyyy-MM-dd"
+          formControlName="endDate" nzPlaceHolder="End" [nzOpen]="endOpen" (ngModelChange)="onEndChange($event)"
+          (nzOnOpenChange)="handleEndOpenChange($event)">
+        </nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+  
+    <nz-form-item>
+      <nz-form-control [nzOffset]="7" [nzSpan]="12">
+        <button nz-button nzType="primary" (click)="saveCurrencyProfile()" [disabled]="!this.forexForm.valid || loading"
+          [nzLoading]="loading">
+          Save
+        </button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+
+</div>
+
+
+
+
+<!-- <div nz-row nzType="flex" nzJustify="center" nzGutter="16">
+  <nz-spin [nzSpinning]="loading">
+    <div nz-col nzSpan="18">
+      <div nz-form [formGroup]="forexForm" [nzLayout]="'vertical'">
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24" nzRequired
+              >Invoice Currency</nz-form-label
+            >
+            <nz-form-control [nzSpan]="24">
+              <nz-select
+                nzAllowClear
+                placeholder="Select Currency"
+                formControlName="currenty"
+                class="input-size"
+                style="width:100%"
+                required
+              >
+                <nz-option
+                  *ngFor="let currency of currencies"
+                  [nzValue]="currency.name"
+                  nzLabel="{{ currency.name }}"
+                >
+                  {{ currency.name }}
+                </nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24" nzRequired>Start Date</nz-form-label>
+            <nz-form-control [nzSpan]="24">
+              <nz-date-picker
+                [nzDisabledDate]="disabledStartDate"
+                style="width: 100%;"
+                nzFormat="yyyy-MM-dd"
+                formControlName="startDate"
+                nzPlaceHolder="Start"
+                (ngModelChange)="onStartChange($event)"
+                (nzOnOpenChange)="handleStartOpenChange($event)"
+              ></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24" nzRequired
+              >Exchange Rate</nz-form-label
+            >
+            <nz-form-control [nzSpan]="24">
+              <nz-input-number
+                formControlName="exchangeRate"
+                [nzMin]="0"
+                style="width: 100%;"
+              ></nz-input-number>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24" nzRequired>End Date</nz-form-label>
+            <nz-form-control [nzSpan]="24">
+              <nz-date-picker
+                [nzDisabledDate]="disabledEndDate"
+                style="width: 100%;"
+                nzFormat="yyyy-MM-dd"
+                formControlName="endDate"
+                nzPlaceHolder="End"
+                [nzOpen]="endOpen"
+                (ngModelChange)="onEndChange($event)"
+                (nzOnOpenChange)="handleEndOpenChange($event)"
+              >
+              </nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+    </div>
+  </nz-spin>
+</div>
+
+<div nz-row nzType="flex" nzJustify="end">
+  <div nz-col nzSpan="3">
+    <button
+      nz-button
+      nzType="primary"
+      (click)="saveCurrencyProfile()"
+      [disabled]="!this.forexForm.valid || loading"
+      [nzLoading]="loading"
+    >
+      Save
+    </button>
+  </div>
+</div> -->

@@ -1,0 +1,40 @@
+<nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+
+
+  <div nz-row>
+    <div nz-col nzSpan="18">
+      <h2 class="text-color-yellow">
+        Set Company Theme and Logo
+      </h2>
+    </div>
+
+  </div>
+
+
+  <div nz-row nzJustify="center">
+    <div nz-col nzSpan="16">
+      <nz-divider nzText="Upload Company Logo"></nz-divider>
+      <nz-card [nzActions]="[actionSave]">
+        <div class="clearfix">
+          <nz-upload nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 1"
+            (change)="convert()" [nzBeforeUpload]="beforeUpload" [nzAccept]="'image/png, image/jpeg'">
+            <i nz-icon nzType="plus"></i>
+            <div class="ant-upload-text">Upload</div>
+          </nz-upload>
+
+        </div>
+
+        <nz-divider nzText="Pick Color"></nz-divider>
+        <input [(colorPicker)]="userProfileService.brandColor" [style.background]="userProfileService.brandColor"
+          [cpToggle]="false" />
+      </nz-card>
+      <ng-template #actionSave>
+        <button nz-button nzType="primary" nzBlock (click)="saveLogo()">
+          Save
+        </button>
+      </ng-template>
+    </div>
+
+  </div>
+
+</nz-spin>

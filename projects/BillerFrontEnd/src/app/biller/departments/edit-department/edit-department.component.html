@@ -1,0 +1,39 @@
+<nz-spin [nzSize]="'large'" nzSimple *ngIf="this.loading === true"></nz-spin>
+<form autocomplete="off" >  <input
+    nz-input
+    class="input-size"
+    placeholder="Enter Department Name"
+    maxlength="50"
+    id="department"
+    name="department"
+    [(ngModel)]="this.department"
+  />
+
+  <nz-select
+    [(ngModel)]="selectedHead"
+    nzAllowClear
+    nzPlaceHolder="Assign Head Department"
+    class="input-size"
+    name="groupSet"
+  >
+    <nz-option
+      *ngFor="let roles of roleLists"
+      [nzValue]="roles"
+      nzLabel="{{ roles.email }}"
+    >
+      {{ roles.email }}
+    </nz-option>
+  </nz-select>
+</form>
+
+<button
+  class="input-size"
+  nz-button
+  nzType="primary"
+  [nzLoading]="loading"
+  [disabled]="loading"
+  (click)="save()"
+  nzBlock
+>
+  Save
+</button>

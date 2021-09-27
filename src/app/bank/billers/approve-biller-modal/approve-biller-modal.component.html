@@ -1,0 +1,21 @@
+<div>
+  <h3>Are you sure you want to Approve ?</h3>
+
+  <p>{{BillerName}}</p>
+
+  <div nz-row >
+    <div nz-col nzSpan="12">
+      <button nz-button nzType="default" (click)="closeDialog()">Cancel</button>
+    </div>
+    <div nz-col nzSpan="12" class="approve-btn">
+<div nz-row nzType="flex" nzJustify="end">
+  <div nz-col nzSpan="8">
+    <button nz-button nzType="primary" (click)="ApproveBiller()" [nzLoading]="loading">Approve</button>
+  </div>
+ 
+</div>
+     
+
+    </div>
+  </div>
+</div>

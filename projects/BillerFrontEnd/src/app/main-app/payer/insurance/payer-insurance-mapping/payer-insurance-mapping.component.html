@@ -1,0 +1,133 @@
+<nz-card>
+    <div>
+      <h3>Dear Customer</h3>
+      <h4>
+        To complete setting up your Policy file please match the columns with
+        what you'd like to appear on the Policy Upload
+      </h4>
+    </div>
+  </nz-card>
+  <nz-divider nzText="Set Columns"></nz-divider>
+  <div nz-row>
+    <div nz-row>
+      <nz-table
+        nzData=""
+        nzBordered
+        [nzData]="columns"
+        [nzShowPagination]="false"
+      >
+        <thead>
+          <tr>
+            <th>Column Name</th>
+            <th>Column Number in Excel</th>
+            <th>Selected Column</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Policy Number.</td>
+            <td>{{ this.policy_number }}</td>
+            <td>
+              <nz-select
+                nzAllowClear
+                [(ngModel)]="this.policy_number"
+                class="input-size"
+                style="width: 100%;"
+                required
+              >
+                <nz-option
+                  *ngFor="let roles of columns"
+                  [nzValue]="roles.index"
+                  nzLabel="{{ roles.header }}"
+                >
+                  {{ roles.header }}
+                </nz-option>
+              </nz-select>
+            </td>
+          </tr>
+          <tr>
+            <td> Policy Holder Name.</td>
+            <td>{{ this.payer_name}}</td>
+            <td>
+              <nz-select
+                nzAllowClear
+                [(ngModel)]="this.payer_name"
+                class="input-size"
+                style="width: 100%;"
+                required
+              >
+                <nz-option
+                  *ngFor="let roles of columns"
+                  [nzValue]="roles.index"
+                  nzLabel="{{ roles.header }}"
+                >
+                  {{ roles.header }}
+                </nz-option>
+              </nz-select>
+            </td>
+          </tr>
+          <tr>
+            <td>Payer Amount</td>
+            <td>{{ this.payer_amount }}</td>
+            <td>
+              <nz-select
+                nzAllowClear
+                [(ngModel)]="this.payer_amount"
+                class="input-size"
+                style="width: 100%;"
+                required
+              >
+                <nz-option
+                  *ngFor="let roles of columns"
+                  [nzValue]="roles.index"
+                  nzLabel="{{ roles.header }}"
+                >
+                  {{ roles.header }}
+                </nz-option>
+              </nz-select>
+            </td>
+          </tr> 
+          <tr>
+            <td>Date</td>
+            <td>{{ this.payer_date }}</td>
+            <td>
+              <nz-select
+                nzAllowClear
+                [(ngModel)]="this.payer_date"
+                class="input-size"
+                style="width: 100%;"
+                required
+              >
+                <nz-option
+                  *ngFor="let roles of columns"
+                  [nzValue]="roles.index"
+                  nzLabel="{{ roles.header }}"
+                >
+                  {{ roles.header }}
+                </nz-option>
+              </nz-select>
+            </td>
+          </tr>              
+        </tbody>
+      </nz-table>
+    </div>
+    <div
+      nz-row
+      nzType="flex"
+      nzJustify="end"
+      class="button"
+      style="margin-top: 5vh;"
+    >
+      <div nz-col nzSpan="2">
+        <button
+          nz-button
+          nzType="primary"
+          (click)="saveColumns()"
+          [nzLoading]="loading"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+  

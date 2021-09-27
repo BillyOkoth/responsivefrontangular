@@ -1,0 +1,55 @@
+<div nz-row [nzGutter]="10" style="margin-bottom:2vh;">
+  <div nz-col nzSpan="12">
+    <input nz-input placeholder="Search" [(ngModel)]="searchValue" style="width: 100%;" maxlength="100" />
+  </div>
+  <div nz-col nzSpan="12">
+    <div nz-row nzJustify="end">
+      <div nz-col nzSpan="3">
+        <button nz-button nzType="link" nzTooltipTitle="Add Country" nzTooltipPlacement="topCenter" nz-tooltip
+          (click)="addCountry()">
+          <i nz-icon nzType="plus" nzTheme="outline"></i>
+        </button>
+        <button nz-button nzType="link" nzTooltipTitle="Upload Country List" nzTooltipPlacement="topCenter" nz-tooltip (click)="uploadCountries()">
+          <i nz-icon nzType="upload" nzTheme="outline"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th>
+            Country Name.
+          </th>
+          <th>
+            Country Code No.
+          </th>
+          <th>
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *cdkVirtualFor="let data of rows| countrySearch: searchValue;
+      let i = index">
+          <td>{{ data.countryName }}</td>
+          <td>{{ data.countryCode }}</td>
+          <td>
+            <button nz-button nzType="link" nzTooltipTitle="Edit Country Member." nzTooltipPlacement="topCenter"
+              nz-tooltip (click)="editCountry(data)">
+              <i nz-icon nzType="eye"></i>
+            </button>
+            <button nz-button nzType="link" nzTooltipTitle="Delete Country." nzTooltipPlacement="topCenter" nz-tooltip
+              (click)="deleteCountry(data)">
+              <i nz-icon nzType="delete" [nzTheme]="'twotone'" [nzTwotoneColor]="'#f70707'"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</cdk-virtual-scroll-viewport>

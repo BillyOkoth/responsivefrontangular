@@ -1,0 +1,137 @@
+<div>
+  <form nz-form [formGroup]="myProfileForm" style="margin-top: 10vh;">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Invoice Currency</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzHasFeedback>
+        <input nz-input formControlName="invoivename" [ngModel]="invoice_name" maxlength="50" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Commission %</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzHasFeedback>
+        <input nz-input [(ngModel)]="commission" formControlName="commission" maxlength="50" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Tax % </nz-form-label>
+      <nz-form-control [nzSpan]="12" nzHasFeedback>
+        <input nz-input formControlName="tax" [ngModel]="tax" maxlength="50" readonly />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Invoice Color </nz-form-label>
+      <nz-form-control [nzSpan]="12" nzHasFeedback>
+        <input [(colorPicker)]="userService.brandColor" [style.background]="userService.brandColor" [cpToggle]="true" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Terms </nz-form-label>
+      <nz-form-control [nzSpan]="12" nzHasFeedback>
+        <textarea formControlName="terms" [rows]="3" [cols]="40" [(ngModel)]="terms" nz-inputarea
+          autoResize="autoResize" size="40" maxlength="150" name="terms">
+          </textarea>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-control [nzOffset]="7" [nzSpan]="12">
+        <button nz-button nzType="primary" (click)="save()" [nzLoading]="loading">
+          Save
+        </button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+
+</div>
+
+<!-- <nz-card nzTitle="Biller Settings" >
+    <div nz-row>
+      <div nz-col nzSpan="18">
+        <form nz-form [formGroup]="myProfileForm">
+          <div nz-row nzGutter="5">
+            <nz-form-item>
+              <nz-form-label [nzSpan]="6" nzFor="email">Invoice Name</nz-form-label>
+              <nz-form-control [nzSpan]="14">
+                <input
+                  nz-input
+                  formControlName="invoivename"
+                  [ngModel]="invoice_name"
+                  maxlength="50"
+                />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="6" nzFor="email">Commission %</nz-form-label>
+              <nz-form-control [nzSpan]="14">
+                <input
+                  nz-input
+                  [(ngModel)]="commission"
+                  formControlName="commission"
+                  maxlength="50"
+                />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="6" nzFor="email"
+                >Tax %</nz-form-label
+              >
+              <nz-form-control [nzSpan]="14">
+                <input
+                  nz-input
+                  formControlName="tax"
+                  [ngModel]="tax"
+                  maxlength="50"
+                  readonly
+                />
+              </nz-form-control>
+            </nz-form-item>            
+            <nz-form-item>
+              <nz-form-label [nzSpan]="6" nzFor="email"
+                >Invoice Color</nz-form-label
+              >
+  
+              <nz-form-control [nzSpan]="14">
+                   <nz-form-control [nzSpan]="14">
+              <input
+              [(colorPicker)]="userService.brandColor"
+              [style.background]="userService.brandColor"
+              [cpToggle]="true"             
+            />
+            </nz-form-control>
+                
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="6" nzFor="email"
+                >Terms</nz-form-label
+              >
+              <nz-form-control [nzSpan]="14">
+                  <textarea 
+                  formControlName="terms"
+                  [rows]="3" [cols]="40" 
+                   [(ngModel)]="terms" 
+                   nz-inputarea autoResize="autoResize"                    
+                    size="40" maxlength="150"
+                     name = "terms">
+                    </textarea>
+               
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div nz-row nzType="flex" nzJustify="end">
+      <button
+        nz-button
+        nzType="primary"
+        (click)="save()"
+        nzTooltipTitle="Save"
+        nzTooltipPlacement="bottom"
+        nz-tooltip
+        [nzLoading]="loading"
+      >
+        <i nz-icon nzType="save"></i>Save
+      </button>
+    </div>
+  </nz-card> -->

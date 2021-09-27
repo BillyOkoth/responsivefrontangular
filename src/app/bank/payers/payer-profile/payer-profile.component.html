@@ -1,0 +1,126 @@
+<nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+  <div class="header-row" nz-row nzType="flex" nzJustify="start">
+    <div class="icon" nz-col nzSpan="1" >
+      <i
+        nz-icon
+        nzType="arrow-left"
+        nzTheme="outline"
+        style="font-size: 36px; color: #08c;"
+        nzTooltipTitle="Back"
+        nzTooltipPlacement="right"
+        nz-tooltip
+        (click)="closeButton()"
+      ></i>
+    </div>
+  </div>
+  <div nz-row>
+    <div class="title" nz-col nzSpan="6">
+      <h2>
+        {{ compName }}
+      </h2>
+      <p class="text-color-grey-dark">Company Code {{ compCode }}</p>
+    </div>
+
+    <div class="account-details" nz-col nzSpan="10">
+      <div nz-row nzType="flex" nzJustify="end">
+        <div nz-col nzSpan="13">
+          <h3 class="top-margin">
+            Stanbic Bank Account Name:
+            <span class="text-color-grey-dark">{{ account_name }}</span>
+          </h3>
+          <h3>
+            Stanbic Bank Account Number:
+            <span class="text-color-grey-dark">{{ account_no }}</span>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- body of the page -->
+  
+    <div class="content-body" nz-row>
+      <div nz-col nzSpan="12">
+        <p class="blue-txt">
+          Personnel Name:
+        </p>
+
+        <p class="blue-txt">
+          Phone Number:
+        </p>
+        <p class="blue-txt">
+          Email:
+        </p>
+
+        <p class="blue-txt">
+          Branch:
+        </p>
+        <p class="blue-txt">
+          Location:
+        </p>
+        <p class="blue-txt">
+          Country:
+        </p>
+
+        <p class="blue-txt">
+          Sector:
+        </p>
+        <p class="blue-txt">
+          Status:
+        </p>
+      </div>
+      <div nz-col nzSpan="12">
+        <p class="bold">
+          {{ personnel_name }}
+        </p>
+
+        <p class="bold">0{{ phone_number }}</p>
+
+        <p class="bold">{{ email }}:</p>
+
+        <p class="bold">
+          {{ branch }}
+        </p>
+        <p class="bold">
+          {{ location }}
+        </p>
+        <p class="bold">
+          {{ country }}
+        </p>
+
+        <p class="bold">
+          {{ sector }}
+        </p>
+        <p class="bold">{{ status }}</p>
+      </div>
+    </div>
+
+
+  <!-- Footer of the page -->
+
+  <div class="footer" nz-row>
+    <div class="stats-title" nz-col nzSpan="1">
+      <h2 class="text-color-grey-dark">Stats:</h2>
+    </div>
+
+    <div class="top-border" nz-col nzSpan="4">
+      <h3>No of Accounts: <span class="large-txt"> 0 </span></h3>
+    </div>
+    <div class="top-border" nz-col nzSpan="4">
+      <h3>No of Eslips Generated: <span class="large-txt"> 0</span></h3>
+    </div>
+    <div class="middle-div top-border" nz-col nzSpan="4">
+      <h3>No of Invoices Received: <span class="large-txt"> 0 </span></h3>
+    </div>
+
+    <div class="top-border begin-flt" nz-col nzSpan="5">
+      <h3>Loans Taken: <span class="large-txt"> 0 </span></h3>
+    </div>
+    <div class="top-border" nz-col nzSpan="5">
+      <h3>
+        Cash Transacted:
+        <span class="large-txt"> Kes. {{ total_amount_transacted }} </span>
+      </h3>
+    </div>
+  </div>
+</nz-spin>

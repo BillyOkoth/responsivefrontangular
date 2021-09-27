@@ -1,0 +1,113 @@
+/*
+======================================================================
+GET MAIN SECTIONS OF THE PAGE
+----------------------------------------------------------------------
+*/
+.big-column,
+.small-column {
+  height: 100%;
+}
+.big-column {
+  background: #ffffff;
+}
+.title,
+.company-details,
+.customize-look,
+.test-invoice {
+  height: 25% !important;
+}
+.title h2,
+h3 {
+  margin-left: 2vw !important;
+}
+.title h2 {
+  font-size: 3em;
+  font-family: "Segoe UI Bold";
+  font-weight: 1900 !important;
+  color: #ffd387;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.title h3 {
+  color: #707070;
+  font-size: 2em;
+  font-weight: 300;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.title .name {
+  text-transform: capitalize;
+}
+.icon-tab,
+.description,
+.progress {
+  position: relative;
+}
+
+.progress span {
+  float: left !important;
+  color: #707070;
+  font-size: 2em !important;
+}
+
+.link-btn {
+    font-size: 3em !important;
+}
+.description {
+  color: #707070;
+}
+.description p {
+  font-family: "Segoe UI Bold";
+}
+.description p,
+.description h2 {
+  margin-left: 1% !important;
+}
+.description h2 {
+  font-weight: 300 !important;
+}
+.icon-tab i {
+  font-size: 3.5em;
+  margin-left: 2vw !important;
+  margin-top: 20% !important;
+}
+
+.small-column {
+  position: relative;
+}
+.small-column span {
+  position: absolute;
+  text-align: center !important;
+  width: 100%;
+}
+.small-column h2,
+.small-column mat-icon {
+  text-align: center !important;
+}
+.small-column h2 {
+  font-weight: 300 !important;
+  color: #707070;
+}
+.small-column .invite {
+  top: 2vh;
+}
+.small-column .support {
+  bottom: 2vh;
+}
+.small-column mat-icon {
+  background: #ffffff;
+  padding: 5% !important;
+  cursor: pointer;
+}
+.progress button {
+  position: absolute;
+  right: -5% !important;
+  top: 40% !important;
+}
+
+/* notification button*/
+.heartbeat {
+  position: absolute;
+  right: 13%;
+  top: 10%;
+}

@@ -1,0 +1,135 @@
+<!-- <div class="top-button-row" fxLayout="column">
+  <mat-progress-bar mode="query" *ngIf="loading"></mat-progress-bar>
+  <div class="close-button" fxLayout="row">
+    <div fxFlexOffset="5" fxFlex="95">
+      <button
+        mat-icon-button
+        aria-label="Example icon-button with a heart icon"
+        class="button-left"
+        (click)="closeView()"
+      >
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="page-title" fxLayout="row">
+    <div fxFlexOffset="5" fxFlex="95">
+      <h2 class="text-color-grey-dark">
+        File Name: <span> {{ fileName }} </span>
+      </h2>
+    </div>
+  </div>
+
+ 
+  <div class="e-slip" fxLayout="row">
+    <div
+      class="e-slip-content invoice-shadow"
+      fxFlexOffset="5"
+      fxFlex="85"
+      fxLayout="column"
+      id="print-section"
+    >
+      <ngx-datatable
+        #table
+        class="material"
+        [headerHeight]="50"
+        [columnMode]="'force'"
+        l
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [rows]="rows"
+        [selected]="selected"
+        [selectionType]="'checkbox'"
+        [limit]="6"
+      >
+        <ngx-datatable-column
+          [width]="30"
+          [sortable]="false"
+          [canAutoResize]="false"
+          [draggable]="true"
+          [resizeable]="false"
+          [headerCheckboxable]="true"
+          [checkboxable]="true"
+        >
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Account Number" prop="account_no">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{ value }}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Account Name" prop="account_name">
+          <ng-template
+            ngx-datatable-cell-template
+            let-rowIndex="rowIndex"
+            let-row="row"
+            let-value="value"
+          >
+            {{ value }}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Acount Balance" prop="account_balance">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{ value }}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Validation" prop="status">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{ value }}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Date Created" prop="created_at">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{ value }}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Amount Paid" prop="amount_to_pay">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{ value }}
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+
+    <div class="e-slip-side-bar" fxFlex="5" fxLayout="column">
+      <div class="bottom" fxLayout="row">
+        <div fxFlexOffset="3" fxFlex="97" fxLayout="column">
+          <div class="item-row" fxLayout="row">
+            <div class="item-content" fxFlex="100">
+              <button
+                color="primary"
+                mat-icon-button
+                aria-label="Example icon-button with a heart icon"
+                printTitle="E-biller-Eslip"
+                [useExistingCss]="true"
+                printSectionId="print-section"
+                ngxPrint
+              >
+                Print <mat-icon>print</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="item-row" fxLayout="row">
+            <div class="item-content" fxFlex="100">
+              <button
+                color="primary"
+                mat-icon-button
+                aria-label="Example icon-button with a heart icon"
+                (click)="downloadCSV()"
+              >
+                Download <mat-icon>save_alt</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

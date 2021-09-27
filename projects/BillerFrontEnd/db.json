@@ -1,0 +1,15 @@
+{
+  "terms": [{ "my_terms": "you must pay early and on time" }],
+  "accounts": [{ "ac_no": 123456, "account_name": "Calvo" }],
+  "address": [
+    {
+      "road": "227 Hurligham Road ",
+      "companyname": "Giktek",
+      "county": "30000 Nairobi, Nairobi County ",
+      "phonenumber": "+254 7 789-1234 ",
+      "website": "http://giktek.io",
+      "email": "sales@giktek.io "
+    }
+  ],
+  "profile": { "name": "typicode" }
+}

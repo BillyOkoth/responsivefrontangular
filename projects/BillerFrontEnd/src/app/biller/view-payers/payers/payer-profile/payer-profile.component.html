@@ -1,0 +1,98 @@
+<div style="background: #ececec;">
+  <nz-page-header
+    (nzBack)="closeButton()"
+    nzBackIcon
+    nzTitle="{{ compName }}"
+  ></nz-page-header>
+  <div
+    nz-row
+    [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32, xl: 32, xxl: 32 }"
+    class="payer-data"
+  >
+    <div nz-col nzSpan="8">
+      <nz-card [nzBordered]="false" nzTitle="COMPANY DETAILS">
+        <div nz-row nzJustify="center" style="margin-bottom: 1vh;">
+          <div nz-col nzSpan="12" class="blue-txt">
+            Personnel Name:
+          </div>
+          <div nz-col nzSpan="12" class="bold">{{ personnel_name }}</div>
+        </div>
+        <div nz-row nzJustify="center" style="margin-bottom: 1vh;">
+          <div nz-col nzSpan="12" class="blue-txt">
+            Phone Number:
+          </div>
+          <div nz-col nzSpan="12" class="bold">{{ phone_number }}</div>
+        </div>
+        <div nz-row nzJustify="center" style="margin-bottom: 1vh;">
+          <div nz-col nzSpan="12" class="blue-txt">
+            Email:
+          </div>
+          <div nz-col nzSpan="12" class="bold">{{ email }}</div>
+        </div>
+
+        <div nz-row nzJustify="center" style="margin-bottom: 1vh;">
+          <div nz-col nzSpan="12" class="blue-txt">
+            Branch:
+          </div>
+          <div nz-col nzSpan="12" class="bold">{{ branch }}</div>
+        </div>
+        <div nz-row nzJustify="center" style="margin-bottom: 1vh;">
+          <div nz-col nzSpan="12" class="blue-txt">
+            Location:
+          </div>
+          <div nz-col nzSpan="12" class="bold">{{ location }}</div>
+        </div>
+        <div nz-row nzJustify="center" style="margin-bottom: 1vh;">
+          <div nz-col nzSpan="12" class="blue-txt">
+            Country:
+          </div>
+          <div nz-col nzSpan="12" class="bold">{{ country }}</div>
+        </div>
+        <div nz-row nzJustify="center" style="margin-bottom: 1vh;">
+          <div nz-col nzSpan="12" class="blue-txt">
+            Sector:
+          </div>
+          <div nz-col nzSpan="12" class="bold">{{ sector }}</div>
+        </div>
+        <div nz-row nzJustify="center" style="margin-bottom: 1vh;">
+          <div nz-col nzSpan="12" class="blue-txt">
+            Status:
+          </div>
+          <div nz-col nzSpan="12" class="bold">{{ status }}</div>
+        </div>
+      </nz-card>
+    </div>
+    <div nz-col nzSpan="8">
+      <nz-card [nzBordered]="false" nzTitle="ACCOUNT DETAILS">
+        <div nz-row nzJustify="center" style="margin-bottom: 1vh;">
+          <div nz-col nzSpan="12" class="blue-txt">
+            Stanbic Bank Account Name:
+          </div>
+          <div nz-col nzSpan="12" class="bold">{{ account_name }}</div>
+        </div>
+        <div nz-row nzJustify="center" style="margin-bottom: 1vh;">
+          <div nz-col nzSpan="12" class="blue-txt">
+            Stanbic Bank Account Number:
+          </div>
+          <div nz-col nzSpan="12" class="bold">{{ account_no }}</div>
+        </div>
+      </nz-card>
+    </div>
+    <div nz-col nzSpan="8">
+      <nz-card [nzBordered]="false" nzTitle="STATISTICS">
+        <div nz-row nzJustify="center" style="margin-bottom: 1vh;">
+          <div nz-col nzSpan="12" class="blue-txt">
+            No of Eslips Generated:
+          </div>
+          <div nz-col nzSpan="12" class="bold">0</div>
+        </div>
+        <div nz-row nzJustify="center" style="margin-bottom: 1vh;">
+          <div nz-col nzSpan="12" class="blue-txt">
+            No of Invoices Received:
+          </div>
+          <div nz-col nzSpan="12" class="bold">0</div>
+        </div>
+      </nz-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div *ngIf="this.biller == 'open'">
+  <app-biller-settings></app-biller-settings>
+</div>
+<!-- *ngIf="this.biller == 'open'" -->
+
+<nz-tabset
+
+*ngIf="this.biller == 'closed'"
+  [nzTabPosition]="'top'"
+  [nzType]="'card'"
+  [nzSelectedIndex]="this.billerService.selectedSetting" (nzSelectedIndexChange)="handleChange($event)"
+ 
+>
+  <nz-tab [nzTitle]="'Biller Settings'">
+    <app-biller-settings></app-biller-settings>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Forex Management'">
+    <app-currency-management></app-currency-management>
+  </nz-tab>
+</nz-tabset>

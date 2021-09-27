@@ -1,0 +1,463 @@
+@import '~ng-zorro-antd/style/index.min.css'; /* Import basic styles */
+@import '~ng-zorro-antd/button/style/index.min.css'; /* Import styles of the component */
+
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+
+@font-face {
+  font-family: 'Segoe UI Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Segoe UI Regular'),
+    url('./assets/font/SegoeProDisplay-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Segoe UI Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Segoe UI Bold'),
+    url('./assets/font/SegoeProDisplay-Semibold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Segoe UI Light';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Segoe UI Light'),
+    url('./assets/font/SegoeProDisplay-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'digital-7';
+  font-style: normal;
+  font-weight: normal;
+  src: local('digital-7'),
+    url('./assets/font/digital-7/digital-7.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Alfrida Signature';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Alfrida Signature'),
+    url('./assets/font/AlfridaSignature.ttf') format('truetype');
+}
+
+* {
+  font-family: Segoe UI Light;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-width: 100%;
+  min-height: 100%;
+  background: #ececec !important;
+}
+
+.text-color-grey-light {
+  color: #d6d6d6;
+}
+
+.text-color-grey-dark {
+  color: #707070;
+}
+
+.text-color-yellow {
+  color: #ffd387;
+}
+
+.bolder-font {
+  font-family: 'Segoe UI Bold';
+  font-weight: 700 !important;
+  font-size: 3em !important;
+}
+
+.blue-background {
+  background: #0a2240;
+  background: -webkit-linear-gradient(to bottom, #0033a1, #0a2240);
+  background: linear-gradient(to bottom, #0033a1, #0a2240);
+}
+.money {
+  font-family: 'Segoe UI Bold';
+  font-style: normal;
+  color: #707070;
+}
+
+.ant-table-tbody>tr>td {
+  font-weight: bold;
+}
+.ant-table-thead>tr>th {
+  font-weight: bolder; 
+
+}
+
+/*
+  =========================================================================
+   ONBOARDING STEPS STYLING
+   ========================================================================
+  */
+
+/* // define container for all the steps */
+.step-content-holder {
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 8;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.step-cancel-btn {
+  height: 20vh !important;
+  cursor: pointer;
+}
+
+.step-cancel-btn mat-icon {
+  margin-left: 10% !important;
+  font-size: 3em !important;
+  margin-top: 5% !important;
+}
+
+.step-form-holder {
+  min-height: 70vh !important;
+}
+
+.step-title-holder h2 {
+  color: #ffd387;
+  text-align: center;
+  font-weight: 300 !important;
+  font-size: 2em !important;
+}
+
+.shadow {
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.shadow-right {
+  -webkit-box-shadow: 11px 0px 5px 0px rgba(204, 204, 204, 1);
+  -moz-box-shadow: 11px 0px 5px 0px rgba(204, 204, 204, 1);
+  box-shadow: 11px 0px 5px 0px rgba(204, 204, 204, 1);
+}
+.invoice-shadow {
+  /* -webkit-box-shadow: 0px 1px 15px 0px rgba(112, 112, 112, 1);
+  -moz-box-shadow: 0px 1px 15px 0px rgba(112, 112, 112, 1);
+  box-shadow: 0px 1px 15px 0px rgba(112, 112, 112, 1); */
+
+  border: 1px solid rgba(204, 204, 204, 1);
+  padding: 5px !important;
+  margin-top: 2vh !important;
+}
+
+.white-color {
+  background: #ffffff;
+}
+
+.blue-solid {
+  background: #0033a1 !important;
+}
+
+.yellow-tile {
+  background: #ffd387 !important;
+}
+
+.grey-tile {
+  background: #d4d4d4 !important;
+}
+
+.step-title-holder .step-bar {
+  height: 1vh !important;
+  background: #d6d6d6 !important;
+  margin-top: 55% !important;
+}
+
+.digits {
+  font-family: 'digital-7';
+}
+
+/* DEFINE PAGE CONTAINER CSS */
+.page-container {
+  width: 100vw !important;
+  min-height: 100vh !important;
+  position: relative;
+}
+
+/* STYLE CHILD PAGES FOR ADMIN SECTION*/
+.admin-child-page {
+  width: 100% !important;
+  height: 100%;
+}
+
+.profile-photo {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: -5px !important;
+  left: 10% !important;
+}
+.profile-photo img {
+  height: 60px;
+}
+.blue-title {
+  color: #ffffff !important;
+  margin-top: 2vh !important;
+  margin-bottom: 5vh !important;
+  margin-left: 1% !important;
+  font-weight: 700 !important;
+  font-size: 1em !important;
+}
+.blue-menu span {
+  font-family: 'Segoe UI Bold';
+}
+
+.ngx-datatable.material .datatable-header .datatable-header-cell {
+  color: rgb(0, 51, 161);
+  font-size: 0.8em;
+  font-weight: bolder;
+  font-family: 'Segoe UI Bold';
+}
+/*
+=====================================================================
+style menu icons on the left
+---------------------------------------------------------------------
+*/
+.menu-icons {
+  position: absolute;
+  bottom: 0;
+  width: 60%;
+}
+.menu-icons span {
+  color: #ffd387;
+  font-family: 'Segoe UI Bold';
+  float: right;
+  margin-top: 5%;
+  margin-right: 15%;
+  cursor: pointer;
+}
+.menu-icons img {
+  height: 60% !important;
+  margin-left: 1%;
+  margin-top: 5%;
+  cursor: pointer;
+}
+
+.flip-in-hor-bottom {
+  -webkit-animation: flip-in-hor-bottom 0.5s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: flip-in-hor-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+nz-footer img {
+  /* height: 50px !important;
+  width: auto !important; */
+  width: 100% !important;
+}
+
+
+.ant-menu-inline .ant-menu-item,
+.ant-menu-inline .ant-menu-submenu-title {
+  width: 200px !important;
+}
+
+/* body .ui-table .ui-table-tbody > tr > td {
+  padding: 0 !important;
+  font-size: .8em !important;
+  line-height: 1em !important;
+  margin: 0 !important;
+} */
+
+@-webkit-keyframes flip-in-hor-bottom {
+  0% {
+    -webkit-transform: rotateX(80deg);
+    transform: rotateX(80deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes flip-in-hor-bottom {
+  0% {
+    -webkit-transform: rotateX(80deg);
+    transform: rotateX(80deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    opacity: 1;
+  }
+}
+
+.flip-out-hor-top {
+  -webkit-animation: flip-out-hor-top 0.45s
+    cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  animation: flip-out-hor-top 0.45s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+@-webkit-keyframes flip-out-hor-top {
+  0% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: rotateX(70deg);
+    transform: rotateX(70deg);
+    opacity: 0;
+  }
+}
+
+@keyframes flip-out-hor-top {
+  0% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: rotateX(70deg);
+    transform: rotateX(70deg);
+    opacity: 0;
+  }
+}
+
+.slide-in-fwd-center {
+  -webkit-animation: slide-in-fwd-center 0.4s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-fwd-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-in-fwd-center {
+  0% {
+    -webkit-transform: translateZ(-1400px);
+    transform: translateZ(-1400px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-fwd-center {
+  0% {
+    -webkit-transform: translateZ(-1400px);
+    transform: translateZ(-1400px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+/* css for the tables */
+
+*/ .admin-child-container {
+  position: absolute !important;
+  width: 115% !important;
+  height: 60vh !important;
+  background: #ffffff;
+  right: 0;
+  top: 4vh !important;
+}
+
+.shadow-right {
+  -webkit-box-shadow: 11px 0px 5px 0px rgba(204, 204, 204, 1);
+  -moz-box-shadow: 11px 0px 5px 0px rgba(204, 204, 204, 1);
+  box-shadow: 11px 0px 5px 0px rgba(204, 204, 204, 1);
+}
+
+.heartbeat {
+  -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
+  animation: heartbeat 1.5s ease-in-out infinite both;
+}
+/* ----------------------------------------------
+ * Generated by Animista on 2019-7-19 12:24:23
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+@-webkit-keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+    transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}
+@keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+    transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}

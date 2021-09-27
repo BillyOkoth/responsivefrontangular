@@ -1,0 +1,44 @@
+
+
+   <form nz-form [formGroup]="departmentForm">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="email">Name</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <input nz-input name="email"  formControlName="departmentName" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+          <nz-form-label [nzSpan]="6" nzFor="email">Department Head</nz-form-label>
+          <nz-form-control [nzSpan]="14">
+              <nz-select
+              formControlName="userid"
+              nzAllowClear
+              nzPlaceHolder="Assign Head Department"
+              class="input-size"
+              name = "userid"
+              >
+              <nz-option
+              *ngFor="let roles of roleLists"
+              [nzValue]="roles"
+              nzLabel="{{ roles.email}}"
+              >
+              {{ roles.email }}
+              </nz-option>
+              </nz-select>
+          </nz-form-control>      
+
+      </nz-form-item>
+    
+      <div nz-row nzType="flex" nzJustify="center">
+          <div nz-col nzSpan="24">
+             
+              <button
+               nz-button 
+               nzType="primary"
+               (click)="createDepartment()"
+               [disabled]="!departmentForm.valid || loading"
+               [nzLoading] = "loading"               
+               >Create Department</button>
+          </div>
+      </div>
+    </form>

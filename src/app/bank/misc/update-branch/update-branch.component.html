@@ -1,0 +1,39 @@
+<form  
+  autocomplete="off"
+  (ngSubmit)="editBranch()"
+>
+<nz-form-item>
+  <nz-form-label [nzSm]="6" [nzXs]="24">Branch Name</nz-form-label>
+  <nz-form-control [nzSm]="14" [nzXs]="24">
+    <input nz-input [(ngModel)]="this.branchName" id="branchName"
+    name = "branchName" maxlength="50" />
+  </nz-form-control>
+</nz-form-item>
+<nz-form-item>
+  <nz-form-label [nzSm]="6" [nzXs]="24">Branch Code</nz-form-label>
+  <nz-form-control [nzSm]="14" [nzXs]="24">
+    <input nz-input [(ngModel)]="this.branchCode"  id="branchCode"
+    name = "branchCode" maxlength="50" />
+  </nz-form-control>
+</nz-form-item>
+
+
+<nz-form-item> 
+<button 
+style = "margin-left: 15vw;"
+nz-button
+nzType="primary"
+[nzLoading]="saveloading" 
+(click)="editBranch()"
+
+>
+Edit Branch
+</button>
+
+</nz-form-item> 
+</form>
+
+
+
+
+

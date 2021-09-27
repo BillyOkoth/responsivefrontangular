@@ -1,0 +1,77 @@
+
+<h3 class="title">
+  Do you want to generate an eslip for ?
+</h3>
+
+<div nz-row nzGutter="16">
+  <div nz-col class="gutter-row" nzSpan="12">
+    <div class="gutter-box">
+      <h4>
+        NO OF ACCOUNTS:
+      </h4>
+    </div>
+  </div>
+  <div nz-col class="gutter-row" nzSpan="12">
+    <div class="gutter-box">
+      <h3>
+        {{ this.accountsCount }}
+      </h3>
+    </div>
+  </div>
+</div>
+<div nz-row>
+  <h3 class="text-style" *ngIf="loginService.oddCentsFound">
+    Ksh {{ loginService.oddCentAmount }} Added to account
+    {{ loginService.oddCentAccount }} to correct odd cents.
+  </h3>
+</div>
+<div nz-row nzGutter="16">
+  <div nz-col class="gutter-row" nzSpan="12">
+    <div class="gutter-box">
+      <h4>
+        AMOUNT TO PAY :
+      </h4>
+    </div>
+  </div>
+  <div nz-col class="gutter-row" nzSpan="12">
+    <div class="gutter-box">
+      <h3>
+        {{ loginService.paymentFileAmount | currency: 'Ksh.' }}
+      </h3>
+    </div>
+  </div>
+</div>
+
+<div nz-row nzType="flex" nzJustify="center" nzGutter="16">
+    <div nz-col class="gutter-row" nzSpan="12">
+        <button
+        nz-button
+        nzType="primary"
+        nzTooltipTitle="Proceed to Pay"
+        nzTooltipPlacement="topCenter"
+        nz-tooltip
+        [disabled]=" loading || disabled"
+        (click)="generateEslip()"
+      >
+        Proceed
+      </button>
+    </div>
+    <div nz-col class="gutter-row" nzSpan="12">
+        <button
+        nz-button
+        nzType="default"
+        nzTooltipTitle="Cancel"
+        nzTooltipPlacement="topCenter"
+        nz-tooltip
+       
+        (click)="closeDialog()"
+      >
+        Cancel
+      </button>
+    </div>
+  <div class="proceed">
+    
+
+    
+  </div>
+</div>

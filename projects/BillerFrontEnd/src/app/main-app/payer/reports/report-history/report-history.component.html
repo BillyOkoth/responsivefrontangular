@@ -1,0 +1,140 @@
+
+<div nz-row>
+  <div nz-col nzSpan="2">
+    <i
+      nz-icon
+      nzType="arrow-left"
+      nzTheme="outline"
+      style="font-size: 36px; color: #08c;"
+      nzTooltipTitle="Back"
+      nzTooltipPlacement="right"
+      nz-tooltip
+      (click)="closeView()"
+    ></i>
+  </div>
+</div>
+<div nz-row [formGroup] = "reportForm">
+  <div nz-col nzSpan="9">
+    <nz-date-picker
+      style="width: 100%;"
+    
+      nzTooltipTitle="Select Start Date"
+      nzTooltipPlacement="topCenter"
+      nz-tooltip
+      formControlName="from"
+      placeholder="Start"
+    ></nz-date-picker>
+  </div>
+  <div nz-col nzSpan="9">
+    <nz-date-picker
+    style="width: 100%;"
+     
+      nzTooltipTitle="Select End Date"
+      nzTooltipPlacement="topCenter"
+      nz-tooltip
+      formControlName="to"
+      placeholder="End"
+    ></nz-date-picker>
+  </div>
+  <div nz-col nzSpan="2">
+    <button
+      nz-button
+      nzType="primary"
+      nzTooltipTitle="Fiter Reconciliation Report"
+      nzTooltipPlacement="topCenter"
+      nz-tooltip
+      [disabled]="!reportForm.valid || loading"
+      (click)="getReconcileReports()"
+    
+    >
+      <i nz-icon nzType="redo"></i>
+    </button>
+  </div>
+
+  <div nz-col nzSpan="4">
+
+    <button
+    nz-button
+    nz-dropdown
+    [nzDropdownMenu]="menu4"
+    [nzLoading]="loading"
+    [disabled]="loading"    
+  >
+    Download
+    <i nz-icon nzType="down"></i>
+  </button>
+  <nz-dropdown-menu #menu4="nzDropdownMenu">
+    <ul nz-menu>
+      <li nz-menu-item (click)="downloadExcel()">Download Excel</li>
+      <li nz-menu-item (click)="downloadCsv()">Download Csv</li>
+      <li nz-menu-item (click)="downloadPdf()">Download PDF</li>
+    </ul>
+  </nz-dropdown-menu>
+
+
+
+  </div>
+</div>
+
+<nz-table #filterTable [nzData]="rows">
+  <thead>
+    <tr>
+      <th>
+        Date Created
+      </th>
+      <th>
+        Eslip No.
+      </th>
+      <th>
+        Eslip Amount
+      </th>
+      <th>
+        Payment Ref No
+      </th>
+      <th>
+        Corporate Id
+      </th>
+      <th>
+        Payment Date
+      </th>
+      <th>
+        Actions
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <nz-spin
+      nzSimple
+      [nzSize]="'large'"
+      *ngIf="this.loading === true"
+    ></nz-spin>
+
+    <tr
+      *ngFor="
+        let data of filterTable.data | historySearch: searchValue;
+        let i = index
+      "
+    >
+      <td>{{ data.created_at}}</td>
+      <td>{{ data.eslip_no }}</td>
+      <td>{{ data.amount | currency: "Ksh." }}</td>
+      <td>{{ data.payref}}</td>
+      <td>{{ data.corporateid}}</td>
+      <td>{{ data.payment_date}}</td>
+      <td>
+        <button
+          style="margin-left:1vh"
+          nz-button
+          nzType="link"
+          style="color: #f0ad4e;"
+          nzTooltipTitle="View Detailed Report."
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          (click)="viewDetailedReport(data.eslip_no)"
+        >
+          <i nz-icon nzType="eye"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

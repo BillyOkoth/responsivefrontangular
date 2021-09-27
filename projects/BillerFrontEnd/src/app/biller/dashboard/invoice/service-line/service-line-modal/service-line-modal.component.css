@@ -1,0 +1,11 @@
+.send-email-btn {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin-top: 5vh;
+    margin-right: 5vw;
+}
+
+.send-email-btn:hover {
+
+    color: white;
+}

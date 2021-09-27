@@ -1,0 +1,66 @@
+<form nz-form>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">Policy Holder Name</nz-form-label>
+    <nz-form-control
+      nzHasFeedback
+      [nzSpan]="14"
+      nzErrorTip="The policy holders name is required"
+    >
+      <input
+        nz-input
+        [(ngModel)]="policy_holder_name"
+        name="policy_name"
+        required
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">Policy Number</nz-form-label>
+    <nz-form-control
+      nzHasFeedback
+      [nzSpan]="14"
+      nzErrorTip="The policy number is required"
+    >
+      <input nz-input [(ngModel)]="policy_number" name="policy_numb" required />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">Policy Amount</nz-form-label>
+    <nz-form-control
+      nzHasFeedback
+      [nzSpan]="14"
+      nzErrorTip="Policy amount is required"
+    >
+      <input nz-input [(ngModel)]="policy_amount" name="policy_amo" required />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">Date</nz-form-label>
+    <nz-form-control nzHasFeedback [nzSpan]="14" nzErrorTip="Date is required">
+      <nz-date-picker
+        [(ngModel)]="policy_date"
+        (ngModelChange)="pickDate($event)"
+        name="policy_dat"
+        required
+      ></nz-date-picker>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control [nzSpan]="14" [nzOffset]="21">
+      <button
+        nz-button
+        nzType="primary"
+        (click)="savePolicy()"
+        [disabled]="
+          this.policy_amount == '' ||
+          this.policy_date == '' ||
+          this.policy_holder_name == '' ||
+          this.policy_number == ''
+        "
+      >
+        Create Policy
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

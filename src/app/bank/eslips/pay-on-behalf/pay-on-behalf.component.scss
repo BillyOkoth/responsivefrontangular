@@ -1,0 +1,258 @@
+/*
+======================================================================
+GET MAIN SECTIONS OF THE PAGE
+----------------------------------------------------------------------
+*/
+
+table {
+  width: 100%;
+}
+
+.big-column,
+.small-column {
+  height: 100%;
+}
+
+.big-column {
+  background: #ffffff;
+}
+
+.title,
+.company-details,
+.customize-look,
+.test-invoice {
+  height: 25% !important;
+}
+
+.title h2,
+h3 {
+  margin-left: 2vw !important;
+}
+
+.title h2 {
+  font-size: 3em;
+  font-family: 'Segoe UI Bold';
+  font-weight: 1900 !important;
+  color: #ffd387;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.title h3 {
+  color: #707070;
+  font-size: 2.5em;
+  font-weight: 300;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.icon-tab,
+.description,
+.progress {
+  position: relative;
+}
+
+.progress mat-progress-bar {
+  margin-top: 23% !important;
+  width: 70%;
+  float: right;
+}
+
+.progress span {
+  float: left !important;
+  color: #707070;
+  font-size: 2em !important;
+  margin-top: 15%;
+}
+
+.add-new-btn button {
+  display: block;
+  float: right !important;
+  margin-top: 3vh;
+}
+.description {
+  color: #707070;
+}
+
+.description p {
+  font-family: 'Segoe UI Bold';
+}
+
+.description p,
+.description h2 {
+  margin-left: 1% !important;
+}
+
+.description h2 {
+  font-weight: 300 !important;
+}
+
+.icon-tab mat-icon {
+  font-size: 3.5em;
+  margin-left: 2vw !important;
+  margin-top: 20% !important;
+}
+
+.small-column {
+  position: relative;
+}
+
+.small-column span {
+  position: absolute;
+  text-align: center !important;
+  width: 100%;
+}
+
+.small-column h2,
+.small-column mat-icon {
+  text-align: center !important;
+}
+
+.small-column h2 {
+  font-weight: 300 !important;
+  color: #707070;
+}
+
+.small-column .invite {
+  top: 2vh;
+}
+
+.small-column .support {
+  bottom: 2vh;
+}
+
+.small-column mat-icon {
+  background: #ffffff;
+  padding: 5% !important;
+  cursor: pointer;
+}
+
+.progress button {
+  position: absolute;
+  right: -5% !important;
+  top: 40% !important;
+}
+
+/* notification button*/
+.heartbeat {
+  position: absolute;
+  right: 13%;
+  top: 10%;
+}
+
+/* style generate invoice btn */
+.ebiller-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1000 !important;
+}
+
+/* SAVED MY DAY */
+/deep/ .mat-form-field-underline {
+  background-color: transparent !important;
+  display: none;
+}
+
+mat-form-field {
+  width: 90% !important;
+  /* background: #D6D6D6; */
+}
+th {
+  color: #0033a1;
+  font-size: 1em !important;
+  font-family: 'Segoe UI Regular';
+}
+
+mat-form-field .p-1 {
+  margin-left: 10vh;
+}
+
+mat-form-field input {
+  background: #d6d6d6;
+  padding: 2%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.container {
+  height: 110px;
+  width: 110px;
+  margin: 10px;
+  border: solid 5px black;
+  background-color: white;
+  display: inline-block;
+}
+
+.footer {
+  color: white !important;
+  font-size: 1em !important;
+  font-family: 'Segoe UI Regular';
+}
+
+.sticky {
+  position: absolute;
+  bottom: 0;
+  width: 71vw !important;
+  z-index: 90;
+  background: #616247ff;
+}
+
+.my-accounts {
+  color: #ffd387;
+  margin-left: 7vh;
+  font-size: 1.5em;
+}
+
+.add {
+  color: white;
+  background-color: #0033a1;
+  font-size: 35px;
+  height: 6vh;
+  width: 4vw;
+  text-align: center;
+  margin-top: 1.5vw;
+}
+
+.create-new {
+  margin-left: 3vw;
+  color: #0033a1;
+
+  font-family: 'Segoe UI Bold';
+}
+
+.add-btn {
+  margin-left: 16vw;
+  cursor: pointer;
+}
+
+.view-file {
+  margin-right: 1.5vw !important;
+}
+/* /deep/ .datatable-row-odd {
+  background: red;
+} */
+
+:host
+  ::ng-deep
+  .ngx-datatable.material:not(.cell-selection)
+  .datatable-body-row:hover
+  .datatable-row-group {
+  color: #ffffff !important;
+  background: #66655c;
+  transition: all 0.4s ease 0s;
+}
+
+.t-data {
+  font-weight: bolder;
+  text-align: center;
+}
+.t-row:hover {
+  background-color: rgb(90, 150, 228);
+}
+
+.generate-eslip {
+  
+}

@@ -1,0 +1,113 @@
+<div>
+  <nz-card>
+    <div>
+      <h3>Dear Customer</h3>
+      <h4>
+        To complete setting up your payers file please match the columns with what
+        you'd like to appear on the payers tables
+      </h4>
+    </div>
+  </nz-card>
+  <nz-divider nzText="Set Columns"></nz-divider>
+
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <nz-table nzBordered [nzData]="columns" [nzShowPagination]="false">
+        <thead>
+          <tr>
+            <th>Column Name</th>
+            <th>Column Number in Excel</th>
+            <th>Selected Column</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Customer</td>
+            <td>{{ this.customer }}</td>
+            <td>
+              <nz-select nzAllowClear [(ngModel)]="this.customer" class="input-size" style="width: 100%;" required>
+                <nz-option *ngFor="let roles of columns" [nzValue]="roles.index" nzLabel="{{ roles.header }}">
+                  {{ roles.header }}
+                </nz-option>
+              </nz-select>
+            </td>
+          </tr>
+          <tr>
+            <td>Customer Code</td>
+            <td>{{ this.customer_code }}</td>
+            <td>
+              <nz-select nzAllowClear [(ngModel)]="this.customer_code" class="input-size" style="width: 100%;" required>
+                <nz-option *ngFor="let roles of columns" [nzValue]="roles.index" nzLabel="{{ roles.header }}">
+                  {{ roles.header }}
+                </nz-option>
+              </nz-select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Email</td>
+            <td>{{ this.email }}</td>
+            <td>
+              <nz-select nzAllowClear [(ngModel)]="this.email" class="input-size" style="width: 100%;" required>
+                <nz-option *ngFor="let roles of columns" [nzValue]="roles.index" nzLabel="{{ roles.header }}">
+                  {{ roles.header }}
+                </nz-option>
+              </nz-select>
+            </td>
+          </tr>
+          <tr>
+            <td>Location</td>
+            <td>{{ this.location }}</td>
+            <td>
+              <nz-select nzAllowClear [(ngModel)]="this.location" class="input-size" style="width: 100%;" required>
+                <nz-option *ngFor="let roles of columns" [nzValue]="roles.index" nzLabel="{{ roles.header }}">
+                  {{ roles.header }}
+                </nz-option>
+              </nz-select>
+            </td>
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td>{{ this.phone }}</td>
+            <td>
+              <nz-select nzAllowClear [(ngModel)]="this.phone" class="input-size" style="width: 100%;" required>
+                <nz-option *ngFor="let roles of columns" [nzValue]="roles.index" nzLabel="{{ roles.header }}">
+                  {{ roles.header }}
+                </nz-option>
+              </nz-select>
+            </td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>{{ this.address }}</td>
+            <td>
+              <nz-select nzAllowClear [(ngModel)]="this.address" class="input-size" style="width: 100%;" required>
+                <nz-option *ngFor="let roles of columns" [nzValue]="roles.index" nzLabel="{{ roles.header }}">
+                  {{ roles.header }}
+                </nz-option>
+              </nz-select>
+            </td>
+          </tr>
+          <tr>
+            <td>City</td>
+            <td>{{ this.city }}</td>
+            <td>
+              <nz-select nzAllowClear [(ngModel)]="this.city" class="input-size" style="width: 100%;" required>
+                <nz-option *ngFor="let roles of columns" [nzValue]="roles.index" nzLabel="{{ roles.header }}">
+                  {{ roles.header }}
+                </nz-option>
+              </nz-select>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+  <div nz-row nzType="flex" nzJustify="end" class="button" style="margin-top: 5vh;">
+    <div nz-col nzSpan="2">
+      <button nz-button nzType="primary" (click)="saveColumns()" [nzLoading]="loading">
+        Save
+      </button>
+    </div>
+  </div>
+</div>

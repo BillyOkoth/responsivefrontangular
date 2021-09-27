@@ -1,0 +1,15 @@
+<div>
+    <h3>Are you sure you want to Reject ?</h3>
+  
+    <p>{{userName}}</p>
+  
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <button nz-button nzType="default" (click)="closeDialog()">Cancel</button>
+      </div>
+      <div nz-col nzSpan="12">
+        <button nz-button nzType="danger" (click)="  RejectDeleteUser()" [nzLoading]="loading" >Reject</button>
+      </div>
+    </div>
+  </div>
+  

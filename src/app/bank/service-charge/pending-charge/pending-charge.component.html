@@ -1,0 +1,89 @@
+<div nz-row>
+  <div nz-col nzSpan="12">
+    <input
+      nz-input
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      style="width: 100%;"
+      maxlength="100"
+    />
+  </div>
+  <div nz-col nzSpan="12">
+    <div nz-row nzType="flex" nzJustify="end">
+   
+      <div nz-col nzSpan="2">
+        <button
+          nz-button
+          nzTooltipTitle="Download Excel."
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          [nzLoading]="loading"
+          [disabled]="loading || !this.role.serviceRole"
+          (click)="downloadExcel()"
+        >
+          <i nz-icon nzType="download" nzTheme="outline"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #basicTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th class="header">#</th>
+          <th class="header">Year</th>
+          <th class="header">Month</th>
+          <th class="header">Amount</th>
+          <th class="header">No.Of Accounts.</th>
+          <th class="header">Actions</th>
+       
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of rows | chargeMonth: searchValue; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.year }}</td>
+          <td>{{ this.getMonth(data) }}</td>
+          <td>{{ data.amount | currency: "Ksh."}}</td>
+          <td>{{ data.accounts }}</td>
+          <td>
+            <button
+              style="margin-left:1vh"
+              nz-button
+              nzType="link"
+              style="color: #f0ad4e;"
+              nzTooltipTitle="View Service Charge Details."
+              nzTooltipPlacement="topCenter"
+              nz-tooltip
+              [disabled]="loading || !this.role.serviceRole"
+              (click)="getServiceChargeDetails(data)"
+            >
+              <i nz-icon nzType="eye"></i>
+            </button>
+            <button
+              style="margin-left:1vh"
+              nz-button
+              nzType="link"
+              style="color: #5cb85c;"
+              nzTooltipTitle="Update Service Charge"
+              nzTooltipPlacement="topCenter"
+              nz-tooltip
+              (click)="updateServiceCharge(data)"
+              [disabled]="loading || !this.role.serviceRole"
+            >
+            <i nz-icon nzType="redo" nzTheme="outline"></i>
+            </button>
+          </td>
+          <!-- <td
+        nzShowCheckbox
+        [(nzChecked)]="data.checked"
+        (nzCheckedChange)="updateSingleChecked(data)"
+      ></td> -->
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</cdk-virtual-scroll-viewport>

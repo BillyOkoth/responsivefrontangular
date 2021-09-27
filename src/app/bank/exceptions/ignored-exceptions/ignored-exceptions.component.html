@@ -1,0 +1,49 @@
+<div nz-row [nzGutter]="10" style="margin-bottom:2vh;">
+  <div nz-col nzSpan="12">
+    <input
+      nz-input
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      style="width: 100%;"
+      maxlength="100"
+    />
+  </div>
+</div>
+
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-table #basicTable [nzData]="rows" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th class="header">#</th>
+        <th class="header">Date Created</th>
+        <th class="header">Amount</th>
+        <th class="header">Reference</th>
+        <th class="header">FT</th>
+        <th class="header">EslipNo</th>
+        <th class="header">Restore</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of rows | searchPayer: searchValue; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ row.created_at | date: "short" }}</td>
+        <td>{{ row.amount }}</td>
+        <td>{{ row.reference }}</td>
+        <td>{{ row.ft }}</td>
+        <td>{{ row.eslip_no }}</td>
+        <td>
+          <button
+            nz-button
+            nzType="link"
+            nzTooltipTitle="Restore Payment"
+            nzTooltipPlacement="topCenter"
+            nz-tooltip
+            (click)="restorePayments(row)"
+          >
+            <i nz-icon nzType="check" nzTheme="outline"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</cdk-virtual-scroll-viewport>

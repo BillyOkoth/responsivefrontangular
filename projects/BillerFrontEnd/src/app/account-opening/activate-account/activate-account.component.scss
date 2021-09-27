@@ -1,0 +1,88 @@
+.activation-holder {
+    height: 100vh !important;
+}
+
+// style parent sections of the page
+.logo-section, .form-section{
+    height: 95% !important;
+    margin-top: 1% !important; 
+}
+
+.logo-section h2 {
+
+    font-weight: 300 !important;
+    font-size: 3.5em !important;
+    margin-top: 30% !important;
+
+}
+
+.logo-section span{
+    font-family: 'Segoe UI Bold';
+    font-weight: 1000 !important;
+    color: #707070;
+}
+
+
+// style form section of the page
+.blue-background h2 {
+    font-size: 3em !important;
+    font-weight: 300 !important;
+    margin-top: 5% !important;
+    text-align: center;
+}
+.blue-background p {
+    text-align: center !important;
+    color: #ffffff !important;
+    font-family: 'Segoe UI Bold';
+}
+.blue-background mat-form-field {
+    width: 90% !important;
+    margin-left: 5% !important;
+}
+
+mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: #D6D6D6 !important;
+  }
+  
+  /deep/ .mat-form-field-underline {
+    background-color: #D6D6D6 !important;
+  
+  }
+  
+  /deep/ .mat-form-field-placeholder {
+  
+    color: #D6D6D6 !important;
+  }
+  
+  .placeholder {
+    color: #D6D6D6 !important;
+    font-weight: 500 !important;
+  }
+
+  button {
+    display: block;
+    margin: auto;
+    margin-top: 5vh !important;
+  }
+
+  .is-invalid {
+    border-left: solid 6px red;
+  }
+  
+  .material-icons {
+    display: inline-flex;
+    vertical-align: middle;
+  }
+  .text-danger{
+    color:#ffd387;
+    font-family: 'Segoe UI Bold';
+  }
+  .text-success{
+    color: #ffffff !important;
+    font-family: 'Segoe UI Bold';
+  }
+  .col{
+    margin-bottom: 0.25vh;
+  }
+
+  

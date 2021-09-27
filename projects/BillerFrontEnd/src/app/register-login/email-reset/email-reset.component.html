@@ -1,0 +1,95 @@
+
+<div class="container">
+  <div nz-row nzGutter="16" class="toolbar">
+    <div nz-col class="gutter-row" nzSpan="8">
+      <div class="logo">
+        <img
+          src="assets/images/Group 1633.png"
+          alt="logo"
+          (click)="toHomePage()"
+        />
+      </div>
+    </div>
+    <div nz-col class="gutter-row" nzSpan="8">
+      <div nz-row nzJustify="center">
+        <div nz-col nzSpan="8">
+          <div class="title"><h2 class="text-title">E-biller</h2></div>
+        </div>
+      </div>
+    </div>
+    <div nz-col class="gutter-row" nzSpan="8">
+      <div class="gutter-box" nz-row nzJustify="end">
+        <div nz-col nzSpan="12"></div>
+        <div nz-col nzSpan="12" class="home-wrp">
+          <button
+            nz-button
+            nzType="default"
+            class="home-btn"
+            (click)="toHomePage()"
+          >
+            Home
+            <i nz-icon nzType="home" nzTheme="outline"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bluescreen">
+    <div id="particles-js"></div>
+    <div class="loginscreen shadow">
+      <div class="title-login">
+        Forgot Password
+      </div>
+
+      <form
+        nz-form
+        [formGroup]="emailResetForm"
+        class="login-form"
+        (ngSubmit)="emailReset()"
+      >
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please enter your email">
+            <nz-input-group nzPrefixIcon="mail">
+              <input
+                type="email"
+                nz-input
+                formControlName="email"
+                placeholder="Email"
+                maxlength="50"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <button
+          nz-button
+          class="login-form-button"
+          [nzType]="'primary'"
+          [disabled]="emailResetForm.invalid || loading"
+          (click)="emailReset()"
+          nzBlock
+          [nzLoading]="loading"
+        >
+          Send Email<i nz-icon nzType="mail" nzTheme="outline"></i>
+        </button>
+        <div nz-row>
+          <a
+            class="login-form-forgot"
+            class="login-form-forgot"
+            routerLink="/login/sms-reset"
+            >Send sms!</a
+          >
+          
+        </div>
+        <div nz-row>
+          <a
+            class="login-form-forgot"
+            class="login-form-forgot"
+            routerLink="/login"
+            >Back to Login!</a
+          >
+          
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

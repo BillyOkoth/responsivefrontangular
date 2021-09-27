@@ -1,0 +1,185 @@
+<div class="activation-holder" nz-row>
+  <div class="logo-section" nz-col nzSpan="12">
+    <img src="assets/images/Group 1003.png" alt="logo" />
+
+    <h2>
+      Hi {{ activatedBillerName }}, welcome to <br />
+      <span>E-Biller,</span>
+    </h2>
+    <h3>
+      Please Note that your username is ::
+      {{ activatedBillerEmail }}
+    </h3>
+  </div>
+
+  <div class="form-section blue-background shadow" nz-col nzSpan="12">
+    <h2 class="text-color-yellow">
+      Set your password.
+    </h2>
+
+    <p>
+      Switch your password to a more personalized one, <br />
+      for your ease of remembrance
+    </p>
+
+    <form action="" nz-form autocomplete="off" [formGroup]="activateForm">
+      <div nz-row nzType="flex" nzJustify="center">
+        <div nz-col nzSpan="12">
+
+          <nz-form-item>
+            <nz-form-control>
+              <!-- <nz-form-control nzErrorTip="Please input your Password!"> -->
+              <nz-input-group>
+                <input class="col" type="password" nz-input formControlName="newPass" placeholder="Password"
+                  name="newPass" maxlength="50" width="20vh" id="newPass" required (keyup)="checkPassword()"
+                  maxlength="50" />
+
+                <!-- <div class="col">
+                  <label class="col"
+                    [ngClass]="activateForm.controls['newPass'].hasError('required') || activateForm.controls['newPass'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                    <i class="material-icons">{{ activateForm.controls['newPass'].hasError('required') ||
+                    activateForm.controls['newPass'].hasError('minlength') ? 'cancel' :
+                    'check_circle' }}</i>
+                    Must be at least 8 characters!
+                  </label>
+                </div> -->
+                <!-- <div class="col">
+                  <label class="col"
+                    [ngClass]="activateForm.controls['newPass'].hasError('required') || activateForm.controls['newPass'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                    <i class="material-icons">{{ activateForm.controls['newPass'].hasError('required') ||
+                      activateForm.controls['newPass'].hasError('hasNumber') ? 'cancel' :
+                      'check_circle' }}</i>
+                    Must contain at least 1 number!
+                  </label>
+
+                </div> -->
+                <!-- <div class="col">
+                  <label class="col"
+                    [ngClass]="activateForm.controls['newPass'].hasError('required') || activateForm.controls['newPass'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                    <i class="material-icons">{{ activateForm.controls['newPass'].hasError('required') ||
+                      activateForm.controls['newPass'].hasError('hasCapitalCase') ? 'cancel' :
+                      'check_circle' }}</i>
+                    Must contain at least 1 in Capital Case!
+                  </label>
+                </div> -->
+                <!-- <div class="col">
+                  <label class="col"
+                    [ngClass]="activateForm.controls['newPass'].hasError('required') || activateForm.controls['newPass'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                    <i class="material-icons">{{ activateForm.controls['newPass'].hasError('required') ||
+                      activateForm.controls['newPass'].hasError('hasSmallCase') ? 'cancel' :
+                      'check_circle' }}</i>
+                    Must contain at least 1 Letter in Small Case!
+                  </label>
+                </div>
+                <div class="col">
+                  <label class="col"
+                    [ngClass]="activateForm.controls['newPass'].hasError('required') || activateForm.controls['newPass'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+                    <i class="material-icons">{{ activateForm.controls['newPass'].hasError('required') ||
+                    activateForm.controls['newPass'].hasError('hasSpecialCharacters') ? 'cancel' :
+                    'check_circle' }}</i>
+                    Must contain at least 1 Special Character!
+                  </label>
+                </div> -->
+
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <div nz-row nzType="flex" nzJustify="center">
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-control>
+              <!-- <nz-form-control nzErrorTip="Please Confirm your Password!"> -->
+              <nz-input-group>
+                <input type="password" nz-input placeholder=" Confirm Password" formControlName="confirmPass"
+                  id="confirmPass" name="confirmPass" maxlength="50" /> 
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div nz-row nzType="flex" style="margin-top: 1vh;" nzJustify="center">
+        <div nz-col nzSpan="12">
+          <label class="text-danger" *ngIf="activateForm.controls['confirmPass'].hasError('required')">
+            Password is Required!
+          </label>
+
+          <label class="text-danger" *ngIf="activateForm.controls['confirmPass'].hasError('NoPassswordMatch')">
+            Password do not match
+          </label>
+
+        </div>
+      </div>
+      <div nz-row nzType="flex" nzJustify="center">
+        <div nz-col nzSpan="12">
+          <button nz-button [nzType]="'primary'" [disabled]="activateForm.invalid || loading"
+            (click)="submitPasswordChange()" nzBlock [nzLoading]="loading">
+            <i nz-icon nzType="login" nzTheme="outline"></i>
+          </button>
+        </div>
+      </div>
+      <div nz-row nzType="flex" style="margin-top: 5vh;" nzJustify="center">
+        <div nz-col nzSpan="12">
+          <label class="col"
+            [ngClass]="activateForm.controls['newPass'].hasError('required') || activateForm.controls['newPass'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+            <i class="material-icons">{{ activateForm.controls['newPass'].hasError('required') ||
+                    activateForm.controls['newPass'].hasError('minlength') ? 'cancel' :
+                    'check_circle' }}</i>
+            Must be at least 8 characters!
+          </label>
+        </div>
+
+      </div>
+      <div nz-row nzType="flex" style="margin-top: 2.5vh;" nzJustify="center">
+        <div nz-col nzSpan="12">
+          <label class="col"
+            [ngClass]="activateForm.controls['newPass'].hasError('required') || activateForm.controls['newPass'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+            <i class="material-icons">{{ activateForm.controls['newPass'].hasError('required') ||
+            activateForm.controls['newPass'].hasError('hasNumber') ? 'cancel' :
+            'check_circle' }}</i>
+            Must contain at least 1 number!
+          </label>
+        </div>
+      </div>
+      <div nz-row nzType="flex" style="margin-top: 2.5vh;" nzJustify="center">
+        <div nz-col nzSpan="12">
+          <label class="col"
+            [ngClass]="activateForm.controls['newPass'].hasError('required') || activateForm.controls['newPass'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+            <i class="material-icons">{{ activateForm.controls['newPass'].hasError('required') ||
+                      activateForm.controls['newPass'].hasError('hasCapitalCase') ? 'cancel' :
+                      'check_circle' }}</i>
+            Must contain at least 1 in Capital Case!
+          </label>
+
+        </div>
+      </div>
+      <div nz-row nzType="flex" style="margin-top: 2.5vh;" nzJustify="center">
+        <div nz-col nzSpan="12">
+          <label class="col"
+            [ngClass]="activateForm.controls['newPass'].hasError('required') || activateForm.controls['newPass'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+            <i class="material-icons">{{ activateForm.controls['newPass'].hasError('required') ||
+                      activateForm.controls['newPass'].hasError('hasSmallCase') ? 'cancel' :
+                      'check_circle' }}</i>
+            Must contain at least 1 Letter in Small Case!
+          </label>
+        </div>
+      </div>
+      <div nz-row nzType="flex" style="margin-top: 2.5vh;" nzJustify="center">
+        <div nz-col nzSpan="12">
+          <label class="col"
+          [ngClass]="activateForm.controls['newPass'].hasError('required') ||
+          activateForm.controls['newPass'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+          <i class="material-icons">{{ activateForm.controls['newPass'].hasError('required') ||
+          activateForm.controls['newPass'].hasError('hasSpecialCharacters') ? 'cancel' :
+          'check_circle' }}</i>
+          Must contain at least 1 Special Character!
+          </label>
+        </div>
+      </div>
+
+   
+    </form>
+  </div>
+</div>

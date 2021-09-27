@@ -1,0 +1,84 @@
+<div nz-row nzType="flex" style="margin-bottom: 2vh;">
+  <div nz-col nzSpan="12">
+    <input nz-input placeholder="Search" [(ngModel)]="searchValue" style="width: 100%;" maxlength="100" />
+  </div>
+  <div nz-col nzSpan="12">
+    <div nz-row nzType="flex" nzJustify="end" nzGutter="16">
+      <div nz-col nzSpan="">
+        <button nz-button nzType="primary" nzTooltipTitle="Payer Mapping " nzTooltipPlacement="topCenter" nz-tooltip
+          (click)="payerMapModal()">
+          Payer Mapping
+          <i nz-icon nzType="user-add"></i>
+        </button>
+      </div>
+      <div nz-col nzSpan="6">
+        <button nz-button nzType="default" nzTooltipTitle="Create Payer" nzTooltipPlacement="topCenter" nz-tooltip
+          (click)="uploadPayer()">
+          Create Payer
+          <i nz-icon nzType="usergroup-add"></i>
+        </button>
+      </div>
+      <div nz-col nzSpan="4">
+        <button nz-button style="background-color: #5cb85c;" nzTooltipTitle="Download Excel."
+          nzTooltipPlacement="topCenter" nz-tooltip [nzLoading]="loading" (click)="downloadCSV()">
+          <i nz-icon nzType="download"></i>
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #basicTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th class="header">#</th>
+          <th class="header">First Name</th>
+          <th class="header">Last Name</th>
+          <th class="header">Company Name</th>
+
+          <th class="header">Email</th>
+          <th class="header">Phone Number</th>
+          <th class="header">Accounts</th>
+          <th class="header">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of rows| mypayersSearch: searchValue;let i = index ">
+          <td>{{ i + 1 }}</td>
+          <td>{{ row.firstName }}</td>
+          <td>{{ row.lastName }}</td>
+          <td>{{ row.company_name }}</td>
+          <td>{{ row.email }}</td>
+          <td>{{ row.payer_phone}}</td>
+
+          <td>{{ row.accounts }}</td>
+          <td>
+            <button nz-button nzType="link" nzTooltipTitle="View Payer Details." nzTooltipPlacement="topCenter"
+              nz-tooltip (click)="viewMore(row)">
+              <i nz-icon nzType="eye" nzTheme="outline"></i>
+            </button>
+            <button nz-button nzType="danger" nzTooltipTitle="Delete Payer." nzTooltipPlacement="topCenter" nz-tooltip
+              (click)="deletePayer(row)">
+              <i nz-icon nzType="delete"></i>
+            </button>
+            <button nz-button nzType="link" style="color: #f0ad4e;" nzTooltipTitle="Resend Invite."
+              nzTooltipPlacement="topCenter" nz-tooltip (click)="resendInvite(row)">
+              <i nz-icon nzType="mail" nzTheme="outline"></i>
+            </button>
+            <button nz-button nzType="link" nzTooltipTitle="Edit Payer" nzTooltipPlacement="topCenter" nz-tooltip
+              (click)="editPayer(row)">
+              <i nz-icon nzType="edit" nzTheme="outline"></i>
+            </button>
+            <button nz-button nzType="link" style="color: green;" nzTooltipTitle="Add Payer to Team"
+              nzTooltipPlacement="topCenter" nz-tooltip (click)="assignPayertoTeam(row)">
+              <i nz-icon nzType="team" nzTheme="outline"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</cdk-virtual-scroll-viewport>

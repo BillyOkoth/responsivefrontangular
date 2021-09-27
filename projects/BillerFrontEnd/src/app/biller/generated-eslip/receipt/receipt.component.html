@@ -1,0 +1,310 @@
+<div *ngIf="this.closed_biller_type == 'A'" >
+<div nz-row nzType="flex" nzJustify="start"  >
+    <!-- <div nz-col nzSpan="12">
+       <i
+       nz-icon
+       nzType="arrow-left"
+       nzTheme="outline"
+       style="font-size: 36px; color: #08c;"
+       nzTooltipTitle="Back"
+       nzTooltipPlacement="right"
+       nz-tooltip
+       (click)="closeView()"
+     ></i>
+    </div> -->
+    <div nz-col nzSpan="12">
+      <div nz-row nzType="flex" nzJustify="end">
+         <button
+         nz-button
+         nzTheme="outline"
+         style="font-size: 36px; color: #08c;"
+         nzType="link"
+         nzTooltipTitle="Download Recept Pdf."
+         nzTooltipPlacement="left"
+         nz-tooltip
+         [disabled]="loading || !this.role.eslipRole"
+         (click)="receiptPdf()"
+       >
+         <i nz-icon nzType="download"></i>
+       </button>
+      </div>
+    </div>
+ </div>
+ 
+   <div class="invoice-box">
+     <table cellpadding="0" cellspacing="0"style="empty-cells: show;">
+         <tr class="top ">
+             <td colspan="2">
+               
+                 <div class="receipt-header" >
+                     PAYMENT RECEIPT
+                 </div>
+                 <table style="empty-cells: show;" >
+                     <tr>
+                         <td class="title">
+                                 <img
+                                 style="width:100%; max-width:100px;"
+                                 src="{{ 'data:image/jpg;base64,' + biller_logo }}"                                       
+                               />                                   
+                         </td>                                
+                         
+                         <td style="padding-left: 20vh;margin-left: 20vh;">
+                             CREATED DATE :<br>
+                             EXPIRY DATE:<br>     
+                         </td>
+                         <td  style="padding-left: 5vh; align-content:right;" >
+                             {{ this.eslip_date }}<br>
+                             {{ this.expiry_date }}<br>     
+                         </td>                                
+                     </tr>
+                 </table>
+             </td>
+         </tr>
+         
+         <tr class="information">
+             <td colspan="2">
+                 <table>
+                     <tr>
+                         <td class="title">
+                            <br>
+                            {{this.clientName}}                                   
+                         </td>                                                             
+                         
+                     </tr>
+                 </table>
+             </td>
+         </tr>
+         
+         <tr class="heading">
+             <td class="receipt-header">
+                 BILLER INFORMATION
+             </td>  
+             <td>
+             </td>
+             <td></td>
+             <td>
+             </td>
+             <td></td>
+             <td></td>
+             <td></td>                 
+         </tr>  
+         <tr style="margin-top: 5vh;">
+           
+             <td style="padding-top: 3vh;">
+                 COMPANY WEBSITE :<br>
+                 COMPANY EMAIL:<br>                 
+             </td>
+             <td style="padding-top: 3vh;">
+                 {{ this.website }}<br>              
+                 {{ this.customerCare }}<br>   
+             </td>                    
+         </tr>
+ 
+        
+         <tr class="heading">
+             <td class="receipt-header">
+                 PAYER DETAILS
+             </td>  
+             <td>
+             </td>
+             <td></td>
+             <td>
+             </td>
+             <td></td>
+             <td></td>
+             <td></td>                 
+         </tr>
+         <tr style="margin-top: 5vh;">
+             <td style="padding-top: 3vh;" >
+                 ESLIP NO.
+             </td>
+             <td style="padding-left:5vh;">
+                 FT REFERENCE NO.
+             </td>
+             
+             <td style="padding-left:5vh;">
+               ESLIP AMOUNT
+             </td>
+         </tr>
+         
+         <tr class="item">
+             <td>
+               {{this.eslip_no}}
+             </td>
+             <td style="padding-left:5vh;">
+                 {{this.bank_ref}}
+                </td>
+             
+             <td style="padding-left:5vh;">
+              {{this.eslip_amount}}
+             </td>
+         </tr>               
+        
+         
+         <tr class="item">
+             <td></td>
+             <td style="padding-left:5vh; font-weight: bolder;">Total:</td>
+             
+             <td style="font-weight: bolder;">
+                 Ksh  {{this.eslip_amount}}
+             </td>
+         </tr>
+     </table>
+ </div>
+</div>
+ 
+
+<div *ngIf="this.closed_biller_type == 'B'" >
+    <div nz-row nzType="flex" nzJustify="start"  >
+        <!-- <div nz-col nzSpan="12">
+           <i
+           nz-icon
+           nzType="arrow-left"
+           nzTheme="outline"
+           style="font-size: 36px; color: #08c;"
+           nzTooltipTitle="Back"
+           nzTooltipPlacement="right"
+           nz-tooltip
+           (click)="closeView()"
+         ></i>
+        </div> -->
+        <div nz-col nzSpan="12">
+          <div nz-row nzType="flex" nzJustify="end">
+             <button
+             nz-button
+             nzTheme="outline"
+             style="font-size: 36px; color: #08c;"
+             nzType="link"
+             nzTooltipTitle="Download Recept Pdf."
+             nzTooltipPlacement="left"
+             nz-tooltip
+             [disabled]="loading || !this.role.eslipRole"
+             (click)="receiptPdf()"
+           >
+             <i nz-icon nzType="download"></i>
+           </button>
+          </div>
+        </div>
+     </div>
+     
+       <div class="invoice-box">
+         <table cellpadding="0" cellspacing="0"style="empty-cells: show;">
+             <tr class="top ">
+                 <td colspan="2">
+                   
+                     <div class="receipt-header" >
+                         PAYMENT RECEIPT
+                     </div>
+                     <table style="empty-cells: show;" >
+                         <tr>
+                             <td class="title">
+                                     <img
+                                     style="width:100%; max-width:100px;"
+                                     src="{{ 'data:image/jpg;base64,' + biller_logo }}"                                       
+                                   />                                   
+                             </td>                                
+                             
+                             <td style="padding-left: 20vh;margin-left: 20vh;">
+                                 CREATED DATE :<br>
+                                 EXPIRY DATE:<br>     
+                             </td>
+                             <td  style="padding-left: 5vh; align-content:right;" >
+                                 {{ this.eslip_date }}<br>
+                                 {{ this.expiry_date }}<br>     
+                             </td>                                
+                         </tr>
+                     </table>
+                 </td>
+             </tr>
+             
+             <tr class="information">
+                 <td colspan="2">
+                     <table>
+                         <tr>
+                             <td class="title">
+                                <br>
+                                {{this.clientName}}                                   
+                             </td>                                                             
+                             
+                         </tr>
+                     </table>
+                 </td>
+             </tr>
+             
+             <tr class="heading">
+                 <td class="receipt-header">
+                     BILLER INFORMATION
+                 </td>  
+                 <td>
+                 </td>
+                 <td></td>
+                 <td>
+                 </td>
+                 <td></td>
+                 <td></td>
+                 <td></td>                 
+             </tr>  
+             <tr style="margin-top: 5vh;">
+               
+                 <td style="padding-top: 3vh;">
+                     COMPANY WEBSITE :<br>
+                     COMPANY EMAIL:<br>                 
+                 </td>
+                 <td style="padding-top: 3vh;">
+                     {{ this.website }}<br>              
+                     {{ this.customerCare }}<br>   
+                 </td>                    
+             </tr>
+     
+            
+             <tr class="heading">
+                 <td class="receipt-header">
+                     PAYER DETAILS
+                 </td>  
+                 <td>
+                 </td>
+                 <td></td>
+                 <td>
+                 </td>
+                 <td></td>
+                 <td></td>
+                 <td></td>                 
+             </tr>
+             <tr style="margin-top: 5vh;">
+                 <td style="padding-top: 3vh;" >
+                     ESLIP NO.
+                 </td>
+                 <td style="padding-left:5vh;">
+                     FT REFERENCE NO.
+                 </td>
+                 
+                 <td style="padding-left:5vh;">
+                   ESLIP AMOUNT
+                 </td>
+             </tr>
+             
+             <tr class="item">
+                 <td>
+                   {{this.eslip_no}}
+                 </td>
+                 <td style="padding-left:5vh;">
+                     {{this.bank_ref}}
+                    </td>
+                 
+                 <td style="padding-left:5vh;">
+                  {{this.eslip_amount}}
+                 </td>
+             </tr>               
+            
+             
+             <tr class="item">
+                 <td></td>
+                 <td style="padding-left:5vh; font-weight: bolder;">Total:</td>
+                 
+                 <td style="font-weight: bolder;">
+                     Ksh  {{this.eslip_amount}}
+                 </td>
+             </tr>
+         </table>
+     </div>
+    </div>

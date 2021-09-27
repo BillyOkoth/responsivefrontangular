@@ -1,0 +1,198 @@
+
+/* main content of the page */
+.content {
+    height: 200vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+}
+
+.cancel-btn {
+    position: absolute;
+    top: 4vh !important;
+    left: 1vw !important;
+}
+.cancel-btn mat-icon{
+    font-size: 3em !important;
+}
+.split-content {
+    height: 100%;
+}
+.split-content .white, .split-content .grey{
+    height: 100vh;
+}
+.split-content .white {
+    background: #ffffff !important;
+}
+
+.form-input {
+    margin-top: 3vh !important;
+}
+
+.group-title h1, .group-title h3 {
+    font-family: "Segoe UI Bold"
+}
+.group-title h1 {
+    margin-left: 5vw;
+    // margin-top: 1vh !important;
+    font-size: 2.5em;
+}
+
+.group-title h2 {
+    margin-left: 6vw;
+    font-family: "Segoe UI Light";
+    // margin-top: 1vh !important;
+    
+}
+
+.group-title h3, .group-list h3 {
+    margin-left: 8vw;
+    font-family: "Segoe UI Bold";
+    color: #0033a1;
+    margin-top: 5vh !important;
+}
+
+
+.list-item {
+
+   list-style: none;
+    overflow-y: scroll;
+    height:48vh;
+
+}
+.active-row {
+    /* background: #ececec !important; */
+    background: #0033a1 !important;
+}
+
+mat-form-field {
+    background: #ececec;
+    width: 100%;
+}
+
+.form-elm button{
+    display: block;
+    margin: auto;
+    margin-top: 1.5vh !important;
+}
+/* SAVED MY DAY */
+::v-deep.mat-form-field-underline {
+    background-color: transparent !important;
+    display: none;
+  
+  }
+
+  .active{
+      background: #ececec;
+  }
+
+  .bold {
+    font-family: "Segoe UI Bold";
+    text-align: right;
+   /* background-color: red !important; */
+  }
+
+  /* .department :active {
+    color:Red;
+  } */
+  .ligh {
+    font-family: "Segoe UI Light";
+    margin-left: 1vw !important;
+  }
+  .row-list-group {
+      cursor: pointer;
+      /* height:3.5vh; */
+  }
+    .active-row {
+      /* background: #ececec !important; */
+      background: #0033a1 !important;
+  }
+
+  .row-list-group:hover {
+        background: #ececec !important;
+  }
+
+
+.row-list-group.selected {
+    background-color: aqua;
+  }
+
+
+  .grey-title {
+      margin-top: 1vh !important;
+  }
+  .grey-title h3{
+    // margin-left: 8vw;
+    font-family: "Segoe UI Bold";
+    color: #0033a1;
+      
+  }
+
+  .col-title {
+      position: relative;
+      border: 1px solid #d6d6d6;
+      border-radius: 5px;
+  }
+  .col-title h1{
+      text-align: center !important;
+      font-family: "Segoe UI Light";
+      font-weight: 300;
+  }
+  .col-btn{
+      position: absolute;
+      right: 0;
+      top: 0 !important;
+  }
+
+  .roles-title h4{
+    margin-left: 5vw;
+    margin-top: 1vh !important;
+  }
+
+  .user-list {
+    position: relative;
+
+  }
+  .user-list .update-button{
+      position: absolute;
+      right: 1vw !important;
+      top: 15vh !important;
+  }
+  .user-list .delete-button{
+    position: absolute;
+    right: 10vw !important;
+    top: 15vh !important;
+}
+  .user-list .list-content{
+      height: 30vh !important;
+      border-top: 1px solid #d6d6d6;
+
+  }
+  .selected {
+    background-color: aqua;
+  }
+.role-checkbox-ctnt .item-list {
+    list-style: none; 
+    overflow-y: scroll; 
+    height:150px;
+}
+.role-checkbox-ctnt .menu-item-list {
+
+    list-style:none;
+}
+
+.add-btn{
+    margin-top: 5vh;
+}
+
+#header{
+    color: red;
+    padding-left: 10px;
+    // text-align: center;
+    width: 100px;
+    
+}
+
+.role-title{
+    text-align: center;
+}

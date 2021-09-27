@@ -1,0 +1,97 @@
+<nz-layout>
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <div
+      class="background-div-hack bounce-in-top"
+      [style.background]="brandTheme"
+      *ngIf="!isCollapsed"
+    ></div>
+    <div class="logo">
+      <h2 *ngIf="!isCollapsed" class="slide-in-elliptic-bottom-fwd">
+        E- Biller
+      </h2>
+    </div>
+
+    <ul
+      nz-menu
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+      style="background: none !important;"
+      class="stick"
+    >
+      <nz-spin nzSimple *ngIf="this.loading === true"></nz-spin>
+
+      <li>
+        <div style="margin-left:20px; margin-bottom:20px">
+          <b>{{ userName }}</b>
+        </div>
+        <br />
+      </li>
+
+      <li>
+        <div style="margin-left:20px; margin-bottom:20px"><b>Bank</b></div>
+        <br />
+      </li>
+
+      <div *ngFor="let menu of dashMenus">
+        <li nz-menu-item routerLink="{{ menu.url }}">
+          <i nz-icon nzType="{{ menu.icon }}" nzTheme="outline"></i>
+
+          <span
+            ><a
+              class="link"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              pTooltip="View your dashboard"
+              *ngIf="!isCollapsed"
+              >{{ menu.name }}</a
+            ></span
+          >
+        </li>
+      </div>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <i
+        class="trigger"
+        nz-icon
+        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        nzTheme="outline"
+        (click)="isCollapsed = !isCollapsed"
+      ></i>
+
+      <div class="top-m">
+        <ul nz-menu nzMode="horizontal">
+          <li nz-submenu nzTitle="Profile" nzIcon="profile">
+            <ul>
+              <li nz-menu-group nzTitle="Log Out">
+                <ul>
+                  <li nz-menu-item (click)="logout()">Log Out</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="top-m">
+        <ul nz-menu nzMode="horizontal">
+          <li nz-submenu nzTitle="Settings" nzIcon="setting" (click)="settingsPage()">
+       
+          </li>
+        </ul>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+      <nz-footer>
+        <img
+          src="assets/images/Group_1954.png"
+          alt=""
+          class="powered-by-stanbic"
+        />
+      </nz-footer>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

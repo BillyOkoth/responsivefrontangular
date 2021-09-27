@@ -1,0 +1,47 @@
+<form  
+  autocomplete="off"
+  (ngSubmit)="editCountry()"
+>
+
+<nz-form-item>
+  <nz-form-label [nzSm]="6" [nzXs]="24">Country Name</nz-form-label>
+  <nz-form-control [nzSm]="14" [nzXs]="24">
+    <input nz-input [(ngModel)]="this.countryName" id="countryName"
+    name = "countryName" maxlength="50" />
+  </nz-form-control>
+</nz-form-item>
+<nz-form-item>
+  <nz-form-label [nzSm]="6" [nzXs]="24">Country Code</nz-form-label>
+  <nz-form-control [nzSm]="14" [nzXs]="24">
+    <input nz-input [(ngModel)]="this.countryCode"  id="countryCode"
+    name = "countryCode" maxlength="50" />
+  </nz-form-control>
+</nz-form-item>
+<nz-form-item>
+  <nz-form-label [nzSm]="6" [nzXs]="24">Country Id</nz-form-label>
+  <nz-form-control [nzSm]="14" [nzXs]="24">
+    <input nz-input [(ngModel)]="this.countryId"
+    id="countryId"
+  name = "countryId" maxlength="50" />
+  </nz-form-control>
+</nz-form-item>
+
+<nz-form-item>
+  <button 
+  nz-button
+  style = "margin-left: 15vw;"
+  nzType="primary"
+  [nzLoading]="saveloading" 
+  (click)="editCountry()"  
+>
+  Edit Country
+</button>
+
+</nz-form-item>
+</form>
+
+
+
+
+
+

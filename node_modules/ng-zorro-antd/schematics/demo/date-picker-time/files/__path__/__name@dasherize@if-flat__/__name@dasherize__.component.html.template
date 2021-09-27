@@ -1,0 +1,19 @@
+
+    <nz-date-picker
+      nzShowTime
+      nzFormat="yyyy-MM-dd HH:mm:ss"
+      nzPlaceHolder="Select Time"
+      ngModel
+      (ngModelChange)="onChange($event)"
+      (nzOnOk)="onOk($event)"
+    ></nz-date-picker>
+    <br />
+    <nz-range-picker
+      [nzShowTime]="{ nzFormat: 'HH:mm' }"
+      nzFormat="yyyy-MM-dd HH:mm"
+      [nzPlaceHolder]="['Start Time', 'End Time']"
+      ngModel
+      (ngModelChange)="onChange($event)"
+      (nzOnOk)="onOk($event)"
+    ></nz-range-picker>
+  

@@ -1,0 +1,14 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: '<%= selector %>',
+  <% if(inlineTemplate) { %>template: `
+    <p nz-typography nzEditable [(nzContent)]="editStr"></p>
+    <p nz-typography nzCopyable nzEditable [(nzContent)]="copyStr"></p>
+    <p nz-typography nzCopyable nzCopyText="Hello, Ant Design!">Replace copy text.</p>
+  `<% } else { %>templateUrl: './<%= dasherize(name) %>.component.html'<% } %>
+})
+export class <%= classify(name) %>Component {
+  editStr = 'This is an editable text.';
+  copyStr = 'This is a copyable text.';
+}

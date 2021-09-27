@@ -1,0 +1,165 @@
+/*
+===================================================================
+TOP ROW STYLING
+-------------------------------------------------------------------*/
+.page-h {
+    height: 20vh !important;
+  }
+  
+  .page-h .menu,
+  .page-h .logo {
+  
+    height: 100% !important;
+    margin-bottom: 20vh;
+  }
+  
+  .page-h .logo h2 {
+    font-family: 'Alfrida Signature';
+    font-weight: 1900 !important;
+    font-size: 4em !important;
+    float: right !important;
+    color: #D4D4D4;
+    margin-right: 5% !important;
+    margin-top: 1% !important;
+    letter-spacing: 3px;
+  }
+  
+  .page-h .logo .default-logo {
+    margin-left: 2vw !important;
+    margin-top: 1% !important;
+  }
+  .page-h .logo .biller-logo {
+    margin-left: 2vw !important;
+    margin-top: 1% !important;
+    margin-bottom: 1% !important;
+    width: 13%;
+    height: auto
+  }
+  
+  .change-biller {
+    font-family: "Segoe UI Bold";
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  
+  .logo2 {
+    display: block;
+    margin: auto;
+    margin-bottom: 3vh !important;
+    }
+  .menu .div-link {
+    margin-top: 5% !important;
+  }
+  
+  .div-link .text {
+    font-weight: 300;
+    color: #707070;
+    font-size: 0.9em;
+  }
+  
+  
+  .div-link span {
+    float: left;
+    font-family: "Segoe UI Bold";
+    font-size: 1.2em !important;
+  }
+  
+  .div-link .search mat-icon {
+    font-size: 2em !important;
+    margin-top: -5% !important;
+  
+    cursor: pointer;
+  }
+  
+  .div-link .search-txt {
+    
+    margin-left: 25% !important;
+    cursor: pointer;
+  }
+  .div-link button {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .div-link .calc {
+    cursor: pointer;
+  }
+  
+  /*
+  ==================================================================
+  content area  ... man page for children of admin 
+  -----------------------------------------------------------------
+  */
+  .content-area {
+    height: 74vh !important;
+  }
+  
+  .content-area .content-column {
+    height: 100% !important;
+    position: relative;
+  }
+  
+  .floating-div {
+    position: absolute;
+    height: 90% !important;
+    width: 130% !important;
+    right: -5%;
+    top: 5% !important;
+  
+  }
+  
+  /*
+  ========================================================================
+  main menu on the left of the application
+  */
+  .main-menu {
+    display: block;
+    margin-top: 10% !important;
+    margin-left: -6% !important;
+  }
+  .main-menu ul, .main-menu li {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .main-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: .9em !important;
+  }
+  
+  .main-menu li {
+    line-height: 2em !important;
+    list-style: none;
+  }
+  
+  .main-menu .active {
+    color: #FFD387;
+    font-size: 1em !important;
+  }
+  .menu-icons img {
+    height: 3vh !important;
+  }
+  
+  p-menubar {
+    width: 100% !important;
+    margin-top: 5%;
+  }
+  
+  .page-h .logo .biller-title {
+    position: absolute;
+    top: 6vh !important;
+    left: 25vw;
+    font-size: 2em !important;
+    font-family: "Segoe UI Light";
+  }
+  
+  .notifications {
+    margin-top: 1vh;
+     margin-right:2vh;
+  }
+  
+  .inputSwitch {
+    margin-right:5vh;
+     margin-top:1vh;
+  }

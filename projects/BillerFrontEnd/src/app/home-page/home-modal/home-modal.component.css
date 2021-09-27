@@ -1,0 +1,100 @@
+.logo{
+    margin-left:8vw;
+    margin-top:4vh;
+}
+
+.first-title {
+    margin-top:4vh;
+    font-family: 'Segoe UI Bold';
+    margin-left:7vw;    
+    align-content: center;
+    font-size: 1em;
+    font-weight:800;
+    color:#707070;
+}
+.second-title {
+    margin-top:4vh;
+    font-family: 'Segoe UI Bold';
+    margin-left:9vw;    
+    align-content: center;
+    font-weight:800;
+    font-size: 1em;
+    color:#707070;
+}
+.title-three {
+    margin-top:4vh;
+   font-family: 'Segoe UI Light';
+    margin-left:2vw;    
+    align-content: center;
+    font-size: 1em;
+    color:#707070;
+}
+.title-four {    
+    margin-top:4vh;
+    font-family:'Segoe UI Light';
+    margin-left:8vw;    
+    align-content: center;
+    font-size: 1em;
+    color:#707070;
+}
+.last-title {
+    margin-top:4vh;
+    font-family: 'Segoe UI Light';
+    margin-left:9vw;    
+    align-content: center;
+    font-size: 1em;
+    color:#707070;
+}
+.title-five {
+    margin-top:4vh;
+    font-family: 'Segoe UI Light';
+    margin-left:2vw;    
+    align-content: center;
+    font-size: 1em;
+    color:#707070;
+}
+.modal-button {
+    margin-top:10vh;    
+    margin-left:9vw;
+    
+}
+.button {
+    text-align: center;
+    padding-left: 1vh;
+
+}
+
+.title {
+    position: absolute;
+    margin-top:10vh;
+    margin-left:9vw;
+    font-size: 2rem;
+}
+
+.text-row {
+    margin-top:15vh;
+    margin-left:2vw;
+
+}
+
+.paragraph-row { 
+    margin-left:2vw
+}
+.paragraph1-row {
+    margin-left: 10vw;
+}
+
+.paragraph2-row {
+    margin-top:1vh;
+    margin-left:15vw
+}
+
+.text-color-grey-dark {
+    text-align: center;
+    font-family: "Segoe UI Bold";
+}
+
+.buttonsert {
+    display: block;
+    margin: auto;
+}

@@ -1,0 +1,47 @@
+<div nz-row>
+    <div style="margin-bottom:2vh;" nz-col nzSpan="12">
+      <input
+        nz-input
+        placeholder="Search"
+        [(ngModel)]="searchValue"
+        style="width: 100%;"
+        maxlength="100"
+      />
+    </div>
+    <div style="margin-bottom:2vh;" nz-col nzSpan="12">
+      <div nz-row nzType="flex" nzJustify="end">
+        <div nz-col nzSpan="6">
+          <button
+            nz-button
+            nzType="default"
+            nzTooltipTitle="Download Excel"
+            nzTooltipPlacement="topCenter"
+            nz-tooltip
+           
+            click="downloadCSV"
+            [disabled]="loading"
+          >
+            Download Excel
+            <i nz-icon nzType="download"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <nz-table #filterTable [nzData]="rows">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>E-Slip Number</th>
+        <th>Charge Amount</th>
+        <th>No. of Accounts</th>
+        <th>Bank Reference</th>
+        <th>E-Slip Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <nz-spin nzSimple *ngIf="this.loading === true"></nz-spin>
+    </tbody>
+  </nz-table>
+  

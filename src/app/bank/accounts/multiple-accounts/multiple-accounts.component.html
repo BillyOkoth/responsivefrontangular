@@ -1,0 +1,65 @@
+
+<div class="upload-title" nz-row>
+
+  <div nz-col nzSpan="10">
+    <h3>
+      Upload Multiple
+    </h3>
+  </div>
+  
+</div>
+
+<div nz-row>
+  <div nz-col nzSpan="8">
+    <div>
+      <h4>
+        We ony require a column with the unique identification as shown belows
+      </h4>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <img class="sample-image" src="assets/images/excel.png" alt="" />
+      </div>
+      <div nz-col nzSpan="4">
+        <button
+          nz-button
+          nzType="default"
+          [disabled]="loading"
+          (click)="downloadCSV()"
+          nzTooltipTitle="Sample Account File"
+          nzTooltipPlacement="bottom"
+          nz-tooltip
+        >
+          <i nz-icon nzType="download" nzTheme="outline"></i>
+          Download Sample File
+        </button>
+      </div>
+    </div>
+  </div>
+  <nz-divider nzType="vertical"></nz-divider>
+  <div nz-col nzSpan="8" nzOffset="8">
+    <nz-upload
+      [(nzFileList)]="fileList"
+      [nzBeforeUpload]="beforeUpload"
+      (change)="fileChange()"
+      [nzAccept]="
+        '.xlsx , application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel'
+      "
+    >
+      <button nz-button>
+        <i nz-icon nzType="upload"></i><span>Select File</span>
+      </button>
+    </nz-upload>
+    <button
+      nz-button
+      [nzType]="'primary'"
+      [nzLoading]="uploading"
+      (click)="uploadAccounts()"
+      [disabled]="fileList.length == 0"
+      style="margin-top: 16px"
+    >
+      {{ uploading ? 'Uploading' : 'Start Upload' }}
+    </button>
+  </div>
+</div>

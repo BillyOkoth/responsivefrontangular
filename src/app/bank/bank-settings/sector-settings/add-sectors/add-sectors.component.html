@@ -1,0 +1,35 @@
+<form nz-form [formGroup]="addSectorForm" [nzLayout]="'vertical'">
+    <nz-form-item>
+        <nz-form-label [nzSpan]="8" nzRequired>Name</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="nameErrorTpl">
+            <input nz-input autocomplete="off" maxlength="50" formControlName="name" />
+            <ng-template #nameErrorTpl let-control>
+
+                <ng-container *ngIf="control.hasError('required')">
+                    Please enter your name!
+                </ng-container>
+            </ng-template>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="8" nzRequired>Code</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="codeErrorTpl">
+            <input nz-input formControlName="code" maxlength="15" autocomplete="off" />
+            <ng-template #codeErrorTpl let-control>
+
+                <ng-container *ngIf="control.hasError('required')">
+                    Please enter the sector code!
+                </ng-container>
+            </ng-template>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="8"></nz-form-label>
+        <div nz-row nzJustify="end">
+            <div nz-col>
+                <button nz-button nzType="primary" (click)="createSector()"
+                    [disabled]="addSectorForm.invalid || loading" [nzLoading]="loading">Save Sector</button>
+            </div>
+        </div>
+    </nz-form-item>
+</form>

@@ -1,0 +1,61 @@
+<div class="container">
+  <div nz-row nzGutter="16" class="toolbar">
+    <div nz-col class="gutter-row" nzSpan="8">
+      <div class="logo">
+        <img src="assets/images/Group 1633.png" alt="logo" (click)="toHomePage()" />
+      </div>
+    </div>
+    <div nz-col class="gutter-row" nzSpan="8">
+      <div nz-row nzJustify="center">
+        <div nz-col nzSpan="8">
+          <div class="title">
+            <h2 class="text-title">E-biller</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div nz-col class="gutter-row" nzSpan="8">
+      <div class="gutter-box" nz-row nzJustify="end">
+        <div nz-col nzSpan="12"></div>
+        <div nz-col nzSpan="12" class="home-wrp">
+          <button nz-button nzType="default" class="home-btn" (click)="toHomePage()">
+            Home
+            <i nz-icon nzType="home" nzTheme="outline"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bluescreen">
+    <div id="particles-js"></div>
+    <div class="loginscreen shadow">
+      <div class="title-login">
+        <span>Forgot your Password.</span>
+      </div>
+
+      <div class="login-container">
+        <form nz-form [formGroup]="smsResetForm" class="login-form" autocomplete="off">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please enter your phone number">
+
+              <input type="text" class="input-size" style="width:50vh;" nz-input placeholder="xxx 07xx xxx"
+                formControlName="phonenumber" ng2TelInput [ng2TelInputOptions]="{ initialCountry: 'ke' }"
+                (keyup)="getNumber()" (hasError)="hasError($event)" maxlength="10" />
+
+            </nz-form-control>
+          </nz-form-item>
+
+          <button nz-button class="login-form-button" [nzType]="'primary'" [disabled]="smsResetForm.invalid || loading"
+            (click)="emailReset()" nzBlock [nzLoading]="loading">
+            Send SMS<i nz-icon nzType="login" nzTheme="outline"></i>
+          </button>
+          <div nz-row>
+            <a class="login-form-forgot" class="login-form-forgot" routerLink="/login">Back to Login!</a>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,60 @@
+
+<div nz-row [nzGutter]="10" style="margin-bottom:2vh;">
+  <div nz-col nzSpan="12">
+    <input
+      nz-input
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      style="width: 100%;"
+      maxlength="100"
+    />
+  </div>
+
+</div>
+<nz-table #basicTable [nzData]="rows">
+  <thead>
+    <tr>
+      <th class="header">#</th>
+      <th class="header">Date Created</th>
+      <th class="header">Amount</th>
+      <th class="header">Reference</th>
+      <th class="header">FT</th>
+      <th class="header">EslipNo</th>
+      <th class="header">Reconciliation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of rows | searchPayer: searchValue; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ row.created_at | date: "short" }}</td>
+      <td>{{ row.amount }}</td>
+      <td>{{ row.reference }}</td>
+      <td>{{ row.ft }}</td>
+      <td>{{ row.eslip_no }}</td>
+      <td>
+        <button
+          nz-button
+          nzType="link"
+          nzTooltipTitle="Approve Payments."
+          nzTooltipPlacement="topCenter"
+          nz-tooltip        
+          (click)="approvePayment(row)"
+        >
+          <i nz-icon nzType="check" nzTheme="outline"></i>
+        </button>
+        <button
+        nz-button
+        nzType="link"
+        nzType="danger"
+        nzTooltipTitle="Reject Eslip."
+        nzTooltipPlacement="topCenter"
+        nz-tooltip        
+        (click)="rejectEslip(row)"
+      >
+        <i nz-icon nzType="close" nzTheme="outline"></i>
+      </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+

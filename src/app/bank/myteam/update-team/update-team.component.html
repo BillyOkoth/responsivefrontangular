@@ -1,0 +1,115 @@
+<form autocomplete="off" (ngSubmit)="updateTeam()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">Username</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input [(ngModel)]="this.Fname"
+      id="Fname"
+    name = "Fname" maxlength="50" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">Other Name</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input [(ngModel)]="this.Lname"
+      id="Lname"
+    name = "Lname" maxlength="50" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">Email Address</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input [(ngModel)]="this.setEmail"
+      id="setEmail"
+      readonly
+    name = "setEmail" maxlength="15" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">Phone Number</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input [(ngModel)]="this.setPhone"
+      id="setPhone"
+      ng2TelInput
+      [ng2TelInputOptions]="{ initialCountry: this.fips_code }"
+      name = "setPhone" maxlength="50" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">User Group</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <nz-select
+      [(ngModel)]="selectedGroup"
+      nzAllowClear
+      nzPlaceHolder="Assign User Group"
+      class="input-size"
+      name="groupSet"
+      (ngModelChange)="changeGroup()"
+    >
+      <nz-option
+        *ngFor="let roles of roleLists"
+        [nzValue]="roles.name"
+        nzLabel="{{ roles.name }}"
+      >
+        {{ roles.name }}
+      </nz-option>
+    </nz-select>     
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">Notification</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <nz-select
+      [ngModelOptions]="{ standalone: true }"
+      [(ngModel)]="notifications"
+      nzAllowClear
+      nzPlaceHolder="Notification"
+      class="input-size"
+    >
+      <nz-option
+        *ngFor="let notify of notif"
+        [nzValue]="notify.notification_name"
+        nzLabel="{{ notify.notification_name }}"
+      >
+        {{ notify.notification_name }}
+      </nz-option>
+    </nz-select>
+    </nz-form-control>
+  </nz-form-item> 
+</form>
+
+<button
+  *ngIf="this.status == 'Active'"
+  class="input-size"
+  nz-button
+  nzType="primary"
+  [nzLoading]="saveloading"
+  [disabled]="saveloading || !this.role.myTeamRole"
+  (click)="updateUser()"
+  nzBlock
+>
+  Save
+</button>
+<button
+  *ngIf="status == 'Active'"
+  class="input-size"
+  nz-button
+  [nzLoading]="freezeloading"
+  [disabled]="freezeloading || !this.role.myTeamRole"
+  style="background-color: #f0ad4e;"
+  (click)="freezeUser()"
+  nzBlock
+>
+  Freeze
+</button>
+<button
+  *ngIf="status == 'Inactive'"
+  class="input-size"
+  nz-button
+  [nzLoading]="restoreloading"
+  [disabled]="restoreloading"
+  style="background-color: #5cb85c;"
+  (click)="restoreUser()"
+  nzBlock
+>
+  Restore
+</button>

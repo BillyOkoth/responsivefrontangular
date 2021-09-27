@@ -1,0 +1,26 @@
+<nz-upload
+  nzType="drag"
+  [nzMultiple]="false"
+  [(nzFileList)]="fileList"
+  [nzBeforeUpload]="beforeUpload"
+  (change)="fileChange()"
+  [nzAccept]="
+    '.xlsx , application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel'
+  "
+>
+  <p class="ant-upload-drag-icon">
+    <i nz-icon nzType="inbox"></i>
+  </p>
+  <p class="ant-upload-text">Click or drag file to this area to upload</p>
+  <p class="ant-upload-hint">
+    Upload your list of sectors file
+  </p>
+</nz-upload>
+
+<nz-form-item>
+  <nz-form-control [nzSpan]="14" [nzOffset]="21">
+    <button nz-button nzType="primary" (click)="saveMultiple()" [disabled]="this.fileList.length < 1" [nzLoading]="loading">
+      Upload File
+    </button>
+  </nz-form-control>
+</nz-form-item>

@@ -1,0 +1,95 @@
+<div nz-row nzGutter="16" style = "margin-bottom:2vh;">
+  <div nz-col nzSpan="12">
+    <i
+    nz-icon
+    nzType="arrow-left"
+    nzTheme="outline"
+    style="font-size: 36px; color: #08c;"
+    nzTooltipTitle="Back"
+    nzTooltipPlacement="right"
+    nz-tooltip
+    (click)="closeView()"
+  ></i>    
+
+  </div>
+  <div nz-col nzSpan="6">
+    <h2 class="text-color-grey-dark" style="font-size:1.2rem">
+      Report Details.
+      </h2>
+
+  </div>
+
+  <div nz-col nzSpan="6">
+
+    <button
+    nz-button
+    nz-dropdown
+    [nzDropdownMenu]="menu4"
+    [nzLoading]="loading"
+    [disabled]="loading"
+  >
+    Download
+    <i nz-icon nzType="down"></i>
+  </button>
+  <nz-dropdown-menu #menu4="nzDropdownMenu">
+    <ul nz-menu>
+      <li nz-menu-item (click)="downloadExcel()">Download Excel</li>
+      <li nz-menu-item (click)="downloadCsv()">Download Csv</li>
+      <li nz-menu-item (click)="downloadPdf()">Download PDF</li>
+    </ul>
+  </nz-dropdown-menu>
+  </div>
+<div nz-col class="gutter-row" nzSpan="8">
+  <input nz-input placeholder="Search" [(ngModel)]="searchValue"  maxlength="100" />
+</div>
+
+</div>
+<nz-table #filterTable [nzData]="rows">
+<thead>
+  <tr>
+    <th>
+     Transaction Date
+    </th>
+    <th>
+      Eslip No.
+    </th> 
+    <th>
+     Account Name
+     </th>    
+    <th>
+     Amount
+    </th>      
+    <th>
+      Transaction Id
+    </th> 
+    <th>
+     Meter Ft
+    </th>  
+    <th>
+      Meter Count
+     </th>    
+  </tr>
+</thead>
+<tbody>
+  <nz-spin
+    nzSimple
+    [nzSize]="'large'"
+    *ngIf="this.loading === true"
+  ></nz-spin>
+
+  <tr
+    *ngFor="
+      let data of filterTable.data | detailSearch: searchValue;
+      let i = index
+    "
+  >
+    <td>{{ data.trans_date}}</td>
+    <td>{{ data.eslip_no }}</td>
+    <td>{{ data.account_name }}</td>
+    <td>{{ data.amount | currency: 'Ksh.' }}</td>
+    <td>{{ data.trans_id }}</td>
+    <td>{{ data.meter_ft}}</td>
+    <td>{{ data.meter_count}}</td>      
+  </tr>
+</tbody>
+</nz-table>

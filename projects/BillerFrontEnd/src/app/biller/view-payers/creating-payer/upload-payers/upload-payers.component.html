@@ -1,0 +1,121 @@
+<nz-divider nzText="Upload List of Payers"></nz-divider>
+<div nz-row nzGutter="16">
+  <div nz-col nzSpan="8">
+    <h4>
+      We ony require a column with the unique identification as shown belows
+    </h4>
+    <img class="sample-image" src="assets/images/excel.png" alt="" />
+    <button nz-button nzType="default" [disabled]="loading" nzTooltipTitle="Sample Account File"
+      nzTooltipPlacement="bottom" nz-tooltip (click)="downloadSample() ">
+      <i nz-icon nzType="download" nzTheme="outline"></i>
+      Download Sample File
+    </button>
+  </div>
+  <div nz-col nzSpan="12">
+    <form nz-form [formGroup]="multipleForm">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="department">Department</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <nz-select formControlName="departmentId" nzAllowClear nzPlaceHolder="Select billing line"
+            class="input-size" name="userid">
+            <nz-option *ngFor="let roles of roleLists" [nzValue]="roles.service_line"
+              nzLabel="{{ roles.service_line }}">
+              {{ roles.name }}
+            </nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="file">Select File</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload" (change)="fileChange()" [nzAccept]="
+              '.xlsx , application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel'
+            ">
+            <button nz-button>
+              <i nz-icon nzType="upload"></i><span>Select File</span>
+            </button>
+          </nz-upload>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="file"></nz-form-label>
+        <nz-form-control>
+          <button nz-button [nzType]="'primary'" [nzLoading]="uploading"
+            [disabled]="loading || this.selected_file.length < 1" (click)="uploadPayers()" style="margin-top: 16px">
+            {{ uploading ? "Uploading" : "Start Upload" }}
+          </button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+</div>
+<!-- <div class="upload-title" nz-row>
+  <div nz-col nzSpan="10">
+    <h3>
+      Upload List of Payers
+    </h3>
+  </div>
+</div>
+
+<div nz-row>
+  <div nz-col nzSpan="8">
+    <div>
+      <h4>
+        We ony require a column with the unique identification as shown belows
+      </h4>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="8">
+        <img class="sample-image" src="assets/images/excel.png" alt="" />
+      </div>
+      <div nz-col nzOffset="3" nzSpan="10">
+        <button nz-button nzType="default" [disabled]="loading" nzTooltipTitle="Sample Account File"
+          nzTooltipPlacement="bottom" nz-tooltip>
+          <i nz-icon nzType="download" nzTheme="outline"></i>
+          Download Sample File
+        </button>
+      </div>
+    </div>
+  </div>
+  <nz-divider nzType="vertical"></nz-divider>
+  <div nz-col nzSpan="8" nzOffset="8">
+    <form nz-form [formGroup]="multipleForm">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="department">Department</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <nz-select formControlName="departmentId" nzAllowClear nzPlaceHolder="Assign Head Department"
+            class="input-size" name="userid">
+            <nz-option *ngFor="let roles of roleLists" [nzValue]="roles.service_line"
+              nzLabel="{{ roles.service_line }}">
+              {{ roles.name }}
+            </nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="file">Select File</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload" (change)="fileChange()" [nzAccept]="
+              '.xlsx , application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel'
+            ">
+            <button nz-button>
+              <i nz-icon nzType="upload"></i><span>Select File</span>
+            </button>
+          </nz-upload>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="file"></nz-form-label>
+        <nz-form-control>
+          <button nz-button [nzType]="'primary'" [nzLoading]="uploading"
+            [disabled]="loading || this.selected_file.length < 1" (click)="uploadPayers()" style="margin-top: 16px">
+            {{ uploading ? "Uploading" : "Start Upload" }}
+          </button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+</div> -->

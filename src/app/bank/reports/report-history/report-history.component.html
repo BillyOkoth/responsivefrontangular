@@ -1,0 +1,88 @@
+
+<div nz-row [nzGutter]="14" style="margin-bottom:2vh;">
+
+    <div nz-col class="gutter-row" nzSpan="18">
+      <input
+        nz-input
+        placeholder="Search"
+        [(ngModel)]="searchValue"
+        style="width: 100%;"
+        maxlength="100"
+      />     
+    </div>
+    <div nz-col class="gutter-row" nzSpan="6">
+      <button
+      nz-button
+      nz-dropdown
+      [nzDropdownMenu]="menu4"
+      [nzLoading]="loading"
+      [disabled]="loading"
+      [nzDisabled]="!this.role.reportRole"
+    >
+      Download
+      <i nz-icon nzType="down"></i>
+      </button>
+    <nz-dropdown-menu #menu4="nzDropdownMenu">
+      <ul nz-menu>
+        <li nz-menu-item (click)="downloadExcel()">Download Excel</li>
+        <li nz-menu-item (click)="downloadCsv()">Download Csv</li>
+        <li nz-menu-item (click)="downloadPdf()">Download PDF</li>
+      </ul>
+    </nz-dropdown-menu> 
+
+    </div>
+  </div>
+  <cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+          <tr>
+            <th class="header">#</th>
+            <th class="header">Eslip No.</th>
+            <th class="header">Payment Ref</th>
+            <th class="header">Amount Paid</th>
+            <th class="header">From </th>
+            <th class="header">To</th>            
+            <th class="header">Created at</th>
+            <th class="header">Actions</th>
+          </tr>
+        
+      </thead>
+      <tbody>
+       
+        <tr
+          *ngFor="
+            let row of rows 
+              | historyReports: searchValue;
+            let i = index          
+           
+          "
+        >
+          <td>{{ i + 1 }}</td>         
+          <td>{{ row.eslip_no }}</td>  
+          <td>{{ row.payref }}</td>          
+          <td>{{ row.amount }}</td> 
+          <td>{{ row.fromdate }}</td>
+          <td>{{ row.todate }}</td>    
+          <td>{{ row.created_at}}</td>     
+          <td>
+            <button
+                style="margin-left:1vh"
+                nz-button
+                nzType="link"
+                style="color: #f0ad4e;"
+                nzTooltipTitle="View Reports History Details."
+                nzTooltipPlacement="topCenter"
+                nz-tooltip
+                (click)="getReportHistoryDetails(row)"
+              >
+                <i nz-icon nzType="eye"></i>
+              </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+  <cdk-virtual-scroll-viewport itemSize="18">
+ 
+  

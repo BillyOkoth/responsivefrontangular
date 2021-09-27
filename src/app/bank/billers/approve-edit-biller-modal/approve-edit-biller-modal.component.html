@@ -1,0 +1,28 @@
+<div>
+    <h3>Are you sure you want to Approve ?</h3>
+
+    <p class = "color"> Company Name:<span class="color2">{{ this.companyName2}} to {{this.companyName1 }}</span></p>
+    <p class = "color"> Location: <span class="color2">{{this.location2 }} to {{this.location1 }}</span></p>
+    <p class = "color"> Website: <span class="color2">{{ this.website2}} to {{this.website1 }}</span></p>
+    <p class = "color"> Phone Number: <span class="color2">{{this.phone2}} to {{this.phone1}}</span></p>
+    <p class = "color"> Alias : <span class="color2">{{  this.alias2 }} to {{ this.alias1 }}</span></p>
+    <p class = "color"> Sector: <span class="color2">{{ this.sector2}} to {{  this.sector1}}</span></p>
+    <p class = "color"> Charge Type: <span class="color2">{{ this.chargetype2 }} to {{this.chargetype1  }}</span></p>
+    <p class = "color"> Charge Amount: <span class="color2">{{ this. chargeAmount2}} to {{ this. chargeAmount1 }}</span></p>
+    <p class = "color"> Percentage: <span class="color2">{{this.percentage2}} to {{ this.percentage1}}</span></p>
+    <p class = "color"> Prefix: <span class="color2">{{ this.prefix2}} to {{ this.prefix1  }}</span></p>
+    <p class = "color">Customer Care : <span class="color2">{{ this.customercare2}} to {{   this.customercare1}}</span></p>
+    <p class = "color">Currency : <span class="color2">{{this.currency2}} to {{this.currency1}}</span></p>
+    <p class = "color"> Paybill : <span class="color2">{{ this.paybill2}} to {{this.paybill1 }}</span></p>
+    <p class = "color"> Branch : <span class="color2">{{this.branch2}} to {{ this.branch1 }}</span></p>
+  
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <button nz-button nzType="default" (click)="closeDialog()">Cancel</button>
+      </div>
+      <div nz-col nzSpan="12">
+        <button nz-button nzType="primary" (click)="  ApproveEditBiller()" [nzLoading]="loading" >Approve</button>
+      </div>
+    </div>
+  </div>
+  

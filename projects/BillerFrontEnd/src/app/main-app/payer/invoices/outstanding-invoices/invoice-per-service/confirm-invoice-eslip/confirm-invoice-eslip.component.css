@@ -1,0 +1,121 @@
+.my-accounts {
+    color: #ffd387;
+    margin-left:20vh;
+  }
+  
+  .account_details {
+    font-family: 'Segoe UI Bold';
+    text-decoration: underline;
+    margin-left: 26vh;
+  }
+  
+  .confirm-header {
+    font-family: 'Segoe UI Bold';
+    margin-left: 21vh;
+  }
+  .centered{
+    margin: auto;
+  }
+  
+  .confirm-proceed {
+    background-color: #4caf50;
+    color: white;
+    margin-left: 10vh;
+    margin-top:5vh;
+  }
+  
+  .confirm-cancel {
+    background-color: #f44336;
+    align-self: flex-end;
+    color: white;
+    margin-left: 32vh;
+  }
+  
+  .spacing {
+   
+    margin-left:1vh;
+  }
+  
+  /* new css  fir the modal*/
+  .container {
+  
+   margin-left:1vh;
+   margin-right:auto;
+  }
+  .first-row {
+  
+  width:22vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em auto 0 auto;
+  }
+  .first-row h2 {
+  color: #ffd387;
+  text-align: center;
+  }
+  .second-row {
+  
+  width:45vw;
+  margin-left:10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em auto 0 auto;
+  
+  }
+  .third-row {
+  
+  width:45vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em auto 0 auto;
+  }
+  
+  .text-style {
+    font-size: 1em;
+    color:gray;
+  }
+  
+  .gen-title {
+      margin-left:8vh;
+      /* width:45vw; */
+  }
+  .gen-title h3 {
+  text-align: center;
+  }
+  .accounts {
+    margin-left:10vh;
+  
+  
+  /* width:45vw; */
+  }
+  .accounts h3 {
+  text-align: center;
+  }
+  
+  .proceed {
+  
+  width:22.5vw;
+  }
+  .cancel {
+  
+  width:22vw;
+  /* margin-right:10vh; */
+  }
+  .proceed button {
+   margin-left:10vw;
+  }
+  .h2{
+    margin-left:10vw;
+  }
+  
+  .cancel button {
+  margin-left:10vw;
+  }
+  
+  .proceed-button {
+  color:red;
+  
+  }

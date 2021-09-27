@@ -1,0 +1,254 @@
+<div nz-row [nzGutter]="10" style="margin-bottom:2vh;">
+  <div nz-col class="gutter-row" nzSpan="6" [formGroup]="EslipForm">
+    <input
+      nz-input
+      placeholder="Enter eslip number"
+      formControlName="eslipNumber"
+      style="width: 100%;"
+      maxlength="100"
+      (keyup)="addEslip(this.EslipForm.value.eslipNumber)"
+    />
+  </div>
+  <div nz-col class="gutter-row" nzSpan="14" [formGroup]="reportForm">
+    <div nz-row [nzGutter]="10">
+      <div nz-col class="gutter-row" nzSpan="5">
+        <nz-select
+        nzAllowClear
+          [(ngModel)]="biller"
+          nzShowSearch
+          nzPlaceHolder="Select a Biller"
+          style="width: 100%"
+          (ngModelChange)="changeBiller()"
+          [ngModelOptions]="{standalone: true}"
+        >
+          <nz-option
+            *ngFor="let biller of billerLists"
+            [nzValue]="biller"
+            nzLabel="{{ biller.alias }}"
+          >
+            {{ biller.alias }}
+          </nz-option>
+        </nz-select>
+      </div>
+      <div nz-col class="gutter-row" nzSpan="4">
+        <nz-select
+          [(ngModel)]="payer"
+          (ngModelChange)="changePayer()"
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="Select a payer"
+          style="width: 100%"
+          [ngModelOptions]="{ standalone: true }"
+        >
+          <nz-option
+            *ngFor="let payer of payerLists"
+            [nzValue]="payer"
+            nzLabel="{{ payer.company_name }}"
+          >
+            {{ payer.company_name }}
+          </nz-option>
+        </nz-select>
+      </div>
+      <div nz-col class="gutter-row" nzSpan="5">
+        <nz-date-picker
+          nzTooltipTitle="Select Start Date"
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          formControlName="from"
+          placeholder="Start"
+          (nzOnOpenChange)="this.disableBtn()"
+        ></nz-date-picker>
+      </div>
+      <div nz-col class="gutter-row" nzSpan="5">
+        <nz-date-picker
+          nzTooltipTitle="Select End Date"
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          formControlName="to"
+          placeholder="End"
+          (nzOnOpenChange)="this.disableBtn()"
+        ></nz-date-picker>
+      </div>
+
+      <div nz-col class="gutter-row" nzSpan="3">
+        <button
+          nz-button
+          nzType="primary"
+          nzTooltipTitle="Reload"
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          [disabled]="loading"
+          (click)="this.getReconcileReports()"
+          
+        >
+          <i nz-icon nzType="redo"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div nz-col class="gutter-row" nzSpan="4">
+    <button
+      nz-button
+      nz-dropdown
+      [nzDropdownMenu]="menu4"
+      [nzLoading]="loading"
+      [disabled]="loading"
+      [nzDisabled]="!this.role.reportRole"
+    >
+      Download
+      <i nz-icon nzType="down"></i>
+    </button>
+    <nz-dropdown-menu #menu4="nzDropdownMenu">
+      <ul nz-menu>
+        <li nz-menu-item (click)="downloadExcel()">Download Excel</li>
+        <li nz-menu-item (click)="downloadCsv()">Download Csv</li>
+        <li nz-menu-item (click)="downloadPdf()">Download PDF</li>
+      </ul>
+    </nz-dropdown-menu>
+  </div>
+ 
+</div>
+
+<div nz-row [nzGutter]="10" style="margin-bottom:2vh;">
+  <div nz-col class="gutter-row" nzSpan="18">
+    <input
+      nz-input
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      style="width: 100%;"
+      maxlength="100"
+    />
+   
+  </div>
+</div>
+<cdk-virtual-scroll-viewport itemSize="18">
+<nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+  <nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th class="header">#</th>
+        <th
+          class="header"
+          [class.active]="order === 'created_at '"
+          (click)="setOrder('created_at ')"
+        >
+          Date Created <span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th
+          class="header"
+          [class.active]="order === 'eslip_no'"
+          (click)="setOrder('eslip_no')"
+        >
+          Eslip No <span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th
+          class="header"
+          [class.active]="order === 'account_no'"
+          (click)="setOrder('account_no')"
+        >
+          Account No <span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th
+          class="header"
+          [class.active]="order === 'bank_ref_no'"
+          (click)="setOrder('bank_ref_no')"
+        >
+          Bank Ref No <span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th
+          class="header"
+          [class.active]="order === 'biller_payment_ref'"
+          (click)="setOrder('biller_payment_ref')"
+        >
+          Biller Payment Ref <span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th
+          class="header"
+          [class.active]="order === 'account_name'"
+          (click)="setOrder('account_name')"
+        >
+          Account Name <span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th
+          class="header"
+          [class.active]="order === 'payer_name'"
+          (click)="setOrder('payer_name')"
+        >
+          Payer Name <span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th
+          class="header"
+          [class.active]="order === 'amount_to_pay'"
+          (click)="setOrder('amount_to_pay')"
+        >
+          Amount Paid <span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th
+          class="header"
+          [class.active]="order === 'status'"
+          (click)="setOrder('status')"
+        >
+          Status <span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th
+          class="header"
+          [class.active]="order === 'expiry_date'"
+          (click)="setOrder('expiry_date')"
+        >
+          Due Date <span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let row of rows
+          
+            | reportSearch: searchValue;
+          let i = index
+        "
+      >
+        <td>{{ i + 1 }}</td>
+        <td>{{ row.created_at | date: "MM/dd/yyyy" }}</td>
+        <td>{{ row.eslip_no }}</td>
+        <td>{{ row.account_no }}</td>
+        <td>{{ row.bank_ref_no }}</td>
+        <td>{{ row.biller_payment_ref }}</td>
+        <td>{{ row.account_name }}</td>
+        <td>{{ row.payer_name }}</td>
+        <td>{{ row.amount_to_pay | currency: "Ksh." }}</td>
+        <td>{{ row.status }}</td>
+        <td>{{ row.expiry_date }}</td>
+        <td>
+          <button
+              style="margin-left:1vh"
+              nz-button
+              nzType="link"
+              style="color: #f0ad4e;"
+              nzTooltipTitle="View Reports History."
+              nzTooltipPlacement="topCenter"
+              nz-tooltip
+              (click)="reportHistory(row)"
+            >
+              <i nz-icon nzType="eye"></i>
+            </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-spin>
+<cdk-virtual-scroll-viewport itemSize="18">
+<!-- [disabled]="this.billerc == '' || reportForm.invalid|| loading -->

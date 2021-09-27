@@ -1,0 +1,73 @@
+<div class="table-operations btn-group" nz-row nzType="flex" nzJustify="start">
+  <i
+    nz-icon
+    nzType="arrow-left"
+    nzTheme="outline"
+    style="font-size: 36px; color: #08c;"
+    nzTooltipTitle="Back"
+    nzTooltipPlacement="right"
+    nz-tooltip
+    (click)="maintain()"
+  ></i>
+</div>
+
+<nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+  <nz-table #basicTable [nzData]="rows">
+    <thead>
+      <tr>
+        <th>Date Created</th>
+        <th>File Name</th>
+        <th>Validated Account</th>
+        <th>Pending Account</th>
+        <th>Valid Accounts</th>
+        <th>Total Account</th>
+        <th>Progress</th>
+        <th>View</th>
+        <th>Re-validate Accounts</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.created_at | date: "short" }}</td>
+        <td>{{ data.file_name }}</td>
+        <td>{{ data.validated }}</td>
+        <td>{{ data.pending }}</td>
+        <td>{{ convertNumber(data.validated, data.errors) }}</td>
+        <td>{{ data.total }}</td>
+        <td>
+          <nz-progress
+            [nzPercent]="data.progress"
+            nzSize="small"
+            nzStatus="active"
+            [ngClass]="{ progressbar: data.progress == '100' }"
+          ></nz-progress>
+        </td>       
+        <td>
+          <button
+            nz-button
+            nzType="link"
+            nzTooltipTitle="View Acounts"
+            nzTooltipPlacement="topCenter"
+            nz-tooltip
+            (click)="viewUploadedFileDetails(data)"
+          >
+            <i nz-icon nzType="eye"></i>
+          </button>
+        </td>
+        <td>
+          <button       
+            nz-button
+            nzType="link"
+            style="color: #f0ad4e;"
+            nzTooltipTitle="Revalidate the the  Pending Accounts."
+            nzTooltipPlacement="topCenter"
+            nz-tooltip
+            (click)="reValidate(data)"
+          >
+          <i nz-icon nzType="redo" nzTheme="outline"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-spin>

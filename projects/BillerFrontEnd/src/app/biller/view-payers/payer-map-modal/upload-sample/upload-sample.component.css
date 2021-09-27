@@ -1,0 +1,244 @@
+.select-file-btn {
+  margin-bottom: 5vh;
+}
+
+/* .file-upload {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  } */
+
+.multiple-accounts {
+  height: 40vh;
+}
+
+/* to clear */
+/* style container of the page */
+.open-biller-admin-container {
+  height: 100% !important;
+  width: 100% !important;
+  background: #ffffff;
+  padding: 2% !important;
+}
+.image-div {
+  height: 1vh !important;
+}
+
+.image-sample img {
+  height: 1000% !important;
+  display: block;
+  margin: auto;
+}
+
+.example-tab-icon {
+  margin-right: 8px;
+}
+
+.tab-title {
+  font-family: "Segoe UI Light" !important;
+  font-weight: 300 !important;
+  font-size: 2em !important;
+}
+
+/* style tab content   --  one bill  */
+.tab-content {
+  height: 55vh;
+  width: 100% !important;
+  overflow-y: auto !important;
+  margin-top: 1vh !important;
+}
+
+.tab-content .one-bill-form,
+.tab-content .one-bill-payment {
+  height: 100% !important;
+  position: relative;
+}
+
+.tab-content .one-bill-payment {
+  border-left: 1px solid #707070;
+}
+
+.one-bill-form form {
+  width: 80% !important;
+  display: block;
+  /* margin: auto; */
+  margin-left: 5vh;
+}
+
+.one-bill-form mat-form-field {
+  width: 80%;
+}
+
+.amount-row {
+  border-bottom: 1px solid #707070;
+}
+
+.amount-row .amount-figure h4 {
+  width: 30%;
+  font-family: "digital-7";
+  font-size: 1.5em !important;
+}
+
+.amount-row .amount-title h4 {
+  font-size: 1.3em !important;
+  font-weight: 300 !important;
+}
+
+.one-bill-form button {
+  display: block;
+  margin: auto;
+  margin-top: 3vh !important;
+}
+
+.one-bill-payment h2 {
+  color: #0056a6;
+  margin-left: 3vw !important;
+  margin-top: 15vh !important;
+}
+
+.checkbox-content {
+  padding-left: 5vw !important;
+}
+
+.checkbox-content mat-checkbox {
+  width: 100% !important;
+  line-height: 1.5em !important;
+}
+
+.one-bill-payment button {
+  display: block;
+  margin: auto;
+  width: 30% !important;
+}
+
+.one-bill-form button {
+  margin-left: 60vh;
+}
+
+.profile-save button {
+  margin-left: 60vh;
+}
+
+/*
+  ::v-deep  .mat-form-field-placeholder {
+  
+    color: #D6D6D6 !important;
+  } */
+
+/* SAVED MY DAY */
+::v-deep .mat-form-field-underline {
+  background-color: transparent !important;
+  display: none;
+  /* background-color: red !important;
+    display: inline-block; */
+}
+
+/* split single bill and multiple bill  */
+.single-bill {
+  position: relative;
+}
+.single-bill,
+.file-upload {
+  height: 30vh !important;
+  /* border: 1px solid green; */
+}
+
+.single-bill mat-form-field {
+  width: 90% !important;
+  background: #d6d6d6;
+}
+.single-bill h3 {
+  color: #707070;
+  text-align: center !important;
+}
+.single-bill .lower button {
+  display: block !important;
+  margin: auto;
+  margin-top: 2.5vh !important;
+}
+.money {
+  color: #707070;
+  font-size: 1.5em !important;
+}
+
+.pay-button {
+  position: absolute;
+  bottom: 10%;
+  right: -3vw !important;
+}
+
+.file-upload {
+  position: relative;
+  height: 700px;
+}
+.file-upload .upload-title h3 {
+  color: #0033a1;
+}
+.file-upload .yellow-tile {
+  width: 100%;
+  height: 2vh !important;
+  margin-top: 3vh !important;
+}
+
+/* File upload  */
+.file-upload-btn button {
+  float: right;
+}
+
+.file-shot img {
+  height: 50%;
+  display: block;
+  margin: auto !important;
+}
+
+/* .upload-account {
+    position: absolute !important;
+    right: 0vw !important;
+  } */
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  font-family: "Segoe UI Light";
+  font-size: 1.2em;
+  cursor: pointer;
+  font-weight: 700;
+  color: white;
+  border-radius: 5%;
+  background-color: #0033a1;
+  display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: #0033a1;
+}
+
+::placeholder {
+  /* Most modern browsers support this now. */
+  color: black;
+}
+
+.file-name {
+  font-weight: bolder;
+  font-size: 1.1em;
+}
+
+.drop-down {
+  margin-top: 3vh !important;
+  margin-left: 10vh !important;
+}
+
+.payer-drop-down {
+  margin-left: 3vh !important;
+}
+
+.sample-image {
+  height: 10vh;
+  width: 10vw;
+}

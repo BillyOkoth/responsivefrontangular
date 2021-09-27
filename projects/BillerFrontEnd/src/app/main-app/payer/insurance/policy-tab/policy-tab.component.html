@@ -1,0 +1,17 @@
+<nz-tabset [nzTabPosition]="'top'" [nzType]="'card'" [nzSelectedIndex]=" this.billerService.selectedTab" (nzSelectedIndexChange)="handleChange($event)">
+       <nz-tab [nzTitle]="'Check-Off Policies.'">
+        <ng-template nz-tab>
+           <app-check-off-polices></app-check-off-polices>
+        </ng-template>      
+     </nz-tab>
+    <nz-tab [nzTitle]="'Policy Mapping'">
+        <ng-template nz-tab>
+           <app-insurance></app-insurance>
+        </ng-template>      
+     </nz-tab>
+    <nz-tab [nzTitle]="'Uploaded Files'">
+        <ng-template nz-tab>
+         <app-outstanding-policies></app-outstanding-policies>
+        </ng-template>     
+    </nz-tab>    
+</nz-tabset>

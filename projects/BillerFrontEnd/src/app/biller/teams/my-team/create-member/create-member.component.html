@@ -1,0 +1,137 @@
+<form nz-form [nzLayout]="'vertical'" [formGroup]="newTeamForm">
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <nz-form-item>
+        <nz-form-label nzRequired>First Name</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="firstNameErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="fname" />
+          <ng-template #firstNameErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the first name!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Last Name</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="lastNameErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="lname" />
+          <ng-template #lastNameErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the last name!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Email</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="emailErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="email_address" />
+          <ng-template #emailErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the team members email!
+            </ng-container>
+            <ng-container *ngIf="control.hasError('email')">
+              Please use a valid email!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>National Id</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="nationalErrorTpl">
+          <input nz-input autocomplete="off" maxlength="15" formControlName="national_id" />
+          <ng-template #nationalErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter national id number!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Employee Code</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="employeeCodeErrorTpl">
+          <input nz-input autocomplete="off" maxlength="15" formControlName="employeeCode" />
+          <ng-template #employeeCodeErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the employee code!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Phone Number</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="phoneNumberErrorTpl">
+          <nz-input-group [nzAddOnBefore]="phonePrefixTemplate">
+            <ng-template #phonePrefixTemplate>
+              <nz-select formControlName="phone_prefix" class="phone-select">
+                <nz-option nzLabel="+254" nzValue="+254"></nz-option>
+              </nz-select>
+            </ng-template>
+            <input nz-input autocomplete="off" maxlength="10" formControlName="phone_number" />
+          </nz-input-group>
+
+          <ng-template #phoneNumberErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the phone number!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>User Group</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="userGroupErrorTpl">
+          <nz-select formControlName="group_id" nzAllowClear nzPlaceHolder="Choose" class="input-size">
+            <nz-option *ngFor="let roles of roleLists" [nzValue]="roles" nzLabel="{{ roles.name }}">
+              {{ roles.name }}
+            </nz-option>
+          </nz-select>
+          <ng-template #userGroupErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Assign user to group
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8"></nz-form-label>
+    <div nz-row nzJustify="end">
+      <div nz-col>
+        <button class="input-size" nz-button nzType="primary" (click)="createNewMemeber()" nzBlock [nzLoading]="loading"
+          [disabled]="!newTeamForm.valid">
+          Create
+        </button>
+      </div>
+    </div>
+  </nz-form-item>
+</form>
+<!-- <form [formGroup]="newTeamForm" autocomplete="off" (ngSubmit)="createNewMemeber()">
+  <input nz-input class="input-size" placeholder="Enter First Name" maxlength="50" id="fname" formControlName="fname" />
+
+  <input nz-input class="input-size" placeholder="Enter Last  Name" maxlength="50" id="lname" formControlName="lname" />
+
+  <input nz-input class="input-size" placeholder="Enter Email Address" maxlength="50" id="email_address"
+    formControlName="email_address" />
+
+  <input nz-input class="input-size" placeholder="National Id" maxlength="50" id="national_id"
+    formControlName="national_id" />
+
+  <input nz-input class="input-size" placeholder="Employee Code" maxlength="50" id="employeeCode"
+    formControlName="employeeCode" />
+
+  <input type="text" class="input-size" nz-input maxlength="12" placeholder="07xx xxx xxx"
+    formControlName="phone_number" ng2TelInput [ng2TelInputOptions]="{ initialCountry: 'ke' }"
+    (ng2TelOutput)="getNumber($event)" (hasError)="hasError($event)" />
+  <nz-select formControlName="group_id" nzAllowClear nzPlaceHolder="Choose" class="input-size">
+    <nz-option *ngFor="let roles of roleLists" [nzValue]="roles" nzLabel="{{ roles.name }}">
+      {{ roles.name }}
+    </nz-option>
+  </nz-select>
+</form>
+
+<button class="input-size" nz-button nzType="primary" (click)="createNewMemeber()" nzBlock [nzLoading]="loading"
+  [disabled]="!newTeamForm.valid">
+  Create
+</button> -->

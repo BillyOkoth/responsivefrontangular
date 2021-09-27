@@ -1,0 +1,287 @@
+<div *ngIf="this.billerType == 'open'">
+  <div class="title" nz-row>
+    <h2>
+      Welcome!
+    </h2>
+    <h3>
+      <span class="name">{{ firstname }}</span
+      >, you are now in. Just a few touchups!
+    </h3>
+  </div>
+  <div class="company-details" nz-row>
+    <div class="icon-tab" nz-col nzSpan="2">
+      <i nz-icon nzType="idcard" nzTheme="outline"></i>
+    </div>
+    <div class="description" nz-col nzSpan="11">
+      <h2>
+        Add Company Details
+      </h2>
+      <p>
+        Personalize your invoices by adding your company name and address.
+      </p>
+    </div>
+    <div class="progress" nz-col nzSpan="7">
+      <span>{{ this.loginService.companyPercentage }}%</span>
+
+      <nz-progress
+        [nzPercent]="this.loginService.companyPercentage"
+      ></nz-progress>
+    </div>
+  </div>
+
+  <div class="customize-look" nz-row>
+    <div class="icon-tab" nz-col nzSpan="2">
+      <i nz-icon nzType="skin" nzTheme="outline"></i>
+    </div>
+    <div nz-col nzSpan="11" class="description">
+      <h2>
+        Customize the Look
+      </h2>
+      <p>
+        Choose an invoice template that matchs your brand and add your logo.
+      </p>
+    </div>
+    <div nz-col class="progress" nzSpan="7">
+      <span>{{ this.loginService.brandPercentage }}%</span>
+      <nz-progress
+        [nzPercent]="this.loginService.brandPercentage"
+      ></nz-progress>
+    </div>
+    <div nz-col nzSpan="3" class="progress ">
+      <button
+        nz-button
+        [nzSize]="'large'"
+        nzType="link"
+        class="link-btn"
+        (click)="customizeLook()"
+      >
+        <i nz-icon nzType="arrow-right" nzTheme="outline"></i>
+      </button>
+    </div>
+  </div>
+  <div class="test-invoice" nz-row>
+    <div class="icon-tab" nz-col nzSpan="2">
+      <i nz-icon nzType="share-alt" nzTheme="outline"></i>
+    </div>
+    <div nz-col nzSpan="11" class="description">
+      <h2>
+        Send a Test Invoice
+      </h2>
+      <p>
+        Preview what your client sees by sending yourself a test invoice.
+      </p>
+    </div>
+    <div class="progress" nz-col nzSpan="7">
+      <span>{{ this.loginService.sendInvoicePercent }}%</span>
+
+      <nz-progress
+        [nzPercent]="this.loginService.sendInvoicePercent"
+      ></nz-progress>
+    </div>
+    <div nz-col nzSpan="3" class="progress ">
+      <button
+        nz-button
+        [nzSize]="'large'"
+        nzType="link"
+        class="link-btn"
+        (click)="sendTestInvoice()"
+      >
+        <i nz-icon nzType="arrow-right" nzTheme="outline"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="this.billerType == 'closed'">
+  <div class="title" nz-row>
+    <h2>
+      Welcome!
+    </h2>
+    <h3>
+      <span class="name">{{ firstname }}</span
+      >, you are now in. Just a few touchups!
+    </h3>
+  </div>
+  <div class="company-details" nz-row>
+    <div class="icon-tab" nz-col nzSpan="2">
+      <i nz-icon nzType="idcard" nzTheme="outline"></i>
+    </div>
+    <div class="description" nz-col nzSpan="11">
+      <h2>
+        Add Company Details
+      </h2>
+      <p>
+        Personalize your invoices by adding your company name and address.
+      </p>
+    </div>
+    <div class="progress" nz-col nzSpan="7">
+      <span>{{ this.loginService.companyPercentage }}%</span>
+
+      <nz-progress
+        [nzPercent]="this.loginService.companyPercentage"
+      ></nz-progress>
+    </div>
+  </div>
+  <div class="customize-look" nz-row>
+    <div class="icon-tab" nz-col nzSpan="2">
+      <i nz-icon nzType="skin" nzTheme="outline"></i>
+    </div>
+    <div class="description" nz-col nzSpan="11">
+      <h2>
+        Customize the Look
+      </h2>
+      <p>
+        Choose an invoice template that matches your brand and add your logo.
+      </p>
+    </div>
+    <div class="progress" nz-col nzSpan="7">
+      <span>{{ this.loginService.brandPercentage }}%</span>
+      <nz-progress
+        [nzPercent]="this.loginService.brandPercentage"
+      ></nz-progress>
+    </div>
+    <div nz-col nzSpan="3" class="progress ">
+      <button
+        nz-button
+        [nzSize]="'large'"
+        nzType="link"
+        class="link-btn"
+        (click)="customizeLook()"
+      >
+        <i nz-icon nzType="arrow-right" nzTheme="outline"></i>
+      </button>
+    </div>
+  </div>
+  <!-- <div class="test-invoice" nz-row>
+    <div class="icon-tab" nz-col nzSpan="2">
+      <i nz-icon nzType="share-alt" nzTheme="outline"></i>
+    </div>
+    <div class="description" nz-col nzSpan="11">
+      <h2>
+        Send a Test Invoice
+
+      
+      </h2>
+      <p>
+        Preview what your client sees by sending yourself a test invoice.
+      </p>
+    </div>
+    <div class="progress" nz-col nzSpan="7">
+      
+      <span>{{ this.loginService.sendInvoicePercent }}%</span>
+
+      <nz-progress
+        [nzPercent]="this.loginService.sendInvoicePercent"
+      ></nz-progress>
+    </div>
+    <div nz-col nzSpan="3" class="progress ">
+      <button
+        nz-button
+        [nzSize]="'large'"
+        nzType="link"
+        class="link-btn"
+        (click)="sendTestInvoice()"
+      >
+        <i nz-icon nzType="arrow-right" nzTheme="outline"></i>
+      </button>
+    </div>
+  </div> -->
+
+
+  <!-- <div class="test-invoice" nz-row>
+    <div class="icon-tab" nz-col nzSpan="2">
+      <i nz-icon nzType="dollar" nzTheme="outline"></i>
+    </div>
+    <div class="description" nz-col nzSpan="11">
+      <h2>
+        Forex Management
+      </h2>
+      <p>
+        Set up your foreign currency policy
+      </p>
+    </div>
+    <div class="progress" nz-col nzSpan="7">
+      <span>{{ this.loginService.forexPercentage }}%</span>
+
+      <nz-progress
+        [nzPercent]="this.loginService.forexPercentage"
+      ></nz-progress>
+    </div>
+    <div nz-col nzSpan="3" class="progress ">
+      <button
+        nz-button
+        [nzSize]="'large'"
+        class="link-btn"
+        nzType="link"
+        (click)="setUpForex()"
+      >
+        <i nz-icon nzType="arrow-right" nzTheme="outline"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="test-invoice" nz-row>
+    <div class="icon-tab" nz-col nzSpan="2">
+      <i nz-icon nzType="money-collect" nzTheme="outline"></i>
+    </div>
+    <div class="description" nz-col nzSpan="11">
+      <h2>
+        Set Up Your Commissions
+      </h2>
+      <p>
+        Set up commisions for your agents
+      </p>
+    </div>
+    <div class="progress" nz-col nzSpan="7">
+      <span>{{ this.loginService.commissionPercentage }}%</span>
+
+      <nz-progress
+        [nzPercent]="this.loginService.commissionPercentage"
+      ></nz-progress>
+    </div>
+
+    <div nz-col nzSpan="3" class="progress ">
+      <button
+        nz-button
+        [nzSize]="'large'"
+        nzType="link"
+        class="link-btn"
+        (click)="setUpCommisions()"
+      >
+        <i nz-icon nzType="arrow-right" nzTheme="outline"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="test-invoice" nz-row>
+    <div class="icon-tab" nz-col nzSpan="2">
+      <i nz-icon nzType="transaction" nzTheme="outline"></i>
+    </div>
+    <div class="description" nz-col nzSpan="11">
+      <h2>
+        Invoice Mapping
+      </h2>
+      <p>
+        Choose columns that will appear on you Invoice
+      </p>
+    </div>
+    <div class="progress" nz-col nzSpan="7">
+      <span>{{ this.loginService.commissionPercentage }}%</span>
+
+      <nz-progress
+        [nzPercent]="this.loginService.commissionPercentage"
+      ></nz-progress>
+    </div>
+    <div nz-col nzSpan="3" class="progress ">
+      <button
+        nz-button
+        [nzSize]="'large'"
+        class="link-btn"
+        nzType="link"
+        (click)="mapInvoice()"
+      >
+        <i nz-icon nzType="arrow-right" nzTheme="outline"></i>
+      </button>
+    </div>
+  </div> -->
+</div>

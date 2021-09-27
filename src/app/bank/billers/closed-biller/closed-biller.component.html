@@ -1,0 +1,581 @@
+<nz-steps [nzCurrent]="current">
+  <nz-step nzTitle="Company Details"></nz-step>
+  <nz-step nzTitle="Administrator Details"></nz-step>
+  <nz-step nzTitle="Billing Product/Service Lines"></nz-step>
+  <!-- <nz-step nzTitle="Company Settings"></nz-step> -->
+</nz-steps>
+
+<div *ngIf="firstForm" style="height: 170vh;margin-top: 5vh;" nz-row>
+  <div>
+    <form nz-form [formGroup]="billerWizardForm" [nzLayout]="'vertical'">
+      <div nz-row nzGutter="16">
+        <div nz-col nzSpan="18">
+          <nz-form-item >
+            <nz-form-label [nzSpan]="24">Customer Number</nz-form-label>
+            <nz-form-control nzHasFeedback [nzErrorTip]="valAc" [nzSpan]="24" style="position: relative; top: 1.6vh">
+              <input type="text" formControlName="stanbiaccountnumber" nz-input size="60" placeholder="Customer Number"
+                maxlength="13" />
+              <ng-template #valAc let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Please Enter Customer Number.
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="6" style="position: relative; margin-top: 6.7vh;">
+          <button nz-button [disabled]="billerWizardForm.invalid" type="button" (click)="validateAccount()"
+            nzType="primary" [nzLoading]="loading"
+            >
+            Validate Customer Number
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+  <div nz-row nzType="flex" nzGutter="26" nzJustify="center" style=" padding-left: 0.5vw;">
+    <form nz-form [formGroup]="stepOneForm" [nzLayout]="'vertical'">
+      <div nz-row nzGutter="16">
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">Customer Number</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback>
+              <input type="text" size="60" [(ngModel)]="this.customerNumeber" formControlName="customer_number" nz-input
+                placeholder="Customer Number" maxlength="50" readonly required />
+              <!-- <span class="error-muted" *ngIf="stepOneForm.get('customer_number').invalid">Customer Number is required</span>      -->
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">Company Name</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorTpl">
+              <input type="text" size="60" formControlName="company_name" nz-input placeholder="Company Name"
+                maxlength="50" required />
+              <ng-template #errorTpl let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Please Enter Company Name.
+                </ng-container>
+              </ng-template>
+              <!-- <span class="error-muted" *ngIf="stepOneForm.get('company_name').invalid ">Company Name is required</span> -->
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24" nzFor="email">Company Email</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorEml">
+              <input nz-input formControlName="company_email_address" type="email" placeholder="Company Email Address"
+                size="50" required />
+              <ng-template #errorEml let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Email is required.
+                </ng-container>
+                <ng-container *ngIf="control.hasError('email')">
+                  This is not a valid email address.
+                </ng-container>
+                <ng-container *ngIf="control.hasError('pattern')">
+                  This is not a valid patterm.
+                </ng-container>
+              </ng-template>
+              <!-- <span class="error-muted" *ngIf="stepOneForm.get('company_email_address').invalid "> test</span> -->
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">Physical Address</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="erroraddtpl">
+              <input type="text" size="60" nz-input placeholder="Physical Address" maxlength="100" required
+                formControlName="physical_address" />
+
+              <ng-template #erroraddtpl let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Physical Address is required.
+                </ng-container>
+              </ng-template>
+              <!-- <span class="error-muted" *ngIf="stepOneForm.get('physical_address').invalid">Physical Address  is required</span> -->
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">Company Website</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorWebtpl">
+              <input type="text" size="60" formControlName="website" nz-input placeholder="Company Website"
+                maxlength="100" required />
+
+              <ng-template #errorWebtpl let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Website is required.
+                </ng-container>
+              </ng-template>
+              <!-- <span class="error-muted" *ngIf="stepOneForm.get('website').invalid">Website is required</span> -->
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">Customer Care Email</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorCustomerService">
+              <input type="text" size="60" formControlName="customer_care" nz-input placeholder="Customer care Email"
+                maxlength="100" required />
+
+              <ng-template #errorCustomerService let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Customer Care is required.
+                </ng-container>
+                <ng-container *ngIf="control.hasError('email')">
+                  This is not a valid Customer Care email address.
+                </ng-container>
+                <ng-container *ngIf="control.hasError('pattern')">
+                  This is not a valid pattern.
+                </ng-container>
+              </ng-template>
+              <!-- <span class="error-muted" *ngIf="stepOneForm.get('customer_care').invalid">Customer Care Email is required</span> -->
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">Alias</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorAliastpl">
+              <input type="text" size="60" formControlName="alias" nz-input placeholder="Alias" maxlength="50"
+                required />
+
+              <ng-template #errorAliastpl let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Alias is required.
+                </ng-container>
+              </ng-template>
+              <!-- <span class="error-muted" *ngIf="stepOneForm.get('alias').invalid">Alias is required</span> -->
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">PAY BILL NO.</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorPaybillTpl">
+              <input type="text" size="60" formControlName="pay_bill" nz-input placeholder="PAY BILL" maxlength="50"
+                required />
+
+              <ng-template #errorPaybillTpl let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Pay Bill No. is required.
+                </ng-container>
+              </ng-template>
+              <!-- <span class="error-muted" *ngIf="stepOneForm.get('pay_bill').invalid">Pay Bill is required</span> -->
+            </nz-form-control>
+          </nz-form-item>
+
+        </div>
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">KRA PIN</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorKra">
+              <input type="text" size="60" formControlName="kra_pin" nz-input placeholder="KRA PIN" maxlength="30"
+                required />
+
+              <ng-template #errorKra let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  K.R.A No. is required.
+                </ng-container>
+              </ng-template>
+              <!-- <span class="error-muted" *ngIf="stepOneForm.get('kra_pin').invalid">KRA PIN is required</span>       -->
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">VAT</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorVat">
+              <input type="text" size="60" formControlName="vat" nz-input placeholder="VAT" maxlength="50" required />
+              <ng-template #errorVat let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  VAT No. is required.
+                </ng-container>
+              </ng-template>
+
+              <!-- <span class="error-muted" *ngIf="stepOneForm.get('vat').invalid">VAT is required as percentage.</span> -->
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">Phone Number</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorPhone1">
+              <input type="text" maxlength="10" style="width: 100%;" nz-input placeholder="07xx xxx xxx"
+                formControlName="phone_details" ng2TelInput [ng2TelInputOptions]="{ initialCountry: 'ke' }"
+                (keyup)="getcompanyNumber($event)" (hasError)="hasError($event)" />
+
+              <ng-template #errorPhone1 let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Phone No. is required.
+                </ng-container>
+                <ng-container *ngIf="control.hasError('pattern')">
+                  This is not a valid phone number pattern.
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+            <!-- <span class="error-muted" *ngIf="stepOneForm.get('phone_details').invalid">Phone Number is required</span> -->
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">Postal Address</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorPA">
+              <input type="text" size="60" formControlName="postal_address" nz-input placeholder="Postal Address"
+                maxlength="100" required />
+              <ng-template #errorPA let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Postal Address is required.
+                </ng-container>
+
+              </ng-template>
+              <!-- <span class="error-muted" *ngIf="stepOneForm.get('postal_address').invalid">Postal Address is required</span> -->
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">Biller Prefix</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorPrefix">
+              <input type="text" size="60" formControlName="biller_prefix" nz-input placeholder="Biller Prefix"
+                maxlength="4" required />
+
+              <ng-template #errorPrefix let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Biller Prefix is required
+                </ng-container>
+                <ng-container *ngIf="control.hasError('minlength')">
+                  Biller Prefix should be 4 characters
+                </ng-container>
+
+
+              </ng-template>
+              <!-- <span class="error-muted" *ngIf="stepOneForm.get('biller_prefix').invalid">Biller Prefix should start with letter E.</span> -->
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">Sector</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorSector">
+              <nz-select nzAllowClear nzPlaceHolder="Select Sector" formControlName="sectorname" class="input-size"
+                style="width:100%" required>
+                <nz-option *ngFor="let sector of sectorsList" [nzValue]="sector" nzLabel="{{ sector.name }}">
+                  {{ sector.name }}
+                </nz-option>
+              </nz-select>
+              <ng-template #errorSector let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Sector is required.
+                </ng-container>
+              </ng-template>
+              <!-- <span class="error-muted" *ngIf="stepOneForm.get('sectorname').invalid">Sector is required</span> -->
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">Country</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorCTRY">
+              <nz-select nzAllowClear nzPlaceHolder="Select Country" (ngModelChange)="onSelect($event)"
+                formControlName="country" class="input-size" style="width:100%">
+                <nz-option *ngFor="let roles of allListOfCountries" [nzValue]="roles" nzLabel="{{ roles.countryName }}">
+                  {{ roles.countryName }}
+                </nz-option>
+              </nz-select>
+
+              <ng-template #errorCTRY let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Country is required.
+                </ng-container>
+              </ng-template>
+              <!-- <span class="error-muted" *ngIf="stepOneForm.get('country').invalid">Country is required</span> -->
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">County</nz-form-label>
+            <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorCounty">
+              <nz-select nzAllowClear placeholder="Select County" formControlName="branch" class="input-size"
+                style="width:100%">
+                <nz-option *ngFor="let county of allListofCounties" [nzValue]="county"
+                  nzLabel="{{ county.branchName }}">
+                  {{ county.branchName }}
+                </nz-option>
+              </nz-select>
+
+              <ng-template #errorCounty let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  County is required.
+                </ng-container>
+              </ng-template>
+              <!-- <span class="error-muted" *ngIf="stepOneForm.get('branch').invalid">Branch is required</span> -->
+            </nz-form-control>
+          </nz-form-item>
+
+        </div>
+      </div>
+
+
+      <div nz-col nzSpan="24">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24">Company Description</nz-form-label>
+
+          <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorDesc">
+            <textarea rows="4" nz-input formControlName="description" maxlength="150" required></textarea>
+
+            <ng-template #errorDesc let-control>
+              <ng-container *ngIf="control.hasError('required')">
+                Description is required.
+              </ng-container>
+            </ng-template>
+
+            <!-- <span class="error-muted" *ngIf="stepOneForm.get('description').invalid">Description is required</span> -->
+
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </form>
+  </div>
+</div>
+<div nz-row nzType="flex" nzJustify="center" style="margin-top: 5vh;" *ngIf="secondForm" nzGutter="16">
+  <form [formGroup]="stepTwoForm" nz-form>
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24">First Name</nz-form-label>
+          <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorFirstName">
+            <input type="text" size="60" formControlName="firstname" nz-input placeholder="First Name" maxlength="50"
+              required />
+
+            <ng-template #errorFirstName let-control>
+              <ng-container *ngIf="control.hasError('required')">
+                Please Enter First Number.
+              </ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24">Last Name</nz-form-label>
+          <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorLname">
+            <input type="text" size="60" formControlName="lastname" nz-input placeholder="Last Name" maxlength="50"
+              required />
+
+            <ng-template #errorLname let-control>
+              <ng-container *ngIf="control.hasError('required')">
+                Please Enter Last Number.
+              </ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24">Biller Type</nz-form-label>
+          <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorbillerType">
+            <nz-select nzAllowClear nzPlaceHolder="Select Biller Type" formControlName="closed_biller_type"
+              class="input-size" style="width: 100%;" required>
+              <nz-option *ngFor="let roles of closedBillerType" [nzValue]="roles.value" nzLabel="{{ roles.name }}">
+                {{ roles.name }}
+              </nz-option>
+            </nz-select>
+            <ng-template #errorbillerType let-control>
+              <ng-container *ngIf="control.hasError('required')">
+                Please Enter Closed Biller Type.
+              </ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24">Administrator Email</nz-form-label>
+          <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorAdminEmail">
+            <input type="text" size="60" formControlName="administrator_email" nz-input
+              placeholder="Administrator Email" maxlength="100" required />
+
+            <ng-template #errorAdminEmail let-control>
+              <ng-container *ngIf="control.hasError('required')">
+                Please Enter Administrator Email.
+              </ng-container>
+            </ng-template>
+            <!-- <span class="error-muted" *ngIf="stepTwoForm.get('administrator_email').invalid">Administrator Email is required</span> -->
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24">Administrator Phone Number</nz-form-label>
+          <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorAdminPhone">
+            <input type="text" maxlength="10" style="width: 100%;" nz-input placeholder="07xx xxx xxx"
+              formControlName="admin_phone" name="this.phonenumber" ng2TelInput
+              [ng2TelInputOptions]="{ initialCountry: 'ke' }" (keyup)="getAdminNumber($event)"
+              (hasError)="hasError($event)" />
+
+            <ng-template #errorAdminPhone let-control>
+              <ng-container *ngIf="control.hasError('required')">
+                Please Enter Administrator Phone No.
+              </ng-container>
+              <ng-container *ngIf="control.hasError('pattern')">
+                Please Enter Valid Phone No.
+              </ng-container>
+            </ng-template>
+          </nz-form-control>
+          <!-- <span class="error-muted" *ngIf="stepTwoForm.get('admin_phone').invalid">Administrator  Phone Number is required</span> -->
+
+        </nz-form-item>
+
+
+      </div>
+    </div>
+  </form>
+</div>
+
+<div nz-row style="height: 85vh;margin-top: 5vh;"nzGutter="16" *ngIf="thirdForm" >
+  <div nz-col nzSpan="10">
+    <form [formGroup]="stepThreeForm" nz-form>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24">Service Line Name</nz-form-label>
+        <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorServName">
+          <input type="text"  formControlName="service_line_name" nz-input placeholder="Service Name"
+            maxlength="50" required />
+          <ng-template #errorServName let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please Enter Service Line Name.
+            </ng-container>
+
+          </ng-template>
+        </nz-form-control>
+
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24">Currency</nz-form-label>
+        <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorCurrency">
+          <nz-select nzAllowClear placeholder="Select Currency " (ngModelChange)="onSelectCharge($event)"
+            formControlName="currency" class="input-size" style="width:100%" name="this.chargetype" required>
+            <nz-option *ngFor="let roles of allChargeTypeList" [nzValue]="roles" nzLabel="{{ roles.chargeName }}">
+              {{ roles.chargeName }}
+            </nz-option>
+          </nz-select>
+
+          <ng-template #errorCurrency let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please Select Currency.
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24">Account</nz-form-label>
+        <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorAccount">
+          <nz-select nzAllowClear nzPlaceHolder="Select Account Name" formControlName="specific_account"
+            class="input-size" style="width:100%" required>
+            <nz-option *ngFor="let roles of customerAccounts" [nzValue]="roles" nzLabel="{{ roles.account_name }}">
+              {{ roles.account_name }}
+            </nz-option>
+          </nz-select>
+
+          <ng-template #errorAccount let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please Select Account.
+            </ng-container>
+
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24">Service Email</nz-form-label>
+        <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorServiceEmail">
+          <input type="text" size="60" formControlName="eslip_email" nz-input placeholder="Service Email"
+            maxlength="100" required />
+
+          <ng-template #errorServiceEmail let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Service Line Email is required.
+            </ng-container>
+            <ng-container *ngIf="control.hasError('pattern')">
+              Please Enter Valid Email.
+            </ng-container>
+
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24">Service Line Prefix.</nz-form-label>
+        <nz-form-control [nzSpan]="24" nzHasFeedback [nzErrorTip]="errorServicePrefix">
+          <input type="text" size="60" formControlName="prefix" nz-input placeholder="Biller Prefix" maxlength="10"
+            required />
+
+          <ng-template #errorServicePrefix let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Service Line Prefix is required
+            </ng-container>
+
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <button nz-button style="background-color: #f0ad4e; margin-left:2vh;margin-top:0.5vh;"
+          nzTooltipTitle="Add the Service Line." nzTooltipPlacement="topCenter" [disabled]="!stepThreeForm.valid"
+          nz-tooltip [nzLoading]="loading" (click)="addServiceLine()">
+          <i nz-icon nzType="plus" nzTheme="outline"></i>
+          Add Service
+        </button>
+      </nz-form-item>
+
+    </form>
+  </div>
+  <div nz-col nzSpan="14">
+    <nz-table nzTemplateMode [nzData]="billing_line">
+      <thead>
+        <tr>
+          <th class="header">#</th>
+          <th class="header">Service Line</th>
+          <th class="header">Account Number</th>
+          <th class="header">Currency</th>
+          <th class="header">Email</th>
+          <th class="header">Prefix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of billing_line; let i = index">
+          <td>{{i+1}}</td>
+          <td>{{data.service_line}}</td>
+          <td>{{data.account}}</td>
+          <td>{{data.currency}}</td>
+          <td>{{data.email}}</td>
+          <td>{{data.prefix}}</td>
+
+        </tr>
+      </tbody>
+
+    </nz-table>
+  </div>
+</div>
+
+<div nz-row style="margin-top: 5vh;">
+  <div nz-col nzSpan="12">
+    <div nz-row nzType="flex" nzJustify="start">
+      <button nz-button nzType="primary" (click)="pre()" *ngIf="current > 0">
+        <i nz-icon nzType="left" nzTheme="outline"></i> Previous
+      </button>
+
+    </div>
+  </div>
+
+  <!-- [disabled]="!stepOneForm.valid" -->
+  <div nz-col nzSpan="12">
+    <div nz-row nzType="flex" nzJustify="end" *ngIf="firstForm">
+      <button nz-button nzType="primary" [disabled]="!stepOneForm.valid" (click)="next1()" *ngIf="current < 2">
+        Next <i nz-icon nzType="right" nzTheme="outline"></i>
+      </button>
+    </div>
+
+
+    <!-- [disabled]="!stepTwoForm.valid" -->
+    <div nz-row nzType="flex" nzJustify="end" *ngIf="secondForm">
+      <button nz-button nzType="primary" [disabled]="!stepTwoForm.valid" (click)="next1()" *ngIf="current < 2">
+        Next <i nz-icon nzType="right" nzTheme="outline"></i>
+      </button>
+    </div>
+
+
+    <!-- insert another div to disable the second form -->
+
+
+    <div nz-row nzType="flex" nzJustify="end" *ngIf="thirdForm">
+      <button nz-button nzType="primary" [disabled]="loading" (click)="createBiller()" [nzLoading]="loading"
+        [disabled]="loading || !stepOneForm.valid || !stepTwoForm.valid " *ngIf="current === 2">
+        Complete <i nz-icon nzType="right" nzTheme="outline"></i>
+      </button>
+    </div>
+  </div>
+</div>

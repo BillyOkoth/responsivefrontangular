@@ -1,0 +1,55 @@
+<div nz-row>
+  <div nz-col nzSpan="12">
+    <input nz-input placeholder="Search" [(ngModel)]="searchValue" style="width: 100%;" maxlength="100" />
+  </div>
+</div>
+
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th class="header">#</th>
+          <th class="header">Company Name</th>
+          <th class="header">Biller Code</th>
+          <th class="header">Sector</th>
+          <th class="header">Branch</th>
+          <th class="header">Email</th>
+          <th class="header">Created By</th>
+          <th class="header">Updated By</th>
+          <th class="header">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *cdkVirtualFor="
+          let data of filterTable.data | billerSearch: searchValue;
+          let i = index
+        ">
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.company_name }}</td>
+          <td>{{ data.comp_code }}</td>
+          <td>{{ data.sector }}</td>
+          <td>{{ data.branch }}</td>
+          <td>{{ data.email }}</td>
+          <td>{{ data.created_by }}</td>
+          <td>{{ data.updated_by }}</td>
+
+
+          <td>
+
+            <button nz-button style="color: #f0ad4e;" nzType="link" nzTooltipTitle="Approve New Biller"
+              nzTooltipPlacement="topCenter" nz-tooltip (click)="approveBiller(data)"
+              [disabled]="!this.role.billerAllRoles">
+              <i nz-icon nzType="check" nzTheme="outline"></i>
+            </button>
+
+            <button nz-button nzType="link" nzTooltipTitle="Reject New Biller" nzTooltipPlacement="topCenter" nz-tooltip
+              (click)="RejectNewBiller(data)" [disabled]="!this.role.billerAllRoles">
+              <i nz-icon nzType="close" nzTheme="outline"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</cdk-virtual-scroll-viewport>

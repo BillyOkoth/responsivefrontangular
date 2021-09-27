@@ -1,0 +1,9 @@
+.close-button mat-icon {
+    font-size: 4em !important;
+  }
+  .text-font {
+    font-size:0.8em;
+  }
+  .page-title {
+    margin-top:2vh;
+}

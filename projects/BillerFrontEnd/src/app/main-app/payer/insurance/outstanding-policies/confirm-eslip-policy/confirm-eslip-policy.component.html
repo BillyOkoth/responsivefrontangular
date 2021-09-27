@@ -1,0 +1,79 @@
+<div nz-row nzType="flex" nzJustify="center">
+    <div nz-col nzSpan='24'>
+        <!-- <h2>
+            Confirm E-slip Generation
+          </h2> -->
+    </div>
+  </div>
+  <div nz-row>
+      <nz-alert
+      *ngIf="this.billerService.zeroValuesLength > 0"
+      nzType="error"
+      nzMessage="Accounts with zero balance will not be included in the e-slip"
+    ></nz-alert>
+  </div>
+   
+  <div nz-row nzType="flex" nzJustify="center">
+    <div nz-col nzSpan="16">
+        <h2>
+            You are generating an eslip for
+          </h2>
+    
+          <ul>
+            <li>
+                Total number of Policies:
+                {{ this.billerService.accountInEslip }}
+            </li>
+            <!-- <li>
+                No of Policies in the Eslip:
+                {{ eslipData.eslipInfo.length }}
+            </li> -->
+            <!-- <li>
+                Policies with Zero Balance: {{ this.billerService.zeroValuesLength }}
+            </li> -->
+            <li *ngIf="billerService.oddCentsFound">
+                Ksh {{ billerService.oddCentAmount }} Added to account
+                {{ billerService.oddCentAccount }} to correct odd cents.
+            </li>
+            
+          </ul>
+       
+    
+          <h4>
+            AMOUNT TO PAY :<span>
+              {{ eslipData.total_amount_to_pay | currency: 'Ksh.' }}
+            </span>
+          </h4>
+    </div>
+  </div>
+  
+    <div  nz-row  nzType="flex" nzJustify="center">
+      <div nz-col nzSpan='12'>
+          <div class="proceed">
+              <button
+                nz-button
+                style="background-color: #5cb85c;"
+                [disabled]=" loading || disabled"
+                (click)="generateEslip()"
+                [nzLoading]="loading"
+              >
+                Proceed
+              </button>
+            </div>
+      </div>
+      <div nz-col nzSpan='12'>
+          <div class="cancel">
+              <button
+                nz-button
+                nzType="default"
+               
+                (click)="closeDialog()"
+              >
+                Cancel
+              </button>
+            </div>
+      </div>
+  
+     
+    </div>
+  

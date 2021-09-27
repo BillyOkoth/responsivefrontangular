@@ -1,0 +1,91 @@
+<form
+  [formGroup]="newTeamForm"
+  autocomplete="off"
+  (ngSubmit)="createNewMemeber()"
+>
+  <input
+    nz-input
+    class="input-size"
+    placeholder="Enter First Name"
+    maxlength="50"
+    id="fname"
+    formControlName="fname"
+  />
+
+  <input
+    nz-input
+    class="input-size"
+    placeholder="Enter Last  Name"
+    maxlength="50"
+    id="lname"
+    formControlName="lname"
+  />
+
+  <input
+    nz-input
+    class="input-size"
+    placeholder="Enter Email Address"
+    maxlength="50"
+    id="email_address"
+    formControlName="email_address"
+  />
+
+  <input
+    nz-input
+    class="input-size"
+    placeholder="National Id"
+    maxlength="50"
+    id="national_id"
+    formControlName="national_id"
+  />
+
+  <input
+    nz-input
+    class="input-size"
+    placeholder="Employee Code"
+    maxlength="50"
+    id="employeeCode"
+    formControlName="employeeCode"
+  />
+ 
+  <input
+                type="text"
+                maxlength="12"
+                class="input-size"
+                nz-input
+                placeholder="07xx xxx xxx"
+                formControlName="phone_number"
+                ng2TelInput
+                [ng2TelInputOptions]="{ initialCountry: 'ke' }"
+                (ng2TelOutput)="getNumber($event)"
+                (hasError)="hasError($event)"
+              />
+  <nz-select
+    formControlName="group_id"
+    nzAllowClear
+    nzPlaceHolder="Choose"
+    class="input-size"
+  >
+    <nz-option
+      *ngFor="let roles of roleLists"
+      [nzValue]="roles"
+      nzLabel="{{ roles.name }}"
+    >
+      {{ roles.name }}
+    </nz-option>
+  </nz-select>
+</form>
+
+<button
+  class="input-size"
+  nz-button
+  nzType="primary"
+  (click)="createNewMemeber()"
+  nzBlock
+  [nzLoading]="loading"
+  [disabled]= "!newTeamForm.valid"
+>
+  Create
+</button>
+
+

@@ -1,0 +1,297 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~ng-zorro-antd/style/index.min.css"; /* Import basic styles */
+@import "~ng-zorro-antd/button/style/index.min.css"; /* Import styles of the component */
+
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import "~ngx-toastr/toastr.css";
+
+// @import "alertifyjs/build/alertify.min.js";
+// @import "alertifyjs/build/css/alertify.min.css";
+
+// @import "~material-icons/iconfont/material-icons.css";
+
+@font-face {
+  font-family: "Segoe UI Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Segoe UI Regular"),
+    url("./assets/font/SegoeProDisplay-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Segoe UI Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Segoe UI Bold"),
+    url("./assets/font/SegoeProDisplay-Semibold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Segoe UI Light";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Segoe UI Light"),
+    url("./assets/font/SegoeProDisplay-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Alfrida Signature";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Alfrida Signature"),
+    url("./assets/font/AlfridaSignature.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "digital-7";
+  font-style: normal;
+  font-weight: normal;
+  src: local("digital-7"),
+    url("./assets/font/digital-7/digital-7.ttf") format("truetype");
+}
+
+* {
+  font-family: Segoe UI Light;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  min-width: 100%;
+  min-height: 100%;
+  background: #ececec !important;
+}
+
+.text-color-grey-light {
+  color: #d6d6d6;
+}
+
+.text-color-grey-dark {
+  color: #707070;
+}
+
+.text-color-yellow {
+  color: #ffd387;
+}
+
+.bolder-font {
+  font-family: "Alfrida Signature";
+  font-weight: 700 !important;
+  font-size: 4em !important;
+}
+
+.blue-background {
+  background: #0a2240;
+  background: -webkit-linear-gradient(to bottom, #0033a1, #0a2240);
+  background: linear-gradient(to bottom, #0033a1, #0a2240);
+}
+.white-background {
+  background: #ffffff;
+}
+
+/*
+=========================================================================
+ ONBOARDING STEPS STYLING
+ ========================================================================
+*/
+
+// define container for all the steps
+.step-content-holder {
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 2vh;
+}
+
+.step-cancel-btn {
+  height: 20vh !important;
+  cursor: pointer;
+}
+.step-cancel-btn mat-icon {
+  margin-left: 10% !important;
+  font-size: 3em !important;
+  margin-top: 5% !important;
+}
+.step-form-holder {
+  min-height: 70vh !important;
+}
+
+.step-title-holder h2 {
+  color: #ffd387;
+  text-align: center;
+  font-weight: 300 !important;
+  font-size: 2em !important;
+}
+.shadow {
+  box-shadow: 0 8px 6px -6px black;
+}
+.shadow-right {
+  -webkit-box-shadow: 11px 0px 5px 0px rgba(204, 204, 204, 1);
+  -moz-box-shadow: 11px 0px 5px 0px rgba(204, 204, 204, 1);
+  box-shadow: 11px 0px 5px 0px rgba(204, 204, 204, 1);
+}
+.white-color {
+  background: #ffffff;
+}
+.blue-solid {
+  background: #0033a1 !important;
+}
+.yellow-tile {
+  background: #ffd387 !important;
+}
+.grey-tile {
+  background: #d4d4d4 !important;
+}
+
+.step-title-holder .step-bar {
+  height: 1vh !important;
+  background: #d6d6d6 !important;
+  margin-top: 55% !important;
+}
+.step-title-holder .step-on {
+  height: 1vh !important;
+  background: #ffd387 !important;
+  margin-top: 55% !important;
+}
+
+.digits {
+  font-family: "digital-7";
+}
+
+.ant-table-tbody > tr > td {
+  font-weight: bold;
+}
+.ant-table-thead > tr > th {
+  font-weight: bolder;
+}
+
+// .ant-table-tbody>tr>th {
+//   font-weight: 999;
+//   font-size: medium;
+// }
+
+.ngx-datatable.material .datatable-header .datatable-header-cell {
+  color: rgb(0, 51, 161);
+  font-size: 0.9em;
+  font-weight: bolder;
+  font-family: "Segoe UI Bold";
+}
+/*
+======================================================================
+Style child pages of the admin section
+----------------------------------------------------------------------
+*/
+.admin-child-container {
+  position: absolute !important;
+  width: 200% !important;
+  height: 70vh !important;
+  background: #ffffff;
+  left: -60px;
+  right: 0;
+  top: 4vh !important;
+}
+
+.flip-in-hor-bottom {
+  -webkit-animation: flip-in-hor-bottom 0.5s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: flip-in-hor-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes flip-in-hor-bottom {
+  0% {
+    -webkit-transform: rotateX(80deg);
+    transform: rotateX(80deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    opacity: 1;
+  }
+}
+@keyframes flip-in-hor-bottom {
+  0% {
+    -webkit-transform: rotateX(80deg);
+    transform: rotateX(80deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    opacity: 1;
+  }
+}
+
+.flip-out-hor-top {
+  -webkit-animation: flip-out-hor-top 0.45s
+    cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  animation: flip-out-hor-top 0.45s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+@-webkit-keyframes flip-out-hor-top {
+  0% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotateX(70deg);
+    transform: rotateX(70deg);
+    opacity: 0;
+  }
+}
+@keyframes flip-out-hor-top {
+  0% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotateX(70deg);
+    transform: rotateX(70deg);
+    opacity: 0;
+  }
+}
+
+.slide-in-fwd-center {
+  -webkit-animation: slide-in-fwd-center 0.4s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-fwd-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-in-fwd-center {
+  0% {
+    -webkit-transform: translateZ(-1400px);
+    transform: translateZ(-1400px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-fwd-center {
+  0% {
+    -webkit-transform: translateZ(-1400px);
+    transform: translateZ(-1400px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+nz-table {
+  margin-top: 3vh;
+  
+}

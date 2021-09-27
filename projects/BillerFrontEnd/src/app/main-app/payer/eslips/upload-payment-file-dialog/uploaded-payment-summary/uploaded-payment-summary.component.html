@@ -1,0 +1,122 @@
+<!-- <div class="content shadow-right" fxLayout="column">
+  <div>
+    <mat-progress-bar
+      mode="query"
+      *ngIf="this.loading === true"
+    ></mat-progress-bar>
+  </div>
+
+  <div class="title" fxLayout="row">
+    <div fxFlex="80">
+      <h2>
+        File Uploaded
+      </h2>
+    </div>
+
+    <div fxFlex="20" class="refresh"></div>
+  </div>
+  <div *ngIf="text" class="wait heartbeat">
+    <h2>
+      Wait for the Accounts to be validated !!!!
+    </h2>
+  </div>
+
+  <div *ngIf="disptab">
+    <ngx-datatable
+      #table
+      class="material striped"
+      style="height: 200px; margin-bottom: 60px;"
+      [headerHeight]="40"
+      [limit]="100"
+      [columnMode]="'force'"
+      [footerHeight]="50"
+      [rowHeight]="50"
+      [scrollbarV]="true"
+      [rows]="rows"
+      [selected]="selected"
+      [selectionType]="'checkbox'"
+    >
+      <ngx-datatable-column
+        [width]="30"
+        [sortable]="false"
+        [canAutoResize]="false"
+        [draggable]="true"
+        [resizeable]="false"
+        [headerCheckboxable]="true"
+        [checkboxable]="true"
+      >
+      </ngx-datatable-column>
+
+      
+
+      <ngx-datatable-column name="Date Created" prop="created_at">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-row="row"
+          this.uploadFileSummary()
+          let-value="value"
+        >
+          {{ value | date: 'medium' }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="File Name" prop="file_name">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Validated Account" prop="validated">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Pending Account" prop="pending">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Total Account" prop="total">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Progress" prop="progress">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="View">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          <div *ngIf="row.progress === '100%'">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="viewUploadedPaymentDetails(row)"
+            >
+              View Accounts
+            </button>
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Generate Eslip">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          <div *ngIf="row.progress === '100%' && row.isValidated === '1'">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="generateEslip(row)"
+            >
+              Generate Eslip
+            </button>
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div> -->

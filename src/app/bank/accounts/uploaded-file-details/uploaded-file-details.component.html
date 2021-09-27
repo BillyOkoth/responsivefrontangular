@@ -1,0 +1,80 @@
+<div class="close-button" nz-row>
+  <div class="button-back" nz-col nzSpan="3">
+    <i
+      nz-icon
+      nzType="arrow-left"
+      nzTheme="outline"
+      style="font-size: 36px; color: #08c;"
+      nzTooltipTitle="Back"
+      nzTooltipPlacement="right"
+      nz-tooltip
+      (click)="closeView()"
+    ></i>
+  </div>
+</div>
+<div nz-row>
+  <div nz-col nzSpan="12">
+    <input
+      nz-input
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      style="width: 100%;"
+      maxlength="100"
+    />
+  </div>
+  <div nz-col nzSpan="12">
+    <div nz-row nzType="flex" nzJustify="end">
+      <div nz-col nzSpan="4">
+        <button
+          nz-button
+          nzTheme="outline"
+          style="font-size: 36px; color: #08c;"
+          nzType="link"
+          nzTooltipTitle="Download Excel"
+          nzTooltipPlacement="left"
+          nz-tooltip
+          (click)="downloadCSV()"
+        >
+          <i nz-icon nzType="download"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+  <nz-table
+    #smallTable
+    nzSize="small"
+    [nzData]="rows"
+    [nzPageSize]="50"
+    nzShowPagination
+    nzShowSizeChanger
+  >
+    <thead>
+      <tr>
+          <th class="header" nzWidth="6%">#</th>
+        <th nzWidth="16%" class="header">Account No.</th>
+        <th nzWidth="20%" class="header">Account Name</th>
+        <th nzWidth="16%" class="header">Account Balance</th>
+        <th nzWidth="16%" class="header">Status</th>
+        <th nzWidth="16%" class="header">Date Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let data of smallTable.data | fileAc: searchValue;
+          let i = index
+        "
+      >
+      <td>{{ i + 1}}</td>
+        <td>{{ data.account_no }}</td>
+        <td>{{ data.account_name }}</td>
+        <td>{{ data.account_balance }}</td>
+        <td>{{ data.status }}</td>
+        <td>{{ data.created_at | date: "short" }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-spin>

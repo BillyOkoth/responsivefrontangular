@@ -1,0 +1,17 @@
+.page-title {
+    margin-top:2vh;
+}
+
+.button-back {
+    margin-top:2vh;
+}
+
+.header {
+    font-weight: bolder;
+  }
+ 
+
+
+  cdk-virtual-scroll-viewport {
+    height: 80vh;
+  }

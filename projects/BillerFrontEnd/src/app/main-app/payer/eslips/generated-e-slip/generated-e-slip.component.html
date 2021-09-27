@@ -1,0 +1,77 @@
+<div *ngIf="this.billerType == 'open'">
+
+  <nz-tabset
+  [nzTabPosition]="'top'"
+  [nzType]="'card'"
+  [nzSelectedIndex]="this.loginService.selectedTab"
+  (nzSelectedIndexChange)="handleChange($event)"
+
+>
+  <nz-tab nzTitle="Generate E-Slips">
+    <ng-template nz-tab>
+      <app-payments></app-payments>
+    </ng-template>
+  </nz-tab>
+  <nz-tab nzTitle="Pending Eslips">
+    <ng-template nz-tab>
+      <app-pending-eslips></app-pending-eslips>
+    </ng-template>
+  </nz-tab>
+  <nz-tab nzTitle="Paid Eslips">
+    <ng-template nz-tab>
+      <app-paid-eslips></app-paid-eslips>
+    </ng-template>
+  </nz-tab>
+  <nz-tab nzTitle="Expired Eslips">
+    <ng-template nz-tab>
+      <app-expired-eslips></app-expired-eslips>
+    </ng-template>
+  </nz-tab>
+  <nz-tab nzTitle="Account Reports">
+    <ng-template nz-tab>
+      <app-account-report-summary></app-account-report-summary>
+    </ng-template>
+  </nz-tab>
+</nz-tabset>
+
+
+</div>
+
+
+
+<div *ngIf="this.billerType == 'closed'">
+  <nz-tabset
+  [nzTabPosition]="'top'"
+  [nzType]="'card'"
+  [nzSelectedIndex]="this.loginService.selectedTab"
+  (nzSelectedIndexChange)="handleChange($event)"
+  
+>
+  <!-- <nz-tab nzTitle="Generate E-Slips">
+    <ng-template nz-tab>
+      <app-payments></app-payments>
+    </ng-template>
+  </nz-tab> -->
+  <nz-tab nzTitle="Pending Eslips">
+    <ng-template nz-tab>
+      <app-pending-eslips></app-pending-eslips>
+    </ng-template>
+  </nz-tab>
+  <nz-tab nzTitle="Paid Eslips">
+    <ng-template nz-tab>
+      <app-paid-eslips></app-paid-eslips>
+    </ng-template>
+  </nz-tab>
+  <nz-tab nzTitle="Expired Eslips">
+    <ng-template nz-tab>
+      <app-expired-eslips></app-expired-eslips>
+    </ng-template>
+  </nz-tab>
+  <!-- <nz-tab nzTitle="Account Reports">
+    <ng-template nz-tab>
+      <app-account-report-summary></app-account-report-summary>
+    </ng-template>
+  </nz-tab> -->
+</nz-tabset>
+
+</div>

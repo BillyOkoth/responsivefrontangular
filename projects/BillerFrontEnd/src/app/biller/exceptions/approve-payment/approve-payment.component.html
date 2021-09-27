@@ -1,0 +1,54 @@
+<!-- <div class="table-operations">
+    <div fxLayoutAlign="start center" style="margin-bottom:2vh;" fxFlex="100">
+      <input
+        nz-input
+        placeholder="Search"
+        [(ngModel)]="searchValue"
+        style="width: 50%;"
+        maxlength="100"
+      />
+    </div>
+    <div fxLayoutAlign="end center" style="margin-bottom:2vh;">     
+    </div>
+  </div> -->
+  <nz-table #filterTable [nzData]="rows">
+    <thead>
+      <tr>                
+          <th>Date Created</th>
+          <th>Amount</th>
+          <th>Reference</th>
+          <th>FT</th>
+          <th>EslipNo</th>          
+          <th>Reconciliation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <nz-spin
+        [nzSize]="'large'"
+        nzSimple
+        *ngIf="this.loading === true"
+      ></nz-spin>
+      <tr
+        *ngFor="
+          let data of filterTable.data | paidEslips: searchValue;let i = index">
+          <td>{{ data.created_at | date: 'short' }}</td>       
+          <td>{{ data.amount | currency: 'Ksh.'}}</td>
+          <td>{{ data.reference }}</td>
+          <td>{{ data.ft}}</td>  
+          <td>{{ data.eslip_no }}</td>     
+          <td>
+             <button
+            nz-button
+            nzType="link"
+            nzTooltipTitle="Reconiciliation."
+            nzTooltipPlacement="topCenter"
+            nz-tooltip        
+            (click)="reconcilePayments(data)">
+            <i nz-icon nzType="eye"></i>
+             </button>
+                
+          </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  

@@ -1,0 +1,57 @@
+<div nz-row nzType="flex" nzJustify="center">
+  <div nz-col nzSpan="24">
+    <h2>
+      Confirm E-slip Generation
+    </h2>
+  </div>
+</div>
+<div nz-row nzType="flex" nzJustify="center">
+  <div nz-col nzSpan="16">
+    <h3>
+      Do you want to generate an eslip for
+    </h3>
+  </div>
+
+  <ul>
+    <li>No of Accounts: {{ this.accountsCount }}</li>
+    <li *ngIf="accountService.oddCentsFound">
+      Ksh {{ accountService.oddCentAmount }} Added to account
+      {{ accountService.oddCentAccount }} to correct odd cents.
+    </li>
+    <li>
+      AMOUNT TO PAY :
+      {{ accountService.paymentFileAmount | currency: "Ksh." }}
+    </li>
+  </ul>
+</div>
+<div nz-row nzType="flex" nzJustify="center">
+  <div nz-col nzSpan="5">
+    <button
+      nz-button
+      style="background-color: #5cb85c;"
+      nzTooltipTitle="Generate Eslip."
+      nzTooltipPlacement="topCenter"
+      nz-tooltip
+      [disabled]="toPayTotal < 1 || loading || disabled || !this.role.eslipRole"
+      (click)="generateEslip()"
+      [nzLoading]="loading"
+    >
+      Proceed
+    </button>
+  </div>
+
+  <div nz-col nzSpan="5">
+    <button
+      nz-button
+      style="background-color: #FFD387;"
+      nzTooltipTitle="Cancel Eslip Generation."
+      nzTooltipPlacement="topCenter"
+      nz-tooltip
+      [disabled]="toPayTotal < 1"
+      (click)="closeDialog()"
+      class="ui-button-warning"
+    >
+      Close
+    </button>
+  </div>
+</div>

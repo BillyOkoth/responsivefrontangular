@@ -1,0 +1,102 @@
+<!-- <div class="top-button-row" fxLayout="column">
+  <mat-progress-bar mode="query" *ngIf="loading"></mat-progress-bar>
+
+  <div class="close-button" fxLayout="row">
+    <div fxFlexOffset="5" fxFlex="95">
+      <button
+        pButton
+        type="button"
+        label="Back"
+        icon="pi pi-chevron-left"
+        class="ui-button-primary ui-button-raised close-btn back"
+        (click)="back()"
+      ></button>
+    </div>
+  </div>
+
+  <div class="page-title" fxLayout="row">
+    <div fxFlexOffset="5" fxFlex="95">
+      <h2 class="text-color-grey-dark">
+        Summary For Payer: <span>{{ payer }} </span>
+      </h2>
+    </div>
+  </div>
+
+  <div *ngIf="this.respLength == 0" class="e-slip" fxLayout="row">
+    <div fxFlex="25"></div>
+
+    <div fxFlex="50" fxFlexAlign="center">
+      <h1 class="text-color-grey-dark">
+        Hey There! We dont have any exception details for this payer
+      </h1>
+    </div>
+
+    <div fxFlex="25"></div>
+  </div>
+
+  <div class="e-slip" fxLayout="row" *ngIf="this.respLength > 0">
+    <div
+      class="e-slip-content invoice-shadow"
+      fxFlexOffset="5"
+      fxFlex="85"
+      fxLayout="column"
+      id="print-section"
+    >
+      <p-table
+        [value]="rows"
+        #dt
+        [columns]="cols"
+        [paginator]="true"
+        [rows]="7"
+        [scrollable]="true"
+        scrollHeight="100%"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th *ngFor="let col of cols">
+              {{ col.header }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-row let-columns="cols">
+          <tr>
+            <td class="t-data" style="width: 5em;">
+              {{ row.created_date | date: 'MM/dd/yyyy' }}
+            </td>
+            <td class="t-data">
+              {{ row.biller_name }}
+            </td>
+            <td class="t-data">
+              {{ row.created_by }}
+            </td>
+            <td class="t-data">
+              {{ row.description }}
+            </td>
+            <td class="t-data">
+              {{ row.code }}
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+
+    <div class="e-slip-side-bar" fxFlex="5" fxLayout="column">
+      <div class="bottom" fxLayout="row">
+        <div fxFlexOffset="3" fxFlex="97" fxLayout="column">
+          <div class="item-row" fxLayout="row">
+            <div class="item-content" fxFlex="100">
+              <button
+                color="primary"
+                mat-icon-button
+                aria-label="Example icon-button with a heart icon"
+                (click)="downloadCSV()"
+              >
+                Downloads <mat-icon>save_alt</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

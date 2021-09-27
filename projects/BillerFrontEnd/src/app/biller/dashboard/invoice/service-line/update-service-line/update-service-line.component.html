@@ -1,0 +1,22 @@
+<form autocomplete="off" (ngSubmit)="updateServiceLine()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24">Service Line</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input [(ngModel)]="this.serviceLine"
+        id="serviceLine"
+      name = "serviceLine" maxlength="50" />
+      </nz-form-control>
+    </nz-form-item>
+
+  </form>
+  
+  <button    
+    class="input-size"
+    nz-button
+    nzType="primary"
+    [nzLoading]="loading"    
+    (click)="updateServiceLine()"
+    nzBlock
+  >
+    Save
+  </button>

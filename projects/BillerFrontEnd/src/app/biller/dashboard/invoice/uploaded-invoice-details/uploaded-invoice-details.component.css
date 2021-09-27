@@ -1,0 +1,51 @@
+.content {
+    height: 100vh;
+    overflow-y: auto;
+    background: #ffffff;
+}
+
+
+/*  first row - having close button */ 
+.close-button {
+    margin-top: 3.5vh !important;
+}
+.close-button mat-icon {
+    font-size: 4.5em !important;
+}
+
+/* second row with page title */
+.page-title{}
+.page-title h2 {
+    font-family: 'Segoe UI Light';
+    font-weight: 300;
+    font-size: 2em !important;
+}
+.page-title span {
+    font-weight: 700 !important;
+}
+
+/* E-slip area */
+.e-slip-content {
+    margin-top:-4vh;
+    background: #ffffff;
+    height: 75vh !important;
+    overflow-y: auto !important;
+}
+
+
+.e-slip-side-bar .bottom {
+    margin-top:  10vh !important;
+}
+
+th {
+    color: #0033A1;
+    font-size: 1em !important;
+    font-family: 'Segoe UI Regular';
+}
+.mat-elevation-z8 {
+    width: 100% !important;
+}
+
+.header {
+    font-weight: bolder;
+  }

@@ -1,0 +1,87 @@
+<div class="container" fxLayout="column" >
+  <nz-spin
+  [nzSize]="'large'"
+  nzSimple
+  *ngIf="this.loading === true"
+></nz-spin>
+    
+    <div class="first-row" >
+      <h2>
+          Confirm E-slip Generation
+      </h2>
+     
+    </div>
+    <div class="second-row" fxLayout="column">
+        <!-- <p-message *ngIf=" this.accountService.zeroValuesLength > 0" severity="error" text="Accounts with zero balance will not be included in the e-slip"></p-message> -->
+      <div class="gen-title">
+  
+      </div>
+      <div class="accounts">
+          <h2 class = "text-style">
+              You are generating an  eslip for 
+          </h2>
+  
+          <h2 class = "text-style">
+              Total number of Accounts:
+              {{
+                this.accountService.accountInEslip
+              }}
+            </h2>
+        <h2 class = "text-style">
+            No of Accounts in the Eslip:
+            {{
+              this.eslipData.eslipInfo.length
+            }}
+        </h2> 
+
+        <h2 class = "text-style">Accounts with Zero Balance: {{this.accountService.zeroValuesLength}}</h2>
+
+        <br>
+        <h2 class = "text-style" *ngIf="accountService.oddCentsFound">
+          Ksh {{ this.accountService.oddCentAmount }} Added to account {{ this.accountService.oddCentAccount }} to correct odd cents.
+          
+      </h2>
+      
+        <h2 >
+            AMOUNT TO PAY :<span>
+                {{
+                  this.eslipData.total_amount_to_pay| currency: 'Ksh.'
+                }}
+            </span>
+           
+        </h2>
+      </div>
+      
+    </div>
+    <div class="third-row" fxLayout="row" fxFlexOffset="2">
+      <div class="proceed">
+          <button
+          nz-button
+          style="background-color: #5cb85c;"
+          nzTooltipTitle="Proceed."
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          [disabled]="toPayTotal < 1 || loading || disabled "
+          (click)="generateEslip()" 
+        
+      >
+    Proceed</button>
+         
+      </div>
+  
+      <div class="cancel">
+          <button
+          nz-button
+          style="background-color: #f0ad4e;"
+          nzTooltipTitle="Cancel."
+          nzTooltipPlacement="topCenter"
+          nz-tooltip 
+          [disabled]="toPayTotal < 1"
+          (click)="closeDialog()"          
+        >
+      Cancel</button>
+         
+      </div>
+  
+    </div>
+  </div>

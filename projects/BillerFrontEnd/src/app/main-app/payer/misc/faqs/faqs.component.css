@@ -1,0 +1,28 @@
+.faq-container {
+  margin: auto;
+}
+.title {
+  font-weight: bolder;
+  font-size: 1.3em;
+  font-family: 'Segoe UI Bold';
+}
+
+.faq-body {
+  margin-bottom: 10vh;
+}
+
+.faq-title {
+  color: #ffd387;
+}
+
+.close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.list {
+  font-weight: bold;
+  font-size: 1.1em;
+  font-family: 'Segoe UI Bold';
+
+}

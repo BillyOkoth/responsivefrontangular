@@ -1,0 +1,112 @@
+.pic-div{
+    position: relative;   
+    width:25vw;
+    
+}
+
+.main-profile{
+    margin-top:1vh;
+    background: #ffffff;
+}
+
+.first-input{
+    margin-top:20vh;   
+    width:20vw;
+    margin-left:-20vh;
+}
+
+.biller-logo {
+    width: 70%;
+    height: auto;
+    margin-left:5vh;
+    margin-top:1vh;
+}
+
+.second-input {
+  margin-top:20vh;
+  width:20vw;
+  margin-right: 8vh;
+
+}
+.save-button {
+    position: absolute;    
+    right:18vh;
+    bottom: 2vh;    
+}
+
+.profile-title {    
+    height:1vh;   
+}
+.profile-title h2 {
+    margin-left:7vw;
+    font-size: 2em;
+    color: #ffd387;
+}
+.profile-picture {
+   
+    height:60vh;
+}
+
+/* .input-text {
+    color:red;  
+} */
+
+.input-text h4{
+    font: size 0.5em;
+}
+
+.back-button {
+
+    position: absolute;    
+    right:15vh;
+    top: 5vh;
+
+}
+
+/* .input-one{
+
+   
+ 
+} */
+
+.input-two{
+  margin-top:-20vh;
+}
+/* .input-three {
+    
+}
+.input-four  {
+  
+} */
+
+.ip2 {
+  margin-top:-1vh;
+ 
+
+}
+.ip3 {
+    margin-top:-1vh;
+   
+}
+.ip4 {
+   
+    margin-top:-1vh;
+   
+}
+
+.innput {
+    width:45vw;
+    margin-top:7vh;
+   
+}
+.ops {  
+    margin-bottom:-1vh;
+   
+}
+.labelops{
+    margin-bottom:-2vh;
+  
+ 
+}
+
+/* new css of the inputs with the labels */

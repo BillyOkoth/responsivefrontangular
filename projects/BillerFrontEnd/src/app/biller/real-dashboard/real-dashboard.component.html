@@ -1,0 +1,98 @@
+
+
+
+<div style="background: #ECECEC;padding:5px;">
+  <div nz-row [nzGutter]="8">
+    <div nz-col [nzSpan]="6">
+      <nz-card>
+        <h2 class="h2-header">
+          Accounts (Payers):
+        </h2>
+        <h2 class="cont">
+          {{total_accounts}}    ({{payers}})
+        </h2> 
+      </nz-card>
+    </div>
+    <div nz-col [nzSpan]="6">
+      <nz-card>
+        <h2 class="h2-header">
+          Total Amount Paid:
+        </h2>
+        <h2 class="cont">
+          {{total_paid}}
+        </h2>
+      </nz-card>
+    </div>
+    <div nz-col [nzSpan]="6">
+      <nz-card>
+        <h2 class="h2-header">
+          Total Amount Due:
+        </h2>
+        <h2 class="cont">
+          {{total_amount_due}}
+        </h2>
+      </nz-card>
+    </div>
+    <div nz-col [nzSpan]="6">
+      <nz-card>
+        <h2 class="h2-header">
+          Total Balance Due:
+        </h2>
+        <h2 class="cont">
+          {{total_balance_due}}
+        </h2>
+      </nz-card>
+    </div>
+  </div>
+</div>
+
+
+<div style="background: #ECECEC;padding:5px;">
+  <div nz-row [nzGutter]="8">
+    <div nz-col [nzSpan]="24">
+      <nz-card >
+      <h2 class="h2-header">
+          Eslip payment per month
+        </h2>
+        <ngx-charts-line-chart
+          [view]="view"
+          [scheme]="colorScheme"
+          [results]="line_data"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="true"
+          [legend]="false"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"
+          [autoScale]="autoScale"
+        >
+        </ngx-charts-line-chart>
+      </nz-card>
+    </div>
+
+    <!-- <div nz-col [nzSpan]="12">
+      <nz-card>
+        <h2 class="h2-header">
+          Service Charge Paid Per Month
+        </h2>
+        <ngx-charts-bar-vertical
+          [view]="view"
+          [scheme]="colors"
+          [results]="pie_data"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="false"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"
+        >
+        </ngx-charts-bar-vertical>
+      </nz-card>
+    </div> -->
+</div>
+</div>
+

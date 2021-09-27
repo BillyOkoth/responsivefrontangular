@@ -1,0 +1,58 @@
+<div nz-row [nzGutter]="10" style="margin-bottom:2vh;">
+  <div nz-col nzSpan="12">
+    <input nz-input placeholder="Search" [(ngModel)]="searchValue" style="width: 100%;" maxlength="100" />
+  </div>
+
+  <div nz-col nzSpan="12">
+    <div nz-row nzJustify="end">
+      <div nz-col nzSpan="3">
+        <button nz-button nzType="link" nzTooltipTitle="Add Branch" nzTooltipPlacement="topCenter" nz-tooltip
+          (click)="addBranch()">
+          <i nz-icon nzType="plus" nzTheme="outline"></i>
+        </button>
+        <button nz-button nzType="link" nzTooltipTitle="Upload Branch List" nzTooltipPlacement="topCenter" nz-tooltip
+          (click)="uploadBranches()">
+          <i nz-icon nzType="upload" nzTheme="outline"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th>
+            Branch Name
+          </th>
+          <th>
+            Branch Code No
+          </th>
+          <th>
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *cdkVirtualFor="let data of rows | branchSearch: searchValue;
+    let i = index">
+          <td>{{ data.branchName }}</td>
+          <td>{{ data.branchCode }}</td>
+          <td>
+            <button nz-button nzType="link" nzTooltipTitle="Edit Branch." nzTooltipPlacement="topCenter" nz-tooltip
+              (click)="editBranch(data)">
+              <i nz-icon nzType="eye"></i>
+            </button>
+            <button nz-button nzType="link" nzTooltipTitle="Delete Branch." nzTooltipPlacement="topCenter" nz-tooltip
+              (click)="deleteBranch(data)">
+              <i nz-icon nzType="delete" [nzTheme]="'twotone'" [nzTwotoneColor]="'#f70707'"></i>
+            </button>
+
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</cdk-virtual-scroll-viewport>

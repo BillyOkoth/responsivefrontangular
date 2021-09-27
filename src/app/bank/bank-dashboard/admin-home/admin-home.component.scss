@@ -1,0 +1,194 @@
+// style dashboard title
+.dashboard-title {
+
+  height: 18vh;
+
+}
+
+.title-holder {
+  height: 100% !important;
+}
+
+.float-content {
+  height: 47vh;
+  // position: absolute !important;
+  width: 115% !important;
+  right: 0;
+}
+
+.h2-header {
+  font-weight: 300 !important;
+  font-size:1em;
+  font-size: - webkit- 2.5em !important;
+  color: #707070;
+  margin-bottom: 0 !important;
+  margin-left: 2% !important;
+}
+
+.title-holder button {
+  float: right !important;
+  margin-top: -1vh !important;
+}
+
+.stats1-title {
+  color: #FFD387 !important;
+  font-weight: 900 !important;
+  font-size:1.9em !important;
+  font-size: - webkit- 2.5em !important;
+  font-family: 'Segoe UI Bold';
+  padding: 0;
+  margin-bottom: 0;
+  margin-top: 1% !important;
+  text-align: center !important;
+}
+
+.digits {
+  font-size: 2.5em !important;
+  margin: 0 !important;
+  margin-left: 2% !important;
+  color: #707070 !important;
+}
+
+
+// style row sections of 
+.row-float-sections {
+  height: 20vh;
+}
+
+.section-1-cnt {
+  height: 100%;
+}
+
+.section-1-cnt:hover {
+  cursor: hand;
+  cursor: pointer;
+}
+.slider {
+  height: 100%;
+  margin-top: 2vh !important;
+  background: #ffffff !important;
+  // position: relative;
+}
+
+.colored-tiles {
+  margin-top: 3vh !important;
+}
+
+// style second metrics on the dashboard
+.blue-solid {
+  color: #ffffff !important;
+}
+
+.section-1-cnt .stats {
+  font-size:2em !important;
+  font-size: - webkit- 2.5em !important;
+  margin: 0;
+  text-align: center !important;
+}
+
+.section-1-cnt .title-txt {
+  text-align: center !important;
+  font-size: - webkit- 2.5em !important;
+  font-size:1em;
+}
+
+.section-1-cnt mat-icon {
+  float: right !important;
+  font-size: 2.5em !important;
+  margin-right: 10% !important;
+}
+
+.invoice-raised {
+  color: #707070 !important;
+}
+
+.invoice-paid {
+  color: #707070 !important;
+}
+
+.invoice-overdue {
+  color: #ffffff !important;
+}
+
+// style slider section
+.slider button {
+  // position: absolute;
+  right: -2% !important;
+  top: 40% !important;
+}
+
+// style footer menu on the blue section of the app
+.footer-menu {
+  // position: absolute;
+  width: 100%;
+  bottom: 5%;
+}
+
+.footer-menu ul {
+  display: block;
+  padding: 0 !important;
+}
+
+.footer-menu li {
+  display: inline;
+  list-style: none;
+  padding: 0 !important;
+  margin-left: 5% !important;
+}
+
+.footer-menu a {
+  text-decoration: none;
+}
+
+.footer-menu span {
+  margin-left: 3% !important;
+  top: -50% !important;
+}
+
+.blue-title {
+  color: #ffffff !important;
+  margin-top: 100px !important;
+  margin-left: 10% !important;
+  font-weight: 300 !important;
+  font-size: 1em !important;
+}
+
+.blue-menu span {
+  font-family: 'Segoe UI Bold';
+}
+
+.main-menu {
+  display: block;
+  margin-top: 10% !important;
+  margin-left: 10% !important;
+}
+
+.main-menu a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.main-menu li {
+  line-height: 3em !important;
+  list-style: none;
+}
+
+.main-menu .active {
+  color: #FFD387;
+  font-size: 1.5em !important;
+}
+.items {
+  width:125px;
+  height:125px;
+  background:#ECECEC;
+}
+
+.button-red {
+  background-color: red !important;
+  border: none !important;
+}
+
+.button-green {
+  background-color: green !important;
+  border: none !important;
+}

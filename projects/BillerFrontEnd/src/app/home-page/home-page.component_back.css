@@ -1,0 +1,254 @@
+.home-video {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
+  height: 100vh !important;
+  width: 100vw !important;
+}
+
+.fullscreen-bg__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.fullscreen-bg__video img {
+  width: 100%;
+  height: 100%;
+}
+
+.video-cover {
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 2;
+  background: #0033a1;
+  opacity: 0.5;
+}
+
+.logo-row {
+  z-index: 5;
+  position: relative;
+}
+
+.login-button button {
+  float: right !important;
+  margin-right: 2.5vw;
+  margin-top: 5vh !important;
+}
+
+.welcome-message {
+  position: relative;
+  z-index: 5;
+  height: 82vh !important;
+}
+
+.welcome-message h2 {
+  font-family: 'Alfrida Signature';
+  font-weight: 300 !important;
+  font-size: 8em;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.description p {
+  color: #ffffff !important;
+  font-weight: 300 !important;
+  font-size: 1.3em !important;
+  text-align: center;
+  font-family: 'Segoe UI Light';
+}
+
+/* SAVED MY DAY */
+/* /deep/ .mat-form-field-underline {
+  background-color: transparent !important;
+  display: none;
+
+} */
+
+.placeholder {
+  color: #d6d6d6 !important;
+  font-weight: 500 !important;
+  font-size: 1.3em !important;
+  margin-left: 2%;
+}
+
+input {
+  /* color: #ffffff !important; */
+  font-size: 1.3em !important;
+  margin-left: 2%;
+}
+.simple-form {
+  display: flex;
+  padding-bottom: 1.25rem;
+}
+.simple-form input {
+  margin: 0 0.25rem;
+  border: 1px solid #eee;
+  border-left: 3px solid;
+  border-radius: 5px;
+  transition: border-color 0.5s ease-out;
+  height: 10vh !important;
+  width: 90%;
+}
+.simple-form input:optional {
+  border-left-color: #999;
+}
+.simple-form input:required {
+  border-left-color: palegreen;
+}
+.simple-form input:invalid {
+  border-left-color: salmon;
+}
+
+.welcome-message .form {
+  margin-top: 5%;
+}
+/deep/ .view-my-accounts {
+  font-size: 2em !important;
+  overflow: hidden !important;
+  height: 10vh !important;
+}
+
+/* style second row on the home page*/
+.second-section {
+  position: relative;
+  z-index: 5;
+  background: #ffffff;
+}
+
+.second-section .image {
+  padding-top: 7% !important;
+  padding-bottom: 7% !important;
+}
+
+.second-section .image img {
+  width: 100%;
+}
+
+.second-section h2,
+.third-section h2 {
+  font-family: 'Segoe UI Bold';
+  font-size: 3.5em;
+  margin-top: 35% !important;
+}
+
+.second-section p,
+.third-section p {
+  font-size: 1.2em;
+}
+
+/* style the third section of the row*/
+.third-section {
+  position: relative;
+  z-index: 5;
+  background: #ffffff;
+  height: 60vh !important;
+}
+
+.third-section .txt,
+.third-section .grey-area {
+  height: 100% !important;
+}
+
+.third-section .grey-area {
+  background: #e4e4e4 !important;
+  position: relative;
+}
+
+.grey-area .grey-holder {
+  position: absolute;
+  width: 138%;
+  height: 80%;
+  right: 0;
+  top: 10%;
+}
+
+.third-section .grey-holder .large-img img {
+  width: 100% !important;
+}
+
+.third-section .grey-holder img {
+  margin-top: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.third-section h2 {
+  margin-top: 10% !important;
+}
+
+/* who we serve section on the page*/
+.who-we-serve {
+  position: relative;
+  z-index: 5;
+  height: 30vh !important;
+  background: #ffffff;
+}
+
+.who-we-serve .slides {
+  background: #f6f6f6;
+  margin-top: 5vh !important;
+  margin-bottom: 2vh !important;
+}
+
+.who-we-serve h2 {
+  font-family: 'Segoe UI Bold';
+  font-size: 3.5em;
+  margin-left: 3%;
+}
+
+/* style the payment section of the page */
+.payment-section {
+  position: relative;
+  z-index: 5;
+  height: 65vh !important;
+}
+
+.payment-section h2,
+.payment-section p {
+  color: #ffffff;
+  font-weight: 300 !important;
+}
+
+.payment-section h2 {
+  font-size: 3.5em !important;
+  margin-top: 5%;
+}
+
+.payment-section p {
+  font-size: 1.3em !important;
+}
+
+.payment-section button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1% !important;
+  font-size: 1.3em !important;
+  margin-top: 8%;
+}
+
+/* footer section of the */
+.footer-section {
+  position: relative;
+  z-index: 5;
+  height: 7vh !important;
+  background: #ffffff;
+}
+/* .footer-section .powered, .footer-section .play-store, .footer-section .contact, .footer-section .social, .footer-section .copy-right { */
+
+/* border: 1px solid red; */
+/* } */
+.footer-section .powered p {
+  float: right;
+  color: #0056a6;
+  text-align: right;
+}

@@ -1,0 +1,114 @@
+<div nz-row>
+    <div nz-col nzSpan="12">
+      <input
+        nz-input
+        placeholder="Serach "
+        [(ngModel)]="searchValue"
+        style="width: 100%;"
+        maxlength="100"
+      />
+    </div>
+    <div nz-col nzSpan="12">
+      <div nz-row nzType="flex" nzJustify="end">
+        <div nz-col nzSpan="4">
+            <button
+            nz-button
+            nzTheme="outline"
+            nzType="link"
+            nzTooltipTitle="Download Excel"
+            nzTooltipPlacement="left"
+            nz-tooltip
+            (click)="downloadCSV()"
+          >
+            <i nz-icon nzType="download"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+  <nz-table #filterTable [nzData]="rows" class="expired-eslips-table">
+    <thead>
+     
+    <tr >
+      <th class="header">
+      #  
+      </th>
+    <th class="header"> 
+      Date
+    </th>
+    <th class="header">
+      E-Slip Number
+    </th>
+    <th class="header">
+      E-Slip Status
+    </th>
+    <th class="header">
+      No. of Accounts
+    </th>    
+    <th class="header">
+      E-Slip Amount
+    </th>
+    <th class="header">
+      Actions
+    </th>
+  </tr>
+    </thead>
+    <tbody> 
+  
+      <tr
+        *ngFor="
+          let data of filterTable.data | searchEslip: searchValue;
+          let i = index
+        "
+      >
+      <td>{{i + 1}}</td>
+        <td>{{ data.created_at | date: "short" }}</td>
+        <td>{{ data.eslip_no }}</td>
+        <td>{{ data.status }}</td>
+        <td>{{ data.accounts }}</td>
+        <td>{{ data.amount_to_pay | currency: "Ksh." }}</td>
+        <!-- <td>Ksh. {{ data.amount_to_pay  | number: '2.' }}</td> -->
+        <td>
+          <!-- <button
+            nz-button
+            nzType="link"
+            style="margin-left:1vh"
+            nzTooltipTitle="View Receipt."
+            nzTooltipPlacement="topCenter"
+            nz-tooltip
+            (click)="viewEslip(data.eslip_no)"
+          >
+            <i nz-icon nzType="eye"></i>
+          </button> -->
+          <button
+            style="margin-left:1vh"
+            nz-button
+            nzType="link"
+            style="color: #f0ad4e;"
+            nzTooltipTitle="View Eslip Accounts."
+            nzTooltipPlacement="topCenter"
+            nz-tooltip
+            (click)="viewEslipAc(data.eslip_no)"
+          >
+            <i nz-icon nzType="eye"></i>
+          </button>
+  
+          <button
+          style="margin-left:1vh"
+          nz-button
+          nzType="link"
+          style="color: #5cb85c;"
+          nzTooltipTitle="Download Eslip"
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          (click)="downloadEslip(data.eslip_no)"
+        >
+          <i nz-icon nzType="download"></i>
+        </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  </nz-spin>
+  

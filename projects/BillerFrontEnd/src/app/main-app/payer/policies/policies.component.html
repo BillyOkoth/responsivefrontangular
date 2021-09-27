@@ -1,0 +1,77 @@
+<div nz-row>
+    <div nz-col nzSpan="12">
+      <input
+        nz-input
+        placeholder="Search "
+        [(ngModel)]="searchValue"
+        style="width: 100%;"
+        maxlength="100"
+      />
+    </div>
+    <div nz-col nzSpan="12">
+      <div nz-row nzType="flex" nzJustify="end">
+        <div nz-col nzSpan="4">
+            <button
+            nz-button
+            nzTheme="outline"
+            style="font-size: 36px; color: #08c;margin-bottom: 3vh;"
+            nzType="link"
+            nzTooltipTitle="Download Excel"
+            nzTooltipPlacement="left"
+            nz-tooltip
+            (click)="downloadCSV()"
+          >
+            <i nz-icon nzType="download"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+  <nz-table #filterTable [nzData]="rows">
+    <thead>
+      <tr>
+          <th class="header">
+          #  
+          </th>
+        <th class="header"> 
+          File ID
+        </th>
+        <th class="header">
+          Payer Name
+        </th>
+        <th class="header">
+          No. of Policies
+        </th>
+        <th class="header">
+            Amount
+          </th>
+        <th class="header">
+          Date Created
+        </th>
+        <th class="header">
+          Status
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+  
+      <tr
+        *ngFor="
+          let data of filterTable.data | policySearch: searchValue;
+          let i = index
+        "
+      >
+        <td>{{i + 1}}</td>
+        <td>{{ data.file_id }}</td>
+        <td>{{ data.payer_name }}</td>
+        <td>{{ data.policies }}</td>
+        <td>{{ data.amount }}</td>
+        <td>{{ data.created_at | date: "short" }}</td>
+        <td>{{ data.status }}</td>
+        
+      </tr>
+    </tbody>
+  </nz-table>
+  </nz-spin>
+  

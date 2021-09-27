@@ -1,0 +1,11 @@
+/**
+ * @fileoverview added by tsickle
+ * Generated from: ng-zorro-antd-core-resize-observers.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Generated bundle index. Do not edit.
+ */
+export { NzResizeObserversModule, NzResizeObserver } from './public-api';
+export { NzResizeObserverFactory as ɵa } from './resize-observers.service';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmctem9ycm8tYW50ZC1jb3JlLXJlc2l6ZS1vYnNlcnZlcnMuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZy16b3Jyby1hbnRkL2NvcmUvcmVzaXplLW9ic2VydmVycy8iLCJzb3VyY2VzIjpbIm5nLXpvcnJvLWFudGQtY29yZS1yZXNpemUtb2JzZXJ2ZXJzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7O0FBSUEsMERBQWMsY0FBYyxDQUFDO0FBRTdCLE9BQU8sRUFBQyx1QkFBdUIsSUFBSSxFQUFFLEVBQUMsTUFBTSw0QkFBNEIsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogR2VuZXJhdGVkIGJ1bmRsZSBpbmRleC4gRG8gbm90IGVkaXQuXG4gKi9cblxuZXhwb3J0ICogZnJvbSAnLi9wdWJsaWMtYXBpJztcblxuZXhwb3J0IHtOelJlc2l6ZU9ic2VydmVyRmFjdG9yeSBhcyDJtWF9IGZyb20gJy4vcmVzaXplLW9ic2VydmVycy5zZXJ2aWNlJzsiXX0=

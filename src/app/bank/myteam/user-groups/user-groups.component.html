@@ -1,0 +1,213 @@
+<div class="split-content" nz-row>
+  <div nz-col nzSpan="12" class="white">
+    <div nz-row>
+      <div nz-col nzSpan="5">
+        <!-- <i
+          nz-icon
+          nzType="arrow-left"
+          nzTheme="outline"
+          style="font-size: 36px; color: #08c; margin-left:5vh; margin-top:2vh;"
+          nzTooltipTitle="Back"
+          nzTooltipPlacement="right"
+          nz-tooltip
+          (click)="closeRole()"
+        ></i> -->
+
+        <!-- <i
+          nz-icon
+          nzType="arrow-left"
+          nzTheme="outline"
+          style="font-size: 36px; color: #08c; margin-left:5vh;"
+          nzTooltipTitle="Back"
+          nzTooltipPlacement="right"
+          nz-tooltip
+          (click)="closeRole()"
+        ></i> -->
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="24">
+        <div class="group-title">
+          <h1>User Groups</h1>
+
+          <h2>You have {{ listCount }} User Groups</h2>
+
+          <h3>
+            Add New Group:
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="13" nzOffset="1">
+        <form nz-form [formGroup]="addGroupForm">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24" nzFor="email"
+              >Group Name</nz-form-label
+            >
+            <nz-form-control [nzSpan]="24">
+              <input
+                nz-input
+                style="width:100%"
+                class="input-size"
+                formControlName="groupName"
+                autocomplete="off"
+                placeholder="Group Name"
+                maxlength="50"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </div>
+      <div nz-col nzSpan="3" class="add-btn">
+        <button
+          nz-button
+          nzType="primary"
+          [disabled]="addGroupForm.invalid"
+          (click)="addGroup()"
+          [nzLoading]="add"
+          [disabled]="!this.role.myTeamRole"
+        >
+          Add
+          <i nz-icon nzType="plus" nzTheme="outline"></i>
+        </button>
+      </div>
+    </div>
+    <div nz-row class="group-list">
+      <div nz-col nzSpan="24">
+        <h3>
+          Existing Groups:
+        </h3>
+      </div>
+    </div>
+
+    <ul class="list-item">
+      <li *ngFor="let item of groupList; let i = index">
+        <div
+          class="row-list-group"
+          nz-row
+          (click)="divClick(item.group_id, i)"
+          [ngClass]="{ 'active-row': item.selected }"
+        >
+          <div class="department" nz-col nzOffset="5" nzSpan="7">
+            <p class="bold">{{ item.name }} Department</p>
+          </div>
+          <div class="" nz-col nzSpan="7">
+            <p class="ligh text-color-grey-dark">{{ item.noOfUsers }} Users</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div nz-col nzSpan="12">
+    <div nz-row class="grey-title" nzType="flex" nzJustify="center">
+      <div nz-col nzSpan="8">
+        <h3>
+          Group Assignments:
+        </h3>
+      </div>
+    </div>
+    <div nz-row>
+      <form nz-form #f="ngForm">
+        <div nz-col nzOffset="2" nzSpan="19">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24" nzFor="email"
+              >Group Name</nz-form-label
+            >
+            <nz-form-control [nzSpan]="24">
+              <input
+                nz-input
+                nzSize="large"
+                style=" width:100%;border-width:0px;border:none; box-shadow: none;background-color: #d6d6d6;"
+                placeholder="Group Name"
+                [(ngModel)]="groupName"
+                name="groupName"
+                id="groupName"
+                autocomplete="off"
+                required
+                maxlength="50"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </form>
+    </div>
+
+    <!-- <div nz-row nzType="flex" nzJustify="center">
+      <div nz-col nzSpan="18">
+        <button
+          nz-button
+          nzType="danger"
+          style="width: 50%;"
+          [disabled]="!f.valid || loading"
+          (click)="deleteUserGroup()"
+          [nzLoading]="delete"
+          nzBlock
+        >
+          Delete User Group
+          <i nz-icon nzType="delete" nzTheme="outline"></i>
+        </button>
+      </div>
+    </div> -->
+
+    <div nz-row nzType="flex" nzJustify="center">
+      <div nz-col nzSpan="24">
+        <h3 class="role-tile">Roles:</h3>
+      </div>
+    </div>
+    <div nz-row class="role-checkbox">
+      <nz-table
+        [nzData]="menuS"
+        [nzScroll]="{ y: '300px' }"
+        [nzShowPagination]="false"
+      >
+        <thead>
+          <tr>
+            <th>Menus</th>
+            <th>Enable Menu</th>
+            <th>View Only</th>
+            <th>All Rights</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of menuS">
+            <td id="header">{{ data.menuName }}</td>
+            <td
+              nzShowCheckbox
+              [(nzChecked)]="data.selected"
+              (nzCheckedChange)="updateSingleChecked(data)"
+            ></td>
+
+            <td
+              nzShowCheckbox
+              [(nzChecked)]="data.rolee[0].status"
+              (nzCheckedChange)="updateSingleChecked(data)"
+            ></td>
+            <td
+              nzShowCheckbox
+              [(nzChecked)]="data.rolee[1].status"
+              (nzCheckedChange)="updateSingleChecked(data)"
+            ></td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <div nz-row nzType="flex" nzJustify="center">
+      <div nz-col nzSpan="15">
+        <button
+          nz-button
+          class="update-button"
+          style="margin-top: 5vh;"
+          nzType="primary"
+          (click)="updateMenu()"
+          [nzLoading]="update"
+          [disabled]="this.selectedItem.length == 0 || !this.role.myTeamRole"
+          nzBlock
+        >
+          Assign Role
+          <i nz-icon nzType="save" nzTheme="outline"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

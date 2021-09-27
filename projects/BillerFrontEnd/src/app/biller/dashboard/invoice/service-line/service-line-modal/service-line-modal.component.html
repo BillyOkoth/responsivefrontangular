@@ -1,0 +1,193 @@
+<nz-divider nzText="Add Service Line"></nz-divider>
+<form nz-form [nzLayout]="'vertical'" [formGroup]="createServiceLineForm">
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <nz-form-item>
+        <nz-form-label nzRequired>Service Line Name</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="serviceLineNameErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="service_line_name" />
+          <ng-template #serviceLineNameErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the name of the service line!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Account Number</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="accountNumberErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="specific_account" />
+          <ng-template #accountNumberErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the account number
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Email</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="eslipEmailErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="eslip_email" />
+          <ng-template #eslipEmailErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the email to be used with the service line!
+            </ng-container>
+            <ng-container *ngIf="control.hasError('email')">
+              Please use a valid email!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired><span>Service Line Prefix <i nz-icon nz-tooltip
+              nzTitle="The prefix will be used as an idenitifier for E-slips" nzType="question-circle"
+              nzTheme="outline"></i></span></nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="servicePrefixErrorTpl">
+          <nz-input-group nzAddOnBefore="E">
+            <input nz-input autocomplete="off" maxlength="4" formControlName="prefix" />
+          </nz-input-group>
+
+          <ng-template #servicePrefixErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the prefix for the service line!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Currency</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="errorCurrency">
+          <nz-select nzAllowClear placeholder="Select Currency " formControlName="currency" class="input-size"
+            style="width:100%" name="this.chargetype" required>
+            <nz-option *ngFor="let currency of currencies" [nzValue]="currency" nzLabel="{{ currency.name }}">
+              {{ currency.name }}
+            </nz-option>
+          </nz-select>
+
+          <ng-template #errorCurrency let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please Select Currency.
+            </ng-container>
+
+          </ng-template>
+
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8"></nz-form-label>
+    <div nz-row nzJustify="end">
+      <div nz-col>
+        <div nz-row nzType="flex" nzJustify="center">
+          <button class="btn" nz-button nzType="primary" [disabled]="!createServiceLineForm.valid"
+            (click)="addServiceLine()" [nzLoading]="loading">
+            <i nz-icon [nzType]="'plus'"></i>Add Service Line
+          </button>
+        </div>
+      </div>
+    </div>
+  </nz-form-item>
+</form>
+<!-- <form nz-form [nzLayout]="'vertical'">
+    <div class="gutter-example">
+      <div nz-row>
+        <div nz-col class="gutter-row" nzSpan="12">
+          <div class="gutter-box">
+            <h2 class="text-color-yellow">
+              Service Line
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div nz-row [formGroup]="createServiceLineForm">
+        <div nz-col class="gutter-row" nzSpan="24">
+          <div class="gutter-box">
+            <nz-form-item>
+              <nz-form-label [nzSpan]="6">Service Line</nz-form-label>
+              <nz-form-control [nzSpan]="14">
+                <input
+                  nz-input
+                  id="input"
+                  type="email"
+                  formControlName="service_line_name"
+                
+                  maxlength="50"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>         
+          <div class="gutter-box">
+            <nz-form-item>
+              <nz-form-label [nzSpan]="6">Currency</nz-form-label>
+              <nz-form-control [nzSpan]="14">
+                <input
+                  nz-input
+                  id="input"
+                  type="text"
+                  formControlName="currency"                
+                  maxlength="50"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div class="gutter-box">
+            <nz-form-item>
+              <nz-form-label [nzSpan]="6">Account</nz-form-label>
+              <nz-form-control [nzSpan]="14">
+                <input
+                  nz-input
+                  id="input"
+                  type="text"
+                  formControlName="specific_account"                
+                  maxlength="50"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div class="gutter-box">
+            <nz-form-item>
+              <nz-form-label [nzSpan]="6">Email</nz-form-label>
+              <nz-form-control [nzSpan]="14">
+                <input
+                  nz-input
+                  id="input"
+                  type="email"
+                  formControlName="eslip_email"
+                  placeholder="email@email.com"
+                  maxlength="50"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>  
+          <div class="gutter-box">
+            <nz-form-item>
+              <nz-form-label [nzSpan]="6">Biller Prefix</nz-form-label>
+              <nz-form-control [nzSpan]="14">
+                <input
+                  nz-input
+                  id="input"
+                  type="email"
+                  formControlName="prefix"                  
+                  maxlength="4"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>        
+        </div>   
+       
+      </div>
+      <div nz-row nzType="flex" nzJustify="center">
+        <button
+          class="btn"
+          nz-button
+          nzType="primary"
+          [disabled]="!createServiceLineForm.valid"
+          (click)="addServiceLine()"
+          [nzLoading]="loading"
+        >
+          <i nz-icon [nzType]="'plus'"></i>Add Service Line
+        </button>
+      </div>
+    </div>
+  </form> -->

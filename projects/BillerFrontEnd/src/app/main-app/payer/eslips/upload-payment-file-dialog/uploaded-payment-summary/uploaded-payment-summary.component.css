@@ -1,0 +1,50 @@
+/*  style content  */
+.content {
+    height: 100%;
+    width: 100%;
+    background: #ffffff !important;
+    position: relative;
+}
+.title h2 {
+    color: #0033A1;
+    margin-left: 3vw !important;
+    font-size: 3.5em !important;
+    font-family: 'Segoe UI Light';
+    font-weight: 300;
+}
+
+.blue {
+    color: #0033A1;
+}
+
+.item p {
+    text-align: center;
+    font-family: 'Segoe UI Light';
+    font-weight: 300 !important;
+}
+
+.row-data {
+    margin-top: 10vh !important;
+}
+
+.item button {
+    margin-top: 5vh !important;
+}
+
+.refresh button {
+    margin-top: 10vh !important;
+}
+
+.maintain {
+    position: absolute;
+    bottom: 5%;
+    right: 1vw;
+}
+
+.wait h2 {
+    color: #0033A1;
+    margin-left: 25vw !important;
+    font-size: 1.2em !important;
+    font-family: 'Segoe UI Light';
+    font-weight: 300;
+}

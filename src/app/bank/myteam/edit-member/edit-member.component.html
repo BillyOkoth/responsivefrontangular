@@ -1,0 +1,93 @@
+<!-- <div style="align-content: center;overflow:hidden" scrolling="no">
+  <div fxLayout="row">
+    <mat-progress-bar *ngIf="this.loading === true"></mat-progress-bar>
+    <div fxFlex="10" class="step-cancel-btn" (click)="closeModal()">
+      <mat-icon aria-hidden="false" aria-label="Example home icon"
+        >clear</mat-icon
+      >
+    </div>
+  </div>
+  <form action="" [formGroup]="newTeamForm" autocomplete="off">
+    <div fxLayout="row" class="modal">
+      <div fxFlex="80" class="company-form" style="color:#D6D6D6">
+        <h3>
+          New Team Member
+        </h3>
+        <mat-form-field class="example-full-width" color="accent">
+          <input matInput formControlName="name" id="name" maxlength="50" />
+          <mat-placeholder class="placeholder">NTKEN No.</mat-placeholder>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" color="accent">
+          <input
+            matInput
+            formControlName="other_name"
+            id="other_name"
+            maxlength="50"
+          />
+          <mat-placeholder class="placeholder">Other Name</mat-placeholder>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" color="accent">
+          <input
+            matInput
+            formControlName="surname"
+            id="surname"
+            maxlength="50"
+          />
+          <mat-placeholder class="placeholder">Surname</mat-placeholder>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" color="accent">
+          <input
+            matInput
+            type="email"
+            formControlName="email_address"
+            id="email_address"
+            maxlength="50"
+          />
+          <mat-placeholder class="placeholder">Email Address</mat-placeholder>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" color="accent">
+          <input
+            matInput
+            formControlName="phone_number"
+            id="phone_number"
+            maxlength="50"
+          />
+          <mat-placeholder class="placeholder">Phone Number</mat-placeholder>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-placeholder class="placeholder"
+            >Assign User Group.</mat-placeholder
+          >
+          <mat-select #fontSize value="16px" formControlName="group_id">
+            <mat-option
+              *ngFor="let roleList of roleLists"
+              [value]="roleList.groupCode"
+            >
+              {{ roleList.groupName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div fxLayout="row">
+          <div fxFlex="100" class="stp-btn">
+            <button
+              color="accent"
+              mat-raised-button
+              [disabled]="newTeamForm.invalid"
+              (click)="createNewMemeber()"
+            >
+              <mat-icon aria-hidden="false" aria-label="Example home icon"
+                >arrow_forward</mat-icon
+              >
+              Add New
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div> -->

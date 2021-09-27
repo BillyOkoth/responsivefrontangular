@@ -1,0 +1,116 @@
+/* style content holder for the whole page */
+.content {
+  height: 100vh;
+  overflow-y: auto;
+  background: #ffffff;
+}
+
+/*  first row - having close button */
+.close-button {
+  margin-top: 3.5vh !important;
+}
+.close-button mat-icon {
+  font-size: 4.5em !important;
+}
+
+.button-biller {
+  border-style: none;
+  opacity: 1;
+}
+
+.page-title h2 {
+  font-family: "Segoe UI Light";
+  font-weight: 300;
+  font-size: 3em !important;
+}
+
+/* logo row holder and items */
+.biller-logo-holder {
+  height: 60vh !important;
+  overflow: hidden;
+}
+.biller-logo-holder .logo-item {
+  height: 300px !important;
+}
+.biller-logo-holder .logo-item img {
+  display: block;
+  margin: auto;
+  max-width: 100% !important;
+  cursor: pointer;
+}
+.biller-logo-holder .logo-item p {
+  font-family: "Segoe UI Bold";
+  text-align: center;
+}
+.biller-holder {
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+}
+img {
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.cards-list {
+    z-index: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+  
+.card {
+    border-radius: 3vh;
+  box-shadow: 0.4vh 0.4vh 4vh 0.6vh rgba(0,0,0,0.25), -0.4vh -0.4vh 4vh,0.6vh rgba(0,0,0,0.22);
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  
+  .card .card_image {
+    width: inherit;
+    height: inherit;
+    border-radius: 3vh;
+  }
+  
+  .card .card_image img {
+    width: inherit;
+    height: inherit;
+    border-radius: 3vh;
+    object-fit: cover;
+  }
+  
+  .card .card_title {
+    text-align: center;
+    border-radius: 0vh 0vh 4vh 4vh;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 2vh;
+    height: 4vh;
+  }
+  
+  .card:hover {
+    transform: scale(0.9, 0.9);
+    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+      -5px -5px 30px 15px rgba(0,0,0,0.22);
+  }
+  
+  .title-white {
+    color: white;
+  }
+
+  .title-black {
+    color: black;
+  }
+
+  .biller-title{
+      font-weight: bold;
+  }
+
+  @media all and (max-width: 500px) {
+    .card-list {
+      /* On small screens, we are no longer using row direction but column */
+      flex-direction: column;
+    }
+  }

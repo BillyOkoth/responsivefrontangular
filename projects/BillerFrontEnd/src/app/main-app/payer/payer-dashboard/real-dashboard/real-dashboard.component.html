@@ -1,0 +1,187 @@
+<nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+  <div nz-row *ngIf="this.biller == 'closed'">
+    <div nz-col nzSpan="12">
+      <nz-alert
+        class="sticky"
+        nzBanner
+        nzType="info"
+        nzMessage="Currency: {{ this.currency }}   "
+        nzShowIcon
+      ></nz-alert>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-alert
+        class="sticky"
+        nzBanner
+        nzType="info"
+        nzMessage="Exchange Rate: {{ this.rate }}  "
+        nzShowIcon
+      ></nz-alert>
+    </div>
+  </div>
+
+  <div *ngIf="this.biller == 'open'">
+    <div style="background: #ececec; padding: 5px;">
+      <div nz-row [nzGutter]="8">
+        <div nz-col [nzSpan]="8">
+          <nz-card>
+            <h2 class="h2-header">
+              Accounts:
+            </h2>
+            <h2 class="cont">
+              {{ total_accounts | number: "2." }}
+            </h2>
+          </nz-card>
+        </div>
+        <div nz-col [nzSpan]="8">
+          <nz-card>
+            <h2 class="h2-header">
+              Amount Due
+            </h2>
+            <h2 class="cont">
+              {{ total_amount_due | number: "2." }}
+            </h2>
+          </nz-card>
+        </div>
+        <div nz-col [nzSpan]="8">
+          <nz-card>
+            <h2 class="h2-header">
+              Amount Paid
+            </h2>
+            <h2 class="cont">
+              {{ total_balance_due | number: "2." }}
+            </h2>
+          </nz-card>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #ececec; padding: 5px;">
+      <div nz-row [nzGutter]="8">
+        <div nz-col [nzSpan]="16">
+          <nz-card>
+            <h2 class="h2-header">
+              Amount Paid vs Amount Raised
+            </h2>
+
+            <ngx-charts-bar-vertical-2d
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [legend]="showLegend"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+            >
+            </ngx-charts-bar-vertical-2d>
+          </nz-card>
+        </div>
+
+        <div nz-col [nzSpan]="8">
+          <nz-card>
+            <h2 class="h2-header">
+              Eslips Summary
+            </h2>
+            <ngx-charts-advanced-pie-chart
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="eslipdata"
+            >
+            </ngx-charts-advanced-pie-chart>
+          </nz-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="this.biller == 'closed'">
+    <div style="background: #ececec; padding: 5px;">
+      <div nz-row [nzGutter]="8">
+        <div nz-col [nzSpan]="8">
+          <nz-card>
+            <h2 class="h2-header">
+              Accounts:
+            </h2>
+            <h2 class="cont">
+              {{ total_accounts | number: "1." }}
+            </h2>
+          </nz-card>
+        </div>
+        <div nz-col [nzSpan]="8">
+          <nz-card>
+            <h2 class="h2-header">
+              Amount Due
+            </h2>
+            <h2 class="cont">
+              {{ total_amount_due | number: "1.2" }}
+            </h2>
+          </nz-card>
+        </div>
+        <div nz-col [nzSpan]="8">
+          <nz-card>
+            <h2 class="h2-header">
+              Eslip Amount Paid
+            </h2>
+            <h2 class="cont">
+              {{ total_paid | number: "1.2" }}
+            </h2>
+          </nz-card>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="this.noInvoices" style="background: #ececec; padding: 5px;">
+
+      <div nz-row [nzGutter]="8">
+        <div nz-col [nzSpan]="24">
+          <nz-card>
+            <h2 class="h2-header">
+              Invoice Status
+            </h2>
+            <nz-list [nzDataSource]="[]"></nz-list>
+          </nz-card>
+        </div>
+      </div>
+      
+    </div>
+
+    <div *ngIf="!this.noInvoices" style="background: #ececec; padding: 5px;">
+      <div nz-row [nzGutter]="8">
+        <div nz-col [nzSpan]="24">
+          <nz-card>
+            <h2 class="h2-header">
+              Invoice Status
+            </h2>
+            <ngx-charts-bar-horizontal
+              [view]="horizontalBarView"
+              [scheme]="horizontalBarcolorScheme"
+              [results]="horizontalBarData"
+              [gradient]="gradient"
+              [xAxis]="horizontalBarShowXAxis"
+              [xAxisTickFormatting]="myXAxisTickFormatting"
+              [yAxis]="horizontalBarShowYAxis"
+              [legend]="horizontalBarShowLegend"
+              [showXAxisLabel]="horizontalBarShowXAxisLabel"
+              [showYAxisLabel]="horizontalBarShowYAxisLabel"
+              [xAxisLabel]="horizontalBarXAxisLabel"
+              [yAxisLabel]="horizontalBarYAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </nz-card>
+        </div>
+
+        <!-- <div nz-col [nzSpan]="8">
+          <nz-card style="min-height: 341px;">
+            <h2 class="h2-header">
+              Invoice Details
+            </h2>
+            <div style="display: flex; flex-direction: column;">
+              <div>Invoice Number</div>
+              <div>Invoice Amount</div>
+              <div>Date Raised</div>
+            </div>
+          </nz-card>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</nz-spin>

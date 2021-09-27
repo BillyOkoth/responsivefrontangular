@@ -1,0 +1,22 @@
+<nz-tabset [nzTabPosition]="'top'" [nzType]="'card'" [nzSelectedIndex]="this.policy.selectedTab">
+  <nz-tab [nzTitle]="'Set Policies For Payer'">
+    <ng-template nz-tab>
+      <app-set-policies></app-set-policies>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Payer Policies'">
+    <ng-template nz-tab>
+      <app-payer-policies></app-payer-policies>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Specific Policy Columns'">
+    <ng-template nz-tab>
+      <app-policy-columns></app-policy-columns>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'General Policy Columns'">
+    <ng-template nz-tab>
+      <app-general-columns></app-general-columns>
+    </ng-template>
+  </nz-tab>
+</nz-tabset>

@@ -1,0 +1,79 @@
+<div>
+  <nz-card>
+    <div>
+      <h3>Dear Customer</h3>
+      <h4>
+        Match the columns on the left with the corressponding column on the right
+      </h4>
+    </div>
+  </nz-card>
+  <nz-divider nzText="Set Columns"></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <nz-table  nzBordered [nzData]="columns" [nzShowPagination]="false">
+        <thead>
+          <tr>
+            <th>Column</th>
+            <th>Column Number in Excel</th>
+            <th>Column Name in Excel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Date</td>
+            <td>{{ this.date }}</td>
+            <td>
+              <nz-select nzAllowClear [(ngModel)]="this.date" class="input-size" style="width: 100%;" required>
+                <nz-option *ngFor="let roles of columns" [nzValue]="roles.index" nzLabel="{{ roles.header }}">
+                  {{ roles.header }}
+                </nz-option>
+              </nz-select>
+            </td>
+          </tr>
+          <tr>
+            <td>Policy Holder Name</td>
+            <td>{{ this.policy_holder_name }}</td>
+            <td>
+              <nz-select nzAllowClear [(ngModel)]="this.policy_holder_name" class="input-size" style="width: 100%;"
+                required>
+                <nz-option *ngFor="let roles of columns" [nzValue]="roles.index" nzLabel="{{ roles.header }}">
+                  {{ roles.header }}
+                </nz-option>
+              </nz-select>
+            </td>
+          </tr>
+          <tr>
+            <td>Policy Amount</td>
+            <td>{{ this.policy_amount }}</td>
+            <td>
+              <nz-select nzAllowClear [(ngModel)]="this.policy_amount" class="input-size" style="width: 100%;" required>
+                <nz-option *ngFor="let roles of columns" [nzValue]="roles.index" nzLabel="{{ roles.header }}">
+                  {{ roles.header }}
+                </nz-option>
+              </nz-select>
+            </td>
+          </tr>
+          <tr>
+            <td>Policy Number</td>
+            <td>{{ this.policy_number }}</td>
+            <td>
+              <nz-select nzAllowClear [(ngModel)]="this.policy_number" class="input-size" style="width: 100%;" required>
+                <nz-option *ngFor="let roles of columns" [nzValue]="roles.index" nzLabel="{{ roles.header }}">
+                  {{ roles.header }}
+                </nz-option>
+              </nz-select>
+            </td>
+          </tr>
+
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+  <div nz-row nzType="flex" nzJustify="end" class="button" style="margin-top: 5vh;">
+    <div nz-col nzSpan="2">
+      <button nz-button nzType="primary" (click)="saveColumns()" [nzLoading]="loading">
+        Save
+      </button>
+    </div>
+  </div>
+</div>

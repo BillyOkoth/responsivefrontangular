@@ -1,0 +1,30 @@
+.modal-approve {
+  
+    height:100%;
+
+}
+.title {   
+    height:20%;
+    font-size: 2em;
+    font-weight:300!important;
+}
+
+.data-approve {
+    
+    height:60%
+}
+.button-confirm {   
+    margin-top:6vh;
+    margin-left:3vh;
+}
+.data-input {
+    margin-top:1vh;
+}
+.btn-reject {
+    margin-left: auto;
+    margin-right:auto;
+}
+.btn-approve {
+    margin-left: auto;
+    margin-right:auto;
+}

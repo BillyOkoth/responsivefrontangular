@@ -1,0 +1,113 @@
+<div nz-row nzGutter="16">
+  <div nz-col nzSpan="16">
+    <form
+     
+      nz-form
+      action=""
+      autocomplete="off"
+      [formGroup]="validateEslipForm"
+    >
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24">Eslip Number</nz-form-label>
+        <nz-form-control [nzSpan]="24">
+          <input nz-input formControlName="eslipno" />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+
+  <div class="input-button" nz-col nzSpan="5">
+    <button
+      nz-button
+      nzType="primary"
+      (click)="validateEslip()"
+      [disabled]="validateEslipForm.invalid || loading"
+    >
+      Validate Eslip
+    </button>
+  </div>
+</div>
+
+<!-- <div nz-row nzType="flex" nzJustify="start" class="header-title">
+  <h3>Date Created: {{ this.dateCreated }}</h3>
+</div>
+<div nz-row nzType="flex" nzJustify="start" class="header-title1">
+  <h3>Reference : {{ this.reference }}</h3>
+</div>
+<div nz-row nzType="flex" nzJustify="start" class="header-title1">
+  <h3>FT : {{ this.ft }}</h3>
+</div>
+
+<div
+  nz-row
+  nzType="flex"
+  nzJustify="start"
+  class="header-title1"
+  *ngIf="validationBoolean"
+>
+  <h3>Biller Name: {{ this.biller_name }}</h3>
+</div>
+<div
+  nz-row
+  nzType="flex"
+  nzJustify="start"
+  class="header-title1"
+  *ngIf="validationBoolean"
+>
+  <h3>Payer Name: {{ this.payer_name }}</h3>
+</div>
+<div
+  nz-row
+  nzType="flex"
+  nzJustify="start"
+  class="header-title1"
+  *ngIf="validationBoolean"
+>
+  <h3>Number of Accounts: {{ this.accounts }}</h3>
+</div>
+
+<div nz-row nzType="flex" nzJustify="start" class="header-title1">
+  <h3>FT Amount: {{ this.amount }}</h3>
+</div> -->
+<nz-table>
+  <tbody>
+    <tr>
+      <td>Date Created</td>
+      <td>{{ this.dateCreated }}</td>
+    </tr>
+    <tr>
+      <td>Reference</td>
+      <td>{{ this.reference }}</td>
+    </tr>
+    <tr>
+      <td>FT</td>
+      <td>{{ this.ft }}</td>
+    </tr>
+    <tr *ngIf="validationBoolean">
+      <td>Biller Name</td>
+      <td>{{ this.biller_name }}</td>
+    </tr>
+    <tr *ngIf="validationBoolean">
+      <td>Payer Name</td>
+      <td>{{ this.payer_name }}</td>
+    </tr>
+    <tr *ngIf="validationBoolean">
+      <td>Number of Accounts</td>
+      <td>{{ this.accounts }}</td>
+    </tr>
+    <tr *ngIf="validationBoolean">
+      <td>FT Amount</td>
+      <td>{{ this.amount }}</td>
+    </tr>
+  </tbody>
+</nz-table>
+<div class="button-pay" nz-row nzType="flex" nzJustify="center">
+  <button
+    nz-button
+    nzType="primary"
+    (click)="payEslip()"
+    [disabled]="!validationBoolean || loading"
+  >
+    Recon
+  </button>
+</div>

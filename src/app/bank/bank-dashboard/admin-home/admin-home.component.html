@@ -1,0 +1,121 @@
+<div style="background: #ECECEC;padding:5px;">
+  <div nz-row [nzGutter]="8">
+    <div nz-col [nzSpan]="6">
+      <nz-card style="min-height:20vh">
+        <h2 class="h2-header">
+          Accounts:
+        </h2>
+        <h2 class="digits">
+          {{ accounts }}
+        </h2>
+      </nz-card>
+    </div>
+    <div nz-col [nzSpan]="6">
+      <nz-card style="min-height:20vh">
+        <h2 class="h2-header">
+          Service Charge Pending
+        </h2>
+        <h2 class="digits">{{ amount_charged_pending }}/=</h2>
+      </nz-card>
+    </div>
+    <div nz-col [nzSpan]="6">
+      <nz-card style="min-height:20vh">
+        <h2 class="h2-header">
+          Service Charge Paid
+        </h2>
+        <h2 class="digits">{{ amount_charged_paid }}/=</h2>
+      </nz-card>
+    </div>
+    <div nz-col [nzSpan]="6">
+      <nz-card style="min-height:20vh">
+        <h2 class="h2-header">
+          Exceptions
+        </h2>
+        <h2 class="digits">
+          {{ exceptions }}
+        </h2>
+      </nz-card>
+    </div>
+  </div>
+</div>
+
+<div style="background: #ECECEC;padding:5px; min-height: 52vh">
+  <div nz-row [nzGutter]="8">
+    <div nz-col [nzSpan]="12">
+      <nz-card style="min-height:50vh">
+        <h2 class="h2-header fill-screen">
+          Eslips Amount
+        </h2>
+        <ngx-charts-pie-chart
+          [view]="viewPie"
+          [scheme]="colorScheme"
+          [results]="eslips_dashboard"
+          [legend]="showLegend"
+          [explodeSlices]="explodeSlices"
+          [labels]="showLabels"
+          [gradient]="gradient"        
+          (window:resize)="onResize($event)"
+        >
+        </ngx-charts-pie-chart>
+      </nz-card>
+    </div>
+
+    <div nz-col [nzSpan]="12">
+      <nz-card style="min-height:50vh">
+        <h2 class="h2-header height-100">
+          Billers and Payers
+        </h2>
+        <ngx-charts-bar-vertical-2d
+          [view]="view"
+          [scheme]="colorScheme"
+          [results]="users"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"        
+          (window:resize)="onResize($event)"
+        >
+        </ngx-charts-bar-vertical-2d>
+      </nz-card>
+    </div>
+  </div>
+</div>
+
+<!-- <div style="background: #ECECEC;padding:5px;">
+  <div nz-row [nzGutter]="0">
+    <div nz-col [nzSpan]="24">
+      <nz-card>
+        <h2 class="h2-header">
+          System Monitoring:
+        </h2>
+        <ngx-charts-line-chart
+          [view]="viewLine"
+          [scheme]="colorScheme"
+          [results]="systemGraph"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="true"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"        
+         
+        >
+        </ngx-charts-line-chart>
+
+        <button
+          nz-button
+          nzType="primary"
+          [className]="averageKPLCSpeed > 1300 ? 'button-red' : 'button-green'"
+        >
+          Average KPLC {{ averageKPLCSpeed }}
+        </button>
+      </nz-card>
+    </div>
+  </div>
+</div> -->

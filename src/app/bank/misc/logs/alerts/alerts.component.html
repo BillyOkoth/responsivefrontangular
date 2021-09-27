@@ -1,0 +1,80 @@
+<div nz-row nzGutter="16" style="margin-bottom: 2vh;">
+  <div nz-col class="gutter-row" nzSpan="12">
+    <input
+      nz-input
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      style="width: 100%;"
+      maxlength="100"
+    />
+  </div>
+  <div nz-col nzSpan="12">
+    <div nz-row nzType="flex" nzJustify="center">
+      <div nz-col nzSpan="3">
+        <button
+          class="btn"
+          nz-button
+          nzType="danger"
+          (click)="delete()"
+          nzTooltipTitle="Delete Alerts"
+          [disabled]="
+            this.selectedRows.length < 1 || loading || !this.role.alertRole
+          "
+          nzTooltipPlacement="bottom"
+          [nzLoading]="loading"
+          nz-tooltip
+        >
+          <i nz-icon nzType="delete"></i>
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th class="header">#</th>
+          <th class="header">
+            Email 
+          </th>
+          <th class="header">
+            Description
+          </th>
+          <th class="header">
+            Created At
+          </th>
+          <th class="header">
+            Created By
+          </th>
+          <th
+            nzShowCheckbox
+            [(nzChecked)]="isAllDisplayDataChecked"
+            [nzIndeterminate]="isIndeterminate"
+            (nzCheckedChange)="updateAllChecked()"
+            class="header"
+          ></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of rows | alerts: searchValue; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.email }}</td>
+          <td>{{ data.description }}</td>
+          <td>{{ data.created_at }}</td>
+          <td>{{ data.created_by }}</td>
+
+          <td
+            nzShowCheckbox
+            [(nzChecked)]="data.checked"
+            (nzCheckedChange)="updateSingleChecked(data)"
+            (click)="onSelect()"
+          ></td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</cdk-virtual-scroll-viewport>

@@ -1,0 +1,99 @@
+<form nz-form [nzLayout]="'vertical'" [formGroup]="adminDetailsForm">
+    <div nz-row nzGutter="16">
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-label nzRequired>First Name</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="firstNameErrorTpl">
+                    <input nz-input autocomplete="off" maxlength="50" formControlName="firstName" />
+                    <ng-template #firstNameErrorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">
+                            Please enter the admin first name!
+                        </ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzRequired>Last Name</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="lastNameErrorTpl">
+                    <input nz-input autocomplete="off" maxlength="50" formControlName="lastName" />
+                    <ng-template #lastNameErrorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">
+                            Please enter the admin last name!
+                        </ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzRequired>Biller Type</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="billerTypeErrorTpl">
+                    <nz-select nzAllowClear nzPlaceHolder="Select Biller Type" formControlName="closedBillerType"
+                    class="input-size" style="width: 100%;" required>
+                    <nz-option *ngFor="let biller of closedBillerType" [nzValue]="biller.value" nzLabel="{{ biller.name }}">
+                      {{ biller.name }}
+                    </nz-option>
+                  </nz-select>
+                    <ng-template #billerTypeErrorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">
+                            Select a closed biller type!
+                        </ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-label nzRequired>Admin Email</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="adminEmailErrorTpl">
+                  <input nz-input autocomplete="off" maxlength="50" formControlName="adminEmail" />
+                  <ng-template #adminEmailErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                      Please enter the company email!
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('email')">
+                      Please use a valid email!
+                    </ng-container>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label nzRequired>Admin Phone Number</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="adminPhoneNumberErrorTpl">
+                  <nz-input-group [nzAddOnBefore]="phonePrefixTemplate">
+                    <ng-template #phonePrefixTemplate>
+                      <nz-select formControlName="phoneNumberPrefix" class="phone-select">
+                        <nz-option nzLabel="+254" nzValue="+254"></nz-option>
+                      </nz-select>
+                    </ng-template>
+                    <input nz-input autocomplete="off" maxlength="10" formControlName="adminPhone" />
+                  </nz-input-group>
+        
+                  <ng-template #adminPhoneNumberErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                      Please enter the admin's phone number!
+                    </ng-container>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+        </div>
+    </div>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="8"></nz-form-label>
+        <div nz-row >
+            <div nz-col nzSpan="12">
+                <div nz-row nzJustify="start">
+                    <div nz-col nzSpan="5">
+                        <button nz-button nzType="primary" (click)="backToCompany()" [nzLoading]="loading">Back</button>
+                    </div>
+                </div>
+            </div>
+            <div nz-col nzSpan="12">
+                <div nz-row nzJustify="end">
+                    <div nz-col nzSpan="5">
+                        <button nz-button nzType="primary" (click)="saveDetails()" [nzLoading]="loading">Save Details</button>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+      </nz-form-item>
+</form>

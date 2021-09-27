@@ -1,0 +1,131 @@
+<div
+  nz-row
+  nz-form
+  [nzLayout]="'vertical'"
+  nzType="flex"
+  nzJustify="center"
+  [formGroup]="commisionsForm"
+>
+  <div nz-col nzSpan="20">
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24" nzRequired
+            >Commission Name</nz-form-label
+          >
+          <nz-form-control [nzSpan]="24">
+            <input
+              nz-input
+              type="text"
+              maxlength="13"
+              formControlName="commisionName"
+            />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24" nzRequired>Start Date</nz-form-label>
+          <nz-form-control [nzSpan]="24">
+            <nz-date-picker
+              [nzDisabledDate]="disabledStartDate"
+              nzFormat="yyyy-MM-dd "
+              formControlName="startDate"
+              nzPlaceHolder="Start"
+              (change)="onStartChange($event)"
+              (nzOnOpenChange)="handleStartOpenChange($event)"
+            >
+            </nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24" nzRequired
+            >Commission Rate %</nz-form-label
+          >
+          <nz-form-control [nzSpan]="24">
+            <input
+              nz-input
+              type="text"
+              maxlength="13"
+              formControlName="commisionRate"
+            />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24" nzRequired>End Date</nz-form-label>
+          <nz-form-control [nzSpan]="24">
+            <nz-date-picker
+              [nzDisabledDate]="disabledEndDate"
+              nzFormat="yyyy-MM-dd "
+              formControlName="endDate"
+              nzPlaceHolder="End"
+              [nzOpen]="endOpen"
+              (change)="onEndChange($event)"
+              (nzOnOpenChange)="handleEndOpenChange($event)"
+            >
+            </nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row>
+      <nz-alert
+        nzType="info"
+        nzMessage="Commission can apply to all or specific payers."
+      ></nz-alert>
+    </div>
+
+    <div nz-row nzGutter="16" class="checkbox">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24" nzRequired>Payer Options</nz-form-label>
+          <nz-form-control [nzSpan]="24">
+          <nz-select
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select Payer Option"
+            formControlName="toAll"
+            (ngModelChange)="onSelectCharge($event)"
+            style="width:100%"
+          >
+            <nz-option nzLabel="To All Payers" nzValue="all"></nz-option>
+            <nz-option
+              nzLabel="To Specific Payers"
+              nzValue="specific"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12" *ngIf="toSpecific">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24" nzRequired>Select Payer</nz-form-label>
+          <nz-form-control [nzSpan]="24">
+          <nz-select
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select Payer Option"
+            formControlName="selectedPayer"
+            style="width:100%"
+          >
+            <nz-option *ngFor="let payer of payers" nzLabel="{{payer.company_name}}" nzValue="{{payer.payer_code}}">
+              {{payer.company_name}}
+            </nz-option>
+           
+          </nz-select>
+        </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row nzType="flex" nzJustify="end">
+      <div nz-col nzSpan="5">
+        <button nz-button nzType="primary" (click)="saveCommission()" [disabled]="!this.commisionsForm.valid" [nzLoading]="loading">
+          Save Settings
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

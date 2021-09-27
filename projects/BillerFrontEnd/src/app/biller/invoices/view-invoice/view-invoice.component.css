@@ -1,0 +1,189 @@
+/*
+=================================================
+header section
+-------------------------------------------------
+*/
+.invoice-holder {
+    margin-bottom: 3vh !important;
+}
+.header-section {
+    /* border: 1px solid red; */
+}
+.header-left, .header-right{
+    /* border: 1px solid rebeccapurple; */
+    height: 65vh !important;
+}
+.header-left {
+    border-right: 1px solid #E0E0E0;
+}
+.section-top {
+    height: 50% !important;
+    border-bottom: 1px solid #E0E0E0;
+}
+.section-bottom {
+    height: 10% !important;
+    /* border: 1px solid black; */
+}
+
+.invoice-title-holder {
+    height: 86% !important;
+    margin-top: 4% !important;
+}
+.invoice-title {
+    height: 60% !important;
+    border-bottom: 5px solid #C797AD;
+}
+.invoice-title-ftr {
+    height: 40% !important;
+}
+
+.invoice-title h2 {
+    font-family: 'Segoe UI Bold';
+    font-weight: bolder;
+    font-size: 5em !important;
+    margin: 0;
+    padding: 0;
+    color: #3C3355;
+}
+.main-title {
+    position: relative;
+}
+.inv-no, .inv-date {
+    position: absolute;
+    bottom: 1vh;
+    color: #707070;
+}
+.inv-no {
+    left: 1vw;
+}
+.inv-date {
+    right: 1vw;
+}
+.invoice-title-ftr-cnt {
+    margin-top: 1vh !important;
+}
+.invoice-title-ftr-cnt p{
+
+    text-align: center;
+
+}
+.dotted-line {
+    border-left:dotted #D6D6D6;
+    border-right: dotted #D6D6D6;
+}
+/*
+==================================================================
+header section right
+------------------------------------------------------------------
+*/
+.header-right .section-top {
+    padding-left: 2vw !important;
+}
+.image-div {
+    margin-top:5px;
+    width: 330px;
+    height:330px;
+    /* border: dotted #D6D6D6; */
+    float: left;
+}
+
+.logo-size {
+    margin-left:50px;
+    width:200px;
+    height:200px;
+}
+.header-right .section-top h2 {
+    font-family: 'Segoe UI Bold';
+    font-weight: bolder;
+}
+.header-right .section-top p {
+    font-weight: 900;
+    font-size: .9em !important;
+    font-family: 'Segoe UI Light';
+}
+.header-right .section-top h2, .header-right .section-top p, .header-right .section-top div {
+    float: left;
+}
+
+.header-left .section-bottom p {
+    margin-left: 2vw !important;
+}
+.header-right .section-bottom p{
+    margin-left: 2vw !important;
+}
+
+/*
+============================================================
+FORMAT INVOICE BODY OF THE APPLICATION
+------------------------------------------------------------
+*/
+.invoice-body {
+    width: 100% !important;
+    margin-top: 3vh !important;
+}
+.tb-title {
+    height: 10vh !important;
+    /* background: #B9365D; */
+}
+.tb-title h3 {
+    color: #ffffff;
+    text-align: center;
+}
+.tb-title .f-right h3{
+    text-align: right;
+    margin-right: 4% !important;
+}
+.tb-title .f-center h3{
+    text-align: center;
+}
+.tb-row {
+    border-bottom: 1px solid #E0E0E0;
+}
+.tb-row p {
+    font-size: .9em !important;
+}
+.tb-row .f-center{
+    text-align: center;
+}
+.tb-row .f-right {
+    text-align: right;
+    margin-right: 1% !important;
+}
+
+/*
+=====================================================================
+invoice footer 
+---------------------------------------------------------------------
+*/
+.total-footer {
+    margin-top: 4vh !important;
+}
+.sub-total {
+    border-bottom: 1px solid #E0E0E0;
+}
+.total-footer .bolder h3{
+    font-family: 'Segoe UI Bold';
+    font-weight: bolder;
+}
+
+.total-footer .left h3 {
+    text-align: left;
+}
+.total-footer .right h3 {
+    text-align: right;
+    margin-right: 2%;
+}
+
+.total-footer .paid{
+    border-bottom: 5px solid #3C3355;
+}
+.total-footer .amount-due div{
+    border-bottom: 5px solid #C797AD;
+}
+.total-footer .currency{
+    float: right !important;
+}
+
+.edit {
+    cursor: pointer;
+}

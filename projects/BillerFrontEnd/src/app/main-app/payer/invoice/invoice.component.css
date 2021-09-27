@@ -1,0 +1,151 @@
+@import url("../../../../../../../node_modules/bootstrap/dist/css/bootstrap.css");
+.container {
+    margin: 5%;
+}
+
+.container .row .addressee {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+}
+
+.heading {
+    margin-bottom: 2em;
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-transform: uppercase;
+}
+
+.container-second-col {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+    position: relative;
+    left: 0;
+}
+
+.container-fluid-description {
+    color: white;
+    background-color: #EDBD50;
+    padding: 2%
+}
+
+.container-fluid-items {
+    background-color: #333033;
+    padding: 2%;
+    color: white;
+}
+
+.container-fluid-subtotal {
+    padding-bottom: 2%;
+}
+
+.grand-total {
+    padding: 3%;
+    background-color: #EDBD50;
+}
+
+.payment-info {
+    padding: 2%;
+    font-family: "Arial Black", Gadget, sans-serif;
+    margin-left: 5%;
+}
+
+.container-fluid-footer {
+    margin-bottom: 1em;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: cornsilk;
+}
+
+.buttons>ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.buttons>ul li {
+    box-sizing: border-box;
+    width: 15em;
+    height: 3em;
+    font-size: 20px;
+    border-radius: 0.5em;
+    margin: 0.5em;
+    box-shadow: 0 0 1em rgba(0,0,0,0.2);
+    color: white;
+    font-family: sans-serif;
+    text-transform: capitalize;
+    line-height: 3em;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.buttons>ul li:nth-child(odd) {
+    background: linear-gradient(to right, #1890FF, #154DC6);
+    text-align: left;
+    padding-left: 10%;
+    transform: perspective(500px) rotateY(45deg);
+}
+
+.buttons>ul li:nth-child(even) {
+    background: linear-gradient(to left, #154DC6, #1890FF);
+    text-align: right;
+    padding-right: 10%;
+    transform: perspective(500px) rotateY(-45deg);
+}
+
+.buttons>ul li:nth-child(odd):hover {
+    transform: perspective(200px) rotateY(45deg);
+    padding-left: 5%;
+}
+
+.buttons>ul li:nth-child(even):hover {
+    transform: perspective(200px) rotateY(-45deg);
+    padding-right: 5%;
+}
+
+.box {
+    display: flex;
+    overflow-x: hidden;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+
+.invoice {
+    margin: 2% 5% 2%;
+    flex: 1 1 auto;
+    flex-grow: 50;
+    border-color: grey;
+    /* border-left: 2px solid grey; */
+    border-style: solid;
+    box-shadow: 10px 10px grey;
+}
+
+.buttons {
+    position: sticky;
+    top: 0;
+    flex: 1 1 auto;
+    z-index: 1;
+}
+
+/* .svg-fill {
+    fill: var(--biller-color);
+} */
+
+
+.svg-fill {
+    animation: pulse 60s infinite;
+}
+  
+@keyframes pulse {
+    0% {
+      fill: #001F3F;
+    }
+    25%, 50%, 70%, 100% {
+      /* fill: #FF4136; */
+      fill: var(--biller-color);
+      /* animation-play-state: paused; */
+    }
+}

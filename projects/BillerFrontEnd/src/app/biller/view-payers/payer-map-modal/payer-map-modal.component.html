@@ -1,0 +1,25 @@
+<nz-steps [nzCurrent]="current">
+  <nz-step nzTitle="Upload Payer File Sample"> </nz-step>
+  <nz-step nzTitle="Payer Columns"> </nz-step>
+</nz-steps>
+
+<div class="steps-content" *ngIf="this.upload" style="margin-top: 5vh;margin-bottom: 5vh">
+  <app-upload-sample></app-upload-sample>
+</div>
+<div class="steps-content" *ngIf="this.mapping" style="margin-top: 5vh;">
+  <app-map-invoice></app-map-invoice>
+</div>
+<!-- <div *ngIf="this.upload"  nz-row>
+    <app-upload-sample></app-upload-sample>
+  </div>
+  <div *ngIf="this.mapping" nz-row>
+    <app-map-invoice></app-map-invoice>
+  </div> -->
+
+<div nz-row nzType="flex" nzJustify="end" class="button">
+  <div nz-col nzSpan="2">
+    <button nz-button nzType="primary" (click)="next()" *ngIf="current < 1">
+      <span>Next</span>
+    </button>
+  </div>
+</div>

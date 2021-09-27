@@ -1,0 +1,279 @@
+/*
+======================================================================
+GET MAIN SECTIONS OF THE PAGE
+----------------------------------------------------------------------
+*/
+
+table {
+    width: 100%;
+  }
+  
+  .big-column,
+  .small-column {
+    height: 100%;
+  }
+  
+  .big-column {
+    background: #ffffff;
+  }
+  
+  .table-div {
+    position: relative;
+    height: 50vh !important;
+  }
+  
+  .button-css button{
+  
+    /* float: right !important; */
+    margin-bottom: .7vw;
+    
+  }
+  .button-css input {
+    width: 100% !important;
+  }
+  .button-css .hold-btn{
+    float: right;
+    margin-bottom: .5vh !important;
+  }
+  
+  .btn-space {
+    margin-right: .5vw !important;
+  }
+  
+  .title,
+  .company-details,
+  .customize-look,
+  .test-invoice {
+    height: 25% !important;
+  }
+  
+  .title h2,
+  h3 {
+    margin-left: 2vw !important;
+  }
+  
+  .title h2 {
+    font-size: 3em;
+    font-family: 'Segoe UI Bold';
+    font-weight: 1900 !important;
+    color: #ffd387;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  
+  .title h3 {
+    color: #707070;
+    font-size: 2.5em;
+    font-weight: 300;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  
+  .icon-tab,
+  .description,
+  .progress {
+    position: relative;
+  }
+  
+  .progress mat-progress-bar {
+    margin-top: 23% !important;
+    width: 70%;
+    float: right;
+  }
+  
+  .progress span {
+    float: left !important;
+    color: #707070;
+    font-size: 2em !important;
+    margin-top: 15%;
+  }
+  
+  .description {
+    color: #707070;
+  }
+  
+  .description p {
+    font-family: 'Segoe UI Bold';
+  }
+  
+  .description p,
+  .description h2 {
+    margin-left: 1% !important;
+  }
+  
+  .description h2 {
+    font-weight: 300 !important;
+  }
+  
+  .icon-tab mat-icon {
+    font-size: 3.5em;
+    margin-left: 2vw !important;
+    margin-top: 20% !important;
+  }
+  
+  .small-column {
+    position: relative;
+  }
+  
+  .small-column span {
+    position: absolute;
+    text-align: center !important;
+    width: 100%;
+  }
+  
+  .small-column h2,
+  .small-column mat-icon {
+    text-align: center !important;
+  }
+  
+  .small-column h2 {
+    font-weight: 300 !important;
+    color: #707070;
+  }
+  
+  .small-column .invite {
+    top: 2vh;
+  }
+  
+  .small-column .support {
+    bottom: 2vh;
+  }
+  
+  .small-column mat-icon {
+    background: #ffffff;
+    padding: 5% !important;
+    cursor: pointer;
+  }
+  
+  .progress button {
+    position: absolute;
+    right: -5% !important;
+    top: 40% !important;
+  }
+  
+  /* notification button*/
+  .heartbeat {
+    position: absolute;
+    right: 13%;
+    top: 10%;
+  }
+  
+  /* style generate invoice btn */
+  .ebiller-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 100 !important;
+  }
+  
+  /* SAVED MY DAY */
+  ::v-deep.mat-form-field-underline {
+    background-color: transparent !important;
+    display: none;
+  }
+  
+  mat-form-field {
+    width: 80% !important;
+    /* background: #D6D6D6; */
+  }
+  th {
+    color: #0033a1;
+    font-size: 1em !important;
+    font-family: 'Segoe UI Regular';
+  }
+  
+  mat-form-field input {
+    background: #d6d6d6;
+    padding: 2%;
+  }
+  
+  .action-buttons {
+    margin-bottom: 0.5vh !important;
+    margin-top: 0.5vh !important;
+  }
+  
+  .paytotal {
+    text-align: right;
+    margin-right: 5vw;
+    color: black !important;
+  }
+  
+  .duetotal {
+    text-align: right;
+    margin-right: 4.5vw;
+    color: black !important;
+  }
+  .footer {
+    display: inline;
+    color: white !important;
+    font-size: 0.7em !important;
+    font-family: 'Segoe UI Regular';
+    /* margin-left: 2vh; */
+    background-color: #d4d4d4;
+  }
+  
+  .footer h4,
+  .footer .paytotal,
+  .footer .duetotal {
+    text-align: center !important;
+  }
+  .sticky {
+    bottom: 0;
+    width: 100% !important;
+    z-index: 90;
+    background: rgb(201, 209, 209);
+    height: 8vh;
+  }
+  
+  .my-accounts {
+    color: #ffd387;
+    margin-left: 7vh;
+    font-size: 1.5em;
+  }
+  
+  .btn-group {
+    margin-left: 16vw;
+  }
+  
+  .btn-mis {
+    margin: 3vw;
+  
+    position: absolute;
+    right: 0;
+    z-index: 100 !important;
+  }
+  
+  .add-new-btn button {
+    display: block;
+    float: right !important;
+    margin-top: 3vh;
+  }
+  
+  .view-file {
+    margin-right: 1.5vw !important;
+  }
+  
+  :host
+    ::ng-deep
+    .ngx-datatable.material:not(.cell-selection)
+    .datatable-body-row:hover
+    .datatable-row-group {
+    color: #ffffff !important;
+    background: #66655c;
+  
+    transition: all 0.4s ease 0s;
+  }
+  
+  .button-holder{
+    float: right;
+    display: block;
+    // margin-left: 5vw;
+  
+  }
+  
+  .panel-holder {
+  height: 57vh;
+  }
+  .t-bl {
+    height: 100vh;
+  }

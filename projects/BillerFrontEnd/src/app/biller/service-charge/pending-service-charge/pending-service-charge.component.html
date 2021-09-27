@@ -1,0 +1,45 @@
+<div class="table-operations">
+
+    <div nz-row class = "margin">
+        <div nz-col nzSpan="24">
+            <input
+            nz-input
+            placeholder="Search"
+            [(ngModel)]="searchValue"
+            style="width: 50%;"
+            maxlength="100"
+          />
+        </div>
+       
+      </div>
+   
+  </div>
+
+
+<nz-table #basicTable [nzData]="rows">
+  <thead>
+    <tr>     
+      <th>Date</th>
+      <th>E-Slip Number</th>
+      <th>E-Slip Status</th>
+      <th>No. of Accounts</th>
+      <th>Bank Reference</th>
+      <th>E-Slip Amount</th>
+      <th>Amount Charged</th>
+      <th>Charge Status</th>
+    </tr>
+  </thead>
+  <tbody>
+      <nz-spin nzSimple *ngIf="this.loading === true"></nz-spin>     
+    <tr *ngFor="let data of basicTable.data | paidEslips: searchValue;let i = index">     
+      <td>{{ data.created_at | date: 'short' }}</td>
+      <td >{{ data.eslip_no }}</td>
+      <td>{{ data.status }}</td>
+      <td>{{ data.accounts }}</td>
+      <td>{{ data.bank_ref_no }}</td>
+      <td>{{ data.amount_to_pay | currency: 'Ksh.' }}</td>
+      <td>{{ data.amount_charged }}</td>
+      <td>{{ data.charge_status }}</td>
+    </tr>
+  </tbody>
+</nz-table>

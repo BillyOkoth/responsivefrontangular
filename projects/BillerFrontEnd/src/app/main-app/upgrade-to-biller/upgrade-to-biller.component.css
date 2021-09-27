@@ -1,0 +1,52 @@
+/* style header of the application*/
+.head .title h2 {
+  /* text-align: center; */
+  font-size: 2em;
+  font-family: 'Segoe UI Light';
+  font-weight: 300 !important;
+}
+.head h2 span {
+  font-size: 1.5em !important;
+  color: #ffffff;
+}
+.icon button mat-icon {
+  color: #ffffff !important;
+  font-size: 4em !important;
+}
+.icon button {
+  margin-top: 10% !important;
+}
+
+/* form field area*/
+mat-form-field {
+  width: 100% !important;
+}
+.placeholder {
+  color: #d6d6d6 !important;
+  font-weight: 500 !important;
+  font-size: 1.3em !important;
+  margin-left: 2%;
+}
+/deep/ .mat-form-field-underline {
+  background-color: #d6d6d6 !important;
+  color: #d6d6d6 !important;
+}
+input,
+textarea {
+  color: #ffffff !important;
+  font-size: 1.3em !important;
+  margin-left: 2%;
+}
+
+/* style instruction p */
+.paragraph-row p {
+  font-family: 'Segoe UI Bold';
+  color: #ffffff;
+  font-size: 1.2em !important;
+  text-align: center;
+}
+
+.paragraph-row button {
+  display: block;
+  margin: auto !important;
+}

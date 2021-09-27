@@ -1,0 +1,47 @@
+<div nz-row nzType="flex" style="margin-bottom: 2vh;">
+  <div nz-col nzSpan="12">
+    <input
+      nz-input
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      style="width: 100%;"
+      maxlength="100"
+    />
+  </div>
+</div>
+
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #basicTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th class="header">#</th>
+          <th class="header">Payer Name</th>
+          <th class="header">Amount</th>
+          <th class="header">Date</th>
+          <th class="header">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of rows | policy: searchValue; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.payer_name }}</td>
+          <td>{{ data.amount }}</td>
+          <td>{{ data.date | date: "short" }}</td>
+          <td>
+            <button
+              nz-button
+              nzType="link"
+              nzTooltipTitle="View Policy File"
+              nzTooltipPlacement="topCenter"
+              nz-tooltip
+              (click)="viewPolicyFileData(data)"
+            >
+              <i nz-icon nzType="eye" nzTheme="outline"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</cdk-virtual-scroll-viewport>

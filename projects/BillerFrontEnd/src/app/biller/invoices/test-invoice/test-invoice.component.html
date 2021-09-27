@@ -1,0 +1,30 @@
+
+
+<div nz-row nx>
+    <strong>E-biller</strong> sent you an invoice (12345) for <strong>kes. 1,764,567.00</strong> that is due on
+    <strong>August 11, 2019</strong>
+</div>
+<div nz-row>
+    <div nz-form [formGroup]="testInvoiceForm">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6" >Subject</nz-form-label>
+          <nz-form-control [nzSpan]="14">
+            <input nz-input formControlName="title" type="text"  maxlength="100" >
+          </nz-form-control>
+        </nz-form-item >
+        <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="email">Message</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+            <textarea rows="4" nz-input formControlName="message"   maxlength="100" ></textarea>
+        </nz-form-control>
+      </nz-form-item >
+    </div>
+</div>
+
+<div nz-row nzType="flex" nzJustify="end">
+    <div nz-col>
+        <button nz-button nzType="primary" [disabled]= "!this.testInvoiceForm.valid" (click)="sendTestInvoice()" [nzLoading]='loading'>
+            Send Test Invoice<i nz-icon nzType="mail" nzTheme="outline"></i>
+          </button>
+    </div>
+</div>

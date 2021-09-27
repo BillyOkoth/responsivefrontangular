@@ -1,0 +1,44 @@
+<div nz-row nzGutter="16" style="margin-bottom: 2vh;">
+  <div nz-col class="gutter-row" nzSpan="12">
+    <input
+      nz-input
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      style="width: 100%;"
+      maxlength="100"
+    />
+  </div>
+</div>
+
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th class="header">#</th>
+          <th class="header">
+            Description
+          </th>
+          <th class="header">
+            Created At
+          </th>
+          <th class="header">
+            Created By
+          </th>
+          <th class="header">
+            Success
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of rows | alerts: searchValue; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.description }}</td>
+          <td>{{ data.created_at }}</td>
+          <td>{{ data.created_by }}</td>
+          <td>{{ data.status }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</cdk-virtual-scroll-viewport>

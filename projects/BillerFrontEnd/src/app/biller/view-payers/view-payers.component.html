@@ -1,0 +1,23 @@
+<!-- open -->
+<nz-tabset [nzTabPosition]="'top'" [nzType]="'card'" *ngIf="!closedbiller">
+  <nz-tab [nzTitle]="'My Payers'">
+    <ng-template nz-tab>
+      <app-my-payers></app-my-payers>
+    </ng-template>
+  </nz-tab>
+</nz-tabset>
+
+<!-- closed -->
+<nz-tabset [nzTabPosition]="'top'" [nzType]="'card'" *ngIf="closedbiller">
+  <nz-tab [nzTitle]="'My Payers'">
+    <ng-template nz-tab>
+      <app-my-payers></app-my-payers>
+    </ng-template>
+  </nz-tab>
+
+  <nz-tab [nzTitle]="'Payer Map List'" *ngIf="closedbiller">
+    <ng-template nz-tab>
+      <app-payer-map-list></app-payer-map-list>
+    </ng-template>
+  </nz-tab>
+</nz-tabset>

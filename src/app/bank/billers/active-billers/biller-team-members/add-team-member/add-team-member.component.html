@@ -1,0 +1,103 @@
+<form
+  [formGroup]="createMember"
+  autocomplete="off"
+  (ngSubmit)="createTeamMember()"
+>
+  <nz-form-item>
+    <input
+      nz-input
+      class="input-size"
+      placeholder="Enter First Name"
+      maxlength="50"
+      id="fname"
+      formControlName="fname"
+    />
+  </nz-form-item>
+
+  <nz-form-item>
+    <input
+      nz-input
+      class="input-size"
+      placeholder="Enter Last  Name"
+      maxlength="50"
+      id="lname"
+      formControlName="lname"
+    />
+  </nz-form-item>
+
+  <nz-form-item>
+    <input
+      nz-input
+      class="input-size"
+      placeholder="Enter Email Address"
+      maxlength="50"
+      id="email_address"
+      formControlName="email_address"
+    />
+  </nz-form-item>
+
+  <nz-form-item>
+    <input
+      nz-input
+      class="input-size"
+      placeholder="National Id"
+      maxlength="50"
+      id="national_id"
+      formControlName="national_id"
+    />
+  </nz-form-item>
+
+  <nz-form-item>
+    <input
+      nz-input
+      class="input-size"
+      placeholder="Employee Code"
+      maxlength="50"
+      id="employeeCode"
+      formControlName="employeeCode"
+    />
+  </nz-form-item>
+
+  <nz-form-item>
+    <input
+      type="text"
+      class="input-size"
+      nz-input
+      maxlength="12"
+      placeholder="07xx xxx xxx"
+      formControlName="phone_number"
+      ng2TelInput
+      [ng2TelInputOptions]="{ initialCountry: 'ke' }"
+      (ng2TelOutput)="getNumber($event)"
+      (hasError)="hasError($event)"
+  /></nz-form-item>
+
+  <nz-form-item>
+    <nz-select
+      formControlName="group_id"
+      nzAllowClear
+      nzPlaceHolder="Choose"
+      class="input-size"
+    >
+      <nz-option
+        *ngFor="let roles of userGroups"
+        [nzValue]="roles"
+        nzLabel="{{ roles.name }}"
+      >
+        {{ roles.name }}
+      </nz-option>
+    </nz-select>
+  </nz-form-item>
+</form>
+
+<button
+  class="input-size"
+  nz-button
+  nzType="primary"
+  (click)="createTeamMember()"
+  nzBlock
+  [nzLoading]="loading"
+  [disabled]="!createMember.valid"
+>
+  Create
+</button>

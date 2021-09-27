@@ -1,0 +1,85 @@
+<div nz-row nzGutter="16" style="margin-bottom: 2vh;">
+  <div nz-col class="gutter-row" nzSpan="6">
+    <input nz-input placeholder="Search" [(ngModel)]="searchValue" maxlength="100" />
+  </div>
+  <div nz-col nzSpan="12">
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <nz-date-picker nzTooltipTitle="Select Start Date" nzTooltipPlacement="topCenter" nz-tooltip
+          formControlName="from" placeholder="Start"></nz-date-picker>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-date-picker nzTooltipTitle="Select End Date" nzTooltipPlacement="topCenter" nz-tooltip formControlName="to"
+          placeholder="End"></nz-date-picker>
+      </div>
+    </div>
+  </div>
+
+  <div nz-col class="gutter-row" nzSpan="3">
+    <button nz-button nzType="primary" nzTooltipTitle="Filter Reconciliation Report" nzTooltipPlacement="topCenter"
+      nz-tooltip [disabled]="!reportForm.valid || loading" (click)="getReconcileReports()">
+      Filter
+      <i nz-icon nzType="redo"></i>
+    </button>
+  </div>
+
+  <div nz-col class="gutter-row" nzSpan="2">
+    <button nz-button nzType="primary" nzTooltipTitle="Download Excel." nzTooltipPlacement="topCenter" nz-tooltip
+      [nzLoading]="loading" [disabled]="loading" (click)="downloadExcel()">
+      Download Excel
+      <i nz-icon nzType="download" nzTheme="outline"></i>
+    </button>
+  </div>
+</div>
+<nz-spin [nzSpinning]="this.loading === true" [nzSize]="'large'">
+  <nz-table #basicTable [nzData]="rows" [nzShowPagination]="false">
+    <thead>
+      <tr>
+
+        <th class="header">#</th>
+        <th class="header">Date Created</th>
+        <th class="header">Eslip No</th>
+        <th class="header">Account No.</th>
+        <th class="header">Bank Ref No</th>
+        <th class="header">Biller Payment Ref</th>
+        <th class="header">Account Name</th>
+        <th class="header">Amount Paid</th>
+        <th class="header">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="
+        let data of rows | searchReport: searchValue;
+        let i = index
+      ">
+        <td>{{ i + 1 }}</td>
+        <td class="t-data" style="width: 5em;">
+          {{ data.created_at | date: 'MM/dd/yyyy' }}
+        </td>
+        <td class="t-data">
+          {{ data.eslip_no }}
+        </td>
+        <td class="t-data">
+          {{ data.account_no }}
+        </td>
+
+        <td class="t-data">
+          {{ data.bank_ref_no }}
+        </td>
+        <td class="t-data">
+          {{ data.biller_payment_ref }}
+        </td>
+        <td class="t-data">
+          {{ data.account_name }}
+        </td>
+        <td class="t-data">
+          {{ data.eslip_amount }}
+        </td>
+        <td class="t-data">
+          {{ data.status }}
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-spin>

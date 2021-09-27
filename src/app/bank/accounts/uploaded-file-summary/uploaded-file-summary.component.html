@@ -1,0 +1,62 @@
+<div class="table-operations btn-group" nz-row nzType="flex" nzJustify="start">
+  <i
+    nz-icon
+    nzType="arrow-left"
+    nzTheme="outline"
+    style="font-size: 36px; color: #08c;"
+    nzTooltipTitle="Back"
+    nzTooltipPlacement="right"
+    nz-tooltip
+    (click)="maintain()"
+  ></i>
+</div>
+
+<nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+<nz-table #basicTable [nzData]="rows">
+  <thead>
+    <tr>
+        <th class="header">#</th>
+      <th class="header">Date Created</th>
+      <th class="header">File Name</th>
+      <th class="header">Validated Account</th>
+      <th class="header">Pending Account</th>
+      <th class="header">Valid Accounts</th>
+      <th class="header">Total Account</th>
+      <th class="header">Progress</th>
+      <th class="header">View</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr *ngFor="let data of basicTable.data; let i = index">
+        <td>{{ i + 1}}</td>
+      <td>{{ data.created_at | date: 'short' }}</td>
+      <td>{{ data.file_name }}</td>
+      <td>{{ data.validated }}</td>
+      <td>{{ data.pending }}</td>
+      <td>{{ convertNumber(data.validated, data.errors) }}</td>
+      <td>{{ data.total }}</td>
+      <td>
+        <nz-progress
+          [nzPercent]="data.progress"
+          nzSize="small"
+          nzStatus="active"
+          [ngClass]="{ progressbar: data.progress == '100' }"
+        ></nz-progress>
+      </td>
+      <td>
+        <button
+          nz-button
+          nzType="link"
+          nzTooltipTitle="View Acounts"
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          (click)="viewUploadedFileDetails(data)"
+        >
+          <i nz-icon nzType="eye"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+</nz-spin>

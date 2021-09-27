@@ -1,0 +1,288 @@
+<div nz-row nzGutter="16">
+  <div nz-col nzSpan="16">
+    <form nz-form [nzLayout]="'vertical'" [formGroup]="numberValidationForm">
+      <nz-form-item>
+        <nz-form-label nzRequired>Customer Number</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="numberErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="customerNumber" />
+          <ng-template #numberErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the customer number!
+            </ng-container>
+            <ng-container *ngIf="control.hasError('minlength')">
+              Customer number should be longer
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+  <div nz-col nzSpan="8">
+
+    <button class="validate-btn" nz-button type="button" (click)="validateAccount()" nzType="primary"
+      [nzLoading]="loading">
+      Validate Customer Number
+    </button>
+
+
+  </div>
+</div>
+
+<form nz-form [nzLayout]="'vertical'" [formGroup]="companyDetailsForm">
+  <div nz-row nzGutter="16">
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label nzRequired>Customer Number</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="numberErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="customer_number" />
+          <ng-template #numberErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the customer number!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Company Name</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="companyNameErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="company_name" />
+          <ng-template #companyNameErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the company name!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Company Email</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="companyEmailErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="company_email" />
+          <ng-template #companyEmailErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the company email!
+            </ng-container>
+            <ng-container *ngIf="control.hasError('email')">
+              Please use a valid email!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Company Website</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="companyWebsiteErrorTpl">
+          <nz-input-group nzAddOnBefore="www.">
+            <input nz-input autocomplete="off" maxlength="15" formControlName="company_website" />
+          </nz-input-group>
+
+          <ng-template #companyWebsiteErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the company website!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Customer Care Email</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="customerCareEmailTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="customer_care_email" />
+          <ng-template #customerCareEmailTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the customer care email!
+            </ng-container>
+            <ng-container *ngIf="control.hasError('email')">
+              Please use a valid email!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired><span>Company Alias <i nz-icon nz-tooltip
+              nzTitle="The alias will appear as the biller default name and will help payers identify the billers"
+              nzType="question-circle" nzTheme="outline"></i></span></nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="companyAliasErrorTpl">
+          <input nz-input autocomplete="off" maxlength="4" formControlName="company_alias" />
+          <ng-template #companyAliasErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter an alias !
+            </ng-container>
+            <ng-container *ngIf="control.hasError('maxlength')">
+              Company Alias should have 4 letters!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Company Phone Number</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="companyPhoneNumberErrorTpl">
+          <nz-input-group [nzAddOnBefore]="phonePrefixTemplate">
+            <ng-template #phonePrefixTemplate>
+              <nz-select formControlName="phoneNumberPrefix" class="phone-select">
+                <nz-option nzLabel="+254" nzValue="+254"></nz-option>
+              </nz-select>
+            </ng-template>
+            <input nz-input autocomplete="off" maxlength="10" formControlName="company_phone_number" />
+          </nz-input-group>
+
+          <ng-template #companyPhoneNumberErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the company phone number!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzRequired><span>Company Prefix <i nz-icon nz-tooltip
+          nzTitle="The prefix will be used as an idenitifier for E-slips"
+          nzType="question-circle" nzTheme="outline"></i></span></nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="companyPrefixErrorTpl">
+          <nz-input-group nzAddOnBefore="E">
+            <input nz-input autocomplete="off" maxlength="4" formControlName="company_prefix" />
+          </nz-input-group>
+
+          <ng-template #companyPrefixErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the company prefix!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label nzRequired>Company Paybill</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="companyPaybillErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="company_paybill" />
+          <ng-template #companyPaybillErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the company mpesa paybill!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Company KRA Pin</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="companyKRAErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="company_kra_pin" />
+          <ng-template #companyKRAErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the company KRA Pin!
+            </ng-container>
+            <ng-container *ngIf="control.hasError('minlength')">
+              KRA pin should be eight characters or more!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>VAT Charge</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="companyVatErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="company_vat" />
+          <ng-template #companyVatErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the VAT percentage!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Physical Address</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="physicalAddressErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="physical_address" />
+          <ng-template #physicalAddressErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the location of company head office!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Postal Address</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="postalAddressErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="postal_address" />
+          <ng-template #postalAddressErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the company postal address!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Country</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="countryErrorTpl">
+          <nz-select nzAllowClear nzPlaceHolder="Select Country" (ngModelChange)="getBranches($event)"
+                formControlName="country" class="input-size" style="width:100%">
+                <nz-option *ngFor="let country of countries" [nzValue]="country" nzLabel="{{ country.countryName }}">
+                  {{ country.countryName }}
+                </nz-option>
+              </nz-select>
+          <ng-template #countryErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please pick country of company operations!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Branch</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="branchErrorTpl">
+          <nz-select nzAllowClear placeholder="Select Branch" formControlName="branch" class="input-size"
+                style="width:100%">
+                <nz-option *ngFor="let branch of branches" [nzValue]="branch" nzLabel="{{ branch.branchName }}">
+                  {{ branch.branchName }}
+                </nz-option>
+              </nz-select>
+          <ng-template #branchErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please pick a bank branch!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Company Sector</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="sectorErrorTpl">
+          <nz-select nzAllowClear nzPlaceHolder="Select Sector" formControlName="sector_name" class="input-size"
+          style="width:100%" required>
+          <nz-option *ngFor="let sector of sectors" [nzValue]="sector" nzLabel="{{ sector.name }}">
+            {{ sector.name }}
+          </nz-option>
+        </nz-select>
+          <ng-template #sectorErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please pick a company sector!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <nz-form-item>
+        <nz-form-label nzRequired>Company Description</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="descriptionErrorTpl">
+          <input nz-input autocomplete="off" maxlength="200" formControlName="description"
+            placeholder="Briefly describe the kind of business the company does" />
+          <ng-template #descriptionErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Kindly describe the company!
+            </ng-container>
+            <ng-container *ngIf="control.hasError('minlength')">
+              The company description should be atleast 100 characters!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8"></nz-form-label>
+    <div nz-row nzJustify="end">
+      <div nz-col>
+        <button nz-button nzType="primary" (click)="saveDetails()" [nzLoading]="loading">Save Details</button>
+      </div>
+    </div>
+  </nz-form-item>
+</form>

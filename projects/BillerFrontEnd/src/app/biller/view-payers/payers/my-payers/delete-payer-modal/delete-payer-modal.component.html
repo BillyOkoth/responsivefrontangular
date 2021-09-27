@@ -1,0 +1,25 @@
+<div>
+    <h3>Are you sure you want to delete ?</h3>
+  
+    <p>{{this.payer}}</p>
+  
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <div nz-row nzJustify='start'>
+          <div nz-col nzSpan='5'>
+            <button nz-button nzType="default" (click)="closeDialog()">Cancel</button>
+          </div>
+        </div>
+       
+      </div>
+      <div nz-col nzSpan="12">
+        <div nz-row nzJustify='end'>
+          <div nz-col nzSpan='5'>
+            <button nz-button nzType="danger" (click)="  deletePayer()" [nzLoading]="loading" >Delete</button>
+          </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+  

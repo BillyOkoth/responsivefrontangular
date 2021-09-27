@@ -1,0 +1,213 @@
+.verify {
+   background-color:#FFFFFF;
+   width: 653.09px;
+   height:468.3px;
+   position: absolute;
+   top:10vh;
+   left:35vh;
+   
+   }
+.lock{    
+    width:10vh;
+    height:10vh;
+    position: absolute;
+    top:5vh;
+    left:65vh;
+    right:50vh;
+    align-content: space-around
+}
+.text1{
+    position: absolute;
+    color:#707070;
+    // background-color: aqua;
+    width: 85%;
+    height:10%;
+    top:35vh;
+    left:20vh;
+    right:50vh;
+}
+.text2{
+     position: absolute;
+     font-family: 'Segoe UI Light';
+    //  background-color: aqua;
+     width: 50%;
+     height:10%;
+     top:25vh;
+     left:35vh;
+     right:55vh;
+     color:#FFD387; 
+     font-size: 1.5rem
+}
+.verify-button{
+    position: absolute; 
+    width: 10%;
+    height:10%;
+    top:50vh;
+    left:60vh;
+    right:60vh;
+    background-image:url()
+}
+///Second css..
+.verify-pop{
+    color:red;
+    width: 680px;
+    height: 100px;
+    position: relative;
+}
+.src{
+    margin: auto;
+    margin-left: 48vh;
+}
+.verify-bold { 
+    color:#FFD387; 
+    font-size: 1.6rem;
+    margin-left: 28vh;
+    align-items: center
+}
+.verify-text{
+    color:#707070;
+    margin-top:2vh;
+    width: 120%;
+    height:10%;
+    position: absolute;
+    left: 5vh;
+}
+.buttonClose {
+    position: absolute;
+    margin-top:25vh;
+    left:31vw;
+}
+
+.verify-new {
+    margin-top: 5vh;
+    margin-left: 10vh;
+}
+///new css for the response mail.
+.my-accounts {
+    color: #ffd387;
+    margin-left:20vh;
+  }
+  
+  .account_details {
+    font-family: 'Segoe UI Bold';
+    text-decoration: underline;
+    margin-left: 26vh;
+  }
+  
+  .confirm-header {
+    font-family: 'Segoe UI Bold';
+    margin-left: 21vh;
+  }
+  .centered{
+    margin: auto;
+  }
+  
+  .confirm-proceed {
+    background-color: #4caf50;
+    color: white;
+    margin-left: 10vh;
+    margin-top:5vh;
+  }
+  
+  .confirm-cancel {
+    background-color: #f44336;
+    align-self: flex-end;
+    color: white;
+    margin-left: 32vh;
+  }
+  
+  .spacing {
+   
+    margin-left:1vh;
+  }
+  
+  /* new css  fir the modal*/
+  .container {
+  
+   margin-left:1vh;
+   margin-right:auto;
+  }
+  .first-row {
+  
+  width:22vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10vh;
+  
+  // margin: 1em auto 0 auto;
+  }
+  // .first-row h2 {
+  // color: #ffd387;
+  // text-align: center;
+  // }
+  .second-row {
+  
+  width:45vw;
+  margin-left:10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em auto 0 auto;
+  
+  }
+  .third-row {
+  
+  width:45vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em auto 0 auto;
+  }
+  .img-src {
+    align-items: center;
+  justify-content: center;
+  margin: 1em auto 0 auto;
+  }
+  
+  .text-style {
+    font-size: 1em;
+    color:gray;
+  }
+  
+  .gen-title {
+      margin-left:8vh;
+      /* width:45vw; */
+  }
+  .gen-title h3 {
+  text-align: center;
+  }
+  .accounts {
+    margin-left:10vh;
+  
+  
+  /* width:45vw; */
+  }
+  .accounts h3 {
+  text-align: center;
+  }
+  
+  .proceed {
+  
+  width:22.5vw;
+  }
+  .cancel {
+  
+  width:22vw;
+  /* margin-right:10vh; */
+  }
+  .proceed button {
+   margin-left:10vw;
+  }
+  .h2{
+    margin-left:10vw;
+  }
+  
+  .cancel button {
+  margin-left:10vw;
+  }
+  
+  .proceed-button {
+  color:red;
+  
+  }

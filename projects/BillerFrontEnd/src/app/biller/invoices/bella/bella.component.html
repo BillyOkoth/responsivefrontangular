@@ -1,0 +1,343 @@
+<div class="invoice-holder invoice-shadow">
+  <div class="header-section" nz-row>
+    <div class="header-left" nz-col nzSpan="15">
+      <div class="section-top" nz-row>
+        <div class="invoice-title-holder" nz-col nzOffset="3" nzSpan="20">
+          <div class="invoice-title" nz-row>
+            <div class="main-title" nz-col nzSpan="24">
+              <h2 [style.color]="userProfileService.brandColor">
+                Invoice
+              </h2>
+
+              <span class="inv-no">
+                #1
+              </span>
+              <span class="inv-date">
+                07/05/2019
+              </span>
+            </div>
+          </div>
+          <div class="invoice-title-ftr" nz-row>
+            <div class="invoice-title-ftr-cnt" nz-col nzSpan="8">
+              <p>
+                <span class="text-color-grey-dark">Total</span> <br /><br />
+                789,300
+              </p>
+            </div>
+            <div class="invoice-title-ftr-cnt dotted-line" nz-col nzSpan="8">
+              <p>
+                <span class="text-color-grey-dark">Net: </span> <br /><br />
+                54
+              </p>
+            </div>
+            <div class="invoice-title-ftr-cnt" nz-col nzSpan="8">
+              <p>
+                <span class="text-color-grey-dark">Due Date</span> <br /><br />
+                07/05/2019
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-bottom" nz-row>
+        <p class="text-color-grey-dark">
+          Terms & Notes
+          <span> </span>
+        </p>
+
+        <p class="text-color-grey-dark">
+          {{ terms_of_service }}
+        </p>
+      </div>
+    </div>
+    <div class="header-right" nz-col nzSpan="8">
+      <div class="section-top" nz-row>
+        <div class="image-div">
+          <label class="hoverable" for="fileInput">
+            <img
+              src="{{
+                'data:image/jpg;base64,' + userProfileService.brandImage
+              }}"
+            />
+            <div class="hover-text">Choose file</div>
+            <div class="background"></div>
+          </label>
+          <br />
+          <input
+            id="fileInput"
+            type="file"
+            (change)="convert($event)"
+            accept="image/*"
+          />
+        </div>
+
+        <br />
+
+        <h2 [style.color]="userProfileService.brandColor">
+          {{ company_name }}
+
+        </h2>
+        <br />
+      </div>
+      <div class="section-bottom" nz-col>
+        <p>
+          <span class="text-color-grey-dark">Bill to:</span> <br />
+
+          {{ payer_road }} <br />
+          {{ payer_county }}
+          <br />
+          <br />
+          {{ payer_phonenumber }}<br />
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="invoice-body" nz-col>
+    <div
+      class="tb-title"
+      fxFlex="100"
+      fxLayout="row"
+      nz-row
+      [style.background]="userProfileService.brandColor"
+    >
+      <div class="" fxFlex="40">
+        <h3>
+          Item
+        </h3>
+      </div>
+      <div class="f-center" fxFlex="10">
+        <h3>
+          Quantity
+        </h3>
+      </div>
+      <div class="f-center" fxFlex="10">
+        <h3>
+          Price
+        </h3>
+      </div>
+      <div class="f-center" fxFlex="10">
+        <h3>
+          Discount
+        </h3>
+      </div>
+      <div class="f-center" fxFlex="10">
+        <h3>
+          Tax
+        </h3>
+      </div>
+      <div class="f-right" fxFlex="20">
+        <h3>
+          Line Total
+        </h3>
+      </div>
+    </div>
+
+    <!-- invoice rows -->
+    <div class="tb-row" nz-row>
+      <div nz-col nzSpan="2">
+        <p>
+          1.
+        </p>
+      </div>
+      <div class="" nz-col nzSpan="4">
+        <p>
+          Item description
+        </p>
+      </div>
+      <div class="f-right" nz-col nzSpan="2">
+        <p>
+          3
+        </p>
+      </div>
+      <div class="f-right" nz-col nzSpan="2">
+        <p>
+          20
+        </p>
+      </div>
+      <div class="f-right" nz-col nzSpan="2">
+        <p>
+          300
+        </p>
+      </div>
+      <div class="f-right" nz-col nzSpan="2">
+        <p>
+          3
+        </p>
+      </div>
+      <div class="f-right" nz-col nzSpan="2">
+        <p>
+          200,000.00
+        </p>
+      </div>
+    </div>
+    <!-- end row -->
+    <!-- invoice rows -->
+    <div class="tb-row" nz-row>
+      <div nz-col nzSpan="2">
+        <p>
+          1.
+        </p>
+      </div>
+      <div class="" nz-col nzSpan="4">
+        <p>
+          Item description
+        </p>
+      </div>
+      <div class="f-right" nz-col nzSpan="2">
+        <p>
+          3
+        </p>
+      </div>
+      <div class="f-right" nz-col nzSpan="2">
+        <p>
+          20
+        </p>
+      </div>
+      <div class="f-right" nz-col nzSpan="2">
+        <p>
+          300
+        </p>
+      </div>
+      <div class="f-right" nz-col nzSpan="2">
+        <p>
+          3
+        </p>
+      </div>
+      <div class="f-right" nz-col nzSpan="2">
+        <p>
+          200,000.00
+        </p>
+      </div>
+    </div>
+    <!-- end row -->
+    <!-- invoice rows -->
+    <div class="tb-row" nz-row>
+      <div nz-col nzSpan="2">
+        <p>
+          1.
+        </p>
+      </div>
+      <div class="" nz-col nzSpan="4">
+        <p>
+          Item description
+        </p>
+      </div>
+      <div class="f-right" nz-col nzSpan="2">
+        <p>
+          3
+        </p>
+      </div>
+      <div class="f-right" nz-col nzSpan="2">
+        <p>
+          20
+        </p>
+      </div>
+      <div class="f-right" nz-col nzSpan="2">
+        <p>
+          300
+        </p>
+      </div>
+      <div class="f-right" nz-col nzSpan="2">
+        <p>
+          3
+        </p>
+      </div>
+      <div class="f-right" nz-col nzSpan="2">
+        <p>
+          200,000.00
+        </p>
+      </div>
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- end invoice body -->
+
+  <!-- define invoice total footer -->
+  <div class="total-footer" nz-col nzSpan="24">
+    <div class="sub-total" nz-row>
+      <div
+        class="left bolder text-color-grey-dark"
+        nz-col
+        nzSpan="4"
+        nzOffset="16"
+      >
+        <h3>SUB TOTAL:</h3>
+      </div>
+      <div class="right bolder text-color-grey-dark" nz-col nzSpan="2">
+        <h3>250,000.00</h3>
+      </div>
+    </div>
+    <div class="tax1" nz-row>
+      <div
+        class="left bolder text-color-grey-light"
+        nz-col
+        nzSpan="4"
+        nzOffset="16"
+      >
+        <h3>TAX 1:</h3>
+      </div>
+      <div class="right bolder text-color-grey-light" nz-col nzSpan="2">
+        <h3>250,000.00</h3>
+      </div>
+    </div>
+    <div class="tax2" nz-row>
+      <div
+        class="left bolder text-color-grey-light"
+        nz-col
+        nzSpan="4"
+        nzOffset="16"
+      >
+        <h3>TAX 2:</h3>
+      </div>
+      <div class="right bolder text-color-grey-light" nz-col nzSpan="2">
+        <h3>250,000.00</h3>
+      </div>
+    </div>
+    <div class="total" nz-row>
+      <div class="left bolder" nz-col nzSpan="4" nzOffset="16">
+        <h3>TOTAL:</h3>
+      </div>
+      <div class="right bolder" nz-col nzSpan="2"><h3>250,000.00</h3></div>
+    </div>
+    <div class="paid" nz-row>
+      <div
+        class="left bolder text-color-grey-light"
+        nz-col
+        nzSpan="4"
+        nzOffset="16"
+      >
+        <h3>PAID:</h3>
+      </div>
+      <div class="right bolder text-color-grey-light" nz-col nzSpan="2">
+        <h3>00.00</h3>
+      </div>
+    </div>
+    <div class="amount-due" nz-row>
+      <div class="left bolder" nz-col nzSpan="5" nzOffset="13">
+        <h3>AMOUNT DUE:</h3>
+      </div>
+      <div class="right bolder" nz-col nzSpan="2"><h3>250,000.00</h3></div>
+    </div>
+
+    <div class="payment-details" nz-row>
+      <div class="" nz-col nzSpan="24">
+        <p class="text-color-grey-dark">
+          Payment Details:
+        </p>
+      </div>
+      <div class="" nz-row>
+        <div class="" nz-col nzSpan="20">
+          <p class="text-color-grey-dark">
+            ACC:123006705 ● #:KE100000060345 ● SWIFT:BOA447
+          </p>
+        </div>
+        <div class="" nz-col nzSpan="4">
+          <p class="text-color-grey-dark currency">
+            Currency: KES
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

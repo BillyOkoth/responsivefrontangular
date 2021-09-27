@@ -1,0 +1,17 @@
+import { __decorate } from "tslib";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { IconDirective } from './icon.directive';
+import { IconService } from './icon.service';
+let IconModule = class IconModule {
+};
+IconModule = __decorate([
+    NgModule({
+        imports: [CommonModule],
+        exports: [IconDirective],
+        declarations: [IconDirective],
+        providers: [IconService]
+    })
+], IconModule);
+export { IconModule };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaWNvbi5tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AYW50LWRlc2lnbi9pY29ucy1hbmd1bGFyLyIsInNvdXJjZXMiOlsiY29tcG9uZW50L2ljb24ubW9kdWxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxPQUFPLEVBQUUsWUFBWSxFQUFFLE1BQU0saUJBQWlCLENBQUM7QUFDL0MsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUN6QyxPQUFPLEVBQUUsYUFBYSxFQUFFLE1BQU0sa0JBQWtCLENBQUM7QUFDakQsT0FBTyxFQUFFLFdBQVcsRUFBRSxNQUFNLGdCQUFnQixDQUFDO0FBUTdDLElBQWEsVUFBVSxHQUF2QixNQUFhLFVBQVU7Q0FBSSxDQUFBO0FBQWQsVUFBVTtJQU50QixRQUFRLENBQUM7UUFDUixPQUFPLEVBQUUsQ0FBQyxZQUFZLENBQUM7UUFDdkIsT0FBTyxFQUFFLENBQUMsYUFBYSxDQUFDO1FBQ3hCLFlBQVksRUFBRSxDQUFDLGFBQWEsQ0FBQztRQUM3QixTQUFTLEVBQUUsQ0FBQyxXQUFXLENBQUM7S0FDekIsQ0FBQztHQUNXLFVBQVUsQ0FBSTtTQUFkLFVBQVUiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBDb21tb25Nb2R1bGUgfSBmcm9tICdAYW5ndWxhci9jb21tb24nO1xuaW1wb3J0IHsgTmdNb2R1bGUgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7IEljb25EaXJlY3RpdmUgfSBmcm9tICcuL2ljb24uZGlyZWN0aXZlJztcbmltcG9ydCB7IEljb25TZXJ2aWNlIH0gZnJvbSAnLi9pY29uLnNlcnZpY2UnO1xuXG5ATmdNb2R1bGUoe1xuICBpbXBvcnRzOiBbQ29tbW9uTW9kdWxlXSxcbiAgZXhwb3J0czogW0ljb25EaXJlY3RpdmVdLFxuICBkZWNsYXJhdGlvbnM6IFtJY29uRGlyZWN0aXZlXSxcbiAgcHJvdmlkZXJzOiBbSWNvblNlcnZpY2VdXG59KVxuZXhwb3J0IGNsYXNzIEljb25Nb2R1bGUgeyB9XG4iXX0=

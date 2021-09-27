@@ -1,0 +1,282 @@
+.container{
+    width:100vw;
+    height:100vh;
+    position: relative;
+    }
+.bluescreen{
+    width:100vw;
+    height:75vh;
+    opacity: 95%;      
+    background: linear-gradient(rgba(0, 68, 255, 0.794),rgba(10, 34, 64, 1));
+    background-size: 100% 100%;
+   
+}
+#particles-js {
+  height: 100vh;
+}
+
+.loginscreen{
+    position: absolute;
+    background-color: #FFFFFF;
+    width:30vw;
+    height:65vh;
+    margin-left: 37vw;
+    margin-right:65vw;
+    top: 35%;
+    margin-top: -50px;
+}
+.login-container {
+  margin-top:9vh;
+}
+
+.home-btn {
+  margin-top: 2.5vh;
+  background-color: #FFD387;
+  margin-left: 10vw;
+}
+.overlay{
+    opacity:0.9;
+
+}
+.toolbar{
+    position: absolute;
+    width:90vw;
+    height:10vh;
+    margin-left: 5vw;
+    margin-right:70vw;
+    top: 10%;
+    margin-top: -50px;
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    z-index: 100;
+}
+.logo{  
+    width:50vw;
+    height:10vh;
+    background-size: 100% 50%;
+}
+.logo img {
+  width: 65%;
+  height: auto;
+  cursor: pointer;
+}
+.title{
+    width:30vw;
+    height:15vh;    
+    margin:auto;
+    text-align: center;
+    font-family: 'Segoe UI Light';
+    size: 10vh;
+}
+.title h2 {
+font-family: 'Alfrida Signature';
+font-weight: 300 !important;
+font-size: 3.5em;
+text-align: center;
+color:#FFD387;  
+margin-left: 11vw;
+}
+
+.text-title {
+    text-align: center;
+    color:#FFFFFF;
+    opacity: 100%; 
+    font-size: 4vh;
+
+
+}
+.blue-rectangle {
+    height:10px;
+}
+
+
+/* line 3, ../sass/style.scss */
+.outer-box {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  position: relative;
+}
+/* line 9, ../sass/style.scss */
+.outer-box img {
+    width:100vw;
+    height:75vh;
+    background-size: 100% 100%;
+}
+/* line 14, ../sass/style.scss */
+#outer-box #inner-box {
+  background: #FD8698;
+  width:100vw;
+  height:vh;
+  opacity:0.9 ;
+  top: 0;
+  left: 0;
+  position: absolute;
+  padding: 0;
+  transition: opacity .5s;
+}
+/* line 25, ../sass/style.scss */
+.outer-box #inner-box p {
+  color: #fff;
+  line-height: 150px;
+  font-family: 'arial';
+  text-align: center;
+}
+/* line 34, ../sass/style.scss */
+.outer-box:hover #inner-box {
+  opacity: .9;
+  transition: opacity .5s;
+}
+
+
+/* ///testlogin */
+h2,
+.logo {
+  margin-top: 2vh !important;
+}
+
+.logo {
+  margin-top: 2.5vh !important;
+  width: 60% !important;
+  margin-left: 2vw !important;
+  display: block;
+}
+
+.logo2 {
+  display: block;
+  margin: auto;
+  margin-bottom: 3vh !important;
+}
+
+
+ul {
+  display: block;
+  float: right;
+  margin-top: 5.5vh !important;
+  margin-right: 2vw !important;
+}
+
+li {
+  display: inline;
+  list-style: none;
+  // float: left;
+}
+
+.separate {
+  margin-right: 3vw !important
+}
+
+li a {
+  color: #707070;
+  font-weight: 700 !important;
+  text-decoration: none;
+}
+
+.login-holder {
+  width: 96vw !important;
+  margin-left: 2vw !important;
+  min-height: 80vh !important;
+  position: relative;
+}
+
+.login-content {
+    z-index: 2;
+}
+
+.login-holder h2{
+    color: #FFD387 !important;
+    font-size: 2em !important;
+    font-weight: 300 !important;
+    text-align: center;
+    margin-top: 15vh !important;
+}
+
+.login-holder img {
+    position: absolute;
+    right: 3vw;
+    width: 35%;
+    bottom: 3vh !important;
+    z-index: 1;
+}
+
+.mat-form-field {
+    width: 90% !important;
+    margin-left: 5%
+}
+
+/deep/ .mat-form-field-underline {
+  background-color:#000000!important;  
+  display: block !important;
+  background: #000000 !important;
+}
+
+
+
+.login-holder button {
+  display: block;
+  margin: auto;
+}
+// .login-form p {
+//   text-align: center;
+//   color: rgba(0, 0, 0, 1);
+//   margin-top:10vh;
+//   font-weight: 600 !important;
+// }
+
+// .login-form input{
+//   color:rgba(0, 0, 0, 1);
+//   font-weight: 800 !important;
+// }
+
+// .login-form p a {
+//   color: rgba(0, 86, 166, 1) !important; 
+//   text-decoration: none;
+ 
+// }
+.login-form{
+  margin: 5vh;
+}
+
+
+
+.placeholder {
+  color: #000000 !important;
+  font-weight: 500 !important;
+  font-family: 'Segoe UI Light';
+}
+.button {
+  position:absolute;
+  right: -2vw;
+  bottom:25vh;
+}
+.login-button button {
+  float: right !important;
+  margin-right: 2vw;
+  margin-top: 5vh !important
+} 
+
+.title-login{
+  color:rgba(0, 0, 0, 1);
+  font-size:1.5em;
+  font-family: 'Segoe UI Bold';
+  font-weight:800;
+  margin-top:1vh;
+  text-align: center;
+}
+
+.home-wrp{
+  margin-top: 2.5vh;
+}
+
+.center-text {
+  padding-right: 80%;
+  text-align: center;
+  display: inline-block;
+  padding-left: 0;
+}
+
+.toolbar {
+  left: 0;
+  width:80%;
+}

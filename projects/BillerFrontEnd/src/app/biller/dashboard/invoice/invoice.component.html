@@ -1,0 +1,40 @@
+<nz-tabset
+  [nzTabPosition]="'top'"
+  [nzType]="'card'"
+  [nzSelectedIndex]="this.billerService.selectedInvoiceTab"
+  (nzSelectedIndexChange)="handleChange($event)"
+>
+  <nz-tab [nzTitle]="'Uploaded Invoices'">
+    <ng-template nz-tab>
+      <app-uploaded-invoices></app-uploaded-invoices>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Outstanding Invoices'">
+    <ng-template nz-tab>
+      <app-outstanding-invoice></app-outstanding-invoice>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Paid Invoices'">
+    <ng-template nz-tab>
+      <app-paid-invoice></app-paid-invoice>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Disputed Invoices'">
+    <ng-template nz-tab>
+      <app-disputed-invoice></app-disputed-invoice>
+    </ng-template>
+  </nz-tab>
+
+  <nz-tab [nzTitle]="'Service Line'">
+    <ng-template nz-tab>
+      <app-service-line></app-service-line>
+    </ng-template>
+  
+  </nz-tab>
+  <nz-tab [nzTitle]="'Invoice Map'">
+    <ng-template nz-tab>
+      <app-invoice-map-list></app-invoice-map-list>
+    </ng-template>
+   
+  </nz-tab>
+</nz-tabset>

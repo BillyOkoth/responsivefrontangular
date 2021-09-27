@@ -1,0 +1,284 @@
+<nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+<div nz-row nzGutter="16">
+  <div nz-col nzSpan="12">
+    <div class="ui-g-4">
+      <label for="company">Company Name:</label>
+    </div>
+    <div class="ui-g-8">
+      <input
+        nz-input
+        class="input-size"
+        id="company"
+        maxlength="50"
+        [(ngModel)]="this.companyName"
+        size="23"
+      />
+    </div>
+
+    <div class="ui-g-4">
+      <label for="location">Biller Location:</label>
+    </div>
+    <div class="ui-g-8">
+      <input
+        nz-input
+        class="input-size"
+        id="location"
+        maxlength="50"
+        [(ngModel)]="this.physicalAddress"
+        size="23"
+      />
+    </div>
+    <div class="ui-g-4">
+      <label for="website">Website:</label>
+    </div>
+    <div class="ui-g-8">
+      <input
+        nz-input
+        class="input-size"
+        id="username"
+        maxlength="50"
+        [(ngModel)]="this.companyWebsite"
+        size="23"
+      />
+    </div>
+
+    <div class="ui-g-4">
+      <label for="phone">Company Phone Number:</label>
+    </div>
+    <div class="ui-g-8">
+      <input
+        nz-input
+        class="input-size"
+        id="phone"
+        maxlength="100"
+        [(ngModel)]="this.phone"
+        size="23"
+      />
+    </div>
+    <div class="ui-g-4">
+      <label for="alias">Alias:</label>
+    </div>
+    <div class="ui-g-8">
+      <input
+        nz-input
+        class="input-size"
+        id="alias"
+        maxlength="50"
+        [(ngModel)]="this.alias"
+        size="23"
+      />
+    </div>
+    <div class="ui-g-4">
+      <label for="username">Sector</label>
+    </div>
+    <div class="ui-g-8">
+      <nz-select
+        style="width:100%"
+        [(ngModel)]="this.sector"
+        nzAllowClear
+        nzPlaceHolder="Choose Sector"
+        class="input-size"
+      >
+        <nz-option
+          *ngFor="let sector of sectorsList"
+          [nzValue]="sector.sectorName"
+          nzLabel="{{ sector.sectorName }}"
+        >
+          {{ sector.sectorName }}
+        </nz-option>
+      </nz-select>
+    </div>
+    <div class="ui-g-4">
+      <label for="username">Pricing Module</label>
+    </div>
+    <div class="ui-g-8">
+      <nz-select
+          nzAllowClear
+          placeholder="Select Charge Type"
+          (ngModelChange)="onSelectCharge($event)"
+          [(ngModel)]="this.pricingModule"
+          class="input-size"
+          style="width:100%"
+          name="this.pricingModule"
+         >
+          <nz-option
+          *ngFor="let roles of allChargeTypeList"
+          [nzValue]="roles.chargeName"
+          nzLabel="{{ roles.chargeName }}"
+        >
+          {{ roles.chargeName }}
+        </nz-option>
+      </nz-select>
+    </div>
+
+    <div class="ui-g-8">
+      <nz-form-item *ngIf="this.percentageSelected">
+        <nz-form-label nzRequired [nzSpan]="24">Percentage Charge</nz-form-label>
+        <nz-form-control [nzSpan]="24">
+          <input
+            type="text"
+            size=" 30"
+            [(ngModel)]="this.percentage"
+            nz-input
+            placeholder="Percentage Charge"
+            maxlength="100"
+          />
+        </nz-form-control>
+      </nz-form-item>
+  
+      <!-- <nz-form-item *ngIf="amountSelected">
+        <nz-form-label nzRequired [nzSpan]="24">Amount Charge</nz-form-label>
+        <nz-form-control [nzSpan]="24">
+          <input
+            type="text"
+            size=" 30"
+            [(ngModel)]="this.amountCharge"
+            nz-input
+            placeholder="Amount to  Charge"
+            maxlength="100"
+          />
+        </nz-form-control>
+      </nz-form-item> -->
+  
+  
+      <nz-form-item *ngIf="amountSelected">
+        <nz-form-label nzRequired [nzSpan]="24">Transactional</nz-form-label>
+        <nz-form-control [nzSpan]="24">
+          <input
+            type="text"
+            size=" 30"
+            [(ngModel)]="this.amountCharge"
+            nz-input
+            placeholder="Amount to  Charge"
+            maxlength="100"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+
+    </div>
+
+  </div>
+  <div nz-col nzSpan="12">
+    <div class="ui-g-4">
+      <label for="username">Prefix:</label>
+    </div>
+    <div class="ui-g-8">
+      <input
+        nz-input
+        class="input-size"
+        id="username"
+        maxlength="50"
+        [(ngModel)]="this.billerPrefix"
+        size="23"
+      />
+    </div>
+
+    <div class="ui-g-4">
+      <label for="username">Customer Care:</label>
+    </div>
+    <div class="ui-g-8">
+      <input
+        nz-input
+        class="input-size"
+        id="username"
+        maxlength="50"
+        [(ngModel)]="this.customer_care"
+        size="23"
+      />
+    </div>
+    <div class="ui-g-4">
+      <label for="username">Country:</label>
+    </div>
+    <div class="ui-g-8">
+      <nz-select
+        style="width:100%"
+        [(ngModel)]="this.country"
+        nzAllowClear
+        nzPlaceHolder="Choose"
+        class="input-size"   
+         
+      >
+        <nz-option
+          *ngFor="let roles of allListOfCountries"
+          [nzValue]="roles.countryName"
+          nzLabel="{{ roles.countryName }}"
+        >
+                  {{ roles.countryName }}
+        </nz-option>
+      </nz-select>
+    </div>
+    <div class="ui-g-4">
+      <label for="username">Branch:</label>
+    </div>    
+    <div class="ui-g-8">
+      <nz-select
+        style="width:100%"
+        [(ngModel)]="this.branch"        
+        nzPlaceHolder="Choose Branch"
+        nzAllowClear
+         class="input-size"
+        (ngModelChange)="onSelectBranch()"
+       >
+        <nz-option
+          *ngFor="let branch of branches"
+          [nzValue]="branch.branchName"
+          nzLabel="{{ branch.branchName }}"
+        >
+          {{ branch.branchName }}
+        </nz-option>
+      </nz-select>
+    </div>
+    <div class="ui-g-4">
+      <label for="username">Currency:</label>
+    </div>
+    <div class="ui-g-8">
+      <input
+        nz-input
+        class="input-size"
+        id="username"
+        maxlength="50"
+        [(ngModel)]="this.currency"
+      />
+    </div>
+    <!-- <div class="ui-g-4">
+      <label for="email">Service Charge:</label>
+    </div>
+    <div class="ui-g-8">
+      <input
+        nz-input
+        class="input-size"
+        id="username"
+        maxlength="50"
+        [(ngModel)]="this.amount_to_charge"
+      />
+    </div> -->
+
+    <div class="ui-g-4">
+      <label for="email">Pay Bill:</label>
+    </div>
+    <div class="ui-g-8">
+      <input
+        nz-input
+        class="input-size"
+        id="username"
+        maxlength="50"
+        [(ngModel)]="this.pay_bill"
+      />
+    </div>
+  </div>
+</div>
+</nz-spin>
+<div nz-row nzType="flex" nzJustify="center">
+  <div nz-col nzSpan="24">
+    <button
+      nz-button
+      nzType="primary"
+      class="update-btn"
+      (click)="updateBiller()"
+      nzBlock
+    >
+      Update Biller <i nz-icon nzType="edit" nzTheme="outline"></i>
+    </button>
+  </div>
+</div>

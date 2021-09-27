@@ -1,0 +1,357 @@
+<nz-divider nzText="Create Payer"></nz-divider>
+<form nz-form [nzLayout]="'vertical'" [formGroup]="createPayerForm">
+  <div nz-row nzGutter="16">
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label nzRequired>First Name</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="firstNameErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="fname" />
+          <ng-template #firstNameErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter payer first name!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Last Name</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="lastNameErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="lname" />
+          <ng-template #lastNameErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter payer last name!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Phone Number</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="phoneNumberErrorTpl">
+          <nz-input-group [nzAddOnBefore]="phonePrefixTemplate">
+            <ng-template #phonePrefixTemplate>
+              <nz-select formControlName="phone_prefix" class="phone-select">
+                <nz-option nzLabel="+254" nzValue="+254"></nz-option>
+              </nz-select>
+            </ng-template>
+            <input nz-input autocomplete="off" maxlength="10" formControlName="phone" />
+          </nz-input-group>
+
+          <ng-template #phoneNumberErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter the company phone number!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Email</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="emailErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="email" />
+          <ng-template #emailErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter payer email!
+            </ng-container>
+            <ng-container *ngIf="control.hasError('email')">
+              Please enter valid email!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Company Name</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="companyNameErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="customer" />
+          <ng-template #companyNameErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter company name!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Policy Type</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="policyTypeErrorTpl">
+          <nz-select nzAllowClear nzPlaceHolder="Pick policy type" formControlName="policy_type" class="input-size"
+            style="width:100%">
+            <nz-option *ngFor="let roles of policyTypes" [nzValue]="roles" nzLabel="{{ roles.name }}">
+              {{ roles.name}}
+            </nz-option>
+          </nz-select>
+          <ng-template #policyTypeErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please select policy type!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label nzRequired>Customer Code</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="customerCodeErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="customer_code" />
+          <ng-template #customerCodeErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter payer code!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>City</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="cityErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="city" />
+          <ng-template #cityErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter city!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Address</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="addressErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="address" />
+          <ng-template #addressErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter payer address!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Location</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="locationErrorTpl">
+          <input nz-input autocomplete="off" maxlength="50" formControlName="location" />
+          <ng-template #locationErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please enter payer office location!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Billing Line</nz-form-label>
+        <nz-form-control nzHasFeedback [nzErrorTip]="billingLineErrorTpl">
+          <nz-select nzAllowClear nzPlaceHolder="Pick a billing line" formControlName="billing_line" class="input-size"
+            style="width:100%">
+            <nz-option *ngFor="let roles of billing_lines" [nzValue]="roles" nzLabel="{{ roles.service_line }}">
+              {{ roles.service_line}}
+            </nz-option>
+          </nz-select>
+          <ng-template #billingLineErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please pick a billing line!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8"></nz-form-label>
+    <div nz-row nzJustify="end">
+      <div nz-col>
+        <button class="btn" nz-button nzType="primary" [disabled]="!createPayerForm.valid" (click)="sendEmail()"
+          [nzLoading]="loading">
+          <i nz-icon [nzType]="'sync'"></i>Save
+        </button>
+      </div>
+    </div>
+  </nz-form-item>
+</form>
+<!-- <form nz-form [nzLayout]="'vertical'">
+  <div class="gutter-example">
+    <div nz-row>
+      <div nz-col class="gutter-row" nzSpan="12">
+        <div class="gutter-box">
+          <h2 class="text-color-yellow">
+            Create Payer
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div nz-row [formGroup]="createPayerForm">
+      <div nz-col class="gutter-row" nzSpan="8">
+        <div class="gutter-box">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">First Name</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input
+                nz-input
+                id="input"
+                type="email"
+                formControlName="fname"
+                maxlength="50"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="gutter-box">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">Phone</nz-form-label>
+            <nz-form-control [nzSpan]="14">     
+              <input
+              type="text"
+              maxlength="10"
+              style="width: 100%;"
+              nz-input
+              placeholder="07xx xxx xxx"
+              formControlName="phone"
+              ng2TelInput
+              [ng2TelInputOptions]="{ initialCountry: 'ke' }"
+              (keyup)="getNumber($event)"
+              (hasError)="hasError($event)"
+            
+            />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="gutter-box">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">Address</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input
+                nz-input
+                id="input"
+                type="text"
+                formControlName="address"                
+                maxlength="50"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="gutter-box">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">Location</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input
+                nz-input
+                id="input"
+                type="text"
+                formControlName="location"                
+                maxlength="50"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>      
+      <div nz-col class="gutter-row" nzSpan="8">
+        <div class="gutter-box">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">Last Name</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input
+                nz-input
+                id="input"
+                type="text"
+                formControlName="lname"               
+                maxlength="50"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="gutter-box">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">Customer Code</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input
+                nz-input
+                id="input"
+                type="text"
+                formControlName="customer_code"
+             
+                maxlength="50"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="gutter-box">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">City</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input
+                nz-input
+                id="input"
+                type="text"
+                formControlName="city"
+              
+                maxlength="50"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div nz-col class="gutter-row" nzSpan="8">
+        <div class="gutter-box">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">Email</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input
+                nz-input
+                id="input"
+                type="email"
+                formControlName="email"
+                placeholder="email@email.com"
+                maxlength="50"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="gutter-box">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">Company Name</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input
+                nz-input
+                id="input"
+                type="text"
+                formControlName="customer"               
+                maxlength="50"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <div class="gutter-box">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6" nzFor="email"
+              >Choose Billing Line</nz-form-label
+            >
+            <nz-form-control [nzSpan]="14">
+              <nz-select
+                formControlName="billing_line"
+                nzAllowClear
+                nzPlaceHolder="Choose"
+                class="input-size"
+              >
+                <nz-option
+                  *ngFor="let roles of billing_lines"
+                  [nzValue]="roles"
+                  nzLabel="{{ roles.service_line }}"
+                >
+                  {{ roles.service_line}}
+                </nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+    </div>
+    <div nz-row nzType="flex" nzJustify="center">
+      <button
+        class="btn"
+        nz-button
+        nzType="primary"
+        [disabled]="!createPayerForm.valid"
+        (click)="sendEmail()"
+        [nzLoading]="loading"
+      >
+        <i nz-icon [nzType]="'sync'"></i>Send
+      </button>
+    </div>
+  </div>
+</form> -->

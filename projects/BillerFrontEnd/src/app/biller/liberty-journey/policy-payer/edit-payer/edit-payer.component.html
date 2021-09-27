@@ -1,0 +1,87 @@
+<form nz-form [formGroup]="editPayerForm" [nzLayout]="'vertical'">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired>Company Name</nz-form-label>
+    <nz-form-control nzHasFeedback [nzErrorTip]="companyNameErrorTpl">
+      <nz-input-group nzPrefixIcon="user">
+        <input type="text" nz-input formControlName="companyName"  />
+        <ng-template #companyNameErrorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Please enter company name!
+          </ng-container>
+        </ng-template>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired>First Name</nz-form-label>
+    <nz-form-control nzHasFeedback [nzErrorTip]="firstNameErrorTpl">
+      <nz-input-group nzPrefixIcon="user">
+        <input type="text" nz-input formControlName="firstName"  />
+        <ng-template #firstNameErrorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Please enter first name!
+          </ng-container>
+        </ng-template>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired>Last Name</nz-form-label>
+    <nz-form-control nzHasFeedback [nzErrorTip]="lastNameErrorTpl">
+      <nz-input-group nzPrefixIcon="user">
+        <input type="text" nz-input formControlName="lastName"   />
+        <ng-template #lastNameErrorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Please enter last name!
+          </ng-container>
+        </ng-template>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+ 
+  <nz-form-item>
+    <nz-form-label nzRequired>Phone Number</nz-form-label>
+
+    <nz-form-control nzHasFeedback [nzErrorTip]="phoneErrorTpl">
+      <nz-input-group [nzAddOnBefore]="phonePrefixTemplate">
+        <ng-template #phonePrefixTemplate>
+          <nz-select formControlName="phone_prefix" class="phone-select">
+            <nz-option nzLabel="+254" nzValue="+254"></nz-option>
+          </nz-select>
+        </ng-template>
+        <input nz-input autocomplete="off" maxlength="10" formControlName="payerPhone" />
+      </nz-input-group>
+
+      <ng-template #phoneErrorTpl let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          Please enter the phone number!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+
+  
+ 
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired>Email</nz-form-label>
+    <nz-form-control  nzHasFeedback [nzErrorTip]="emailErrorTpl">
+      <nz-input-group nzPrefixIcon="inbox">
+        <input type="text" nz-input formControlName="email" placeholder="Email" type="email"/>
+      </nz-input-group>
+      <ng-template #emailErrorTpl let-control>
+        <ng-container *ngIf="control.hasError('email')">
+          The input is not valid E-mail!
+        </ng-container>
+        <ng-container *ngIf="control.hasError('required')">
+          Please input your E-mail!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control [nzOffset]="21" [nzSpan]="5">
+      <button nz-button nzType="primary" [disabled]="!editPayerForm.valid" (click)="saveDetails()" [nzLoading]="loading">Save</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

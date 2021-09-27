@@ -1,0 +1,17 @@
+:host
+  ::ng-deep
+  .ngx-datatable.material:not(.cell-selection)
+  .datatable-body-row:hover
+  .datatable-row-group {
+  color: #952424 !important;
+  background: #f1f0e8;
+  transition: all 0.4s ease 0s;
+  font-weight: bolder;
+}
+
+.panel-holder {
+  height: 52vh !important;
+}
+.margin{
+  margin-bottom:2vh;
+}

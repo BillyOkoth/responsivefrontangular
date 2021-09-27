@@ -1,0 +1,42 @@
+/* style content  */
+.content {
+  width: 100%;
+  position: relative;
+}
+.button-left mat-icon {
+  font-size: 3em !important;
+}
+.title h2 {
+  font-family: 'Segoe UI Light';
+  color: #0033a1;
+}
+.image-div {
+  height: 15vh !important;
+}
+.image-sample img {
+  height: 100% !important;
+  display: block;
+  margin: auto;
+}
+
+.download-btn button {
+  display: block;
+  /* margin:  auto; */
+  margin-top: 5vh !important;
+}
+
+.save-btn {
+  position: absolute;
+  right: 0;
+  bottom: 0.5% !important;
+}
+
+.file-name {
+  font-weight: bolder;
+  font-size: 1.1em;
+}
+
+.sample-image {
+  height: 10vh;
+  width: 10vw;
+}

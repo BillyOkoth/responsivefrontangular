@@ -1,0 +1,22 @@
+<nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
+  <nz-tab [nzTitle]="'Exception List'">
+    <ng-template nz-tab>
+      <app-exceptions-list></app-exceptions-list>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Ignored Exceptions'">
+    <ng-template nz-tab>
+      <app-ignored-exceptions></app-ignored-exceptions>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Approve Payment'">
+    <ng-template nz-tab>
+      <app-approve-payment></app-approve-payment>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Failed Eslips'">
+    <ng-template nz-tab>
+      <app-failed-eslips></app-failed-eslips>
+    </ng-template>
+  </nz-tab>
+</nz-tabset>

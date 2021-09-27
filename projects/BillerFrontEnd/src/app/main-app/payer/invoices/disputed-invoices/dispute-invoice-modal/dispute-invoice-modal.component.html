@@ -1,0 +1,35 @@
+<div>
+  <h3>Are you sure you want to Dispute ?</h3>
+
+  <p>{{disputeInvoice}}</p>
+
+
+  <h3>Reasons:</h3>
+  <form autocomplete="off">
+    <nz-form-item>
+      <nz-form-control [nzSpan]="24">
+        <textarea rows="4" [ngModelOptions]="{ standalone: true }" nz-input [(ngModel)]="this.remarks" maxlength="150"
+          required></textarea>
+      </nz-form-control>
+    </nz-form-item>
+
+  </form>
+
+  <div nz-row  nzGutter="16">
+    <div nz-col nzSpan="12">
+     <div nz-row nzJustify="start">
+       <div nz-col nzSpan="5">
+        <button nz-button nzType="default" (click)="closeDialog()">Cancel</button>
+       </div>
+     </div>
+    </div>
+    <div nz-col nzSpan="12">
+      <div nz-row nzJustify="end">
+        <div nz-col nzSpan="5">
+          <button nz-button nzType="danger" (click)="getDisputeInvoice()" [nzLoading]="loading">Dispute</button>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</div>

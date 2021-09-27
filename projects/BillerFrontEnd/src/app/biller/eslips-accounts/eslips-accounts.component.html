@@ -1,0 +1,78 @@
+<!-- <div class="close-button" fxLayout="row">
+  
+  <div fxFlexOffset="5" fxFlex="45" class="button-back" fxLayoutAlign="end center">
+    <button nz-button nzTheme="outline" style="font-size: 20px; color: #08c;" nzType="link"
+      nzTooltipTitle="Download Excel" nzTooltipPlacement="left" [nzLoading]="loading" [disabled]="loading" nz-tooltip
+      (click)="downloadCSV()">
+      Download Excel
+      <i nz-icon nzType="download"></i>
+    </button>
+  </div>
+</div> -->
+
+<!-- <div class="page-title" fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="100" fxLayoutAlign="start center">
+    <input nz-input placeholder="Search" [(ngModel)]="searchValue" style="width: 50%;" maxlength="100" />
+  </div>
+  <div fxFlex="100" fxLayoutAlign="start center">
+    <h2 class="text-color-grey-dark">
+      Eslip Number: <span> {{ slipNumber }} </span>
+    </h2>
+  </div>
+  <div fxFlexOffset="5" fxFlex="100" fxLayoutAlign="center center">
+    <h2 class="text-color-grey-dark">
+      Number of Accounts: <span> {{ AccountsCount }} </span>
+    </h2>
+  </div>
+</div> -->
+<div nz-row>
+  <div nz-col nzSpan="6">
+    <input nz-input placeholder="Search" [(ngModel)]="searchValue" style="width: 50%;" maxlength="100" />
+
+  </div>
+  <div nz-col nzSpan="6">
+    <h2 class="text-color-grey-dark">
+      Eslip Number: <span> {{ slipNumber }} </span>
+    </h2>    
+  </div>
+  <div nz-col nzSpan="6">
+    <h2 class="text-color-grey-dark">
+      Number of Accounts: <span> {{ AccountsCount }} </span>
+    </h2>
+  </div>
+  <div nz-col nzSpan="6">
+    <button nz-button nzTheme="outline" style="font-size: 20px; color: #08c;" nzType="link"
+    nzTooltipTitle="Download Excel" nzTooltipPlacement="left" [nzLoading]="loading" [disabled]="loading" nz-tooltip
+    (click)="downloadCSV()">
+    Download Excel
+    <i nz-icon nzType="download"></i>
+      </button>
+  </div>
+</div>
+
+<cdk-virtual-scroll-viewport itemSize="18">
+<nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+  <thead>
+    <tr>
+      <th>Account Name</th>
+      <th>Account Number</th>
+      <th>Amount to Pay</th>
+      <th>Amount Due</th>
+      <th>Status</th>
+      <th>Due Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <nz-spin [nzSize]="'large'" nzSimple *ngIf="this.loading === true"></nz-spin>
+    <tr *ngFor="let data of filterTable.data | eslipAc: searchValue;
+  let i = index">
+      <td>{{ data.account_name}}</td>
+      <td>{{ data.account_no }}</td>
+      <td>{{ data.amount_to_pay | currency: "Ksh." }}</td>
+      <td>{{ data.amount_due | currency: "Ksh." }}</td>
+      <td>{{ data.status }}</td>
+      <td>{{ data.due_date | date: "short"}}</td>
+    </tr>
+  </tbody>
+</nz-table>
+</cdk-virtual-scroll-viewport>

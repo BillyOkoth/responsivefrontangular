@@ -1,0 +1,28 @@
+<nz-tabset [nzTabPosition]="'top'" [nzType]="'card'" [nzSelectedIndex]="this.billerService.selectedTab" (nzSelectedIndexChange)="handleChange($event)">
+  <nz-tab [nzTitle]="'Active Billers'">
+    <ng-template nz-tab>
+      <app-active-billers></app-active-billers>
+    </ng-template>
+  </nz-tab>  
+  <nz-tab [nzTitle]="'Approve New Billers'">
+    <ng-template nz-tab>
+      <app-pending-billers></app-pending-billers>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Invited Billers'">
+    <ng-template nz-tab>
+      <app-invited-billers></app-invited-billers>
+    </ng-template>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Approve Edited Billers'">
+    <ng-template nz-tab>
+      <app-approve-edit-biller></app-approve-edit-biller>
+    </ng-template>
+  </nz-tab>
+
+  <nz-tab [nzTitle]="'Approve Deleted Billers'">
+    <ng-template nz-tab>
+     <app-approved-deleted-billers></app-approved-deleted-billers>
+    </ng-template>
+  </nz-tab>
+</nz-tabset>

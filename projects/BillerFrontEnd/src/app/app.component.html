@@ -1,0 +1,25 @@
+<router-outlet></router-outlet>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="You are Curently Inactive"
+  (nzOnCancel)="handleCancel()"
+>
+  <div>
+    <p>{{ idleState }}</p>
+  </div>
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="stay()">
+      Continue
+    </button>
+    
+    <button
+      nz-button
+      nzType="primary"
+      (click)="logout()"
+      [nzLoading]="isConfirmLoading"
+    >
+      Logout
+    </button>
+  </div>
+</nz-modal>

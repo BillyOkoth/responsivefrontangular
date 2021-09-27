@@ -1,0 +1,25 @@
+<form nz-form [formGroup]="newCountryForm" [nzLayout]="'vertical'">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzFor="countryname">Name</nz-form-label>
+    <nz-form-control>
+      <input nz-input autocomplete="off" id="countryname" name="countryname" maxlength="50"
+        formControlName="countryname" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzFor="countryname">Code</nz-form-label>
+    <nz-form-control>
+      <input nz-input id="countrycode" formControlName="countrycode" placeholder="Enter Country Code" maxlength="15"
+        autocomplete="off" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzFor="countryname"></nz-form-label>
+    <div nz-row  nzJustify="end">
+      <div nz-col>
+        <button nz-button nzType="primary" (click)="createCountry()" [disabled]="newCountryForm.invalid || loading"
+          [nzLoading]="loading">Create Country</button>
+      </div>
+    </div>
+  </nz-form-item>
+</form>

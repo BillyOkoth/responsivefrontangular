@@ -1,0 +1,12 @@
+.button-holder {
+  margin-top: 2vh;
+}
+
+cdk-virtual-scroll-viewport {
+  height: 40vh;
+}
+
+.total {
+  font-weight: bolder;
+  font-size: 2.5vh;
+}

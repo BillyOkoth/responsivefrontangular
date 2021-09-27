@@ -1,0 +1,67 @@
+
+<div *ngFor="let table of this.invoice_other">
+  
+  <div *ngIf="table.eslipInfo.length > 0">
+    <label
+      nz-checkbox
+      [(ngModel)]="table.checked"
+      (ngModelChange)="updateSingleChecked(table)"
+      >{{ table.id }}</label
+    >
+    <cdk-virtual-scroll-viewport itemSize="18">
+      <nz-table
+        #basicTable
+        [nzData]="table.eslipInfo"
+        [nzShowPagination]="false"
+      >
+        <thead>
+          <tr>
+            <th>Invoice No</th>
+            <th>Invoice Date</th>
+            <th>Invoice Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *cdkVirtualFor="let invoice of table.eslipInfo">
+            <td>{{ invoice.account_no }}</td>
+            <td>{{ invoice.due_date }}</td>
+            <td>{{ invoice.amount_due }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </cdk-virtual-scroll-viewport>
+  </div>
+</div>
+
+<div
+  nz-row
+  nzGutter="16"
+  nzType="flex"
+  nzJustify="center"
+  class="button-holder"
+>
+  <div nz-col nzSpan="8">
+    <div nz-row>
+      <div nz-col nzSpan="12" class="total">Total Amount:</div>
+      <div nz-col nzSpan="12" class="total">KES. {{ this.sum_total.toFixed(2) }} /=</div>
+    </div>
+  </div>
+  <div nz-col nzSpan="8">
+    <div nz-row>
+      <div nz-col nzSpan="12"></div>
+      <div nz-col nzSpan="12"></div>
+    </div>
+  </div>
+  <div nz-col nzSpan="8">
+    <button
+      nz-button
+      nzType="primary"
+      nzBlock
+      (click)="generateEslip()"
+      [disabled]="this.length < 1"
+      [nzLoading]="loading"
+    >
+      Generate({{ this.length }})Eslips
+    </button>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<nz-tabset [nzTabPosition]="'top'" [nzType]="'card'" [nzSelectedIndex]=" this.billerService.selectedTab" (nzSelectedIndexChange)="handleChange($event)">
+    <nz-tab [nzTitle]="'Pension Policy.'">
+     <ng-template nz-tab>
+       <app-pension></app-pension>
+     </ng-template>      
+  </nz-tab> 
+ <nz-tab [nzTitle]="'Uploaded Pension Files'">
+     <ng-template nz-tab>
+     <app-uploaded-pension-files></app-uploaded-pension-files>
+     </ng-template>     
+ </nz-tab>    
+</nz-tabset>

@@ -1,0 +1,14 @@
+<nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
+    <nz-tab [nzTitle]="'My Team'"> 
+        <ng-template nz-tab>
+            <app-my-team></app-my-team>
+        </ng-template>
+       
+    </nz-tab>
+    <nz-tab [nzTitle]="'Sales Team'">
+        <ng-template nz-tab>
+            <app-sales-team></app-sales-team>
+        </ng-template>
+       
+    </nz-tab>
+  </nz-tabset>

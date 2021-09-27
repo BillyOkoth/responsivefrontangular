@@ -1,0 +1,110 @@
+<div nz-row nzGutter="10">
+  <div nz-col nzSpan="8">
+    <input nz-input placeholder="Search" [(ngModel)]="searchValue" style="width: 100%;" maxlength="100" />
+  </div>
+  <div nz-col nzSpan="12">
+    <div nz-row nzGutter="16">
+      <form nz-form [formGroup]="loadForm">
+      <div nz-row nzGutter="16">
+        <div nz-col nzSpan="5">
+          <nz-select nzAllowClear [(ngModel)]="biller" nzShowSearch nzPlaceHolder="Select a Biller" style="width: 100%; margin-left: 1vw"
+            (ngModelChange)="changeBiller()" [ngModelOptions]="{ standalone: true }">
+            <nz-option *ngFor="let biller of billerLists" [nzValue]="biller" nzLabel="{{ biller.alias }}">
+              {{ biller.alias }}
+            </nz-option>
+          </nz-select>
+        </div>
+        <div nz-col nzSpan="5">
+          <nz-select [(ngModel)]="payer" (ngModelChange)="changePayer()" nzShowSearch nzAllowClear
+            nzPlaceHolder="Select a payer" style="width: 100%; margin-left: 1vw" [ngModelOptions]="{ standalone: true }">
+            <nz-option *ngFor="let payer of payerLists" [nzValue]="payer" nzLabel="{{ payer.company_name }}">
+              {{ payer.company_name }}
+            </nz-option>
+          </nz-select>
+        </div>
+
+        <div nz-col class="gutter-row" nzSpan="4">
+          <nz-date-picker nzTooltipTitle="Select Start Date" nzTooltipPlacement="topCenter" nz-tooltip
+            formControlName="from" placeholder="Start" style="margin-left: 1vw; width: 7vw"></nz-date-picker>
+        </div>
+        <div nz-col class="gutter-row" nzSpan="4" style="margin-left: 1vw;">
+          <nz-date-picker nzTooltipTitle="Select End Date" nzTooltipPlacement="topCenter" nz-tooltip
+            formControlName="to" placeholder="End" style="margin-left: 1vw !important; width: 7vw"></nz-date-picker>
+        </div>
+        <div nz-col nzSpan="3" style="margin-left: 2vw;">
+          <button nz-button nzType="primary" nzTooltipTitle="Load Accounts." nzTooltipPlacement="topCenter" nz-tooltip
+            [disabled]="this.billerc == '' || loading" (click)="loadAccounts()" style="margin-left: 1vw;">
+            <i nz-icon nzType="redo" nzTheme="outline"></i>
+          </button>
+        </div>
+      </div>
+      </form>
+      
+    </div>
+  </div>
+  <div nz-col nzSpan="4">
+    <button nz-button style="background-color: #5cb85c;" nzTooltipTitle="Download Excel." nzTooltipPlacement="topCenter"
+      nz-tooltip [nzLoading]="loading" [disabled]="loading || !this.role.eslipRole" (click)="downloadCSV()">
+      <i nz-icon nzType="download"></i>
+    </button>
+  </div>
+</div>
+
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="paid" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th class="header">#</th>
+          <th class="header">Date</th>
+          <th class="header">Payer Name</th>
+          <th class="header">E-Slip Number</th>
+          <th class="header">E-Slip Status</th>
+          <th class="header">No. of Accounts</th>
+          <th class="header">Bank Reference</th>
+          <th class="header">E-Slip Amount</th>
+          <th class="header">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="
+            let data of rows | eslipSearch: searchValue;
+            let i = index
+          ">
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.created_at | date: "short" }}</td>
+          <td>{{ data.payer_name }}</td>
+          <td>{{ data.eslip_no }}</td>
+          <td>{{ data.status }}</td>
+          <td>{{ data.accounts }}</td>
+          <td>{{ data.bank_ref_no }}</td>
+          <td>{{ data.amount_to_pay | currency: "Ksh." }}</td>
+          <td>
+            <!-- <button
+            nz-button
+            nzType="link"
+            style="margin-left:1vh"
+            nzTooltipTitle="View Eslip."
+            nzTooltipPlacement="topCenter"
+            nz-tooltip
+            (click)="viewEslip(data.eslip_no)"
+          >
+            <i nz-icon nzType="eye"></i>
+          </button> -->
+            <button style="margin-left:1vh" nz-button nzType="link" style="color: #f0ad4e;"
+              nzTooltipTitle="View Eslip Accounts." nzTooltipPlacement="topCenter" nz-tooltip
+              (click)="viewEslipAc(data.eslip_no)">
+              <i nz-icon nzType="eye"></i>
+            </button>
+
+            <button style="margin-left:1vh" nz-button nzType="link" style="color: #5cb85c;"
+              nzTooltipTitle="Download Eslip" nzTooltipPlacement="topCenter" nz-tooltip
+              [disabled]="!this.role.eslipRole" (click)="downloadEslip(data.eslip_no)">
+              <i nz-icon nzType="download"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</cdk-virtual-scroll-viewport>

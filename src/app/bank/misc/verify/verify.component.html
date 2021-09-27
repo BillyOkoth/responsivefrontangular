@@ -1,0 +1,50 @@
+<div class="container" fxLayout="column" >
+    <nz-spin
+    [nzSize]="'large'"
+    nzSimple
+    *ngIf="this.loading === true"
+  ></nz-spin>
+
+   
+    <div class="third-row" >
+
+        <img src="assets/images/unlocked.svg"  class="img-src">    
+     
+    </div>
+    <div class="second-row" fxLayout="column">
+       
+      <div class="gen-title">
+        
+      </div>
+      <div class="accounts">
+          <h2 class = "text-style">
+              Send the biller an email to verify their account 
+          </h2>
+  
+          <h2 class = "text-style">
+              An email will be sent to <span style="color:darkblue">
+                  {{billerEmailtobeSent}}</span> to keep their financial information safe and secure as they verify.
+            </h2>
+      
+      </div>
+      
+    </div>
+    <div class="third-row" fxLayout="row" fxFlexOffset="2">       
+      <div class="cancel">
+          <button
+          nz-button
+          style="background-color: #f0ad4e;"
+          nzTooltipTitle="Proceed"         
+          nzTooltipPlacement="topCenter"
+          nz-tooltip          
+          (click)="cancelDialog()"
+         
+        >
+      OK</button>
+         
+      </div>
+  
+    </div>
+  </div>
+  
+ 

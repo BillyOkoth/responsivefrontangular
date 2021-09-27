@@ -1,0 +1,148 @@
+<div nz-row nzGutter="16">
+  <div nz-col nzSpan="8">
+    <input nz-input placeholder="Search" [(ngModel)]="searchValue" style="width: 100%;" maxlength="100" />
+  </div>
+  <div nz-col nzSpan="12">
+    <nz-select
+            nzAllowClear
+            [(ngModel)]="biller"
+            nzShowSearch
+            nzPlaceHolder="Select a Biller"
+            style="width: 100%"
+            (ngModelChange)="changeBiller()"
+            [ngModelOptions]="{standalone: true}"
+          >
+            <nz-option
+              *ngFor="let biller of billerLists"
+              [nzValue]="biller"
+              nzLabel="{{ biller.alias }}"
+            >
+              {{ biller.alias }}
+            </nz-option>
+          </nz-select>
+    <!-- <div nz-row nzGutter="16">
+      <form nz-form>
+        <div nz-row nzGutter="16">
+          <div nz-col nzSpan="12">
+            <nz-select nzAllowClear [(ngModel)]="biller" nzShowSearch nzPlaceHolder="Select a Biller" style="width: 100%"
+              (ngModelChange)="changeBiller()" [ngModelOptions]="{standalone: true}">
+              <nz-option *ngFor="let biller of billerLists" [nzValue]="biller" nzLabel="{{ biller.alias }}">
+                {{ biller.alias }}
+              </nz-option>
+            </nz-select>
+          </div>
+          <div nz-col nzSpan="12">
+            <nz-select [(ngModel)]="payer" (ngModelChange)="changePayer()" nzShowSearch nzAllowClear
+              nzPlaceHolder="Select a payer" style="width: 100%" [ngModelOptions]="{standalone: true}">
+              <nz-option *ngFor="let payer of payerLists" [nzValue]="payer" nzLabel="{{ payer.company_name }}">
+                {{ payer.company_name }}
+              </nz-option>
+            </nz-select>
+          </div>
+        </div>
+      </form>
+      <div nz-col nzSpan="4">
+        <button nz-button nzType="primary" nzTooltipTitle="Load Accounts." nzTooltipPlacement="topCenter" nz-tooltip
+          [disabled]="this.payerc == '' || this.billerc == '' || loading" (click)="loadAccounts()">
+          <i nz-icon nzType="redo" nzTheme="outline"></i>
+        </button>
+      </div>
+    </div> -->
+  </div>
+  <div nz-col nzSpan="4">
+    <div nz-row>
+      <div nz-col nzSpan="8">
+        <button nz-button nzType="primary" nzTooltipTitle="Upload Payment File." nzTooltipPlacement="topCenter"
+          nz-tooltip [disabled]="this.payerc == '' || this.billerc == '' || loading || !this.role.eslipRole "
+          (click)="uploadFileDialog()">
+          <i nz-icon nzType="upload" nzTheme="outline"></i>
+        </button>
+      </div>
+      <div nz-col nzSpan="8">
+        <button nz-button style="background-color: #f0ad4e;" nzTooltipTitle="Generate Eslip" [disabled]="toPayTotal < 1"
+          nzTooltipPlacement="topCenter" nz-tooltip [disabled]="!this.role.eslipRole" (click)="generateEslip()">
+          <i nz-icon nzType="dollar"></i>
+        </button>
+      </div>
+      <div nz-col nzSpan="8">
+        <button nz-button style="background-color: #5cb85c;" nzTooltipTitle="Download Excel."
+          nzTooltipPlacement="topCenter" nz-tooltip [nzLoading]="loading" [disabled]="loading || !this.role.eslipRole"
+          (click)="downloadExcel()">
+          <i nz-icon nzType="download"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th class="header">#</th>
+          <th class="header">
+            Account Number
+          </th>
+          <th class="header">
+            Account Name
+          </th>
+          <th class="header">
+            Amount Due
+          </th>
+          <th class="header">
+            Amount To Pay
+          </th>
+          <th class="header" nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
+            (nzCheckedChange)="updateAllChecked()">
+            Select All
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *cdkVirtualFor="
+            let data of rows | accountSearch: searchValue;
+            let i = index
+          ">
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.account_no }}</td>
+          <td>{{ data.account_name }}</td>
+          <td>{{ data.amount_due | currency: "Ksh." }}</td>
+
+          <td>
+            <div class="editable-cell" *ngIf="editId !== data.account_no; else editTpl">
+              <div class="editable-cell-value-wrap" (click)="startEdit(data.account_no, $event)">
+                <i nz-icon nzType="edit" nzTheme="outline"></i>
+                <!-- {{ data.amount_to_pay  | number: '2.'}} -->
+                {{ data.amount_to_pay | currency: "Ksh." }}
+              </div>
+            </div>
+            <ng-template #editTpl>
+              <input type="text" nz-input [(ngModel)]="data.amount_to_pay" (focusout)="editedField($event, data)" />
+            </ng-template>
+          </td>
+          <td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="updateSingleChecked(data)"
+            (click)="onSelect()"></td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</cdk-virtual-scroll-viewport>
+<div class="footer" fxLayout="row" class="sticky">
+  <div fxFlex="60">
+    <div fxFlex="50"></div>
+    <div fxFlex="50">
+      <h5>No of Selected Accounts: {{ length }}</h5>
+    </div>
+  </div>
+
+  <div fxFlex="40" fxLayout="column">
+    <div fxLayout="row">
+      <div fxFlex="50">
+        <h5 class="paytotal">Due Total: {{ slipTotal | currency: "KES" }}</h5>
+      </div>
+      <div fxFlex="50">
+        <h5 class="duetotal">Pay Total: {{ toPayTotal | currency: "KES" }}</h5>
+      </div>
+    </div>
+  </div>
+</div>

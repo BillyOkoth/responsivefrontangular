@@ -1,0 +1,74 @@
+
+<div nz-row [nzGutter]="10" style="margin-bottom:2vh;">
+    <div nz-col class="gutter-row"  nzSpan="18">
+      <input
+        nz-input
+        placeholder="Search"
+        [(ngModel)]="searchValue"
+        style="width: 100%;"
+        maxlength="100"
+      />     
+    </div>
+    <div nz-col class="gutter-row" nzSpan="6">
+      <button
+      nz-button
+      nz-dropdown
+      [nzDropdownMenu]="menu4"
+      [nzLoading]="loading"
+      [disabled]="loading"
+      [nzDisabled]="!this.role.reportRole"
+    >
+      Download
+      <i nz-icon nzType="down"></i>
+      </button>
+    <nz-dropdown-menu #menu4="nzDropdownMenu">
+      <ul nz-menu>
+        <li nz-menu-item (click)="downloadExcel()">Download Excel</li>
+        <li nz-menu-item (click)="downloadCsv()">Download Csv</li>
+        <li nz-menu-item (click)="downloadPdf()">Download PDF</li>
+      </ul>
+    </nz-dropdown-menu> 
+
+    </div>
+  </div>
+  <cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+          <tr>
+            <th class="header">#</th>
+            <th class="header">Account Name</th>
+            <th class="header">FT</th>
+            <th class="header">Meter Count</th>
+            <th class="header">Transaction Date </th>
+            <th class="header">Transaction Id </th>         
+            <th class="header">Amount</th>           
+          
+          </tr>
+        
+      </thead>
+      <tbody>
+       
+        <tr
+          *ngFor="
+            let row of rows 
+              | detailReport: searchValue;
+            let i = index          
+           
+          "
+        >
+          <td>{{ i + 1 }}</td>         
+          <td>{{ row.account_name }}</td>  
+          <td>{{ row.meter_ft }}</td>          
+          <td>{{ row.meter_count }}</td> 
+          <td>{{ row.trans_date | date: "short" }}</td>
+          <td>{{ row.trans_id }}</td>    
+          <td>{{ row.amount}}</td>     
+       
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+  <cdk-virtual-scroll-viewport itemSize="18">
+ 
+  

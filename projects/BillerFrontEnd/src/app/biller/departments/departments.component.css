@@ -1,0 +1,15 @@
+.big-column,
+.small-column {
+  height: 100%;
+}
+
+.big-column {
+  background: #ffffff;
+}
+.margin{
+  margin-bottom: 2vh;
+}
+
+.header {
+  font-weight: bolder;
+}

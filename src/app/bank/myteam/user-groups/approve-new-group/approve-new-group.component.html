@@ -1,0 +1,67 @@
+<div nz-row>
+    <div nz-col nzSpan="12">
+      <input
+        nz-input
+        placeholder="Search"
+        [(ngModel)]="searchValue"
+        style="width: 100%;"
+        maxlength="100"
+      />
+    </div>
+ 
+  </div>
+  
+  <cdk-virtual-scroll-viewport itemSize="18">
+    <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+      <nz-table #basicTable [nzData]="rows" [nzShowPagination]="false">
+        <thead>
+          <tr>
+            <th class="header">#</th>
+            <th class="header">Name</th>
+            <th class="header">Number Of Users</th>
+            <th class="header">Status</th>
+            <th class="header">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *cdkVirtualFor="
+              let data of rows | teamSearch: searchValue;
+              let i = index
+            "
+          >
+            <td>{{ i + 1 }}</td>
+            <td>{{ data.name }}</td>
+            <td>{{ data.noOfUsers }}</td>
+            <td>{{ data.status }}</td>          
+            <td>
+              <button
+              nz-button
+              nzType="link"
+              style="color: #f0ad4e;"
+              nzTooltipTitle="Approve Group Creation"
+              nzTooltipPlacement="topCenter"
+              nz-tooltip
+              (click)="approveGroup(data)"
+              [disabled]="!this.role.myTeamRole"
+            >
+            <i nz-icon nzType="check" nzTheme="outline"></i>
+            </button>
+              <button
+                nz-button
+                nzType="link"
+                nzTooltipTitle="Reject Group Creation."
+                nzTooltipPlacement="topCenter"
+                nz-tooltip
+                (click)="RejectGroupCreation(data)"
+                [disabled]="!this.role.myTeamRole"
+              >
+              <i nz-icon nzType="close" nzTheme="outline"></i>
+            </button>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-spin>
+  </cdk-virtual-scroll-viewport>
+  

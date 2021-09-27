@@ -1,0 +1,14 @@
+<nz-tabset [nzTabPosition]="'top'" [nzType]="'card'"  [nzSelectedIndex]="this.alertsevice.serviceTab" (nzSelectedIndexChange)="handleChange($event)" >
+    
+    <nz-tab [nzTitle]="'System Logs'">
+        <ng-template nz-tab>
+          <app-system-logs></app-system-logs>
+        </ng-template>
+      </nz-tab>
+      <nz-tab [nzTitle]="'Alerts'">
+        <ng-template nz-tab>
+          <app-alerts></app-alerts>
+        </ng-template>
+      </nz-tab>   
+    
+</nz-tabset>

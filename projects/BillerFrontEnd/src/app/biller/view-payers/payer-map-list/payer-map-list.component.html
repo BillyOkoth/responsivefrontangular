@@ -1,0 +1,55 @@
+<div nz-row style="margin:2vh">
+    <div nz-col nzSpan="10">
+      <input
+        nz-input
+        placeholder="Search"
+        [(ngModel)]="searchValue"
+        style="width: 100%;"
+        maxlength="100"
+      />
+    </div>     
+  </div> 
+  
+  <cdk-virtual-scroll-viewport itemSize="18">
+    <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+      <nz-table #basicTable [nzData]="rows" [nzShowPagination]="false">
+        <thead>
+          <tr>    
+              <th class="header">#</th>
+            <th class="header">Customer </th>
+            <th class="header">Customer Code</th>        
+            <th class="header">Email</th>          
+            <th class="header">Location</th>
+            <th class="header">Phone</th> 
+            <th class="header">Address</th>
+            <th class="header">City</th>
+            <th class="header">Actions</th>
+          </tr>
+        </thead>
+        <tbody>      
+          <tr *ngFor="let data of rows |mypayersSearch: searchValue;let i = index ">
+            <td>{{ i + 1 }}</td>     
+            <td>{{ data.customer }}</td>
+            <td>{{ data.customer_code }}</td>
+            <td>{{ data.email }}</td>
+            <td>{{ data.location }}</td>
+            <td>{{ data.phone }}</td>
+            <td>{{ data.address }}</td>
+            <td>{{ data.city }}</td>     
+            <td>
+              <button        
+              nz-button nzType="link" 
+              nzTooltipTitle="View Payer Details."
+              nzTooltipPlacement="topCenter"
+              nz-tooltip
+              (click)="editPayerMapList()">
+                <i nz-icon nzType="eye" nzTheme="outline"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+      </nz-spin>
+  </cdk-virtual-scroll-viewport>
+  
+  

@@ -1,0 +1,117 @@
+/*
+ style holder of the dashboard application
+*/
+
+.dashboard-holder {
+  height: 70vh;
+}
+
+.graphs,
+.div-extension {
+  height: 100% !important;
+  overflow-y: auto !important;
+  position: relative;
+}
+.graphs {
+  background: #ffffff;
+}
+.div-extension button {
+  display: block;
+  /* margin: auto;
+    margin-top: 0 !important; */
+}
+.recurring-bills-title {
+  position: relative;
+}
+.recurring-bills-title button {
+  display: block;
+  margin: auto;
+  margin-top: 10% !important;
+}
+.bill-title h2,
+.bill-title p,
+.activities-section .title h2,
+.activities-section .title p {
+  margin-left: 5% !important;
+}
+.list-of-billers {
+  height: 35%;
+  overflow-y: auto !important;
+}
+.list-of-billers .list-items,
+.activities-section .text-content {
+  border-left: 1px solid #666666;
+  padding-left: 5% !important;
+}
+
+.activities-section {
+  height: 40%;
+  overflow-y: auto;
+}
+
+/*  style main dashboard on this real dashboard */
+
+.total-sum p,
+.total-sum h2 {
+  margin: 0 !important;
+  margin-top: 0.5% !important;
+}
+.total-sum h2 {
+  margin-bottom: 1% !important;
+}
+
+.text-color-yellow {
+  font-family: 'digital-7';
+  font-size: 2em !important;
+}
+.graph p {
+  /* text-align: center !important; */
+}
+ngx-charts-pie-grid {
+  margin: auto !important;
+}
+
+.bar-graph {
+  height: 30vh;
+}
+
+.total-accounts {
+  color: #ffd387;
+  font-weight: bolder;
+  font-size: 3vh;
+  margin-top: 0.6vh;
+}
+
+.total-amounts {
+  color: black;
+  font-weight: bolder;
+  font-size: 1em;
+  margin-left: 2vh;
+}
+
+.dash-h {
+  margin-left: 3vw;
+  font-size: 1.5em;
+}
+
+.pie-chart {
+  border-style: solid;
+  border-color: red;
+  height: 20vh;
+}
+.pie-graph {
+  border-style: solid;
+  border-color: red;
+  width: 20vh;
+  height: 50vh;
+}
+
+.cont {
+  font-size: 2em;
+}
+
+.sticky{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0
+}

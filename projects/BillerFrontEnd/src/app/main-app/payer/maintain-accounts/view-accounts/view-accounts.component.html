@@ -1,0 +1,187 @@
+<div nz-row nzGutter="16">
+  <div nz-col class="gutter-row" nzSpan="12">
+    <input
+      nz-input
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      style="width: 100%;"
+      maxlength="100"
+    />
+  </div>
+  <div nz-col class="gutter-row" nzSpan="12">
+    <div nz-row nzGutter="16" nzType="flex" nzJustify="end">
+      <div nz-col class="gutter-row" nzSpan="4.8">
+        <button
+          class="btn"
+          nz-button
+          nzType="primary"
+          (click)="getMyAccounts()"
+          nzTooltipTitle="Refresh"
+          nzTooltipPlacement="bottom"
+          nz-tooltip
+        >
+          <i nz-icon nzType="reload" nzTheme="outline"></i>
+        </button>
+      </div>
+      <div nz-col class="gutter-row" nzSpan="4.8">
+        <button
+          class="btn"
+          nz-button
+          style="background-color: #5cb85c;"
+          (click)="addNew()"
+          nzTooltipTitle="Add Account"
+          nzTooltipPlacement="bottom"
+          nz-tooltip
+        >
+          <i nz-icon nzType="plus" nzTheme="outline"></i>
+        </button>
+      </div>
+
+      <div nz-col class="gutter-row" nzSpan="4.8">
+        <button
+          class="btn"
+          nz-button
+          nzType="default"
+          (click)="downloadCSV()"
+          nzTooltipTitle="Download Excel"
+          nzTooltipPlacement="bottom"
+          nz-tooltip
+          [nzLoading]="loading"
+          [disabled]="loading"
+        >
+          <i nz-icon nzType="download" nzTheme="outline"></i>
+        </button>
+      </div>
+      <div nz-col class="gutter-row" nzSpan="4.8">
+        <button
+          class="btn"
+          nz-button
+          style="background-color: #f0ad4e;"
+          (click)="toUploadedFile()"
+          nzTooltipTitle="View Uploaded Files"
+          nzTooltipPlacement="top"
+          nz-tooltip
+        >
+          <i nz-icon nzType="eye" nzTheme="outline"></i>
+        </button>
+      </div>
+      <div nz-col class="gutter-row" nzSpan="4.8">
+        <button
+          class="btn"
+          nz-button
+          nzType="danger"
+          [disabled]="loading"
+          (click)="deleteMultiple()"
+          nzTooltipTitle="Delete Accounts"
+          [disabled]="this.selectedRows.length < 1 || loading"
+          nzTooltipPlacement="top"
+          [nzLoading]="loading"
+          nz-tooltip
+        >
+          <i nz-icon nzType="delete"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table class="accounts-table"
+      id="basicTable"
+      #basicTable
+      [nzData]="rows"
+      [nzPageSize]="50"
+      [nzShowPagination]="false"
+      nzShowSizeChanger
+    >
+      <thead>
+        <tr>
+          <th class="header">#</th>
+          <th nzWidth="20%" class="header">
+            Account No.
+          </th>
+          <th nzWidth="20%" class="header">Account Name</th>
+          <th nzWidth="15%" class="header">Alias</th>
+          <th nzWidth="15%" class="header">Actions</th>
+          <th
+            nzShowCheckbox
+            [(nzChecked)]="isAllDisplayDataChecked"
+            [nzIndeterminate]="isIndeterminate"
+            (nzCheckedChange)="updateAllChecked()"
+            class="header"
+          ><label>Select/Unselect</label></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *cdkVirtualFor="let data of rows | search: searchValue; let i = index"
+        >
+          <td>{{i + 1}}</td>
+          <td>{{ data.account_no }}</td>
+          <td>{{ data.account_name }}</td>
+          <td>{{ data.alias }}</td>
+          <td>
+            <button
+              nz-button
+              nzType="link"
+              nzShape="round"
+              nzTooltipTitle="View Account Details"
+              nzTooltipPlacement="right"
+              nz-tooltip
+              (click)="onRowSelect(data)"
+            >
+              <i nz-icon nzType="eye" nzTheme="outline"></i>
+            </button>
+          </td>
+
+          <td
+            nzShowCheckbox
+            [(nzChecked)]="data.checked"
+            (nzCheckedChange)="updateSingleChecked(data)"
+          ></td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</cdk-virtual-scroll-viewport>
+<nz-modal
+  [(nzVisible)]="displayDialog"
+  nzTitle="Account Details"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="save()"
+>
+  <nz-spin nzSimple [nzSize]="'large'" *ngIf="this.loading === true"></nz-spin>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">Account Name</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input [(ngModel)]="this.account_name" disabled maxlength="50" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">Account No.</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input [(ngModel)]="this.account_no"  disabled maxlength="50" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">Amount Due</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input [(ngModel)]="this.amount_due" disabled />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item [formGroup]="aliasForm">
+    <nz-form-label [nzSm]="6" [nzXs]="24">Other Name</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input
+        nz-input
+        [(ngModel)]="this.alias"
+        formControlName="alias"
+        maxlength="50"
+      />
+    </nz-form-control>
+  </nz-form-item>
+
+</nz-modal>

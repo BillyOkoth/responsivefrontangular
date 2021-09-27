@@ -1,0 +1,30 @@
+.modal {
+    margin-left: 14vh;
+    overflow-y: hidden;
+
+}
+.stp-btn{
+  
+    margin-top:5vh;
+}
+
+.step-cancel-btn {
+
+    height: 5vh !important;
+    cursor: pointer;
+  
+  }
+  .step-cancel-btn mat-icon {
+  
+    margin-left: 10% !important;
+    font-size: 3em !important;
+    margin-top: 5% !important;
+  }
+   
+  input.mat-input-element {
+    color:black;
+  }
+
+  .placeholder {
+      color: #FFD387 ;
+  }

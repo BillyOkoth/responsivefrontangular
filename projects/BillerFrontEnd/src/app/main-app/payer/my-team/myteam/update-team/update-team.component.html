@@ -1,0 +1,94 @@
+<nz-spin
+      [nzSize]="'large'"
+      nzSimple
+      *ngIf="loading"
+    ></nz-spin>
+<form  
+  autocomplete="off"
+  (ngSubmit)="updateTeam()"
+>
+  <input
+    nz-input
+    class="input-size"
+    placeholder="Enter First Name"
+    maxlength="50"
+    id="Fname"
+    name = "Fname"
+    [(ngModel)] = 'this.Fname'
+  />
+
+  <input
+    nz-input
+    class="input-size"
+    placeholder="Enter Last  Name"
+    maxlength="50"
+    id="Lname"
+    name = "Lname"
+    [(ngModel)] = 'this.Lname'
+  />
+
+  <input
+    nz-input
+    class="input-size"
+    placeholder="Enter Email Address"
+    maxlength="50"
+    id="setEmail"
+    name = "setEmail"
+    [(ngModel)] = 'this.setEmail'
+    readonly
+  />
+  
+  <nz-select
+    [(ngModel)] = "selectedGroup"    
+    nzAllowClear
+    nzPlaceHolder="Assign User Group"
+    class="input-size"
+    name = "groupSet"
+  >
+    <nz-option
+      *ngFor="let roles of roleLists"
+      [nzValue]="roles"
+      nzLabel="{{ roles.name }}"
+    >
+      {{ roles.name }}
+    </nz-option>
+  </nz-select>
+</form>
+
+<button
+  class="input-size"
+  nz-button
+  nzType="primary"
+  [nzLoading]="loading"
+  [disabled]= "loading"
+  (click)="updateTeam()"
+  nzBlock
+>
+  Save
+</button>
+<button
+  class="input-size"
+  nz-button
+  [nzLoading]="loading"
+  [disabled]= "loading"
+  style="background-color: #f0ad4e;" 
+  (click)="delete()"
+  nzBlock
+>
+  Freeze
+</button>
+<button
+
+  class="input-size"
+  nz-button
+  [nzLoading]="loading"
+  [disabled]= "loading"
+  style="background-color: #5cb85c;"
+ 
+  (click)="restore()"
+  nzBlock
+>
+  Restore
+</button>
+
+

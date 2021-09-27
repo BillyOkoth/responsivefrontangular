@@ -1,0 +1,23 @@
+<nz-tabset [nzTabPosition]="'top'" [nzType]="'card'" [nzSelectedIndex]="this.teamService.serviceTab" (nzSelectedIndexChange)="handleChange($event)">
+    <nz-tab [nzTitle]="'User Groups'">
+        <ng-template nz-tab>
+        <app-user-group-list></app-user-group-list>
+        </ng-template>
+      </nz-tab>
+      <nz-tab [nzTitle]="'Approve New User Group'">
+        <ng-template nz-tab>
+          <app-approve-new-group></app-approve-new-group>
+        </ng-template>
+      </nz-tab>
+      <nz-tab [nzTitle]="'Approve Group To Be Edited'">
+        <ng-template nz-tab>
+          <app-approve-edit-group></app-approve-edit-group>
+        </ng-template>
+      </nz-tab>
+      <nz-tab [nzTitle]="'Approve Group To Be Deleted'">
+        <ng-template nz-tab>
+          <app-approve-deleted-group></app-approve-deleted-group>
+        </ng-template>
+      </nz-tab>
+</nz-tabset>
+

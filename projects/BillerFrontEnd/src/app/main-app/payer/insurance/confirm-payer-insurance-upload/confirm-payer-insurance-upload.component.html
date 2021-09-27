@@ -1,0 +1,49 @@
+<div nz-row>
+  <h2>
+    Confirm Policy Holders.
+  </h2>
+</div>
+<div nz-row nzType="flex" nzJustify="center">
+  <h3>
+    Do you want to confirm the addition the following Policy Holders.
+
+  </h3>
+</div>
+<nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+  <thead>
+    <tr>
+      <th class="header">#</th>
+      <th class="header"> Policy Name.</th>
+      <th class="header">Policy Number.</th>
+      <th class="header">Policy Holder Status.</th>
+      <th class="header">Amount Status.</th>
+      <th class="header"> Amount.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of rows;let i = index">     
+      <td> {{ i + 1 }}</td>
+      <td> {{ row.name }}</td>
+      <td> {{ row.policy_no }}</td>     
+      <td>{{ row.policy_holder_status }}</td>
+      <td>{{ row.amount_status }}</td>
+      <td>{{ row.amount }}</td>
+    </tr>
+  </tbody>
+</nz-table>
+<div nz-row nzType="flex" nzJustify="center" style="margin-top: 2vh;">
+  <div nz-col nzSpan="12" nzJustify="center">
+    <button nz-button style="background-color: #5cb85c;color: white" nzTooltipTitle="Proceed to Add new policy holders."
+      nzTooltipPlacement="topCenter" nz-tooltip (click)="confirmPayers()" [nzLoading]="loading">
+      Proceed
+    </button>
+  </div>
+
+  <div nz-col nzSpan='12' nzJustify="center">
+    <div class="cancel">
+      <button nz-button nzType="default" (click)="closeDialog()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>

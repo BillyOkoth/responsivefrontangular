@@ -1,0 +1,77 @@
+
+ <nz-spin
+ [nzSize]="'large'"
+ nzSimple
+ *ngIf="this.loading === true"
+></nz-spin>
+
+<form
+  [formGroup]="validateEslipForm"
+  autocomplete="off"
+  (ngSubmit)="validateEslip()"
+ 
+>
+  <input
+    nz-input
+    class="input-size"
+    placeholder="Enter Eslip No"  
+    id="eslipno"
+    formControlName="eslipno"
+    maxlength="50"
+  />
+</form>
+
+<div style = "margin-top:2vh;">
+        <button
+        class="input-size"
+        nz-button
+        nzType="primary"
+        (click)="validateEslip()"
+        [disabled]="validateEslipForm.invalid||loading"  
+        nzBlock
+        [nzLoading]="loading"
+       
+      >
+      Validate Eslip
+      </button>
+
+</div>
+
+<div class = "div-style">
+        <h3> Date Created: {{this.dateCreated | date: 'short'}}</h3>    
+</div>
+<div class = "div-style">
+        <h3>Reference : {{this.reference}}</h3>
+</div>
+<div class = "div-style">
+        <h3>FT : {{this.ft}}</h3>   
+</div>
+<div class = "div-style">
+        <h3>Biller Name: {{this.biller_name}}</h3>   
+</div>
+<div class = "div-style">
+        <h3>Payer Name: {{this.payer_name}}</h3>  
+</div>
+<div class = "div-style">
+        <h3>Number of Accounts: {{this.accounts}}</h3>  
+</div>
+<div class = "div-style">
+        <h3>FT  Amount: {{this.amount}}</h3> 
+</div>
+
+
+ 
+
+<button
+  class="input-size"
+  nz-button
+  nzType="primary"
+  (click)="payEslip()"
+  [disabled]="!validationBoolean||loading" 
+  nzBlock
+  [nzLoading]="loading"
+ 
+>
+  Recon
+</button>
+

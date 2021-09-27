@@ -1,0 +1,22 @@
+<div>
+    <h3>Are you sure you want to Approve the following Changes ?</h3>
+     
+    <ul>
+      <li *ngIf="this.othernameboolean"> {{othername1}} to {{othername2}}  </li>
+      <li *ngIf="this.usernameboolean"> {{username1}} to {{username2}}</li>
+      <li *ngIf="this.usergroupboolean"> {{usergroup1}} to {{usergroup2}}</li>
+      <li *ngIf=" this.phoneboolean"> {{phone1}} to {{phone2}}</li>
+      <li *ngIf="this.notificationboolean"> {{notification1}} to {{notification2}}</li>
+    </ul>
+    <!-- <p>{{BillerName}}</p> to -->
+  
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <button nz-button nzType="default" (click)="closeDialog()">Cancel</button>
+      </div>
+      <div nz-col nzSpan="12">
+        <button nz-button nzType="primary" (click)="  ApproveEditedBankUser()" [nzLoading]="loading" >Approve</button>
+      </div>
+    </div>
+  </div>
+  

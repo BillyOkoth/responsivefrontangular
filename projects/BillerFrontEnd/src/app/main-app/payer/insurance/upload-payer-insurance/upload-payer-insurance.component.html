@@ -1,0 +1,97 @@
+
+<div class="upload-title" nz-row>
+
+    <div nz-col nzSpan="10">
+      <h3>
+        Policies
+      </h3>
+    </div>
+    
+  </div>
+  
+  <div nz-row>
+    <div nz-col nzSpan="8">
+      <div>
+        <h4>
+          We ony require you to upload the Check-off policy file that you have mapped.
+
+        </h4>
+
+        <!-- <h4>
+         You can cancel if you currently do not want to upload the mapped file.
+
+        </h4> -->
+      </div>
+  
+    
+    </div>
+    <nz-divider nzType="vertical"></nz-divider>
+    <div nz-col nzSpan="8" nzOffset="8">        
+        <form nz-form >
+            <nz-form-item>
+                 <nz-form-label [nzSpan]="6" nzFor="file">Select Date.</nz-form-label>
+                <nz-date-picker
+                nzTooltipTitle="Select Date"
+                nzTooltipPlacement="topCenter"
+                nz-tooltip
+                [(ngModel)]="selected_Date"
+                [ngModelOptions]="{ standalone: true }"
+                placeholder="Select Date"   
+              ></nz-date-picker>
+
+            </nz-form-item>        
+                   <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="file">Select File</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                  <nz-upload
+                    [(nzFileList)]="fileList"
+                    [nzBeforeUpload]="beforeUpload"
+                    (change)="fileChange()"
+                    [nzAccept]="
+                      '.xlsx , application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel'
+                    "
+                  >
+                    <button nz-button>
+                      <i nz-icon nzType="upload"></i><span>Select File</span>
+                    </button>
+                  </nz-upload>
+                </nz-form-control>
+  
+            </nz-form-item>   
+
+            <!-- <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="file"></nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                    <button
+                    nz-button
+                    [nzType]="'primary'"
+                    [nzLoading]="uploading"
+                    [disabled]="loading || this.selected_file.length < 1"
+                    (click)="uploadInvoices()"    
+                    style="margin-top: 16px"
+                    >
+                    {{ uploading ? 'Uploading' : 'Start Upload' }}
+                    </button>
+
+                    <button
+
+                    nz-button
+                    [nzType]="'primary'" 
+                    nzTooltipTitle="Cancel Upload "                               
+                    (click)="cancel()"    
+                    style="margin-top: 16px; margin-left:16px;"
+                    >
+                    Cancel.
+                    </button>
+                </nz-form-control>
+
+
+            </nz-form-item> -->
+      
+    
+    
+    </form>
+    </div>
+  </div>  
+  
+  

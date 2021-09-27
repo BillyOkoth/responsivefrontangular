@@ -1,0 +1,15 @@
+<div>
+    <h3>Are you sure you want to Ignore Exceptions ?</h3>
+  
+    <p>{{eslipnumber}}</p>
+  
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <button nz-button nzType="default" (click)="closeDialog()">Cancel</button>
+      </div>
+      <div nz-col nzSpan="12">
+        <button nz-button nzType="primary" (click)="ignoreExceptions()" [nzLoading]="loading" >Ignore</button>
+      </div>
+    </div>
+  </div>
+  

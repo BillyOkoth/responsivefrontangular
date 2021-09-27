@@ -1,0 +1,197 @@
+<div nz-row nzType="flex" style="margin-bottom:2vh;">
+  <div nz-col nzSpan="12">
+    <input
+      nz-input
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      style="width: 100%;"
+      maxlength="100"
+    />
+  </div>
+  <div nz-col nzSpan="12">
+    <div nz-row nzType="flex" nzJustify="end" nzGutter="16">
+      <div nz-col nzSpan="9">
+        <button
+          nz-button
+          nzType="primary"
+          nzTooltipTitle="Create Team Member"
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          (click)="createNew()"
+        >
+          Create New Member
+          <i nz-icon nzType="user-add"></i>
+        </button>
+      </div>
+      <div nz-col nzSpan="8">
+        <button
+          nz-button
+          nzType="default"
+          nzTooltipTitle="Create User Group"
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          (click)="createNewGroup()"
+        >
+          Create User Group
+          <i nz-icon nzType="usergroup-add"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<cdk-virtual-scroll-viewport itemSize="18">
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="rows" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th class="header">#</th>
+          <th class="header">
+            First Name
+          </th>
+          <th class="header">
+            Last Name
+          </th>
+          <th class="header">
+            User Group
+          </th>
+          <th class="header">
+            Status
+          </th>
+          <th class="header">
+            Email
+          </th>
+          <th class="header">
+            Last Updated
+          </th>
+          <th class="header">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let data of rows | myteamSearch: searchValue;
+            let i = index
+          "
+        >
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.personel_f_name }}</td>
+          <td>{{ data.personel_l_name }}</td>
+          <td>{{ data.groupDescription }}</td>
+          <td>{{ data.frozen }}</td>
+          <td>{{ data.email }}</td>
+          <td>{{ data.updated_at | date: "mediumDate" }}</td>
+          <td>
+            <button
+              nz-button
+              style="margin-left:1vh"
+              nz-button
+              nzType="link"
+              style="color: #f0ad4e;"
+              nzTooltipTitle="Edit Team Member."
+              nzTooltipPlacement="topCenter"
+              nz-tooltip
+              (click)="onRowSelect(data)"
+            >
+              <i nz-icon nzType="eye"></i>
+            </button>
+            <button
+              style="margin-left:1vh"
+              nz-button
+              nzType="link"
+              style="color: #5cb85c;"
+              nzTooltipTitle="Resend Email"
+              nzTooltipPlacement="topCenter"
+              nz-tooltip
+              (click)="resendEmail(data.email)"
+            >
+              <i nz-icon nzType="mail" nzTheme="outline"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+  
+</cdk-virtual-scroll-viewport>
+
+<nz-modal
+  [(nzVisible)]="displayDialog"
+  nzTitle="Team Details"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="updateTeam(row)"
+>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">First Name</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input [(ngModel)]="this.f_name" maxlength="50" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">Last Name.</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input [(ngModel)]="this.l_name" maxlength="50" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">Email</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input [(ngModel)]="this.email" disabled maxlength="50" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">User Group</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <nz-select
+        style="width:41vh;"
+        [(ngModel)]="this.selectedGroup"
+        nzAllowClear
+        nzPlaceHolder="UserGroup"
+        class="input-size"
+      >
+        <nz-option
+          *ngFor="let roles of roleLists"
+          [nzValue]="roles.name"
+          nzLabel="{{ roles.name }}"
+        >
+          {{ roles.name }}
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <div nz-row nzType="flex" nzJustify="centre" style="margin-top:2vh;">
+      <div nz-row nzType="flex" nzJustify="centre">
+        
+        <button
+          nz-button
+          nzType="primary"
+          nzTooltipTitle="Freeze Team Member"
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          [disabled]="loading"
+          (click)="delete(row)"
+        >
+          Freeze
+        </button>
+
+        <button
+          nz-button
+          style="margin-left:5vh;"
+          nzType="default"
+          nzTooltipTitle="Restore Team Member"
+          nzTooltipPlacement="topCenter"
+          nz-tooltip
+          [disabled]="loading"
+          (click)="restore(row)"
+        >
+          Restore
+        </button>
+      </div>
+    </div>
+  </nz-form-item>
+</nz-modal>

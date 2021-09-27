@@ -1,0 +1,50 @@
+.faq-container {
+    position: relative;    
+    margin-left:30vh;
+    line-height: 5vh;
+  }
+  .title {
+    font-weight: bolder;
+    color: rgba(0, 86, 166, 1) !important;
+  
+    font-size: 1.3em;
+    font-family: 'Segoe UI Bold';
+  }
+
+  .button-back {
+    
+    margin-right:2vh;
+  }
+  
+  .faq-body {
+    margin-bottom: 10vh;
+    font-size: 1.2em;
+  }
+  
+  .faq-title { 
+    color: #ffd387;
+  }
+  
+  .close-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .list-style-alpha {
+
+    list-style-type: lower-alpha;
+  }
+
+  .list-style-roman {
+
+    list-style-type: upper-roman;
+  }
+  .br {
+    line-height: 2em;
+  }
+
+  .span-class {
+    color:black;
+    font-weight:800 !important;
+  }
+  

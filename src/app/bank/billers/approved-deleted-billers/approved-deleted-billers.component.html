@@ -1,0 +1,73 @@
+<div nz-row>
+    <div nz-col nzSpan="12">
+      <input
+        nz-input
+        placeholder="Search"
+        [(ngModel)]="searchValue"
+        style="width: 100%;"
+        maxlength="100"
+      />
+    </div>
+ 
+  </div>
+  <nz-spin [nzSpinning]="loading" [nzSize]="'large'">
+    <nz-table #filterTable [nzData]="rows">
+      <thead>
+        <tr>
+          <th class="header">#</th>
+          <th class="header">Company Name</th>
+          <th class="header">Biller Code</th>
+          <th class="header">Sector</th>
+          <th class="header">Branch</th>
+          <th class="header">Email</th>
+          <th class="header">Created By</th>  
+          <th class="header">Updated By</th>  
+          <th class="header">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let data of filterTable.data | billerSearch: searchValue;
+            let i = index
+          "
+        >
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.company_name }}</td>
+          <td>{{ data.comp_code }}</td>
+          <td>{{ data.sector }}</td>
+          <td>{{ data.branch }}</td>
+          <td>{{ data.email }}</td>
+          <td>{{ data.created_by }}</td>
+          <td>{{ data.updated_by }}</td>  
+          <td>
+            <button
+              nz-button
+              nzType="link"
+              style="color: #f0ad4e;"
+              nzTooltipTitle="Approve Deleted Biller."
+              nzTooltipPlacement="topCenter"
+              nz-tooltip
+              [disabled]="!this.role.billerAllRoles"
+              (click)="ApproveDeletedBiller(data)"
+            >
+            <i nz-icon nzType="check" nzTheme="outline"></i>
+            </button>
+            <button
+            nz-button
+            nzType="link"
+            nzTooltipTitle="Reject Deleted Biller"
+            nzTooltipPlacement="topCenter"
+            nz-tooltip
+            (click)="RejectDeleteBiller(data)"
+            [disabled]="!this.role.billerAllRoles"
+          >
+          <i nz-icon nzType="close" nzTheme="outline"></i>
+          </button>
+           
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+  

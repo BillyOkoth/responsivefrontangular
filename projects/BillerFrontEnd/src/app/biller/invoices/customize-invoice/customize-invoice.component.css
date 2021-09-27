@@ -1,0 +1,89 @@
+/* main div holder */
+.welcome-holder {
+    height: 100vh !important;
+}
+.welcome-holder .left-bar, .welcome-holder .main-content{
+    height: 100%;
+}
+.header {
+    background: #ffffff;
+}
+
+/* button at the top */ 
+.main-content .buttons button {
+    float: right;
+    margin-top: 5vh !important;
+}
+.main-content .buttons .button2 {
+    margin-right: 2.5vw !important;
+}
+
+/* yellow title*/
+.text-color-yellow {
+    font-family: 'Segoe UI Bold';
+    font-size: 2.4em;
+    margin-left: 3%;
+}
+
+/* invoice area */
+.invoice-holder .main-invoice, .invoice-holder .thumb-invoice{
+    height: 84vh;
+    /* border: 1px solid royalblue; */
+}
+.invoice-holder .main-invoice {
+    overflow-y: auto !important;
+    padding: 2% !important;
+}
+.main-invoice h2 {
+    font-family: 'Segoe UI Light';
+    font-weight: 300 !important;
+    font-size: 4em !important;
+    color: #707070;
+}
+.thumb-invoice .top-section, .thumb-invoice .bottom-section {
+    height: 50%;
+    position: relative;
+}
+.thumb-invoice .top-section img{
+    width: 80%;
+    display: block;
+    margin: auto;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+}
+.thumb-invoice  .p-top {
+    color: #0056A6;
+}
+
+.thumb-invoice button {
+    position: absolute;
+    top: 50%;
+}
+.thumb-invoice .button-left {
+    left: 0;
+}
+.thumb-invoice .button-right {
+    right: 0;
+}
+.thumb-invoice .top-section .p-bottom {
+    text-align: center;
+
+}
+.top-section .p-bottom span {
+    font-family: 'Segoe UI Bold';
+}
+.top-section .p-bottom .inactive {
+    color: #707070;
+    margin-left: 5% !important;
+}
+.bottom-section input {
+border: 1px solid #cccccc;
+}
+
+/*cancel button to get the user out of this page*/
+.left-bar mat-icon{
+    font-size: 5em !important;
+    color: #ffffff !important;
+    margin-top: 5vh !important;
+}
+

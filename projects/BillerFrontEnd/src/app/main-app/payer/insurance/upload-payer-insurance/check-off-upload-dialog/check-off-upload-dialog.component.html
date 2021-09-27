@@ -1,0 +1,12 @@
+<div>
+    <p>Are you sure want to upload the following file</p>
+     <p>{{this.testData}}</p>
+ </div>
+ 
+ 
+ 
+ <div *nzModalFooter>
+       <button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+     <button nz-button nzType="primary"  [nzLoading]="uploading"
+     [disabled]="loading || this.selected_file.length < 1" (click)="uploadInvoices()" [nzLoading]="isConfirmLoading">  {{ uploading ? 'Uploading' : 'Start Upload' }}</button>
+   </div>

@@ -1,0 +1,51 @@
+<form nz-form [nzLayout]="'vertical'" [formGroup]="addPayerTeamForm">
+    <div nz-row>
+        <div nz-col nzSpan="24">
+            <nz-form-item>
+                <nz-form-label [nzSpan]="8" nzRequired>Team Member</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="teamErrorTpl">
+                    <nz-select nzAllowClear nzPlaceHolder="Select Team Member" formControlName="team" class="input-size"
+                        style="width: 100%;" required>
+                        <nz-option *ngFor="let biller of teams" [nzValue]="biller.id"
+                            nzLabel="{{ biller.personel_f_name }}">
+                            {{ biller.name }}
+                        </nz-option>
+                    </nz-select>
+                    <ng-template #teamErrorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">
+                            Assin a team member!
+                        </ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSpan]="8" nzRequired>Department</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="departmentsErrorTpl">
+                    <nz-select nzAllowClear nzPlaceHolder="Select Department" formControlName="department"
+                        class="input-size" style="width: 100%;" required>
+                        <nz-option *ngFor="let biller of departments" [nzValue]="biller.id"
+                            nzLabel="{{ biller.service_line }}">
+                            {{ biller.name }}
+                        </nz-option>
+                    </nz-select>
+                    <ng-template #departmentsErrorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">
+                            Select a department!
+                        </ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="countryname"></nz-form-label>
+        <div nz-row nzJustify="end">
+            <div nz-col>
+                <button nz-button nzType="primary" [disabled]="!addPayerTeamForm.valid" (click)="saveToTeam()"
+                    [nzLoading]="loading">
+                    Add
+                </button>
+            </div>
+        </div>
+    </nz-form-item>
+</form>
